@@ -1,0 +1,21 @@
+body{
+margin: 0;
+}
+
+#sidebar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    width:256px;
+    background-color: #2A3647;
+    height: 100vh;
+}
+
+#logo-sidebar-top{
+    height: 120px;
+    width: 100px;
+
+}
