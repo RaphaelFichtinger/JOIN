@@ -3,6 +3,28 @@ body {
     background-color: #F6F7F8;
 }
 
+.flex{
+    display: flex;
+}
+
+.flex-wrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.align-center{
+    align-items: center;
+}
+
+
 .login-header {
     display: flex;
     justify-content: space-between;
@@ -18,13 +40,7 @@ body {
     gap: 35px;
 }
 
-.sign-up-button button {
-    height: 49px;
-    padding: 15px 16px;
-    border-radius: 8px;
-    background-color: #2A3647;
-    color: white;
-}
+
 
 #content{
     display: flex;
@@ -34,7 +50,10 @@ body {
 .login-lightbox {
     max-width: 652px;
     background-color: white;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 652px;
     height: 493px;
     max-height: 493px;
@@ -42,28 +61,31 @@ body {
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.04);
 }
 
+#heading-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;    
+    line-height: 72px;
+}
 
 #input-container{
     display: flex;
+    justify-content: center;
     gap: 32px;
     align-items: center;
     flex-direction: column;
     height: 152px;
+    width: 422px;
 }
-
-
-
-
-
-
 
 #input-email{
     background: url(/img/mail.png);
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: 377px;
     background-attachment: 7px 7px;
-    width: 422px;
-    height: 48px;
+    height: 44px;
+    width: 100%;
     border-radius: 10px;
     border: 1px solid #d1d1d1;
     font-size: 20px;
@@ -73,12 +95,39 @@ body {
 #input-password{
     background: url(/img/lock.png);
     background-repeat: no-repeat;
-    background-position: right;
-    width: 422px;
-    height: 48px;
+    background-position: 377px;
+    background-attachment: 7px 7px;
+    height: 44px;
+    width: 100%;
     border-radius: 10px;
     border: 1px solid #d1d1d1;
     font-size: 20px;
-
+    text-indent: 20px;
 }
 
+#input-div{
+    display: flex;
+    gap: 8px;
+    padding-left: 8px;
+    width: 322px;
+}
+
+#buttons-container{
+    width: 322px;
+    gap: 35px;
+    margin-top: 32px;
+}
+
+.sign-up-button  {
+    padding: 15px 16px;
+    border-radius: 8px;
+    background-color: #2A3647;
+    color: white;
+}
+
+.guest-login-button{
+    padding: 15px 16px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+}
