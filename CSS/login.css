@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    background-color: #F6F7F8;
+}
+
+.login-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 67px 122px 63px 77px;
+}
+
+.login-header img {
+    margin-top: 13px;
+}
+
+.sign-up-button {
+    display: flex;
+    gap: 35px;
+}
+
+.sign-up-button button {
+    height: 49px;
+    padding: 15px 16px;
+    border-radius: 8px;
+    background-color: #2A3647;
+    color: white;
+}
+
+#content{
+    display: flex;
+    justify-content: center;
+}
+
+.login-lightbox {
+    max-width: 652px;
+    background-color: white;
+    text-align: center;
+    width: 652px;
+    height: 493px;
+    max-height: 493px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.04);
+}
+
+
+#input-container{
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    flex-direction: column;
+    height: 152px;
+}
+
+
+
+
+
+
+
+#input-email{
+    background: url(/img/mail.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-attachment: 7px 7px;
+    width: 422px;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid #d1d1d1;
+    font-size: 20px;
+    text-indent: 20px;
+}
+
+#input-password{
+    background: url(/img/lock.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    width: 422px;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid #d1d1d1;
+    font-size: 20px;
+
+}
+
