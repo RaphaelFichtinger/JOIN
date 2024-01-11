@@ -1,18 +1,83 @@
+/* inter-regular - cyrillic_cyrillic-ext_latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/inter-v13-cyrillic_cyrillic-ext_latin-regular.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/inter-v13-cyrillic_cyrillic-ext_latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/inter-v13-cyrillic_cyrillic-ext_latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+         url('../fonts/inter-v13-cyrillic_cyrillic-ext_latin-regular.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+         url('../fonts/inter-v13-cyrillic_cyrillic-ext_latin-regular.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+         url('../fonts/inter-v13-cyrillic_cyrillic-ext_latin-regular.svg#Inter') format('svg'); /* Legacy iOS */
+}
+  /* inter-700 - cyrillic_cyrillic-ext_latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/inter-v13-cyrillic_cyrillic-ext_latin-700.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/inter-v13-cyrillic_cyrillic-ext_latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/inter-v13-cyrillic_cyrillic-ext_latin-700.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+         url('../fonts/inter-v13-cyrillic_cyrillic-ext_latin-700.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+         url('../fonts/inter-v13-cyrillic_cyrillic-ext_latin-700.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+         url('../fonts/inter-v13-cyrillic_cyrillic-ext_latin-700.svg#Inter') format('svg'); /* Legacy iOS */
+}
 
-#sidebar{
+.flex {
     display: flex;
-    justify-content: space-around;
+}
+.align-center {
     align-items: center;
+}
+.space-between {
+    justify-content: space-between;
+}
+.flex-column {
+    display: flex;
     flex-direction: column;
+}
+p {
+    margin: 0;
+}
+
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+#sidebar {
     position: absolute;
-    left: 0px;
-    top: 0px;
-    width:256px;
+    left: 0;
+    top: 0;
+    width: 232px;
     background-color: #2A3647;
     height: 100vh;
 }
-
-#logo-sidebar-top{
+.logo-sidebar {
     height: 120px;
     width: 100px;
+    padding-top: 64px;
+}
+.side-menu {
+    width: 100%;
+    gap: 15px;
+}
+.navi {
+    color: #FFFFFF;
+    gap: 8px;
+    padding: 8px 0 8px 56px;
+}
+.navi:hover {
+    background-color: #091931;
+}
+.privacy-text {
+    width: 100%;
+    gap: 20px;
+    padding-bottom: 64px;
+}
+.info-text {
+    color: #A8A8A8;
+    padding-left: 56px;
 }
