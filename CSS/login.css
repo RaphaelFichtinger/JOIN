@@ -8,7 +8,6 @@ body {
 }
 
 .flex-wrap{
-    display: flex;
     flex-wrap: wrap;
 }
 
@@ -22,6 +21,10 @@ body {
 
 .align-center{
     align-items: center;
+}
+
+.flex-row{
+    flex-direction: row;
 }
 
 
@@ -105,11 +108,9 @@ body {
     text-indent: 20px;
 }
 
-#input-div{
-    display: flex;
+#checkbox-div{
     gap: 8px;
-    padding-left: 8px;
-    width: 322px;
+    padding: 0px 241px 0px 39px;
 }
 
 #buttons-container{
@@ -119,10 +120,12 @@ body {
 }
 
 .sign-up-button  {
-    padding: 15px 16px;
+    padding: 15px 24px;
     border-radius: 8px;
     background-color: #2A3647;
     color: white;
+    height: 48px;
+    
 }
 
 .guest-login-button{
@@ -130,4 +133,6 @@ body {
     border-radius: 8px;
     background-color: #ffffff;
     color: rgb(0, 0, 0);
+    height: 48px;
+
 }
