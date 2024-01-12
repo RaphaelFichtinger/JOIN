@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    background-color: #F6F7F8;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.flex-row{
+    flex-direction: row;
+}
+
+#content{
+    display: flex;
+    flex-direction: row;
+}
+
+#contactlist{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;                         /* change ----- dient nur zur orientierung*/ 
+    width: 456px;
+    border: 1px solid black;
+    overflow-y:scroll;
+    margin-left: 232px;
+    height: 83vh;
+}
+
+#contact-btn-div{
+    height: 100px;
+    width: 456px;
+    margin-left: 232px;
+    border: 2px solid #b22c2c;       /* change ----- dient nur zur div-scaling orientierung*/ 
+    display: flex;
+    padding: 22.5px 52px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contact-btn{
+    background-color: #2A3647;
+    gap: 16px;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid #2A3647;
+    font-size: larger;
+    height: 56px;
+    width: 352px;
+}
+
+#contactcard-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+    
+#cyrcle-contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: rgb(86, 86, 86);
+    border: 2px solid white;
+}
+
+#single-contact{
+    background-color: rgb(225, 225, 225);
+    width: 432px;
+    
+}
+
+#contact-details{
+    height: 78px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#contact-email{
+    color: rgba(0, 124, 238, 1);
+}
