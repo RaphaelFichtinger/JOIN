@@ -179,18 +179,28 @@ function showContactDetails(i) {
   let lastNameInitial = contact.Name.split(' ')[1][0].toUpperCase();
 
   overlay.innerHTML = `
-      <div id="contact-overlay">
+  <div id="contact-overlay">
         <div id="overlay-top-container">
-            <div id="contact-cyrcle-div">
-                <div id="contact-cyrcle">${firstNameInitial}${lastNameInitial}</div> 
-            </div>
-            <div id="contact-name-overlay">${contact.Name}</div>
+            <div id="contact-cyrcle-div-overlay">
+                <div id="contact-cyrcle-overlay">${firstNameInitial}${lastNameInitial}
+                </div> 
+          </div>
+              
+        <div id="contact-mid-overlay">
+              
+            <div id="contact-name-overlay"> ${contact.Name}</div>
+                  <div id="edit-delete-div">
+                      <div id="edit-div">Edit</div>
+                      <div id="delete-div">Delete</div>
+                  </div>
         </div>
-        <div id="overlay-mid-container">
-            <div class="contact-email">${contact.Email}</div>
-            <div class="contact-telefon">${contact.Telefon}</div>
         </div>
-      </div>
+        
+        <div id="overlay-bottom-container">
+              <div class="contact-email">${contact.Email}</div>
+              <div class="contact-telefon">${contact.Telefon}</div>
+        </div>
+    </div>
   `;
 }
 

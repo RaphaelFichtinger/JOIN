@@ -54,7 +54,7 @@ body {
 }
 
 #overlay-top-container{
-    background-color: #d0f5e1;
+    background-color: #a8cfb9;
     height: 200px;
     width: 100vw;
     display: flex;
@@ -64,18 +64,51 @@ body {
     padding-left: 32px;
 }
 
+#contact-cyrcle-overlay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    background-color: rgb(86, 86, 86);
+    color: white;
+    font-size: 47px;
+    font-weight: 500;
+}
+
 #contact-name-overlay{
     font-size: 47px;
+}
+
+#edit-delete-div{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+}
+
+#edit-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+#delete-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 }
 
 #contact-email{
     color: rgba(0, 124, 238, 1);
 }
 
-#overlay-mid-container{
-    background-color: yellow;
-    height: 500px;
-    width: 200px;
+#overlay-bottom-container{
+    background-color: rgb(255, 255, 203);
 }
 
 #contactlist{
