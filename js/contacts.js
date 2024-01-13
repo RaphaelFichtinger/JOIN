@@ -140,17 +140,19 @@ function renderContacts() {
 
     if (contactsForLetter.length > 0) {
       list.innerHTML += `
-        <div class="alphabet-tab" onclick="showContactsForLetter('${letter}')">${letter}</div>
-      `;
+        <div id="container-alphabet">
+          <div id="alphabet-tab" onclick="showContactsForLetter('${letter}')">${letter}</div>
+        </div>      
+          `;
 
       for (let contact of contactsForLetter) {
         list.innerHTML += `
-          <div class="contactcard-container" onclick="showContactDetails(${contacts.indexOf(contact)})">
-            <div class="cyrcle-contact"></div>
-            <div class="contact-details">
-              <div>${contact.Name}</div>
-              <div class="contact-email">${contact.Email}</div>
-            </div>
+          <div id="contactcard-container" onclick="showContactDetails(${contacts.indexOf(contact)})">
+                  <div id="contact-cyrcle"></div> 
+                    <div id="contact-details">
+                      <div id="contact-name">${contact.Name}</div>
+                      <div id="contact-email">${contact.Email}</div>
+                    </div>
           </div>
         `;
       }
@@ -167,9 +169,11 @@ function showContactDetails(index) {
   let overlay = document.getElementById('container-right');
   let contact = contacts[index];
   overlay.innerHTML = `
-        <div>${contact.Name}</div>
-        <div class="contact-email">${contact.Email}</div>
-        <div class="contact-telefon">${contact.Telefon}</div>
+      <div id="contact-overlay">
+          <div class="contact-name">${contact.Name}</div>
+          <div class="contact-email">${contact.Email}</div>
+          <div class="contact-telefon">${contact.Telefon}</div>
+      </div>
   `;
 }
 
