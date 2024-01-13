@@ -149,10 +149,12 @@ function renderContacts() {
       `;
 
       for (let contact of contactsForLetter) {
+        let firstNameInitial = contact.Name[0].toUpperCase(); 
+        let lastNameInitial = contact.Name.split(' ')[1][0].toUpperCase(); 
         list.innerHTML += `
           <div id="contactcard-container" onclick="showContactDetails(${contacts.indexOf(contact)})">
             <div id="contact-cyrcle-div">
-              <div id="contact-cyrcle">TS</div> 
+              <div id="contact-cyrcle">${firstNameInitial}${lastNameInitial}</div> 
             </div>  
             <div id="contact-details">
               <div id="contact-name">${contact.Name}</div>
@@ -170,111 +172,29 @@ function showContactsForLetter(letter) {
   contacts.filter(contact => contact.Name.toUpperCase().startsWith(letter)));
 }
 
-function showContactDetails(index) {
+function showContactDetails(i) {
   let overlay = document.getElementById('container-right-content');
-  let contact = contacts[index];
+  let contact = contacts[i];
+  let firstNameInitial = contact.Name[0].toUpperCase(); 
+  let lastNameInitial = contact.Name.split(' ')[1][0].toUpperCase();
+
   overlay.innerHTML = `
       <div id="contact-overlay">
-          <div class="contact-name">${contact.Name}</div>
-          <div class="contact-email">${contact.Email}</div>
-          <div class="contact-telefon">${contact.Telefon}</div>
+        <div id="overlay-top-container">
+            <div id="contact-cyrcle-div">
+                <div id="contact-cyrcle">${firstNameInitial}${lastNameInitial}</div> 
+            </div>
+            <div id="contact-name-overlay">${contact.Name}</div>
+        </div>
+        <div id="overlay-mid-container">
+            <div class="contact-email">${contact.Email}</div>
+            <div class="contact-telefon">${contact.Telefon}</div>
+        </div>
       </div>
   `;
 }
 
 renderContacts();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
