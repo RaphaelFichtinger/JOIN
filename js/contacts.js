@@ -135,6 +135,9 @@ function renderContacts() {
   let list = document.getElementById('contactlist');
   let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
 
+  // Hier den Inhalt von 'list' löschen
+  list.innerHTML = '';
+
   for (let letter of alphabet) {
     let contactsForLetter = contacts.filter(contact => contact.Name.toUpperCase().startsWith(letter));
 
@@ -143,21 +146,18 @@ function renderContacts() {
         <div id="container-alphabet">
           <div id="alphabet-tab" onclick="showContactsForLetter('${letter}')">${letter}</div>
         </div>      
-          `;
+      `;
 
       for (let contact of contactsForLetter) {
         list.innerHTML += `
           <div id="contactcard-container" onclick="showContactDetails(${contacts.indexOf(contact)})">
-                  
-                  <div id="contact-cyrcle-div">
-                    <div id="contact-cyrcle"></div> 
-                  </div>  
-
-
-                      <div id="contact-details">
-                        <div id="contact-name">${contact.Name}</div>
-                        <div id="contact-email">${contact.Email}</div>
-                      </div>
+            <div id="contact-cyrcle-div">
+              <div id="contact-cyrcle"></div> 
+            </div>  
+            <div id="contact-details">
+              <div id="contact-name">${contact.Name}</div>
+              <div id="contact-email">${contact.Email}</div>
+            </div>
           </div>
         `;
       }
