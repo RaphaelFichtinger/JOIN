@@ -131,43 +131,49 @@ const contacts = [
   }
 ];
 
-function renderContacts(){
-    let list = document.getElementById('contactlist');
+function renderContacts() {
+  let list = document.getElementById('contactlist');
+  let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
 
-    for (let i = 0; i < contacts.length; i++) {
-    const contact = contacts[i];
-    list.innerHTML += `
-    
-    
-    
-    
-                    <div id="contactcard-container">
+  for (let letter of alphabet) {
+    let contactsForLetter = contacts.filter(contact => contact.Name.toUpperCase().startsWith(letter));
 
-                        <div id="cyrcle-contact">
-                        </div>
+    if (contactsForLetter.length > 0) {
+      list.innerHTML += `
+        <div class="alphabet-tab" onclick="showContactsForLetter('${letter}')">${letter}</div>
+      `;
 
-
-                                <div id="contact-details">
-                                  <div>${contact.Name}
-                                  </div> 
-                                      <div id="contact-email">${contact.Email}
-                                      </div>
-                                </div>
-                    
-                     </div>
-    `;      
-  
-  
-  
+      for (let contact of contactsForLetter) {
+        list.innerHTML += `
+          <div class="contactcard-container" onclick="showContactDetails(${contacts.indexOf(contact)})">
+            <div class="cyrcle-contact"></div>
+            <div class="contact-details">
+              <div>${contact.Name}</div>
+              <div class="contact-email">${contact.Email}</div>
+            </div>
+          </div>
+        `;
+      }
+    }
   }
 }
 
+function showContactsForLetter(letter) {
+  console.log(`Contacts for letter ${letter}:`, 
+  contacts.filter(contact => contact.Name.toUpperCase().startsWith(letter)));
+}
 
+function showContactDetails(index) {
+  let overlay = document.getElementById('container-right');
+  let contact = contacts[index];
+  overlay.innerHTML = `
+        <div>${contact.Name}</div>
+        <div class="contact-email">${contact.Email}</div>
+        <div class="contact-telefon">${contact.Telefon}</div>
+  `;
+}
 
-
-
-
-
+renderContacts();
 
 
 
