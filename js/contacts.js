@@ -152,7 +152,7 @@ function renderContacts() {
         list.innerHTML += `
           <div id="contactcard-container" onclick="showContactDetails(${contacts.indexOf(contact)})">
             <div id="contact-cyrcle-div">
-              <div id="contact-cyrcle"></div> 
+              <div id="contact-cyrcle">TS</div> 
             </div>  
             <div id="contact-details">
               <div id="contact-name">${contact.Name}</div>
