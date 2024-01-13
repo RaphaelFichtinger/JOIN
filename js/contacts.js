@@ -148,11 +148,16 @@ function renderContacts() {
       for (let contact of contactsForLetter) {
         list.innerHTML += `
           <div id="contactcard-container" onclick="showContactDetails(${contacts.indexOf(contact)})">
-                  <div id="contact-cyrcle"></div> 
-                    <div id="contact-details">
-                      <div id="contact-name">${contact.Name}</div>
-                      <div id="contact-email">${contact.Email}</div>
-                    </div>
+                  
+                  <div id="contact-cyrcle-div">
+                    <div id="contact-cyrcle"></div> 
+                  </div>  
+
+
+                      <div id="contact-details">
+                        <div id="contact-name">${contact.Name}</div>
+                        <div id="contact-email">${contact.Email}</div>
+                      </div>
           </div>
         `;
       }
@@ -166,7 +171,7 @@ function showContactsForLetter(letter) {
 }
 
 function showContactDetails(index) {
-  let overlay = document.getElementById('container-right');
+  let overlay = document.getElementById('container-right-content');
   let contact = contacts[index];
   overlay.innerHTML = `
       <div id="contact-overlay">
