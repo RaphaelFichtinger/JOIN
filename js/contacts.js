@@ -186,21 +186,22 @@ function showContactDetails(i) {
                 </div> 
           </div>
               
-        <div id="contact-mid-overlay">
-              
-            <div id="contact-name-overlay"> ${contact.Name}</div>
-                  <div id="edit-delete-div">
-                      <div id="edit-div">Edit</div>
-                      <div id="delete-div">Delete</div>
-                  </div>
-        </div>
-        </div>
+      <div id="contact-mid-overlay">
+              <div id="contact-name-overlay"> ${contact.Name}</div>
+                      <div id="edit-delete-div">
+                          <div id="edit-div">Edit</div>
+                          <div id="delete-div">Delete</div>
+                      </div>
+              </div>
+      </div>
+      
+      <div id="heading-contact-information">Contact Information</div>
         
         <div id="overlay-bottom-container">
-              <div class="contact-email">${contact.Email}</div>
-              <div class="contact-telefon">${contact.Telefon}</div>
+              <div id="contact-email-overlay"><div><b>Email</b></div><div id="email-div">${contact.Email}</div></div>
+              <div id="contact-telefon-overlay"><div><b>Phone</b></div><div id="telefon-div">${contact.Telefon}</div></div>
         </div>
-    </div>
+  </div>
   `;
 }
 
