@@ -168,8 +168,8 @@ function renderContacts() {
 }
 
 function showContactsForLetter(letter) {
-  console.log(`Contacts for letter ${letter}:`, 
-  contacts.filter(contact => contact.Name.toUpperCase().startsWith(letter)));
+`Contacts for letter ${letter}:`, 
+  contacts.filter(contact => contact.Name.toUpperCase().startsWith(letter));
 }
 
 function showContactDetails(i) {
