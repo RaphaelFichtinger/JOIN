@@ -177,7 +177,6 @@ function showContactDetails(i) {
   let contact = contacts[i];
   let firstNameInitial = contact.Name[0].toUpperCase(); 
   let lastNameInitial = contact.Name.split(' ')[1][0].toUpperCase();
-
   overlay.innerHTML = `
   <div id="contact-overlay">
         <div id="overlay-top-container">
@@ -190,7 +189,7 @@ function showContactDetails(i) {
               <div id="contact-name-overlay"> ${contact.Name}</div>
                       <div id="edit-delete-div">
                           <div id="edit-div">Edit</div>
-                          <div id="delete-div">Delete</div>
+                          <div onclick="deleteContact(${i})" id="delete-div">Delete</div>
                       </div>
               </div>
       </div>
@@ -204,13 +203,16 @@ function showContactDetails(i) {
   </div>
   `;
 }
-
 renderContacts();
 
+function deleteContact(i) {
 
+  let overlay = document.getElementById('container-right-content');
+  contacts.splice(i, 1);
+  overlay.innerHTML = ``;
 
-
-
+  renderContacts();
+}
 
 
 
