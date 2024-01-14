@@ -38,7 +38,7 @@ body {
     margin-top: 13px;
 }
 
-.sign-up-button {
+.button-login-top {
     display: flex;
     gap: 35px;
 }

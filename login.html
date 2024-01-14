@@ -6,51 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./CSS/style.css">
-    <script src="script.js"></script>
 <link rel="stylesheet" href="./CSS/login.css">
 </head>
 
 <body>
     <div class="login-header">
         <img src="./img/start_logo.svg" alt="logo">
-        <div class="sign-up-button">
+        <div class="button-login-top">
             <p>Not a Join user?</p>
-            <button onclick="signUp()" class="button">Sign Up</button>
+            <button onclick="signUp()" class="sign-up-button">Sign Up</button>
         </div>
     </div>
-
-
-
-    <div id="content">
-        
-    <div class="login-lightbox">
-        
-        <div id="heading-container">
-            <h1>Log in</h1>
-        </div>       
-            
-                <div id="input-container">
-                        <input id="input-email" type="email" placeholder="Email">
-                        <input id="input-password" type="password" placeholder="Password">
-                </div>
-                
-
-                    <div id="checkbox-div" class="flex algin-center">
-                        <input id="input-checkbox" type="checkbox" >
-                            <p>Remember me</p>
-                        </div>
-
-                    <div id="buttons-container" class="flex space-between justify-center">
-                        <button class="sign-up-button">Log in</button>
-                        <button class="guest-login-button">Guest Log in</button>
-                    </div>
-
-
-                
-            <form onsubmit="">
-                    </form>
+    <form id="content" onsubmit="login(); return false">
+        <div class="login-lightbox">
+            <div id="heading-container">
+                <h1>Log in</h1>
+            </div>
+            <div id="input-container">
+                <input id="input-email" type="email" placeholder="Email" required>
+                <input id="input-password" type="password" minlength="8" placeholder="Password" required>
+            </div>
+            <div id="checkbox-div" class="flex algin-center">
+                <input id="input-checkbox" type="checkbox">
+                    <p>Remember me</p>
+            </div>
+            <div id="buttons-container" class="flex space-between justify-center">
+                <button class="sign-up-button">Log in</button>
+                <button class="guest-login-button">Guest Log in</button>
+            </div>
         </div>
-    </div>    
+    </form>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
