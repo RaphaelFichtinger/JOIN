@@ -188,7 +188,7 @@ function showContactDetails(i) {
       <div id="contact-mid-overlay">
               <div id="contact-name-overlay"> ${contact.Name}</div>
                       <div id="edit-delete-div">
-                          <div id="edit-div">Edit</div>
+                          <div onclick="editContact(${i})" id="edit-div">Edit</div>
                           <div onclick="deleteContact(${i})" id="delete-div">Delete</div>
                       </div>
               </div>
@@ -206,13 +206,23 @@ function showContactDetails(i) {
 renderContacts();
 
 function deleteContact(i) {
-
   let overlay = document.getElementById('container-right-content');
   contacts.splice(i, 1);
   overlay.innerHTML = ``;
-
   renderContacts();
 }
+
+
+function editContact(i){
+  let overlay = document.getElementById('editing-overlay');
+  overlay.classList.remove('d-none');
+
+
+}
+
+
+
+
 
 
 

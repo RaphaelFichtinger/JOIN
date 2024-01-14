@@ -4,31 +4,13 @@ body {
 }
 
 #editing-overlay{
-    position: absolute;
-    height: 600px;
-    width: 1000px;
     background-color: #1d2b3f;
+    width: 500px;
+    height: 600px;
+    top: 300px;
+    position: absolute;
+    left: 400px;
     z-index: 1;
-    top: 200px;
-    left: 300px;
-    display: flex;
-    flex-direction: row;
-    border-radius: 20px;
-    display: none;
-}
-
-#leftside-editing-overlay{
-    background-color: rgb(108, 108, 108);
-    width: 50%;
-    border-radius: 20px 0px 0px 20px ;
-}
-
-#rightside-editing-overlay{
-    background-color: white;
-    width: 50%;    
-    border:2px solid black;
-    border-radius: 0px 20px 20px 0px ;
-    
 }
 
 #maincontainer{
@@ -278,7 +260,7 @@ body {
     width: 100%;
 }
 
-.d{
+.d-none{
     display: none;
 }
 
