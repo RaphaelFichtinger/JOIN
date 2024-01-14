@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./CSS/header.css">
 	<link rel="stylesheet" href="./CSS/add_tasks.css">
 </head>
-<body onload="includeHTML()">
+<body onload="includeHTML(); init()">
 	<div w3-include-html="header.html"></div>
     <div w3-include-html="sidebar.html"></div>
 	<div class="add_task flex-column align-center">
@@ -24,18 +24,16 @@
 						<label for="description">Description</label>
 						<textarea name="description" id="description" cols="30" rows="7" placeholder="Enter a Description"></textarea>
 					</div>
-					<div class="task-input task-assigned-to">
+					<div id="task-assigned-to" class="task-input task-assigned-to">
 						<label for="assign-to">Assign to</label>
-						<select name="assign-to" id="assigned-to">
-							<option value="" disabled selected>Select contacts to assign</option>
-							<option value="">1</option>
-						</select>
+						<input onclick="openContacts()" id="assign-to" type="text" placeholder="Select contacts to assign">
+						<div id="list-item" class="list-item"></div>
 					</div>
 				</div>
 				<div class="rightside flex-column">
 					<div class="task-input task-date">
-						<label for="date">Due Date*</label>
-						<input type="date" id="date" value="dd/mm/yyyy" required>
+						<label for="due-date">Due Date*</label>
+						<input type="date" id="due-date" value="dd/mm/yyyy" required>
 					</div>
 					<div class="task-input task-prio">
 						<label for="prio">Prio</label>
@@ -49,14 +47,14 @@
 						<label for="category">Category*</label>
 						<select name="category" id="category" required>
 							<option value="" disabled selected>Select task category</option>
-							<option value="">1</option>
+							<option value="1">1</option>
 						</select>
 					</div>
 					<div class="task-input task-subtasks">
 						<label for="subtasks">Subtasks</label>
 						<select name="subtasks" id="subtasks">
 							<option value="" disabled selected>Select task category</option>
-							<option value="">1</option>
+							<option value="1">1</option>
 						</select>
 					</div>
 				</div>

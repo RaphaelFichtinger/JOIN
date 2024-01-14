@@ -65,10 +65,38 @@ label + .buttons {
 }
 .priority-medium::after {
 	content: '';
-	background-image: url(../img/prio-medium.svg);
+	background-image: url(../img/prio-media.svg);
 	width: 20px;
 	height: 7px;
 }
 .priority-baia::after {
 	background-image: url(../img/prio-baia.svg);
+}
+.task-assigned-to {
+	overflow: hidden;
+}
+.list-item {
+	display: none;
+    height: 250px;
+    overflow-y: scroll;
+}
+.item {
+	margin: 16px;
+}
+.circle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #FFFFFF;
+	width: 42px;
+	height: 42px;
+	border-radius: 50%;
+	background-color: black;
+	margin-right: 16px;
+}
+.name {
+	flex-grow: 1;
+}
+.checkbox {
+	margin-left: auto;
 }
