@@ -37,6 +37,7 @@ body {
 
 .login-header img {
     margin-top: 13px;
+    position: absolute;
 }
 
 
@@ -65,6 +66,8 @@ body {
     max-height: 630px;
     border-radius: 30px;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.04);
+    gap: 32px;
+    margin-top: 32px;
 }
 
 
@@ -76,6 +79,13 @@ body {
     font-size: 32px;    
     line-height: 23px;
     flex-direction: column;
+    font-size: 61px;
+    margin-block: 0;
+    margin-top: 32px;
+}
+
+#headin-container p {
+    margin: 0;
 }
 
 .header-underline {
@@ -83,7 +93,6 @@ body {
     border: 3px solid #29ABE2;
     width: 150px;
     border-radius: 10px;
-    margin-bottom: 32px;
 }
 
 #input-container{
@@ -92,7 +101,7 @@ body {
     gap: 24px;
     align-items: center;
     flex-direction: column;
-    height: 326px;
+    height: 286px;
     width: 422px;
 }
 
@@ -151,12 +160,18 @@ body {
 #checkbox-div{
     gap: 8px;
     padding: 0px 241px 0px 39px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    
 }
 
 #buttons-container{
     width: 322px;
     gap: 35px;
-    margin-top: 32px;
+    
 }
 
 .sign-up-button  {
