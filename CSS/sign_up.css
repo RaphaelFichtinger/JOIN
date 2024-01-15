@@ -36,7 +36,8 @@ body {
 }
 
 .login-header img {
-    margin-top: 13px;
+    top: 80px;
+    left: 77px;
     position: absolute;
 }
 
@@ -46,8 +47,6 @@ body {
     display: flex;
     gap: 35px;
 }
-
-
 
 #content{
     display: flex;
@@ -68,9 +67,8 @@ body {
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.04);
     gap: 32px;
     margin-top: 32px;
+    position: relative;
 }
-
-
 
 #heading-container{
     display: flex;
@@ -86,6 +84,11 @@ body {
 
 #headin-container p {
     margin: 0;
+}
+
+.vektor {
+    position: absolute;
+    
 }
 
 .header-underline {

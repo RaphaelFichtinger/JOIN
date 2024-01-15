@@ -1,7 +1,19 @@
 const STORAGE_TOKEN = '0SUZWQWFOE8PEF8QOE5A57VYG0N48AWXZYFBZWYB';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
-let loginUsers = [];
+let signedUpUsers = [];
+
+async function init() {
+    loadUsers();
+}
+
+async function loadUsers(){
+    try {
+        signedUpUsers = JSON.parse(await getItem('signedUpUsers'));
+    } catch(e){
+        console.error('Loading error:', e);
+    }
+}
 
 async function setItem(key, value) {
 	const payload = {key, value, token:STORAGE_TOKEN}
@@ -19,22 +31,28 @@ async function getItem(key) {
     });
 }
 
-async function login() {
-	let email = document.getElementById('input-email');
+async function signUp() {
+	let name = document.getElementById('input-name');
 	let password = document.getElementById('input-password');
-	let loginUser = {
-		'email': email.value,
-		'password': password.value
+	let email = document.getElementById('input-email');
+	confirmPassword();
+	let signedUpUser = {
+		'name' : name.value,
+		'password': password.value,
+		'email': email.value
 	};
-	loginUsers.push(loginUser);
+	signedUpUsers.push(signedUpUser);
 
-	await setItem('loginUsers', JSON.stringify(loginUsers));
-	resetForm(email, password);
-
-
+	await setItem('signedUpUsers', JSON.stringify(signedUpUsers));
+	resetForm(email, password, name);
 }
 
-async function resetForm(email, password) {
+async function resetForm(email, password, name) {
+	name.value = '';
 	email.value = '';
 	password.value = '';
+}
+
+function confirmPassword() {
+
 }
