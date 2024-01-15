@@ -217,6 +217,27 @@ function editContact(i){
   let overlay = document.getElementById('editing-overlay');
   overlay.classList.remove('d-none');
 
+  overlay.innerHTML = `
+<div id="edit">
+
+      <div id="editing-div-leftside">
+        <div id="edit-overlay-logo">
+        </div>
+          <div id="edit-overlay-heading">Edit Contact
+          </div>
+
+      </div>                
+    
+      <div id="editing-div-rightside">
+
+      
+      </div>
+
+</div>
+  
+  
+  `;
+
 
 }
 

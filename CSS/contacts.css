@@ -5,12 +5,62 @@ body {
 
 #editing-overlay{
     background-color: #1d2b3f;
-    width: 500px;
-    height: 600px;
-    top: 300px;
+    width: 1212px;
+    height: 592px;
     position: absolute;
-    left: 400px;
     z-index: 1;
+    border-radius: 20px;
+    right: 0px;
+    top: 300px;
+}
+
+#edit{
+    background-color: #aab6c7;
+    width: 1212px;
+    height: 592px;
+    position: absolute;
+    z-index: 1;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+#editing-div-leftside{
+    z-index: 1;
+    height: 592px;
+    border-radius: 20px 0px 0px 20px;
+    background-color: #33435a;
+    z-index: 1;
+    width: 453px;
+}
+
+#editing-div-rightside{
+    z-index: 1;
+    height: 589px;
+    width: 70%;
+    background-color: #ffffff;
+    border: 2px solid black;
+}
+
+#edit-overlay-logo{
+    background-image: url(/img/sidebar_logo.png);
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: left;
+    margin-left: 46px;
+    margin-top: 50px;
+}
+
+#edit-overlay-heading{
+    background-position: left;
+    color: white;
+    font-size: 61px;
+    width: 361px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 46px;
+    margin-right: 46px;
 }
 
 #maincontainer{
