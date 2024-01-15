@@ -49,7 +49,7 @@ function getContacts() {
             <div class="item flex align-center">
                 <div class="circle">${firstLetter}${secondLetter}</div>
                 <div class="name" data-value="${contactName.toLowerCase()}">${contactName}</div>
-                <input id="checkbox_${i}" type="checkbox" class="checkbox" onclick="contactChecked(event, ${i})">
+                <input id="checkbox_${i}" type="checkbox" class="checkbox" onclick="contactChecked(event, ${i}, '${firstLetter}', '${secondLetter}')">
             </div>
         `;
     }
@@ -58,8 +58,6 @@ function getContacts() {
 function contactChecked(event, index) {
     let checkbox = event.target;
     let contactName = contacts[index]['Name'];
-
-	console.log(checkbox);
 
     if (checkbox.checked) {
         // Checkbox wurde ausgewählt
@@ -75,5 +73,18 @@ function contactChecked(event, index) {
     }
 
     console.log(checkedContacts); // Hier kannst du das Array der ausgewählten Kontakte verwenden oder anderweitig verarbeiten
-}
 
+    document.getElementById('added-contacts').innerHTML = '';
+
+    if(checkedContacts.length > 0) {
+        for (let j = 0; j < checkedContacts.length; j++) {
+            let checkedContact = checkedContacts[j];
+            let splittedLetters = checkedContact.split(" ");
+            let firstLetter = splittedLetters[0].charAt(0);
+            let secondLetter = splittedLetters[1].charAt(0);
+            document.getElementById('added-contacts').innerHTML += `
+                <div class="circle">${firstLetter}${secondLetter}</div>
+            `;
+        }
+    }
+}
