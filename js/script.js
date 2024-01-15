@@ -34,25 +34,27 @@ async function getItem(key) {
 async function signUp() {
 	let name = document.getElementById('input-name');
 	let password = document.getElementById('input-password');
+	let confirm = document.getElementById('input-confirm');
 	let email = document.getElementById('input-email');
-	confirmPassword();
-	let signedUpUser = {
-		'name' : name.value,
-		'password': password.value,
-		'email': email.value
-	};
-	signedUpUsers.push(signedUpUser);
 
-	await setItem('signedUpUsers', JSON.stringify(signedUpUsers));
-	resetForm(email, password, name);
+	if(password.value === confirm.value) {
+		let signedUpUser = {
+			'name' : name.value,
+			'password': password.value,
+			'email': email.value
+		};
+		signedUpUsers.push(signedUpUser);
+
+		await setItem('signedUpUsers', JSON.stringify(signedUpUsers));
+		resetForm(email, password, confirm, name);
+	} else {
+		alert('Das Passwort stimmt nicht überein');
+	}
 }
 
-async function resetForm(email, password, name) {
+async function resetForm(email, password, confirm, name) {
 	name.value = '';
 	email.value = '';
 	password.value = '';
-}
-
-function confirmPassword() {
-
+	confirm.value = '';
 }
