@@ -63,6 +63,24 @@ body {
     margin-right: 46px;
 }
 
+#close-edit{
+    display: flex;
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    width: 24px;
+    height: 24px;
+    justify-content: right;
+    font-size: medium;
+    color: grey;
+    background-image: url(/img/close.png);
+    background-repeat: no-repeat;
+}
+
+#close-edit:hover{
+    cursor: pointer;
+}
+
 #maincontainer{
     margin-top: 96px;
     margin-left: 232px;
