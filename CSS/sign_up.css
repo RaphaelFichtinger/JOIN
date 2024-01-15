@@ -32,11 +32,14 @@ body {
     display: flex;
     justify-content: space-between;
     margin: 67px 122px 63px 77px;
+    
 }
 
 .login-header img {
     margin-top: 13px;
 }
+
+
 
 .button-login-top {
     display: flex;
@@ -51,39 +54,63 @@ body {
 }
 
 .login-lightbox {
-    max-width: 652px;
+    max-width: 598px;
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 652px;
-    height: 493px;
-    max-height: 493px;
+    height: 630px;
+    max-height: 630px;
     border-radius: 30px;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.04);
 }
+
+
 
 #heading-container{
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 32px;    
-    line-height: 72px;
+    line-height: 23px;
+    flex-direction: column;
+}
+
+.header-underline {
+    height: 0;
+    border: 3px solid #29ABE2;
+    width: 150px;
+    border-radius: 10px;
+    margin-bottom: 32px;
 }
 
 #input-container{
     display: flex;
     justify-content: center;
-    gap: 32px;
+    gap: 24px;
     align-items: center;
     flex-direction: column;
-    height: 152px;
+    height: 326px;
     width: 422px;
 }
 
+#input-name {
+    background: url(/img/mail.png);
+    background-repeat: no-repeat;
+    background-position: 377px;
+    background-attachment: 7px 7px;
+    height: 44px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #d1d1d1;
+    font-size: 20px;
+    text-indent: 20px;
+}
+
 #input-email{
-    background: url(../img/mail.png);
+    background: url(/img/lock.png);
     background-repeat: no-repeat;
     background-position: 377px;
     background-attachment: 7px 7px;
@@ -96,6 +123,19 @@ body {
 }
 
 #input-password{
+    background: url(/img/lock.png);
+    background-repeat: no-repeat;
+    background-position: 377px;
+    background-attachment: 7px 7px;
+    height: 44px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #d1d1d1;
+    font-size: 20px;
+    text-indent: 20px;
+}
+
+#input-confirm{
     background: url(/img/lock.png);
     background-repeat: no-repeat;
     background-position: 377px;
@@ -125,14 +165,8 @@ body {
     background-color: #2A3647;
     color: white;
     height: 48px;
-    
+    line-height: 10px;
+    font-size: 21px;
+    margin-bottom: 40px;
 }
 
-.guest-login-button{
-    padding: 15px 16px;
-    border-radius: 8px;
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    height: 48px;
-
-}

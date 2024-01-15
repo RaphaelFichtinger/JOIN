@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/sign_up.css">
+</head>
+
+<body>
+    <div class="login-header">
+        <img src="./img/start_logo.svg" alt="logo">
+    </div>
+    <form id="content" onsubmit="login(); return false">
+        <div class="login-lightbox">
+            <div id="heading-container">
+                <h1>Sign up</h1>
+                <div class="header-underline"></div>
+            </div>
+            <div id="input-container">
+                <input id="input-name" type="text" placeholder="Name" required>
+                <input id="input-email" type="email" minlength="8" placeholder="Email" required>
+                <input id="input-password" type="password" minlength="8" placeholder="Password" required>
+                <input id="input-confirm" type="password" minlength="8" placeholder="Confirm Password" required>
+            </div>
+            <div id="checkbox-div" class="flex algin-center">
+                <input id="input-checkbox" type="checkbox">
+                <p>I accept the <a href="#">Privacy policy</a></p>
+            </div>
+            <div id="buttons-container" class="flex space-between justify-center">
+                <button class="sign-up-button">Sign up</button>
+                
+            </div>
+        </div>
+    </form>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
