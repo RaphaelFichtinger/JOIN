@@ -10,7 +10,7 @@ body {
     position: absolute;
     z-index: 1;
     border-radius: 20px;
-    right: 0px;
+    right: 150px;
     top: 300px;
 }
 
@@ -40,6 +40,7 @@ body {
     width: 70%;
     background-color: #ffffff;
     border: 2px solid black;
+    border-radius: 0px 20px 20px 0px;
 }
 
 #edit-overlay-logo{
@@ -79,6 +80,17 @@ body {
 
 #close-edit:hover{
     cursor: pointer;
+}
+
+#cyrcle-and-inputs-div{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    background-color: #d7ecff;
+    height: 100%;
+    gap: 50px;
+    border-radius: 0px 20px 20px 0px;
 }
 
 #maincontainer{
@@ -145,13 +157,19 @@ body {
     border-radius: 50%;
     background-color: rgb(86, 86, 86);
     color: white;
-    font-size: 47px;
+    font-size: 44px;
     font-weight: 500;
 }
 
 #contact-name-overlay{
     font-size: 47px;
 }
+
+#edit-cyrcle{
+    margin-left: 48px;
+}
+
+
 
 #edit-delete-div{
     display: flex;
@@ -189,6 +207,13 @@ body {
     font-size: 16px;
     padding-left: 30px;
 }
+
+#edit-inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
 
 #heading-contact-information{
     font-size: 20px;

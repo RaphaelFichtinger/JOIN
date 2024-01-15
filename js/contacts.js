@@ -106,13 +106,13 @@ function closeEdit(){
   let editoverlay = document.getElementById('editing-overlay');
   editoverlay.classList.add('d-none');
   renderContacts();
-
 }
 
-
-function editContact(i){
+function editContact(i) {
   let overlay = document.getElementById('editing-overlay');
   overlay.classList.remove('d-none');
+  let contact = contacts[i];
+  let editInputsDiv = document.getElementById('edit-inputs');
 
   overlay.innerHTML = `
 <div id="edit">
@@ -122,13 +122,33 @@ function editContact(i){
           </div>
             <div id="edit-overlay-heading">Edit Contact
             </div>
-
     </div>                
     
     <div id="editing-div-rightside">
           <div id="close-edit" onclick="closeEdit()">
           </div>
+            <div id="cyrcle-and-inputs-div">
+              <div id="edit-cyrcle">
+              </div>
+                <div id="edit-inputs">
+                <input type="text" value="${contact.Name}">
+                <input type="text" value="${contact.Email}">
+                <input type="text" value="${contact.Telefon}">
+                </div>
+            </div>
     </div>
+  `;
+
+  renderEditContactCircle(contact.Name.split(' ')[0], contact.Name.split(' ')[1]);
+}
+
+function renderEditContactCircle(firstName, lastName) {
+  let firstNameInitial = firstName[0].toUpperCase();
+  let lastNameInitial = lastName ? lastName[0].toUpperCase() : '';
+
+  let editCircleDiv = document.getElementById('edit-cyrcle');
+  editCircleDiv.innerHTML = `
+    <div id="contact-cyrcle-overlay">${firstNameInitial}${lastNameInitial}</div>
   `;
 }
 
@@ -137,10 +157,17 @@ function editContact(i){
 
 
 
+function saveContactChanges(i) {
+  let overlay = document.getElementById('editing-overlay');
+  let inputs = document.getElementById('edit-inputs').getElementsByTagName('input');
+  
+  contacts[i].Name = inputs[0].value;
+  contacts[i].Email = inputs[1].value;
+  contacts[i].Telefon = inputs[2].value;
 
-
-
-
+  overlay.classList.add('d-none');
+  renderContacts();
+}
 
 
 
@@ -174,7 +201,6 @@ function includeHTML() {
      }
    }
   }
-
 
   function renderContactsHTML(){
 
