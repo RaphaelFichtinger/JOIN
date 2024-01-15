@@ -1,0 +1,40 @@
+.main {
+    margin-top: 96px;
+    margin-left: 232px;
+    position: fixed;
+    display: flex;
+
+
+
+}
+
+.board-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 1056px;
+    height: 73px;
+
+}
+
+.board-h1 {
+    font-size: 61px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    margin-left: 64px;
+    margin-top: 79.5px;
+}
+
+.board-search {
+    border-radius: 10px;
+    height: 48px;
+    padding: 8px 16px;
+    width: 312px;
+    border: 1px solid black;
+    font-size: 20px;
+    font-weight: 400;
+    background: url(/JOIN/img/search.png) no-repeat right center;
+    background-position: 297px;
+    background-size: 32px;
+}

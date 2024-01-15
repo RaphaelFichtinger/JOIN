@@ -48,7 +48,8 @@ async function signUp() {
 			signedUpUsers.push(signedUpUser);
 
 			await setItem('signedUpUsers', JSON.stringify(signedUpUsers));
-			resetForm(email, password, confirm, name);
+			resetForm(email, password, confirm, name, checkbox);
+			showSuccessButton();
 		} else {
 			alert('Bitte bestätige unsere Privacy Policy');
 		}
@@ -57,9 +58,18 @@ async function signUp() {
 	}
 }
 
-async function resetForm(email, password, confirm, name) {
+async function resetForm(email, password, confirm, name, checkbox) {
 	name.value = '';
 	email.value = '';
 	password.value = '';
 	confirm.value = '';
+	checkbox.checked = false;
+}
+
+function showSuccessButton() {
+	let successButton = document.getElementById('success');
+	successButton.style.display = 'flex';
+	successButton.style.transition = 'transform(0.5s ease, opacity 0.5s ease)';
+	successButton.style.transform = 'translateY(-300px)';
+    successButton.style.opacity = '1';
 }
