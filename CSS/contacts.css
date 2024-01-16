@@ -93,7 +93,7 @@ body {
     align-items: center;
     flex-direction: row;
     width: 100%;
-    background-color: #d7ecff;
+    background-color: #ffffff;
     height: 100%;
     gap: 50px;
     border-radius: 0px 20px 20px 0px;
@@ -164,9 +164,29 @@ body {
 }
 
 
+#new-name-input{
+    height: 50px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 20px;
+    padding-left: 20px;
+}
 
+#new-mail-input{
+    height: 50px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 20px;
+    padding-left: 20px; 
+}
 
-
+#new-phone-input{
+    height: 50px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 20px;
+    padding-left: 20px;
+}
 
 
 
@@ -308,19 +328,24 @@ body {
     height: 50px;
     border: 1px solid grey;
     border-radius: 10px;
+    font-size: 20px;
+    padding-left: 20px;
 }
 
 #edit-input-mail{
     height: 50px;
     border: 1px solid grey;
     border-radius: 10px;
+    font-size: 20px;
+    padding-left: 20px;
 }
 
 #edit-input-number{
     height: 50px;
     border: 1px solid grey;
     border-radius: 10px;
-
+    font-size: 20px;
+    padding-left: 20px;
 }
 
 #heading-contact-information{

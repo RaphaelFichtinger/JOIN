@@ -124,11 +124,30 @@ function addNewContact(i){
                 </div>
       </div>  
 
+      <div id="editing-div-rightside">
+      <div id="close-edit" onclick="closeEdit()">
+      </div>
+        <div id="cyrcle-and-inputs-div">
+          <div id="edit-cyrcle">
+          </div>
+
+          <div id="edit-content-rightside">
+            <div id="edit-inputs">
+            <input id="new-name-input" type="text" placeholder="Name" >
+            <input id="new-mail-input" type="email" placeholder="Email">
+            <input id="new-phone-input" type="text" placeholder="Phone">
+            </div>
+            <div id="save-delete-div">
+              <button onclick="deleteContact()"id="delete-btn-edit">Delete</button>
+              <div id="save-btn-div" onclick="saveContactChanges(${i})"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
+          </div>
+          </div>
+        </div>
   </div>
-  
-  
-  
+</div>
   `;
+
+
 
 
 }
@@ -166,7 +185,7 @@ function editContact(i) {
                 <input id="edit-input-number"  type="text" value="${contact.Telefon}">
                 </div>
                 <div id="save-delete-div">
-                  <button onclick="deleteContact()"id="delete-btn-edit">delete</button>
+                  <button onclick="deleteContact()"id="delete-btn-edit">Delete</button>
                   <div id="save-btn-div" onclick="saveContactChanges(${i})"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
               </div>
               </div>
@@ -193,13 +212,15 @@ function renderEditContactCircle(firstName, lastName) {
 function saveContactChanges(i) {
   let overlay = document.getElementById('editing-overlay');
   let inputs = document.getElementById('edit-inputs').getElementsByTagName('input');
-  
+  let content = document.getElementById('container-right-content');
   contacts[i].Name = inputs[0].value;
   contacts[i].Email = inputs[1].value;
   contacts[i].Telefon = inputs[2].value;
 
   overlay.classList.add('d-none');
   renderContacts();
+  content.innerHTML ='';
+
 }
 
 
