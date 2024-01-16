@@ -97,13 +97,16 @@ label + .buttons {
 .priority-baia::after {
 	background-image: url(../img/prio-baia.svg);
 }
-.task-assigned-to {
+.task-assigned-to,
+.task-category {
 	height: 80px;
 }
-.contacts-list {
+.contacts-list,
+.categories-list {
 	position: relative;
 }
-.list-item {
+.list-item,
+.list-item-category {
 	position: absolute;
     background-color: #FFFFFF;
     width: 100%;
@@ -113,8 +116,10 @@ label + .buttons {
 #added-contacts {
 	margin-top: 8px;
 }
-.item {
+.item,
+.item-category {
 	margin: 16px;
+	cursor: pointer;
 }
 .circle {
 	display: flex;

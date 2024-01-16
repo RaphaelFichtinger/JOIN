@@ -4,6 +4,7 @@ let categories = ['Technical Task', 'User Story'];
 
 function init() {
 	getContacts();
+    getCategories();
 }
 
 function createNewTask() {
@@ -35,15 +36,15 @@ function clearFields(title, description, assignTo, dateDue, category, subtasks) 
 	subtasks.value = '';
 }
 
-function openContacts() {
-    let contactsList = document.getElementById('contacts-list');
+function openOverlay(listId) {
+    let overlayList = document.getElementById(`${listId}`);
 
-    if(contactsList.classList.contains('block')) {
-        contactsList.classList.remove('block');
-        contactsList.classList.add('d-none');
+    if(overlayList.classList.contains('block')) {
+        overlayList.classList.remove('block');
+        overlayList.classList.add('d-none');
     } else {
-        contactsList.classList.remove('d-none');
-        contactsList.classList.add('block');
+        overlayList.classList.remove('d-none');
+        overlayList.classList.add('block');
     }
 }
 
@@ -96,4 +97,20 @@ function contactChecked(event, index) {
             `;
         }
     }
+}
+
+function getCategories() {
+    for (let i = 0; i < categories.length; i++) {
+        let category = categories[i];
+        document.getElementById('list-item-category').innerHTML += `
+        <div class="item-category flex align-center">
+            <div class="name" data-value="${category.toLowerCase()}" onclick="addCategory(${i})">${category}</div>
+        </div>
+        `;
+    }
+}
+
+function addCategory(i) {
+    let category = categories[i]
+    document.getElementById('category').value = `${category}`;
 }
