@@ -130,13 +130,21 @@ function editContact(i) {
             <div id="cyrcle-and-inputs-div">
               <div id="edit-cyrcle">
               </div>
+
+              <div id="edit-content-rightside">
                 <div id="edit-inputs">
-                <input type="text" value="${contact.Name}">
-                <input type="text" value="${contact.Email}">
-                <input type="text" value="${contact.Telefon}">
+                <input id="edit-input-name" type="text" value="${contact.Name}">
+                <input id="edit-input-mail"  type="text" value="${contact.Email}">
+                <input id="edit-input-number"  type="text" value="${contact.Telefon}">
                 </div>
+                <div id="save-delete-div">
+                <button></button>
+                <button></button>
+              </div>
+              </div>
             </div>
-    </div>
+      </div>
+</div>
   `;
 
   renderEditContactCircle(contact.Name.split(' ')[0], contact.Name.split(' ')[1]);
@@ -202,8 +210,8 @@ function includeHTML() {
    }
   }
 
-  function renderContactsHTML(){
-
+  function renderContactsHTMLone(){
+    
 
 
 
