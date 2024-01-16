@@ -1,5 +1,6 @@
 let tasks = [];
 let checkedContacts = [];
+let categories = ['Technical Task', 'User Story'];
 
 function init() {
 	getContacts();
@@ -35,7 +36,15 @@ function clearFields(title, description, assignTo, dateDue, category, subtasks) 
 }
 
 function openContacts() {
-	document.getElementById('list-item').style.display = 'block';
+    let contactsList = document.getElementById('contacts-list');
+
+    if(contactsList.classList.contains('block')) {
+        contactsList.classList.remove('block');
+        contactsList.classList.add('d-none');
+    } else {
+        contactsList.classList.remove('d-none');
+        contactsList.classList.add('block');
+    }
 }
 
 function getContacts() {
