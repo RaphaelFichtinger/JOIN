@@ -69,7 +69,7 @@ async function resetForm(email, password, confirm, name, checkbox) {
 function showSuccessButton() {
 	let successButton = document.getElementById('success');
 	successButton.style.display = 'flex';
-	successButton.style.transition = 'transform(0.5s ease, opacity 0.5s ease)';
 	successButton.style.transform = 'translateY(-300px)';
+	successButton.style.transition = 'transform(0.5s ease, opacity 0.5s ease)';
     successButton.style.opacity = '1';
 }
