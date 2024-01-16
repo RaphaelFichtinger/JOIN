@@ -100,6 +100,7 @@ function deleteContact(i) {
   contacts.splice(i, 1);
   overlay.innerHTML = ``;
   renderContacts();
+  closeEdit();
 }
 
 function closeEdit(){
@@ -108,12 +109,38 @@ function closeEdit(){
   renderContacts();
 }
 
+function addNewContact(i){
+  let overlay = document.getElementById('editing-overlay');
+  overlay.classList.remove('d-none');
+  let contact = contacts[i];
+  let editInputsDiv = document.getElementById('edit-inputs');
+  overlay.innerHTML = `
+  <div id="edit">
+
+      <div id="editing-div-leftside">
+              <div id="edit-overlay-logo">
+              </div>
+                <div id="new-contact-overlay-heading">Add Contact
+                </div>
+      </div>  
+
+  </div>
+  
+  
+  
+  `;
+
+
+}
+
+
+
+
 function editContact(i) {
   let overlay = document.getElementById('editing-overlay');
   overlay.classList.remove('d-none');
   let contact = contacts[i];
   let editInputsDiv = document.getElementById('edit-inputs');
-
   overlay.innerHTML = `
 <div id="edit">
 
@@ -121,6 +148,7 @@ function editContact(i) {
           <div id="edit-overlay-logo">
           </div>
             <div id="edit-overlay-heading">Edit Contact
+              <img id="vector5" src="../img/vector5.png">
             </div>
     </div>                
     
@@ -134,12 +162,12 @@ function editContact(i) {
               <div id="edit-content-rightside">
                 <div id="edit-inputs">
                 <input id="edit-input-name" type="text" value="${contact.Name}">
-                <input id="edit-input-mail"  type="text" value="${contact.Email}">
+                <input id="edit-input-mail"  type="email" value="${contact.Email}">
                 <input id="edit-input-number"  type="text" value="${contact.Telefon}">
                 </div>
                 <div id="save-delete-div">
-                <button></button>
-                <button></button>
+                  <button onclick="deleteContact()"id="delete-btn-edit">delete</button>
+                  <div id="save-btn-div" onclick="saveContactChanges(${i})"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
               </div>
               </div>
             </div>
@@ -162,9 +190,6 @@ function renderEditContactCircle(firstName, lastName) {
 
 
 
-
-
-
 function saveContactChanges(i) {
   let overlay = document.getElementById('editing-overlay');
   let inputs = document.getElementById('edit-inputs').getElementsByTagName('input');
@@ -176,9 +201,6 @@ function saveContactChanges(i) {
   overlay.classList.add('d-none');
   renderContacts();
 }
-
-
-
 
 
 
