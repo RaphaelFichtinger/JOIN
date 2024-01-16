@@ -1,4 +1,6 @@
 body {
+    background-color: #F6F7F8;
+    ;
 }
 
 #header{
@@ -12,12 +14,9 @@ body {
 
 #heading-container{
     display: flex;
-    justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 206px;
-    left:328px;
-    background-color: aqua;
+    padding-top: 110px;
+    margin-left: 96px;
 }
 
 #heading-summary{
@@ -30,4 +29,45 @@ body {
     margin-left: 32px;
     font-size: 27px;
     font-weight: 400;
+}
+.main-box {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin-top: 56px;
+    margin-left: 96px;
+    width: 560px;
+}
+.box-top,
+.box-middle,
+.box-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+.inner-box-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    height: 168px;
+}
+.todo, .done {
+    width: 264px;
+}
+.urgent {
+    width: 560px;
+}
+.tasks-in-board, .tasks-in-progress, .awaiting-feedback {
+    width: 168px;
+}
+.box.urgent {
+    flex-direction: row;
 }
