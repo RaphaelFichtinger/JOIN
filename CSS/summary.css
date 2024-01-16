@@ -1,0 +1,33 @@
+body {
+}
+
+#header{
+    top: 0px;
+}
+
+#main-container{
+    margin-top: 96px;
+    margin-left: 232px;
+}
+
+#heading-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 206px;
+    left:328px;
+    background-color: aqua;
+}
+
+#heading-summary{
+    font-size: 61px;
+    font-weight: 700;
+    margin-right: 30px;
+}
+
+#text-summary{
+    margin-left: 32px;
+    font-size: 27px;
+    font-weight: 400;
+}
