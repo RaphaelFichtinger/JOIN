@@ -113,4 +113,20 @@ function getCategories() {
 function addCategory(i) {
     let category = categories[i]
     document.getElementById('category').value = `${category}`;
+
+    let overlayList = document.getElementById(`${listId}`);
+    overlayList.classList.remove('block');
+    overlayList.classList.add('d-none');
+}
+
+function selectPriority(priority) {
+    let priorityButton = document.getElementById(`priority-${priority}`);
+    let button = document.querySelectorAll('.priority-button');
+
+    button.forEach(function(event) {
+        event.classList.remove('alta');
+        event.classList.remove('medium');
+        event.classList.remove('baia');
+    })
+    priorityButton.classList.add(`${priority}`);
 }

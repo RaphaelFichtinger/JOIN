@@ -11,7 +11,7 @@
 <body onload="includeHTML(); init()">
 	<div w3-include-html="header.html"></div>
     <div w3-include-html="sidebar.html"></div>
-	<div class="add_task flex-column align-center">
+	<div class="add_task flex-column">
 		<h1>Add Task</h1>
 		<form onsubmit="createNewTask(); return false">
 			<div class="flex">
@@ -41,9 +41,9 @@
 					<div class="task-input task-prio">
 						<label for="prio">Prio</label>
 						<div class="buttons flex space-between">
-							<button class="priority-alta priority-button">Urgent</button>
-							<button class="priority-medium priority-button">Medium</button>
-							<button class="priority-baia priority-button">Low</button>
+							<button id="priority-alta" class="priority-alta priority-button" onclick="selectPriority('alta')">Urgent</button>
+							<button id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</button>
+							<button id="priority-baia" class="priority-baia priority-button" onclick="selectPriority('baia')">Low</button>
 						</div>
 					</div>
 					<div id="task-category" class="task-input task-category">

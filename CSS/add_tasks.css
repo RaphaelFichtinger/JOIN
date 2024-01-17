@@ -15,10 +15,10 @@ h1 {
 
 .add_task {
 	align-items: center;
-    justify-content: center;
     width: calc(100% - 232px);
     margin: 0 0 0 auto;
     height: 100%;
+	margin-top: 120px;
 }
 form,
 .add_task h1 {
@@ -66,16 +66,15 @@ label + .buttons {
 .priority-button {
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	gap: 8px;
     border-radius: 10px;
+	font-size: 20px;
     background: #FFFFFF;
 	border: none;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 	width: 136px;
 	padding: 16px 10px;
-}
-.priority-medium {
-	background-color: #FFA800;
-	color: #FFFFFF;
 }
 .priority-alta::after,
 .priority-baia::after {
@@ -84,8 +83,7 @@ label + .buttons {
 	height: 15px;
 	margin-left: 8px;
 }
-.priority-alta::after,
-.priority-baia::after {
+.priority-alta::after {
 	background-image: url(../img/prio-alta.svg);
 }
 .priority-medium::after {
@@ -96,6 +94,30 @@ label + .buttons {
 }
 .priority-baia::after {
 	background-image: url(../img/prio-baia.svg);
+}
+.priority-alta.alta::after {
+	background-image: url(../img/prio-alta-white.svg);
+}
+.priority-medium.medium::after {
+	content: '';
+	background-image: url(../img/prio-media-white.svg);
+	width: 20px;
+	height: 7px;
+}
+.priority-baia.baia::after {
+	background-image: url(../img/prio-baia-white.svg);
+}
+.alta {
+	background-color: red;
+	color: #FFFFFF;
+}
+.medium {
+	background-color: #FFA800;
+	color: #FFFFFF;
+}
+.baia {
+	background-color: green;
+	color: #FFFFFF;
 }
 .task-assigned-to,
 .task-category {
