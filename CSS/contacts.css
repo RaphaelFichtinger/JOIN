@@ -169,6 +169,9 @@ body {
     border-radius: 10px;
     font-size: 20px;
     padding-left: 20px;
+    background: url(/img/person.png);
+    background-repeat: no-repeat;
+    background-position: 95%;
 }
 
 #new-mail-input{
@@ -177,6 +180,9 @@ body {
     border-radius: 10px;
     font-size: 20px;
     padding-left: 20px; 
+    background: url(/img/mail.png);
+    background-repeat: no-repeat;
+    background-position: 95%;
 }
 
 #new-phone-input{
@@ -185,6 +191,9 @@ body {
     border-radius: 10px;
     font-size: 20px;
     padding-left: 20px;
+    background: url(/img/call.png);
+    background-repeat: no-repeat;
+    background-position: 95%;
 }
 
 
@@ -224,7 +233,6 @@ body {
 #top-content-container-right{
     display: flex;
     flex-direction: row;
-    width: 570px;
     margin-top: 100px;
 }
 
@@ -329,6 +337,9 @@ body {
     border-radius: 10px;
     font-size: 20px;
     padding-left: 20px;
+    background: url(/img/person.png);
+    background-repeat: no-repeat;
+    background-position: 95%;
 }
 
 #edit-input-mail{
@@ -337,6 +348,9 @@ body {
     border-radius: 10px;
     font-size: 20px;
     padding-left: 20px;
+    background: url(/img/mail.png);
+    background-repeat: no-repeat;
+    background-position: 95%;
 }
 
 #edit-input-number{
@@ -345,6 +359,9 @@ body {
     border-radius: 10px;
     font-size: 20px;
     padding-left: 20px;
+    background: url(/img/call.png);
+    background-repeat: no-repeat;
+    background-position: 95%;
 }
 
 #heading-contact-information{
