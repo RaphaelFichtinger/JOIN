@@ -1,43 +1,69 @@
-const contacts = [
-  {
-    Name: "Anna Schmidt",
-    Email: "AnnaSchmidt@gmail.com",
-    Telefon: "012345678901"
+const contacts = [{
+  
+    'Name': "Anna Schmidt",
+    'Email': "AnnaSchmidt@gmail.com",
+    'Telefon': "012345678901"
   },
   {
-    Name: "Boris Müller",
-    Email: "BorisMueller@gmail.com",
-    Telefon: "023456789012"
+    'Name':"Boris Müller",
+    'Email': "BorisMueller@gmail.com",
+    'Telefon': "023456789012"
   },
   {
-    Name: "Carla Wagner",
-    Email: "CarlaWagner@gmail.com",
-    Telefon: "034567890123"
+    'Name': "Carla Wagner",
+    'Email': "CarlaWagner@gmail.com",
+    'Telefon':  "034567890123"
   },
   {
-    Name: "David Fischer",
-    Email: "DavidFischer@gmail.com",
-    Telefon: "045678901234"
+    'Name':"David Fischer",
+    'Email': "DavidFischer@gmail.com",
+    'Telefon': "045678901234"
+  }];
+
+
+
+
+
+async function loadContacts(){
+  try {
+      contacts = JSON.parse(await getItem('contacts'));
+  } catch(e){
+      console.error('Loading error:', e);
   }
-];
+}
+
+async function setItem(key, value) {
+  const payload = { key, value, token: STORAGE_TOKEN };
+  return fetch(STORAGE_URL, { method: 'POST', body: JSON.stringify(payload)})
+  .then(res => res.json());
+}
+
+async function getItem(key) {
+  const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
+  return fetch(url).then(res => res.json());
+}
+
+
+
+
+
+
+
+
+
 
 function renderContacts() {
   let list = document.getElementById('contactlist');
   let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
-
-  // Hier den Inhalt von 'list' löschen
   list.innerHTML = '';
-
   for (let letter of alphabet) {
     let contactsForLetter = contacts.filter(contact => contact.Name.toUpperCase().startsWith(letter));
-
     if (contactsForLetter.length > 0) {
       list.innerHTML += `
         <div id="container-alphabet">
           <div id="alphabet-tab" onclick="showContactsForLetter('${letter}')">${letter}</div>
         </div>      
       `;
-
       for (let contact of contactsForLetter) {
         let firstNameInitial = contact.Name[0].toUpperCase(); 
         let lastNameInitial = contact.Name.split(' ')[1][0].toUpperCase(); 
@@ -109,6 +135,7 @@ function closeEdit(){
   renderContacts();
 }
 
+
 function addNewContact(i){
   let overlay = document.getElementById('editing-overlay');
   overlay.classList.remove('d-none');
@@ -146,13 +173,7 @@ function addNewContact(i){
   </div>
 </div>
   `;
-
-
-
-
 }
-
-
 
 
 function editContact(i) {
@@ -162,7 +183,6 @@ function editContact(i) {
   let editInputsDiv = document.getElementById('edit-inputs');
   overlay.innerHTML = `
 <div id="edit">
-
     <div id="editing-div-leftside">
           <div id="edit-overlay-logo">
           </div>
@@ -207,8 +227,6 @@ function renderEditContactCircle(firstName, lastName) {
   `;
 }
 
-
-
 function saveContactChanges(i) {
   let overlay = document.getElementById('editing-overlay');
   let inputs = document.getElementById('edit-inputs').getElementsByTagName('input');
@@ -216,12 +234,18 @@ function saveContactChanges(i) {
   contacts[i].Name = inputs[0].value;
   contacts[i].Email = inputs[1].value;
   contacts[i].Telefon = inputs[2].value;
-
   overlay.classList.add('d-none');
   renderContacts();
   content.innerHTML ='';
-
 }
+
+
+
+
+
+
+
+
 
 
 
