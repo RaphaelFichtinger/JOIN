@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./CSS/sidebar.css">
     <link rel="stylesheet" href="./CSS/header.css">
 </head>
-<body onload="includeHTML(), renderContacts()">
+<body onload="includeHTML(); loadContacts(), renderContacts()">
     <div w3-include-html="header.html"></div>
     <div w3-include-html="sidebar.html"></div>
     
@@ -24,6 +24,7 @@
         <button id="contact-btn" onclick="addNewContact()">Add new contact <img src="./img/person_add.png"></button>
         </div>
             <div id="contactlist">
+
             </div>
     </div>
 

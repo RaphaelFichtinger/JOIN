@@ -196,21 +196,6 @@ body {
     background-position: 95%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #maincontainer{
     margin-top: 96px;
     margin-left: 232px;
@@ -400,8 +385,6 @@ body {
     flex-direction: column;
     gap: 15px;
 }
-
-
 
 #contactlist{
     align-items: start;

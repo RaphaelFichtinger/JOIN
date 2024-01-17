@@ -10,6 +10,7 @@ body {
 #main-container {
     margin-top: 96px;
     margin-left: 232px;
+    background-color: black;
 }
 
 #heading-container {
@@ -45,6 +46,11 @@ body {
 .box-bottom {
     display: flex;
     justify-content: space-around;
+    gap: 32px;
+}
+
+.box-top{
+    gap: 32px;
 }
 
 .inner-box-text {
@@ -53,16 +59,20 @@ body {
     align-items: center;
     flex-direction: column;
     gap: 16px;
+    margin-left: 4px;
 }
 
 .inner-box-text h2 {
     font-size: 64px;
     height: 30px;
     margin-block: 50%;
+    margin-top: 0px;
+    width: 100%;
 }
 
 .inner-box-text p {
     font-size: 20px;
+    width: 100%;
 }
 
 .box {
@@ -93,9 +103,6 @@ body {
     flex-direction: row;
 }
 
-.box-top-image {
-    margin-top: 24px;
-}
 
 .inner-box-left,
 .inner-box-right {
@@ -107,21 +114,18 @@ body {
 .inner-box-left {
     max-width: 130px;
     margin-right: 61px;
-    margin-left: 48px;
 }
 
 .inner-box-right {
     width: 178px;
     margin-left: 48px;
     margin-left: 61px;
-    
+    margin-top: 0px;
 }
 
 .inner-box-right h2 {
     font-size: 21px;
     margin-block: 0px;
-    
-    margin-top: 55px;
 }
 
 .inner-box-right p {
