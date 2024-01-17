@@ -3,33 +3,34 @@ body {
     ;
 }
 
-#header{
+#header {
     top: 0px;
 }
 
-#main-container{
+#main-container {
     margin-top: 96px;
     margin-left: 232px;
 }
 
-#heading-container{
+#heading-container {
     display: flex;
     align-items: center;
     padding-top: 110px;
     margin-left: 96px;
 }
 
-#heading-summary{
+#heading-summary {
     font-size: 61px;
     font-weight: 700;
     margin-right: 30px;
 }
 
-#text-summary{
+#text-summary {
     margin-left: 32px;
     font-size: 27px;
     font-weight: 400;
 }
+
 .main-box {
     display: flex;
     flex-direction: column;
@@ -38,36 +39,91 @@ body {
     margin-left: 96px;
     width: 560px;
 }
+
 .box-top,
 .box-middle,
 .box-bottom {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
+
 .inner-box-text {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 16px;
 }
+
+.inner-box-text h2 {
+    font-size: 64px;
+    height: 30px;
+    margin-block: 50%;
+}
+
+.inner-box-text p {
+    font-size: 20px;
+}
+
 .box {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     background-color: #FFFFFF;
     border-radius: 30px;
     height: 168px;
 }
-.todo, .done {
+
+.todo,
+.done {
     width: 264px;
 }
+
 .urgent {
     width: 560px;
 }
-.tasks-in-board, .tasks-in-progress, .awaiting-feedback {
+
+.tasks-in-board,
+.tasks-in-progress,
+.awaiting-feedback {
     width: 168px;
 }
+
 .box.urgent {
     flex-direction: row;
+}
+
+.box-top-image {
+    margin-top: 24px;
+}
+
+.inner-box-left,
+.inner-box-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-box-left {
+    max-width: 130px;
+    margin-right: 61px;
+    margin-left: 48px;
+}
+
+.inner-box-right {
+    width: 178px;
+    margin-left: 48px;
+    margin-left: 61px;
+    
+}
+
+.inner-box-right h2 {
+    font-size: 21px;
+    margin-block: 0px;
+    
+    margin-top: 55px;
+}
+
+.inner-box-right p {
+    font-size: 16px;
 }
