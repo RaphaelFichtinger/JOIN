@@ -21,16 +21,16 @@ async function getItem(key) {
           } throw `Could not find data with key "${key}".`;
       });
 }
-// sets testcontacts that are in the contactbook 
-/*async function setContacts(){
+// sets test-contacts that are in the contactbook / use manually to fetch.post a new pseudo contact 
+async function setContacts(){
   loadedContacts.push({
-    'name': 'Tester Test',
-    'email': 'testmail@test.de',
+    'name': 'Anna Test',
+    'email': 'fefefe@test.de',
     'phone':  '4234234' 
   });
-  await setItem('contacts', JSON.stringify(contacts));
+  await setItem('contacts', JSON.stringify(loadedContacts));
 }
-*/
+
 async function loadContacts(){
   try {
       loadedContacts = JSON.parse(await getItem('contacts'));
@@ -46,7 +46,15 @@ function renderContacts(){
   overlay.innerHTML = ''; 
   for (let i = 0; i < loadedContacts.length; i++) {
     let contact = loadedContacts[i];
-    overlay.innerHTML += `<div>${contact.name}</div>`;
+    overlay.innerHTML += `
+    
+    <div id="contactcard-container">
+        <div id="contact-cyrcle-div"> <div id="contact-cyrcle"></div>     </div>
+          <div id="contact-details">
+                    <div id="contact-name">${contact.name}</div>
+                    <div id="contact-email">${contact.email}</div>
+      
+    </div>`;
   }
 }
 
