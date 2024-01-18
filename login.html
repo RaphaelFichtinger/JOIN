@@ -9,12 +9,14 @@
 <link rel="stylesheet" href="./CSS/login.css">
 </head>
 
-<body>
+<body onload="init()">
     <div class="login-header">
         <img src="./img/start_logo.svg" alt="logo">
         <div class="button-login-top">
             <p>Not a Join user?</p>
-            <button onclick="signUp()" class="sign-up-button">Sign Up</button>
+            <a href="./sign_up.html">
+                <button class="sign-up-button">Sign Up</button>
+            </a>
         </div>
     </div>
     <form id="content" onsubmit="login(); return false">
@@ -38,6 +40,7 @@
     </form>
     <script src="./js/script.js"></script>
     <script src="./js/loading.JS"></script>
+    <script src="./js/login.js"></script>
 
 </body>
 

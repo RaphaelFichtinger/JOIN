@@ -1,4 +1,3 @@
-let loadedContacts = [];
 // sets test-contacts that are in the contactbook 
 // use this function manually to fetch.post a new pseudo contact 
 async function setContacts(){

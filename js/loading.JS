@@ -1,3 +1,8 @@
+let loadedContacts = [];
+
+const STORAGE_TOKEN = '0SUZWQWFOE8PEF8QOE5A57VYG0N48AWXZYFBZWYB';
+const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
+
 async function setItem(key, value) {
 	const payload = {key, value, token:STORAGE_TOKEN}
 	return fetch(STORAGE_URL, {method: 'POST', body: JSON.stringify(payload)})
@@ -12,6 +17,14 @@ async function getItem(key) {
             return res.data.value;
         } throw `Could not find data with key "${key}".`;
     });
+}
+
+async function loadContacts(){
+  try {
+  loadedContacts = JSON.parse(await getItem('contacts'));
+  } catch(e){
+  console.error('Loading error:', e);
+  }
 }
 
 

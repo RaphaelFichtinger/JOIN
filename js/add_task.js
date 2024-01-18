@@ -2,7 +2,8 @@ let tasks = [];
 let checkedContacts = [];
 let categories = ['Technical Task', 'User Story'];
 
-function init() {
+async function init() {
+    await loadContacts();
 	getContacts();
     getCategories();
 }
@@ -49,11 +50,13 @@ function openOverlay(listId) {
 }
 
 function getContacts() {
-    for (let i = 0; i < contacts.length; i++) {
-        let contactName = contacts[i]['Name'];
+    for (let i = 0; i < loadedContacts.length; i++) {
+        let contactName = loadedContacts[i]['name'];
         let splittedLetters = contactName.split(" ");
         let firstLetter = splittedLetters[0].charAt(0);
         let secondLetter = splittedLetters[1].charAt(0);
+
+        console.log(contactName);
 
         document.getElementById('list-item').innerHTML += `
             <div class="item flex align-center">
@@ -67,7 +70,7 @@ function getContacts() {
 
 function contactChecked(event, index) {
     let checkbox = event.target;
-    let contactName = contacts[index]['Name'];
+    let contactName = contacts[index]['name'];
 
     if (checkbox.checked) {
         // Checkbox wurde ausgewählt
