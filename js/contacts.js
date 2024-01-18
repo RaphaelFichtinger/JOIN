@@ -43,14 +43,13 @@ function renderContacts() {
 function showContactDetails(name, email) {
   // Hier können Sie den Code hinzufügen, um die Details in einem anderen Bereich anzuzeigen
   const containerRightContent = document.getElementById('container-right-content');
+  
   containerRightContent.innerHTML = `
     <div id=""#top-content-container-right>
       <p>Name: ${name}</p>
       <p>Email: ${email}</p>
     </div>`;
 }
-
-
 
 
 function getRandomColor() {
