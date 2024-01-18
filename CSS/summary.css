@@ -10,7 +10,7 @@ body {
 #main-container {
     margin-top: 96px;
     margin-left: 232px;
-    background-color: black;
+    background-color: #F6F7F8;
 }
 
 #heading-container {
@@ -45,18 +45,12 @@ body {
 .box-middle,
 .box-bottom {
     display: flex;
-    justify-content: space-around;
-    gap: 32px;
-}
-
-.box-top{
     gap: 32px;
 }
 
 .inner-box-text {
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
     gap: 16px;
     margin-left: 4px;
@@ -82,11 +76,14 @@ body {
     background-color: #FFFFFF;
     border-radius: 30px;
     height: 168px;
+    
+    box-shadow: 0px 0px 4px 0px rgb(0, 0, 0, 0.1);
 }
 
 .todo,
 .done {
     width: 264px;
+    gap: 32px;
 }
 
 .urgent {
@@ -97,6 +94,7 @@ body {
 .tasks-in-progress,
 .awaiting-feedback {
     width: 168px;
+
 }
 
 .box.urgent {
@@ -131,3 +129,41 @@ body {
 .inner-box-right p {
     font-size: 16px;
 }
+
+.box-small {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    height: 168px;
+    flex-direction: column;
+    box-shadow: 0px 0px 4px 0px rgb(0, 0, 0, 0.1);
+}
+
+.box-small h2 {
+    font-size: 64px;
+    margin-block: 0;
+}
+
+.box-small p {
+    font-size: 21px;
+    text-align: center;
+}
+
+.heading-date {
+    width: 111% !important;
+}
+
+.box-top-margin {
+    margin-left: 10px;
+}
+
+.heading-urgent {
+    margin-left: 10px;
+}
+
+#urgent-text {
+    margin-right: 10px !important;
+}
+
