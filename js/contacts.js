@@ -64,6 +64,38 @@ function getRandomColor() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function deleteContact(i) {
   let overlay = document.getElementById('container-right-content');
   contacts.splice(i, 1);

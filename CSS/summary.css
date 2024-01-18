@@ -53,7 +53,6 @@ body {
     justify-content: center;
     flex-direction: column;
     gap: 16px;
-    margin-left: 4px;
 }
 
 .inner-box-text h2 {
@@ -66,7 +65,6 @@ body {
 
 .inner-box-text p {
     font-size: 20px;
-    width: 100%;
 }
 
 .box {
@@ -164,6 +162,26 @@ body {
 }
 
 #urgent-text {
-    margin-right: 10px !important;
+    margin-left: 10px !important;
 }
 
+#urgent-heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0px;
+}
+
+#inner-box-urgent{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    #inner-box-urgent h2{
+        font-size: 64px;
+        height: 30px;
+        margin-block: 30%;
+        margin-top: 0px;
+        width: 100%;
+    }
