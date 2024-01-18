@@ -28,7 +28,7 @@ function renderContacts() {
     let backgroundColor = getRandomColor();
 
     overlay.innerHTML += `
-         <div id="contactcard-container" >
+         <div id="contactcard-container" onclick="showContactDetails('${contact.name}', '${contact.email}')">
               <div id="contact-cyrcle-div"> 
                   <div style="background-color: ${backgroundColor};" id="contact-cyrcle">${initials}</div>
               </div>
@@ -40,9 +40,27 @@ function renderContacts() {
   }
 }
 
+function showContactDetails(name, email) {
+  // Hier können Sie den Code hinzufügen, um die Details in einem anderen Bereich anzuzeigen
+  const containerRightContent = document.getElementById('container-right-content');
+  containerRightContent.innerHTML = `
+    <div id=""#top-content-container-right>
+      <p>Name: ${name}</p>
+      <p>Email: ${email}</p>
+    </div>`;
+}
 
 
 
+
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 
 
 
