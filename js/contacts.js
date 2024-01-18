@@ -1,22 +1,8 @@
-STORAGE_TOKEN = '0SUZWQWFOE8PEF8QOE5A57VYG0N48AWXZYFBZWYB';
- STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
-contacts = [
+let loadedContacts = [
+{
 
-  {
-    'name' : 'Toni Test',
-    'mail': 'contactM@ai',
-    'phone': '5345345'
-  }
-
-];
-
-async function loadContacts() {
-  try {
-    let cont = JSON.parse(await getItem('contacts'));
-  } catch (e) {
-    console.error('Loading error:', e);
-  }
 }
+];
 
 async function setItem(key, value) {
 	const payload = {key, value, token:STORAGE_TOKEN}
@@ -26,42 +12,49 @@ async function setItem(key, value) {
 
 async function getItem(key) {
   const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-  console.log('Fetch URL:', url);
-
+  return fetch(url)
+      .then(res => res.json())
+      .then(res => {
+          // Verbesserter code
+          if (res.value) {
+              return res.value;
+          } throw `Could not find data with key "${key}".`;
+      });
+}
+// sets testcontacts that are in the contactbook 
+/*async function setContacts(){
+  loadedContacts.push({
+    'name': 'Tester Test',
+    'email': 'testmail@test.de',
+    'phone':  '4234234' 
+  });
+  await setItem('contacts', JSON.stringify(contacts));
+}
+*/
+async function loadContacts(){
   try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Error fetching data: ${response.statusText}`);
-    }
-    return response.json();
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    throw error;
+      loadedContacts = JSON.parse(await getItem('contacts'));
+  } catch(e){
+      console.error('Loading error:', e);
+  }
+  renderContacts();
+}
+
+
+function renderContacts(){
+  overlay = document.getElementById('contactlist');
+  overlay.innerHTML = ''; 
+  for (let i = 0; i < loadedContacts.length; i++) {
+    let contact = loadedContacts[i];
+    overlay.innerHTML += `<div>${contact.name}</div>`;
   }
 }
 
 
 
 
-function renderContacts() {
-  let list = document.getElementById('contactlist');
-  list.innerHTML = '';
 
-  for (let i = 0; i < contacts.length; i++) {
-    let contact = contacts[i];
-    list.innerHTML += `
-      <div id="contactcard-container">
-        <div id="contact-cyrcle-div">
-          <div id="contact-cyrcle"></div> 
-        </div>  
-        <div id="contact-details">
-          <div id="contact-name">${contact.name}</div>
-          <div id="contact-email">${contact.mail}</div>
-        </div>
-      </div>
-    `;
-  }
-}
+
 
 function showContactsForLetter(letter) {
   console.log(`Contacts for letter ${letter}:`, contacts.filter(contact => contact.name.toUpperCase().startsWith(letter)));
@@ -112,43 +105,18 @@ function closeEdit(){
 }
 
 
-function addNewContact(i){
-  let overlay = document.getElementById('editing-overlay');
-  overlay.classList.remove('d-none');
-  let contact = contacts[i];
-  let editInputsDiv = document.getElementById('edit-inputs');
-  overlay.innerHTML = `
-  <div id="edit">
+function addNewContact(){
+let name = document.getElementById('new-name-input');
+let email = document.getElementById('new-email-input');
+let phone = document.getElementById('new-phone-input');
 
-      <div id="editing-div-leftside">
-              <div id="edit-overlay-logo">
-              </div>
-                <div id="new-contact-overlay-heading">Add Contact
-                </div>
-      </div>  
-
-      <div id="editing-div-rightside">
-      <div id="close-edit" onclick="closeEdit()">
-      </div>
-        <div id="cyrcle-and-inputs-div">
-          <div id="edit-cyrcle">
-          </div>
-
-          <div id="edit-content-rightside">
-            <div id="edit-inputs">
-            <input id="new-name-input" type="text" placeholder="Name" >
-            <input id="new-mail-input" type="email" placeholder="Email">
-            <input id="new-phone-input" type="text" placeholder="Phone">
-            </div>
-            <div id="save-delete-div">
-              <button onclick="deleteContact()"id="delete-btn-edit">Delete</button>
-              <div id="save-btn-div" onclick="saveContactChanges(${i})"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
-          </div>
-          </div>
-        </div>
-  </div>
-</div>
-  `;
+let newContact = {
+  'name' : name.value,
+  'mail': email.value,
+  'phone': phone.value
+};
+contacts.push(newContact);
+setItem('contacts', JSON.stringify(contacts));
 }
 
 
@@ -204,29 +172,6 @@ function renderEditContactCircle(firstName, lastName) {
   `;
 }
 
-async function saveContactChanges(i) {
-  let overlay = document.getElementById('editing-overlay');
-  let contactName = document.getElementById('new-name-input').value;
-  let contactMail = document.getElementById('new-mail-input').value;
-  let contactPhone = document.getElementById('new-phone-input').value;
-
-  let editedContact = {
-    'name' : contactName,
-    'mail': contactMail,
-    'phone': contactPhone
-  };
-
-  contacts.push(editedContact);
-  setItem();
-
-  try {
-    await setItem('contacts', JSON.stringify(contacts));
-    // Nachdem die Daten erfolgreich gespeichert wurden, render die Kontakte neu.
-    renderContacts();
-  } catch (error) {
-    console.error('Error saving contacts:', error);
-  }
-}
 
 
 
