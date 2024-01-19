@@ -25,7 +25,6 @@ function renderContacts() {
     let contact = loadedContacts[i];
     let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
     let backgroundColor = getRandomColor();
-
     overlay.innerHTML += `
          <div id="contactcard-container" onclick="showContactDetails(${i})">
               <div id="contact-cyrcle-div"> 
@@ -44,7 +43,6 @@ function showContactDetails(i) {
   let contact = loadedContacts[i];
   let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
    let backgroundColor = getRandomColor();
-
   overlay.innerHTML = `
   <div id="contact-overlay">
     <div id="overlay-top-container">
@@ -69,9 +67,6 @@ function showContactDetails(i) {
 `;
 }
 
-
-
-
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
   let color = '#';
@@ -100,27 +95,8 @@ function getRandomColor() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function deleteContact(i) {
-  let overlay = document.getElementById('container-right-content');
-  contacts.splice(i, 1);
-  overlay.innerHTML = ``;
+  loadedContacts.splice(i, 1);
   renderContacts();
   closeEdit();
 }
@@ -141,7 +117,7 @@ let newContact = {
   'mail': email.value,
   'phone': phone.value
 };
-contacts.push(newContact);
+loadedContacts.push(newContact);
 setItem('contacts', JSON.stringify(contacts));
 }
 
@@ -149,14 +125,13 @@ function editContact(i) {
   let overlay = document.getElementById('editing-overlay');
   overlay.classList.remove('d-none');
   let contact = loadedContacts[i];
-  let editInputs = document.getElementById('edit-inputs');
   overlay.innerHTML = `
 <div id="edit">
     <div id="editing-div-leftside">
           <div id="edit-overlay-logo">
           </div>
             <div id="edit-overlay-heading">Edit Contact
-              <img id="vector5" src="../img/vector5.png">
+              <img id="vector5" src="../img/vector5vertical.png">
             </div>
     </div>                
     <div id="editing-div-rightside">
@@ -181,18 +156,9 @@ function editContact(i) {
 </div>
   `;
 
-  renderEditContactCircle(contact.Name.split(' ')[0], contact.Name.split(' ')[1]);
-  saveContactChanges(i);
+  renderEditContactCircle(contact.name.split(' ')[0], contact.name.split(' ')[1]);
 }
 
 
 
 
-function getRandomColor() {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}

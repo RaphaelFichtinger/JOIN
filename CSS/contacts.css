@@ -280,7 +280,7 @@ body {
 }
 
 #edit-div{
-    background-image: url(/img/edit.png);
+    background-image: url(/img/edit.svg);
     background-position: left;
     background-repeat: no-repeat;
     background-size: contain;
