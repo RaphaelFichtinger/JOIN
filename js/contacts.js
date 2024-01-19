@@ -76,6 +76,69 @@ function getRandomColor() {
   return color;
 }
 
+function editContact(i) {
+  let overlay = document.getElementById('editing-overlay');
+  overlay.classList.remove('d-none');
+  let contact = loadedContacts[i];
+  overlay.innerHTML = `
+<div id="edit">
+    <div id="editing-div-leftside">
+          <div id="edit-overlay-logo">
+          </div>
+            <div id="edit-overlay-heading">Edit Contact
+              <img id="vector5" src="../img/vector5vertical.png">
+            </div>
+    </div>                
+    <div id="editing-div-rightside">
+          <div id="close-edit" onclick="closeEdit()">
+          </div>
+            <div id="cyrcle-and-inputs-div">
+              <div id="edit-cyrcle">
+              </div>
+              <div id="edit-content-rightside">
+                <div id="edit-inputs">
+                <input id="edit-input-name" type="text" value="${contact.name}">
+                <input id="edit-input-mail"  type="email" value="${contact.email}">
+                <input id="edit-input-number"  type="text" value="${contact.phone}">
+                </div>
+                <div id="save-delete-div">
+                  <button onclick="deleteContact()"id="delete-btn-edit">Delete</button>
+                  <div id="save-btn-div" onclick="saveContactChanges(${i})"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
+              </div>
+              </div>
+            </div>
+      </div>
+</div>
+  `;
+
+  renderEditContactCircle(loadedContact.name.split(' ')[0], loadedContact.name.split(' ')[1]);
+}
+
+function saveContactChanges(i) {
+  let editedName = document.getElementById('edit-input-name');
+  let editedEmail = document.getElementById('edit-input-mail');
+  let editedPhone = document.getElementById('edit-input-number');
+
+  loadedContacts[i].name = editedName.value;
+  loadedContacts[i].email = editedEmail.value;
+  loadedContacts[i].phone = editedPhone.value;
+
+  setItem('contacts', JSON.stringify(loadedContacts));
+
+  renderContacts();
+
+  closeEdit();
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -120,45 +183,4 @@ let newContact = {
 loadedContacts.push(newContact);
 setItem('contacts', JSON.stringify(contacts));
 }
-
-function editContact(i) {
-  let overlay = document.getElementById('editing-overlay');
-  overlay.classList.remove('d-none');
-  let contact = loadedContacts[i];
-  overlay.innerHTML = `
-<div id="edit">
-    <div id="editing-div-leftside">
-          <div id="edit-overlay-logo">
-          </div>
-            <div id="edit-overlay-heading">Edit Contact
-              <img id="vector5" src="../img/vector5vertical.png">
-            </div>
-    </div>                
-    <div id="editing-div-rightside">
-          <div id="close-edit" onclick="closeEdit()">
-          </div>
-            <div id="cyrcle-and-inputs-div">
-              <div id="edit-cyrcle">
-              </div>
-              <div id="edit-content-rightside">
-                <div id="edit-inputs">
-                <input id="edit-input-name" type="text" value="${contact.name}">
-                <input id="edit-input-mail"  type="email" value="${contact.email}">
-                <input id="edit-input-number"  type="text" value="${contact.phone}">
-                </div>
-                <div id="save-delete-div">
-                  <button onclick="deleteContact()"id="delete-btn-edit">Delete</button>
-                  <div id="save-btn-div" onclick="saveContactChanges()"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
-              </div>
-              </div>
-            </div>
-      </div>
-</div>
-  `;
-
-  renderEditContactCircle(contact.name.split(' ')[0], contact.name.split(' ')[1]);
-}
-
-
-
 
