@@ -8,7 +8,7 @@ function login() {
 		if(email.value == signedUpUser.email && password.value == signedUpUser.password) {
 			return console.log('Success');
 		} else {
-			return console.log('Error');
+			console.log('Error');
 		}
 	}
 
