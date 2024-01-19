@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    
-
+    <link rel="stylesheet" href="/CSS/default.css">
+    <link rel="stylesheet" href="/CSS/board.css">
     <script src="./js/loading.JS"></script>
- 
+</head>
+
+<body onload="includeHTML()">
+    <div w3-include-html="header.html"></div>
+    <div w3-include-html="sidebar.html"></div>
+
+    <div class="main-board">
+        <div class="board-top">
+            <h1 class="board-title">Board</h1>
+            <div class="board-top-right">
+                <input class="input-board-top" placeholder="Find Task" type="text">
+            <button id="add-task-btn">Add task <img src="./img/add.png" alt=""></button>
+        </div>
+    </div>
+    </div>
 </body>
+
 </html>

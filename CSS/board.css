@@ -1,40 +1,55 @@
-.main {
+.main-board {
     margin-top: 96px;
     margin-left: 232px;
-    position: fixed;
-    display: flex;
-
-
+    background-color: #F6F7F8;
 
 }
 
 .board-top {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    width: 1056px;
-    height: 73px;
-
+    align-items: center;
+    padding-top: 110px;
+    margin-left: 96px;
+    margin-right: 88px;
 }
 
-.board-h1 {
-    font-size: 61px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%;
-    margin-left: 64px;
-    margin-top: 79.5px;
-}
-
-.board-search {
-    border-radius: 10px;
-    height: 48px;
-    padding: 8px 16px;
+.input-board-top {
     width: 312px;
-    border: 1px solid black;
+    height: 48px;
+    border-radius: 10px;
     font-size: 20px;
     font-weight: 400;
-    background: url(/JOIN/img/search.png) no-repeat right center;
-    background-position: 297px;
-    background-size: 32px;
+    border: 1px solid #A8A8A8;
+    background: url(/img/vector3.png), url(/img/search.png);
+    background-repeat: no-repeat;
+    background-color: white;
+    background-position: 272px, 292px;
+    padding-right: 16px;
+
+}
+
+.input-board-top::placeholder {
+    color: rgba(209, 209, 209, 1);
+    padding-left: 16px;
+}
+
+.board-top-right {
+    display: flex;
+    gap: 32px;
+}
+
+#add-task-btn {
+    padding: 15px 16px;
+    border-radius: 8px;
+    background-color: #2A3647;
+    color: white;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    font-size: 21px;
+    font-weight: 700;
+    gap: 4px;
+    width: 160px;
+    height: 48px;
 }
