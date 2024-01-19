@@ -6,7 +6,7 @@ async function setContacts(){
     'email': 'milka@test.de',
     'phone':  '4234234' 
   });
-  await setItem('contacts',JSON.stringify(loadedContacts));
+  await setItem('loadedContacts',JSON.stringify(loadedContacts));
 }
 
 async function loadContacts(){
@@ -102,7 +102,7 @@ function editContact(i) {
                 <input id="edit-input-number"  type="text" value="${contact.phone}">
                 </div>
                 <div id="save-delete-div">
-                  <button onclick="deleteContact()"id="delete-btn-edit">Delete</button>
+                  <button onclick="deleteContact(${i})"id="delete-btn-edit">Delete</button>
                   <div id="save-btn-div" onclick="saveContactChanges(${i})"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
               </div>
               </div>
@@ -112,6 +112,12 @@ function editContact(i) {
   `;
 
   renderEditContactCircle(loadedContact.name.split(' ')[0], loadedContact.name.split(' ')[1]);
+}
+
+function closeEdit(){
+  let editoverlay = document.getElementById('editing-overlay');
+  editoverlay.classList.add('d-none');
+  renderContacts();
 }
 
 function saveContactChanges(i) {
@@ -124,9 +130,7 @@ function saveContactChanges(i) {
   loadedContacts[i].phone = editedPhone.value;
 
   setItem('contacts', JSON.stringify(loadedContacts));
-
   renderContacts();
-
   closeEdit();
 }
 
@@ -160,17 +164,13 @@ function saveContactChanges(i) {
 
 function deleteContact(i) {
   loadedContacts.splice(i, 1);
+  setItem('loadedContacts', JSON.stringify(loadedContacts));
   renderContacts();
+  showContactDetails
   closeEdit();
 }
 
-function closeEdit(){
-  let editoverlay = document.getElementById('editing-overlay');
-  editoverlay.classList.add('d-none');
-  renderContacts();
-}
-
-function addNewContact(){
+function addNewContact(i){
 let name = document.getElementById('new-name-input');
 let email = document.getElementById('new-email-input');
 let phone = document.getElementById('new-phone-input');
