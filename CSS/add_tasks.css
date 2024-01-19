@@ -1,24 +1,9 @@
-body {
-	background-color: #F6F7F8;
-	height: 100vh;
-}
-.block {
-	display: block;
-}
-.d-none {
-	display: none;
-}
-h1 {
-	font-size: 61px;
-	margin: 0;
-}
-
 .add_task {
 	align-items: center;
     width: calc(100% - 232px);
     margin: 0 0 0 auto;
     height: 100%;
-	margin-top: 120px;
+	margin-top: 206px;
 }
 form,
 .add_task h1 {
@@ -39,7 +24,7 @@ select {
 }
 .leftside,
 .rightside {
-	width: 440px;
+	width: 38.994%;
 	gap: 32px;
 }
 .leftside {
@@ -62,6 +47,10 @@ label + textarea,
 label + select,
 label + .buttons {
 	margin-top: 8px;
+}
+.task-prio .buttons {
+	flex-wrap: wrap;
+	gap: 16px;
 }
 .priority-button {
 	display: flex;
@@ -124,16 +113,21 @@ label + .buttons {
 	height: 80px;
 }
 .contacts-list,
-.categories-list {
+.categories-list,
+.subtasks-list {
 	position: relative;
 }
 .list-item,
-.list-item-category {
+.list-item-category,
+.list-item-subtasks {
 	position: absolute;
     background-color: #FFFFFF;
     width: 100%;
     max-height: 150px;
     overflow: auto;
+}
+.list-item-subtasks {
+	background-color: transparent;
 }
 #added-contacts {
 	margin-top: 8px;
@@ -160,10 +154,62 @@ label + .buttons {
 .checkbox {
 	margin-left: auto;
 }
-.buttons-bottom {
-	margin-top: 146px;
+.task-assigned-to,
+.task-category,
+.task-subtasks {
+	position: relative;
 }
-.button  {
+.task-assigned-to::after,
+.task-category::after {
+	display: flex;
+	content: '';
+	background-image: url(../img/arrow_dropdown.svg);
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	right: 12px;
+    top: 56%;
+}
+.subtasks-plus {
+	display: flex;
+	content: '';
+	background-image: url(../img/plus.svg);
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	right: 12px;
+    top: 56%;
+}
+.buttons-bottom {
+	display: flex;
+    justify-content: flex-end;
+	margin-top: 146px;
+	margin-right: 14.5%;
+	gap: 16px;
+}
+.button1 {
+	display: flex;
+    align-items: center;
+    padding: 15px 24px;
+    border-radius: 8px;
+	background-color: #FFFFFF;
+    color: #2A3647;
+	border: 1px solid #2A3647;
+    height: 48px;
+    line-height: 10px;
+    font-size: 21px;
+}
+.button1::after {
+	display: flex;
+	content: '';
+	background-image: url(../img/clear.svg);
+	width: 24px;
+	height: 24px;
+	margin-left: 4px;
+}
+.button2 {
+	display: flex;
+    align-items: center;
     padding: 15px 24px;
     border-radius: 8px;
     background-color: #2A3647;
@@ -171,5 +217,12 @@ label + .buttons {
     height: 48px;
     line-height: 10px;
     font-size: 21px;
-    margin-bottom: 40px;
+}
+.button2::after {
+	display: flex;
+	content: '';
+	background-image: url(../img/check.svg);
+	width: 24px;
+	height: 24px;
+	margin-left: 4px;
 }

@@ -133,3 +133,13 @@ function selectPriority(priority) {
     })
     priorityButton.classList.add(`${priority}`);
 }
+
+function addSubtask() {
+    let inputSubtask = document.getElementById('subtasks');
+    let listItemSubtasks = document.getElementById('list-item-subtasks');
+
+    listItemSubtasks.innerHTML += `<li>${inputSubtask.value}</li>`;
+
+    inputSubtask.value = '';
+
+}
