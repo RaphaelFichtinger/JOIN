@@ -3,23 +3,17 @@
     justify-content: space-between;
     margin: 67px 122px 63px 77px;
 }
-
 .login-header img {
     margin-top: 13px;
 }
-
-.button-login-top {
-    display: flex;
+.button-login-top a {
+    text-decoration: none;
     gap: 35px;
 }
-
-
-
 #content{
     display: flex;
     justify-content: center;
 }
-
 .login-lightbox {
     max-width: 652px;
     background-color: white;
@@ -28,30 +22,28 @@
     align-items: center;
     flex-direction: column;
     width: 652px;
-    height: 493px;
-    max-height: 493px;
     border-radius: 30px;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.04);
+    padding: 48px 0;
 }
-
 #heading-container{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 32px;    
+    font-size: 32px;
     line-height: 72px;
+    border-bottom: 3px solid #29ABE2;
+    padding-bottom: 16px;
+    margin-bottom: 32px;
 }
-
 #input-container{
     display: flex;
     justify-content: center;
     gap: 32px;
     align-items: center;
     flex-direction: column;
-    height: 152px;
     width: 422px;
 }
-
 #input-email{
     background: url(../img/mail.png);
     background-repeat: no-repeat;
@@ -64,7 +56,6 @@
     font-size: 20px;
     text-indent: 20px;
 }
-
 #input-password{
     background: url(/img/lock.png);
     background-repeat: no-repeat;
@@ -77,32 +68,26 @@
     font-size: 20px;
     text-indent: 20px;
 }
-
 #checkbox-div{
     gap: 8px;
-    padding: 0px 241px 0px 39px;
+    margin: 44px auto 0 28%;
 }
-
 #buttons-container{
-    width: 322px;
     gap: 35px;
     margin-top: 32px;
 }
-
-.sign-up-button  {
+.button {
     padding: 15px 24px;
     border-radius: 8px;
-    background-color: #2A3647;
-    color: white;
-    height: 48px;
-    
+    font-size: 21px;
+    font-weight: 700;
+    cursor: pointer;
 }
-
-.guest-login-button{
-    padding: 15px 16px;
-    border-radius: 8px;
+.button1  {
+    background-color: #2A3647;
+    color: #FFFFFF;
+}
+.button2 {
     background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    height: 48px;
-
+    color: #000000;
 }
