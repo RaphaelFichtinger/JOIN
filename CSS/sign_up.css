@@ -1,58 +1,21 @@
-body {
-    margin: 0;
-    background-color: #F6F7F8;
-}
-
-.flex{
-    display: flex;
-}
-
-.flex-wrap{
-    flex-wrap: wrap;
-}
-
-.space-between{
-    justify-content: space-between;
-}
-
-.justify-center{
-    justify-content: center;
-}
-
-.align-center{
-    align-items: center;
-}
-
-.flex-row{
-    flex-direction: row;
-}
-
-
 .login-header {
     display: flex;
     justify-content: space-between;
     margin: 67px 122px 63px 77px;
-    
 }
-
 .login-header img {
     top: 80px;
     left: 77px;
     position: absolute;
 }
-
-
-
 .button-login-top {
     display: flex;
     gap: 35px;
 }
-
 #content{
     display: flex;
     justify-content: center;
 }
-
 .login-lightbox {
     max-width: 598px;
     background-color: white;
@@ -69,23 +32,20 @@ body {
     margin-top: 32px;
     position: relative;
 }
-
 #heading-container{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 32px;    
+    font-size: 32px;
     flex-direction: column;
     font-size: 61px;
     margin-block: 0;
     margin-top: 32px;
     height: 50px;
 }
-
 #headin-container p {
     margin: 0;
 }
-
 .vector {
     position: absolute;
     top: 64px;
@@ -93,20 +53,16 @@ body {
     height: 32px;
     width: 32px;
 }
-
 .vector img {
     height: 20.74px;
     width: 21.33px;
-    
 }
-
 .header-underline {
     height: 0;
     border: 3px solid #29ABE2;
     width: 150px;
     border-radius: 10px;
 }
-
 #input-container{
     display: flex;
     justify-content: center;
@@ -116,7 +72,6 @@ body {
     height: 286px;
     width: 422px;
 }
-
 #input-name {
     background: url(/img/mail.png);
     background-repeat: no-repeat;
@@ -129,7 +84,6 @@ body {
     font-size: 20px;
     text-indent: 20px;
 }
-
 #input-email{
     background: url(/img/lock.png);
     background-repeat: no-repeat;
@@ -142,7 +96,6 @@ body {
     font-size: 20px;
     text-indent: 20px;
 }
-
 #input-password{
     background: url(/img/lock.png);
     background-repeat: no-repeat;
@@ -155,7 +108,6 @@ body {
     font-size: 20px;
     text-indent: 20px;
 }
-
 #input-confirm{
     background: url(/img/lock.png);
     background-repeat: no-repeat;
@@ -168,7 +120,6 @@ body {
     font-size: 20px;
     text-indent: 20px;
 }
-
 #checkbox-div{
     gap: 8px;
     height: 24px;
@@ -176,15 +127,11 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    
 }
-
 #buttons-container{
     width: 322px;
     gap: 35px;
-    
 }
-
 .sign-up-button  {
     padding: 15px 24px;
     border-radius: 8px;
@@ -195,7 +142,6 @@ body {
     font-size: 21px;
     margin-bottom: 40px;
 }
-
 .success button {
     display: flex;
     padding: 15px 24px;
@@ -206,7 +152,6 @@ body {
     line-height: 10px;
     font-size: 21px;
 }
-
 .success {
     display: flex;
     justify-content: center;
