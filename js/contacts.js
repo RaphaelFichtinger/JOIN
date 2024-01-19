@@ -27,7 +27,7 @@ function renderContacts() {
     let backgroundColor = getRandomColor();
 
     overlay.innerHTML += `
-         <div id="contactcard-container" onclick="showContactDetails('${contact.name}', '${contact.email}')">
+         <div id="contactcard-container" onclick="showContactDetails(${i})">
               <div id="contact-cyrcle-div"> 
                   <div style="background-color: ${backgroundColor};" id="contact-cyrcle">${initials}</div>
               </div>
@@ -39,15 +39,37 @@ function renderContacts() {
   }
 }
 
-function showContactDetails(name, email) {
-  const containerRightContent = document.getElementById('container-right-content');
-  
-  containerRightContent.innerHTML = `
-    <div id=""#top-content-container-right>
-      <p>Name: ${name}</p>
-      <p>Email: ${email}</p>
-    </div>`;
+function showContactDetails(i) {
+  let overlay = document.getElementById('container-right-content');
+  let contact = loadedContacts[i];
+  let firstNameInitial = contact.name[0].toUpperCase(); 
+  let lastNameInitial = contact.name.split(' ')[1][0].toUpperCase();
+
+  overlay.innerHTML = `
+  <div id="contact-overlay">
+  <div id="overlay-top-container">
+      <div id="contact-cyrcle-div-overlay">
+          <div id="contact-cyrcle-overlay">${firstNameInitial}${lastNameInitial}
+          </div> 
+    </div>
+<div id="contact-mid-overlay">
+        <div id="contact-name-overlay"> ${contact.name}</div>
+                <div id="edit-delete-div">
+                    <div onclick="editContact(${i})" id="edit-div">Edit</div>
+                    <div onclick="deleteContact(${i})" id="delete-div">Delete</div>
+                </div>
+        </div>
+</div>
+<div id="heading-contact-information">Contact Information</div>
+  <div id="overlay-bottom-container">
+        <div id="contact-email-overlay"><div><b>Email</b></div><div id="email-div">${contact.email}</div></div>
+        <div id="contact-telefon-overlay"><div><b>Phone</b></div><div id="telefon-div">${contact.phone}</div></div>
+  </div>
+</div>
+`;
 }
+
+
 
 
 function getRandomColor() {
@@ -126,7 +148,7 @@ setItem('contacts', JSON.stringify(contacts));
 function editContact(i) {
   let overlay = document.getElementById('editing-overlay');
   overlay.classList.remove('d-none');
-  let contact = contacts[i];
+  let contact = loadedContacts[i];
   let editInputsDiv = document.getElementById('edit-inputs');
   overlay.innerHTML = `
 <div id="edit">
@@ -147,9 +169,9 @@ function editContact(i) {
 
               <div id="edit-content-rightside">
                 <div id="edit-inputs">
-                <input id="edit-input-name" type="text" value="${contact.Name}">
-                <input id="edit-input-mail"  type="email" value="${contact.Email}">
-                <input id="edit-input-number"  type="text" value="${contact.Telefon}">
+                <input id="edit-input-name" type="text" value="${contact.name}">
+                <input id="edit-input-mail"  type="email" value="${contact.email}">
+                <input id="edit-input-number"  type="text" value="${contact.phone}">
                 </div>
                 <div id="save-delete-div">
                   <button onclick="deleteContact()"id="delete-btn-edit">Delete</button>
@@ -165,15 +187,6 @@ function editContact(i) {
   saveContactChanges(i);
 }
 
-function renderEditContactCircle(firstName, lastName) {
-  let firstNameInitial = firstName[0].toUpperCase();
-  let lastNameInitial = lastName ? lastName[0].toUpperCase() : '';
-
-  let editCircleDiv = document.getElementById('edit-cyrcle');
-  editCircleDiv.innerHTML = `
-    <div id="contact-cyrcle-overlay">${firstNameInitial}${lastNameInitial}</div>
-  `;
-}
 
 
 
