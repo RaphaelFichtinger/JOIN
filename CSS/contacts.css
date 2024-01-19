@@ -102,7 +102,6 @@ body {
 #cyrcle-and-inputs-div button{
     border-radius: 10px;
     border: 1px solid rgba(42, 54, 71, 1);
-
 }
 
 #cyrcle-and-inputs-div button:hover{
@@ -239,7 +238,6 @@ body {
     display: flex;
     align-items: center;
     font-size: 27px;
-    
 }
 
 #overlay-top-container{
