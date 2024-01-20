@@ -122,22 +122,6 @@ function closeEdit(){
   renderContacts();
 }
 
-function saveContactChanges(i) {
-  let editedName = document.getElementById('edit-input-name');
-  let editedEmail = document.getElementById('edit-input-mail');
-  let editedPhone = document.getElementById('edit-input-number');
-  let overlay = document.getElementById('contact-overlay');
-
-  loadedContacts[i].name = editedName.value;
-  loadedContacts[i].email = editedEmail.value;
-  loadedContacts[i].phone = editedPhone.value;
-
-  setItem('contacts', JSON.stringify(loadedContacts));
-  overlay.innerHTML=``;
-  renderContacts();
-  closeEdit();
-}
-
 function setNewContact(i){
   let overlay = document.getElementById('editing-overlay');
   overlay.classList.remove('d-none');
@@ -173,12 +157,32 @@ function setNewContact(i){
   `;
 }
 
+function saveContactChanges(i) {
+  let editedName = document.getElementById('edit-input-name');
+  let editedEmail = document.getElementById('edit-input-mail');
+  let editedPhone = document.getElementById('edit-input-number');
+  let overlay = document.getElementById('contact-overlay');
+  let contact = loadContacts[i];
 
+ contact.name = editedName.value;
+contact.email = editedEmail.value;
+contact.phone = editedPhone.value;
 
+  setItem('contacts', JSON.stringify(loadedContacts));
+  overlay.innerHTML=``;
+  renderContacts();
+  closeEdit();
+}
 
-
-
-
+function deleteContact(i) {
+  let overlay = document.getElementById('contact-overlay');
+  loadedContacts.splice(i, 1);
+  setItem('loadedContacts', JSON.stringify(loadedContacts));
+  setItem('contacts', JSON.stringify(loadedContacts));
+  overlay.innerHTML=``;
+  renderContacts();
+  closeEdit();
+}
 
 
 
