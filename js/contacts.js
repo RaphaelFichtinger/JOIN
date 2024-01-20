@@ -148,7 +148,7 @@ function setNewContact(i){
                 </div>
                 <div id="save-delete-div">
                   <button onclick="deleteContact(${i})"id="delete-btn-edit">Delete</button>
-                  <div id="save-btn-div" onclick="saveContactChanges(${i})"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
+                  <div id="save-btn-div" onclick="saveNewContact()"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
               </div>
               </div>
             </div>
@@ -156,18 +156,15 @@ function setNewContact(i){
 </div>
   `;
 }
-
 function saveContactChanges(i) {
   let editedName = document.getElementById('edit-input-name');
   let editedEmail = document.getElementById('edit-input-mail');
   let editedPhone = document.getElementById('edit-input-number');
   let overlay = document.getElementById('contact-overlay');
   let contact = loadContacts[i];
-
  contact.name = editedName.value;
-contact.email = editedEmail.value;
-contact.phone = editedPhone.value;
-
+ contact.email = editedEmail.value;
+ contact.phone = editedPhone.value;
   setItem('contacts', JSON.stringify(loadedContacts));
   overlay.innerHTML=``;
   renderContacts();
@@ -184,7 +181,18 @@ function deleteContact(i) {
   closeEdit();
 }
 
-
+function saveNewContact(){
+  let newContact = {
+    'name': document.getElementById('edit-input-name').value,
+    'email': document.getElementById('edit-input-mail').value,
+    'phone': document.getElementById('edit-input-number').value
+  };
+  loadedContacts.push(newContact);
+  setItem('loadedContacts', JSON.stringify(loadedContacts));
+  setItem('contacts', JSON.stringify(loadedContacts));
+  renderContacts();
+  closeEdit();
+}
 
 
 
