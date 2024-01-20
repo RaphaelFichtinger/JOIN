@@ -10,36 +10,38 @@
 </head>
 
 <body onload="init()">
-    <div class="login-header">
-        <img src="./img/start_logo.svg" alt="logo">
-    </div>
-    <form id="content" onsubmit="signUp(); return false">
-        <div class="login-lightbox">
-            <div class="vector"><a href="./login.html"><img src="../img/vector.png"></a></div>
-            <div id="heading-container">
-                <h1>Sign up</h1>
+    <div class="signUp-page">
+        <div class="login-header">
+            <img src="./img/start_logo.svg" alt="logo">
+        </div>
+        <form id="content" onsubmit="signUp(); return false">
+            <div class="login-lightbox">
+                <div class="vector"><a href="./login.html"><img src="../img/vector.png"></a></div>
+                <div id="heading-container">
+                    <h1>Sign up</h1>
+                </div>
+                <div id="input-container">
+                    <input id="input-name" type="text" placeholder="Name" required>
+                    <input id="input-email" type="email" minlength="8" placeholder="Email" required>
+                    <input id="input-password" type="password" minlength="8" placeholder="Password" required>
+                    <input id="input-confirm" type="password" minlength="8" placeholder="Confirm Password" required>
+                </div>
+                <div id="checkbox-div" class="flex algin-center">
+                    <input id="input-checkbox" type="checkbox">
+                    <p>I accept the <a href="#">Privacy policy</a></p>
+                </div>
+                <div id="buttons-container" class="flex space-between justify-center">
+                    <button class="button button1 sign-up-button">Sign up</button>
+                </div>
             </div>
-            <div id="input-container">
-                <input id="input-name" type="text" placeholder="Name" required>
-                <input id="input-email" type="email" minlength="8" placeholder="Email" required>
-                <input id="input-password" type="password" minlength="8" placeholder="Password" required>
-                <input id="input-confirm" type="password" minlength="8" placeholder="Confirm Password" required>
-            </div>
-            <div id="checkbox-div" class="flex algin-center">
-                <input id="input-checkbox" type="checkbox">
-                <p>I accept the <a href="#">Privacy policy</a></p>
-            </div>
-            <div id="buttons-container" class="flex space-between justify-center">
-                <button class="button button1 sign-up-button">Sign up</button>
+        </form>
+        <div id="success-lightbox" class="success-lightbox flex align-center justify-center">
+            <div id="success" class="success">
+                <button>You Signed Up successfully</button>
             </div>
         </div>
-    </form>
-    <div id="success" class="success">
-        <button>You Signed Up successfully</button>
     </div>
-    <script src="./js/script.js"></script>
     <script src="./js/loading.JS"></script>
-
+    <script src="./js/script.js"></script>
 </body>
-
 </html>

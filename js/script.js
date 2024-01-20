@@ -47,11 +47,18 @@ async function resetForm(email, password, confirm, name, checkbox) {
 }
 
 function showSuccessButton() {
+	let successLightbox = document.getElementById('success-lightbox');
 	let successButton = document.getElementById('success');
-	successButton.style.display = 'flex';
-	successButton.style.transform = 'translateY(-300px)';
-	successButton.style.transition = 'transform(0.5s ease, opacity 0.5s ease)';
-    successButton.style.opacity = '1';
+	successLightbox.style.display = 'flex';
+	setTimeout(() => {
+		successButton.style.transition = 'transform 1s ease-in-out';
+		successButton.style.transform = 'translateY(30%)';
+
+		setTimeout(() => {
+			successLightbox.style.display = 'none';
+            successButton.style.transform = 'translateY(100%)';
+        }, 2000);
+	}, 150)
 }
 
 
