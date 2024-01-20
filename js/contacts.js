@@ -116,6 +116,7 @@ function editContact(i) {
 
 function closeEdit(){
   let editoverlay = document.getElementById('editing-overlay');
+  let overlay = document.getElementById('contact-overlay');
   editoverlay.classList.add('d-none');
   renderContacts();
 }
@@ -131,56 +132,64 @@ function saveContactChanges(i) {
 
   setItem('contacts', JSON.stringify(loadedContacts));
   renderContacts();
+  overlay.innerHTML=``;
   closeEdit();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function deleteContact(i) {
-  loadedContacts.splice(i, 1);
-  setItem('loadedContacts', JSON.stringify(loadedContacts));
-  renderContacts();
-  showContactDetails
-  closeEdit();
+function setNewContact(i){
+  let overlay = document.getElementById('editing-overlay');
+  overlay.classList.remove('d-none');
+  overlay.innerHTML = `
+<div id="edit">
+    <div id="editing-div-leftside">
+          <div id="edit-overlay-logo">
+          </div>
+            <div id="edit-overlay-heading">Add Contact
+              <img id="vector5" src="../img/vector5vertical.png">
+            </div>
+    </div>                
+    <div id="editing-div-rightside">
+          <div id="close-edit" onclick="closeEdit()">
+          </div>
+            <div id="cyrcle-and-inputs-div">
+              <div id="edit-cyrcle-new-contact">
+              </div>
+              <div id="edit-content-rightside">
+                <div id="edit-inputs">
+                <input id="edit-input-name" type="text">
+                <input id="edit-input-mail"  type="email" >
+                <input id="edit-input-number"  type="text" >
+                </div>
+                <div id="save-delete-div">
+                  <button onclick="deleteContact(${i})"id="delete-btn-edit">Delete</button>
+                  <div id="save-btn-div" onclick="saveContactChanges(${i})"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
+              </div>
+              </div>
+            </div>
+      </div>
+</div>
+  `;
 }
 
-function addNewContact(i){
-let name = document.getElementById('new-name-input');
-let email = document.getElementById('new-email-input');
-let phone = document.getElementById('new-phone-input');
 
-let newContact = {
-  'name' : name.value,
-  'mail': email.value,
-  'phone': phone.value
-};
-loadedContacts.push(newContact);
-setItem('contacts', JSON.stringify(contacts));
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
