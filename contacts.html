@@ -32,12 +32,12 @@
                 <div id="edit-content-rightside">
                   <div id="edit-inputs">
                   <input id="new-name-input" type="text" placeholder="Name" >
-                  <input id="new-mail-input" type="email" placeholder="Email">
+                  <input id="new-email-input" type="email" placeholder="Email">
                   <input id="new-phone-input" type="text" placeholder="Phone">
                   </div>
                   <div id="save-delete-div">
                     <button onclick="deleteContact()"id="delete-btn-edit">Delete</button>
-                    <div id="save-btn-div"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
+                    <div id="save-btn-div"><button onclick="saveContactChanges()" id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
                 </div>
                 </div>
               </div>
@@ -48,7 +48,7 @@
 <div id="maincontainer">
     <div id="conatiner-left">
         <div id="contact-btn-div">
-        <button onclick="setNewContact()" id="contact-btn" onclick="">Add new contact <img src="./img/person_add.png"></button>
+        <button id="contact-btn" onclick="setNewContact()">Add new contact <img src="./img/person_add.png"></button>
         </div>
             <div id="contactlist">
             </div>

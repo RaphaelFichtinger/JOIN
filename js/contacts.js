@@ -161,12 +161,13 @@ function saveContactChanges(i) {
   let editedEmail = document.getElementById('edit-input-mail');
   let editedPhone = document.getElementById('edit-input-number');
   let overlay = document.getElementById('contact-overlay');
-  let contact = loadContacts[i];
- contact.name = editedName.value;
- contact.email = editedEmail.value;
- contact.phone = editedPhone.value;
+
+  loadedContacts[i].name = editedName.value;
+  loadedContacts[i].email = editedEmail.value;
+  loadedContacts[i].phone = editedPhone.value;
+
   setItem('contacts', JSON.stringify(loadedContacts));
-  overlay.innerHTML=``;
+  overlay.innerHTML = '';
   renderContacts();
   closeEdit();
 }
