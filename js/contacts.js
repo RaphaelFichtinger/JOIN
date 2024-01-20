@@ -115,6 +115,22 @@ function editContact(i) {
   `;
 }
 
+function saveContactChanges(i) {
+  let editedName = document.getElementById('edit-input-name');
+  let editedEmail = document.getElementById('edit-input-mail');
+  let editedPhone = document.getElementById('edit-input-number');
+  let overlay = document.getElementById('contact-overlay');
+  let backgroundColor =  getRandomColor();
+  loadedContacts[i].name = editedName.value;
+  loadedContacts[i].email = editedEmail.value;
+  loadedContacts[i].phone = editedPhone.value;
+  loadedContacts[i].color = backgroundColor;
+  setItem('contacts', JSON.stringify(loadedContacts));
+  overlay.innerHTML = '';
+  renderContacts();
+  closeEdit();
+}
+
 function closeEdit(){
   let editoverlay = document.getElementById('editing-overlay');
   editoverlay.classList.add('d-none');
@@ -141,9 +157,9 @@ function setNewContact(i) {
               </div>
               <div id="edit-content-rightside">
                 <div id="edit-inputs">
-                <input id="edit-input-name" type="text">
-                <input id="edit-input-mail"  type="email" >
-                <input id="edit-input-number"  type="text" >
+                <input id="new-contact-input-name" placeholder="Name" type="text">
+                <input id="new-contact-input-mail" placeholder="Email" type="email" >
+                <input id="new-contact-input-number" placeholder="Phone" type="text" >
                 </div>
                 <div id="save-delete-div">
                   <button onclick="deleteContact(${i})"id="delete-btn-edit">Delete</button>
@@ -154,21 +170,17 @@ function setNewContact(i) {
       </div>
 </div>
   `;
-  
 }
-function saveContactChanges(i) {
-  let editedName = document.getElementById('edit-input-name');
-  let editedEmail = document.getElementById('edit-input-mail');
-  let editedPhone = document.getElementById('edit-input-number');
-  let overlay = document.getElementById('contact-overlay');
-  let backgroundColor =  getRandomColor();
-  loadedContacts[i].name = editedName.value;
-  loadedContacts[i].email = editedEmail.value;
-  loadedContacts[i].phone = editedPhone.value;
-  loadedContacts[i].color = backgroundColor;
 
+function saveNewContact(){
+  let newContact = {
+    'name': document.getElementById('new-contact-input-name').value,
+    'email': document.getElementById('new-contact-input-mail').value,
+    'phone': document.getElementById('new-contact-input-number').value
+  };
+  loadedContacts.push(newContact);
+  setItem('loadedContacts', JSON.stringify(loadedContacts));
   setItem('contacts', JSON.stringify(loadedContacts));
-  overlay.innerHTML = '';
   renderContacts();
   closeEdit();
 }
@@ -182,22 +194,6 @@ function deleteContact(i) {
   renderContacts();
   closeEdit();
 }
-
-function saveNewContact(){
-  let newContact = {
-    'name': document.getElementById('edit-input-name').value,
-    'email': document.getElementById('edit-input-mail').value,
-    'phone': document.getElementById('edit-input-number').value
-  };
-  loadedContacts.push(newContact);
-  setItem('loadedContacts', JSON.stringify(loadedContacts));
-  setItem('contacts', JSON.stringify(loadedContacts));
-  renderContacts();
-  closeEdit();
-}
-
-
-
 
 
 

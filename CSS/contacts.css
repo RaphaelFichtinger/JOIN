@@ -375,6 +375,39 @@ body {
     background-position: 95%;
 }
 
+#new-contact-input-name{
+    height: 50px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 20px;
+    padding-left: 20px;
+    background: url(/img/person.png);
+    background-repeat: no-repeat;
+    background-position: 95%;
+}
+
+#new-contact-input-mail{
+    height: 50px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 20px;
+    padding-left: 20px;
+    background: url(/img/mail.png);
+    background-repeat: no-repeat;
+    background-position: 95%;
+}
+
+#new-contact-input-number{
+    height: 50px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 20px;
+    padding-left: 20px;
+    background: url(/img/call.png);
+    background-repeat: no-repeat;
+    background-position: 95%;
+}
+
 #heading-contact-information{
     font-size: 20px;
     width: 207px;
@@ -511,12 +544,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 42px;
-    width: 42px;
+    height: 120px;
+    width: 120px;
     border-radius: 50%;
     background-color: rgb(86, 86, 86);
     color: white;
     border: 2px solid white;
+    font-size: 47px;
+    margin-left: 48px;
 }
 
 #single-contact{
@@ -527,4 +562,7 @@ body {
 .d-none{
     display: none;
 }
+
+
+
 
