@@ -1,6 +1,13 @@
 let tasks = [];
 let checkedContacts = [];
 let categories = ['Technical Task', 'User Story'];
+let subtasksArray = [];
+let priorityVariable;
+
+let title = document.getElementById('title');
+let description = document.getElementById('description');
+let dateDue = document.getElementById('due-date');
+let categoryValue = document.getElementById('category');
 
 async function init() {
     await loadContacts();
@@ -8,33 +15,40 @@ async function init() {
     getCategories();
 }
 
-function createNewTask() {
-	let title = document.getElementById('title');
-	let description = document.getElementById('description');
-	let assignTo = document.getElementById('assign-to');
-	let dateDue = document.getElementById('due-date');
-	let category = document.getElementById('category');
-	let subtasks = document.getElementById('subtasks');
+async function createNewTask() {
 
-	tasks.push({
-		'title': title.value,
-		'description': description.value,
-		'assign-to': assignTo.value,
-		'date': dateDue.value,
-		'category': category.value,
-		'subtasks': subtasks.value
-	})
+    tasks.push({
+        'title': title.value,
+        'description': description.value,
+        'assign-to': checkedContacts,
+        'date': dateDue.value,
+        'priority': priorityVariable,
+        'category': categoryValue.value,
+        'subtasks': subtasksArray
+    })
 
-	clearFields(title, description, assignTo, dateDue, category, subtasks);
+    await setItem('tasks', JSON.stringify(tasks));
+
+    clearFields();
 }
 
-function clearFields(title, description, assignTo, dateDue, category, subtasks) {
+function clearFields() {
+    let assignTo = document.getElementById('contacts-list');
+    let addedContacts = document.getElementById('added-contacts');
+    let subtasks = document.getElementById('list-item-subtasks');
+
+    assignTo.classList.add('d-none');
+    assignTo.classList.remove('block');
+    addedContacts.innerHTML = '';
+    removePriority();
+    subtasks.innerHTML = '';
+    subtasksArray = [];
+    checkedContacts = [];
+
 	title.value = '';
 	description.value = '';
-	assignTo.value = '';
 	dateDue.value = '';
 	category.value = '';
-	subtasks.value = '';
 }
 
 function openOverlay(listId) {
@@ -56,8 +70,6 @@ function getContacts() {
         let firstLetter = splittedLetters[0].charAt(0);
         let secondLetter = splittedLetters[1].charAt(0);
 
-        console.log(contactName);
-
         document.getElementById('list-item').innerHTML += `
             <div class="item flex align-center">
                 <div class="circle">${firstLetter}${secondLetter}</div>
@@ -70,7 +82,7 @@ function getContacts() {
 
 function contactChecked(event, index) {
     let checkbox = event.target;
-    let contactName = contacts[index]['name'];
+    let contactName = loadedContacts[index]['name'];
 
     if (checkbox.checked) {
         // Checkbox wurde ausgewählt
@@ -117,21 +129,26 @@ function addCategory(i) {
     let category = categories[i]
     document.getElementById('category').value = `${category}`;
 
-    let overlayList = document.getElementById(`${listId}`);
+    let overlayList = document.getElementById('categories-list');
     overlayList.classList.remove('block');
     overlayList.classList.add('d-none');
 }
 
 function selectPriority(priority) {
     let priorityButton = document.getElementById(`priority-${priority}`);
-    let button = document.querySelectorAll('.priority-button');
 
+    removePriority()
+    priorityButton.classList.add(`${priority}`);
+    priorityVariable = priorityButton.textContent;
+}
+
+function removePriority() {
+    let button = document.querySelectorAll('.priority-button');
     button.forEach(function(event) {
         event.classList.remove('alta');
         event.classList.remove('medium');
         event.classList.remove('baia');
     })
-    priorityButton.classList.add(`${priority}`);
 }
 
 function addSubtask() {
@@ -139,6 +156,8 @@ function addSubtask() {
     let listItemSubtasks = document.getElementById('list-item-subtasks');
 
     listItemSubtasks.innerHTML += `<li>${inputSubtask.value}</li>`;
+
+    subtasksArray.push(`${inputSubtask.value}`);
 
     inputSubtask.value = '';
 

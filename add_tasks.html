@@ -12,7 +12,7 @@
 <body onload="includeHTML(); init()">
 	<div w3-include-html="header.html"></div>
     <div w3-include-html="sidebar.html"></div>
-	<div class="add_task flex-column">
+	<div id="add-task" class="add_task flex-column">
 		<h1>Add Task</h1>
 		<form onsubmit="createNewTask(); return false">
 			<div class="flex">
@@ -42,9 +42,9 @@
 					<div class="task-input task-prio">
 						<label for="prio">Prio</label>
 						<div class="buttons flex">
-							<button id="priority-alta" class="priority-alta priority-button" onclick="selectPriority('alta')">Urgent</button>
-							<button id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</button>
-							<button id="priority-baia" class="priority-baia priority-button" onclick="selectPriority('baia')">Low</button>
+							<div id="priority-alta" class="priority-alta priority-button" onclick="selectPriority('alta')">Urgent</div>
+							<div id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</div>
+							<div id="priority-baia" class="priority-baia priority-button" onclick="selectPriority('baia')">Low</div>
 						</div>
 					</div>
 					<div id="task-category" class="task-input task-category">
@@ -65,7 +65,7 @@
 				</div>
 			</div>
 			<div class="buttons-bottom">
-				<button class="button1">Clear</button>
+				<button class="button1" onclick="clearFields()" formnovalidate>Clear</button>
 				<button class="button2">Create task</button>
 			</div>
 		</form>
