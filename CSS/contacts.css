@@ -505,7 +505,18 @@ body {
     background-color: rgb(86, 86, 86);
     color: white;
     border: 2px solid white;
+}
 
+#edit-cyrcle-overlay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    background-color: rgb(86, 86, 86);
+    color: white;
+    border: 2px solid white;
 }
 
 #single-contact{

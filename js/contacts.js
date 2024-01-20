@@ -42,7 +42,7 @@ function showContactDetails(i) {
   let overlay = document.getElementById('container-right-content');
   let contact = loadedContacts[i];
   let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
-   let backgroundColor = getRandomColor();
+  let backgroundColor = getRandomColor();
   overlay.innerHTML = `
   <div id="contact-overlay">
     <div id="overlay-top-container">
@@ -80,6 +80,8 @@ function editContact(i) {
   let overlay = document.getElementById('editing-overlay');
   overlay.classList.remove('d-none');
   let contact = loadedContacts[i];
+  let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
+  let backgroundColor = getRandomColor();
   overlay.innerHTML = `
 <div id="edit">
     <div id="editing-div-leftside">
@@ -93,7 +95,8 @@ function editContact(i) {
           <div id="close-edit" onclick="closeEdit()">
           </div>
             <div id="cyrcle-and-inputs-div">
-              <div id="edit-cyrcle">
+            <div id="edit-cyrcle-overlay" style="background-color: ${backgroundColor};">${initials}
+          
               </div>
               <div id="edit-content-rightside">
                 <div id="edit-inputs">
@@ -110,8 +113,6 @@ function editContact(i) {
       </div>
 </div>
   `;
-
-  renderEditContactCircle(loadedContact.name.split(' ')[0], loadedContact.name.split(' ')[1]);
 }
 
 function closeEdit(){
@@ -125,14 +126,15 @@ function saveContactChanges(i) {
   let editedName = document.getElementById('edit-input-name');
   let editedEmail = document.getElementById('edit-input-mail');
   let editedPhone = document.getElementById('edit-input-number');
+  let overlay = document.getElementById('contact-overlay');
 
   loadedContacts[i].name = editedName.value;
   loadedContacts[i].email = editedEmail.value;
   loadedContacts[i].phone = editedPhone.value;
 
   setItem('contacts', JSON.stringify(loadedContacts));
-  renderContacts();
   overlay.innerHTML=``;
+  renderContacts();
   closeEdit();
 }
 
