@@ -4,18 +4,25 @@ function login() {
 
 	for (let i = 0; i < signedUpUsers.length; i++) {
 		let signedUpUser = signedUpUsers[i];
+		console.log(signedUpUser);
 
 		if(email.value == signedUpUser.email && password.value == signedUpUser.password) {
-			return console.log('Success');
-		} else {
-			console.log('Error');
+			window.location.href = './summary.html';
+			return;
 		}
 	}
 
 	resetForm(email, password)
+
+	showError();
 }
 
 async function resetForm(email, password) {
 	email.value = '';
 	password.value = '';
+}
+
+function showError() {
+	let noLogedIn = document.getElementById('error-info');
+	noLogedIn.innerHTML = 'Du bist nicht angemeldet.';
 }
