@@ -19,9 +19,65 @@
             <h1 class="board-title">Board</h1>
             <div class="board-top-right">
                 <input class="input-board-top" placeholder="Find Task" type="text">
-            <button id="add-task-btn">Add task <img src="./img/add.png" alt=""></button>
+                <button id="add-task-btn">Add task <img src="./img/add.png" alt=""></button>
+            </div>
         </div>
-    </div>
+        <div class="board-container">
+            <div class="board-column ">
+                <div class="board-column-title">
+                    <p>To do</p>
+                    <img src="/img/plus-button.png">
+                </div>
+                <div id="to-do" class="drag-area">
+                    <div class="task-card">
+                        <button class="task-type">User Story</button>
+                        <div class="task-text">
+                            <p id="task-title">Contact Form & Imprint</p>
+                            <p id="task-details">Create a contact form and imprint page...</p>
+                        </div>
+                        <div class="subtasks">
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 50%;"></div>
+                            </div>
+                            <div>
+                                <p>0/2 Subtasks</p>
+                            </div>
+
+                        </div>
+                        <div class="task-card-bottom">
+                            <div id="initials">
+                                <p id="initials-circle-1">AS</p>
+                                <p id="initials-circle-2">DE</p>
+                                <p id="initials-circle-3">EF</p>
+                            </div>
+                            <div>
+                                <img id="priority-image-small" src="/img/prio-baia.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="board-column">
+                <div class="board-column-title">
+                    <p>In progress</p>
+                    <img src="/img/plus-button.png">
+                </div>
+                <div id="in-progress" class="drag-area"></div>
+            </div>
+            <div class="board-column">
+                <div class="board-column-title">
+                    <p>Await feedback</p>
+                    <img src="/img/plus-button.png">
+                </div>
+                <div id="await-feedback" class="drag-area"></div>
+            </div>
+            <div class="board-column">
+                <div class="board-column-title">
+                    <p>Done</p>
+                </div>
+                <div id="done-tasks" class="drag-area"></div>
+            </div>
+        </div>
     </div>
 </body>
 
