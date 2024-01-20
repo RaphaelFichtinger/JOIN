@@ -1,12 +1,13 @@
 // sets test-contacts that are in the contactbook 
 // use this function manually to fetch.post a new pseudo contact 
-async function setContacts(){
+async function setContacts() {
   loadedContacts.push({
-    'name': 'Milka Kuh',
-    'email': 'milka@test.de',
-    'phone':  '4234234' 
+      'name': 'Milka Kuh',
+      'email': 'milka@test.de',
+      'phone': '4234234',
+      'color': getRandomColor() 
   });
-  await setItem('loadedContacts',JSON.stringify(loadedContacts));
+  await setItem('loadedContacts', JSON.stringify(loadedContacts));
 }
 
 async function loadContacts(){
@@ -22,27 +23,26 @@ function renderContacts() {
   overlay = document.getElementById('contactlist');
   overlay.innerHTML = '';
   for (let i = 0; i < loadedContacts.length; i++) {
-    let contact = loadedContacts[i];
-    let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
-    let backgroundColor = getRandomColor();
-    overlay.innerHTML += `
-         <div id="contactcard-container" onclick="showContactDetails(${i})">
+      let contact = loadedContacts[i];
+      let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
+      let backgroundColor = contact.color; 
+      overlay.innerHTML += `
+          <div id="contactcard-container" onclick="showContactDetails(${i})">
               <div id="contact-cyrcle-div"> 
                   <div style="background-color: ${backgroundColor};" id="contact-cyrcle">${initials}</div>
               </div>
-                  <div id="contact-details">
-                      <div id="contact-name">${contact.name}</div>
-                      <div id="contact-email">${contact.email}</div>
-                  </div>
-         </div>`;
+              <div id="contact-details">
+                  <div id="contact-name">${contact.name}</div>
+                  <div id="contact-email">${contact.email}</div>
+              </div>
+          </div>`;
   }
 }
-
 function showContactDetails(i) {
   let overlay = document.getElementById('container-right-content');
   let contact = loadedContacts[i];
   let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
-  let backgroundColor = getRandomColor();
+  let backgroundColor = contact.color;
   overlay.innerHTML = `
   <div id="contact-overlay">
     <div id="overlay-top-container">
@@ -81,7 +81,7 @@ function editContact(i) {
   overlay.classList.remove('d-none');
   let contact = loadedContacts[i];
   let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
-  let backgroundColor = getRandomColor();
+  let backgroundColor = contact.color;
   overlay.innerHTML = `
 <div id="edit">
     <div id="editing-div-leftside">
@@ -117,12 +117,11 @@ function editContact(i) {
 
 function closeEdit(){
   let editoverlay = document.getElementById('editing-overlay');
-  let overlay = document.getElementById('contact-overlay');
   editoverlay.classList.add('d-none');
   renderContacts();
 }
 
-function setNewContact(i){
+function setNewContact(i) {
   let overlay = document.getElementById('editing-overlay');
   overlay.classList.remove('d-none');
   overlay.innerHTML = `
@@ -155,16 +154,18 @@ function setNewContact(i){
       </div>
 </div>
   `;
+  
 }
 function saveContactChanges(i) {
   let editedName = document.getElementById('edit-input-name');
   let editedEmail = document.getElementById('edit-input-mail');
   let editedPhone = document.getElementById('edit-input-number');
   let overlay = document.getElementById('contact-overlay');
-
+  let backgroundColor =  getRandomColor();
   loadedContacts[i].name = editedName.value;
   loadedContacts[i].email = editedEmail.value;
   loadedContacts[i].phone = editedPhone.value;
+  loadedContacts[i].color = backgroundColor;
 
   setItem('contacts', JSON.stringify(loadedContacts));
   overlay.innerHTML = '';
