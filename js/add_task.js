@@ -45,6 +45,11 @@ function clearFields() {
     subtasksArray = [];
     checkedContacts = [];
 
+    let checkbox = document.querySelectorAll('.checkbox');
+    checkbox.forEach(function(event) {
+        event.checked = false;
+    })
+
 	title.value = '';
 	description.value = '';
 	dateDue.value = '';
@@ -151,6 +156,15 @@ function removePriority() {
     })
 }
 
+function changeIcons() {
+    let subtaskPlus = document.getElementById('subtasks-plus');
+    let subtaskIcons = document.getElementById('image-click');
+
+    subtaskPlus.classList.add('d-none');
+    subtaskIcons.classList.remove('d-none');
+    subtaskIcons.classList.add('flex');
+}
+
 function addSubtask() {
     let inputSubtask = document.getElementById('subtasks');
     let listItemSubtasks = document.getElementById('list-item-subtasks');
@@ -160,5 +174,10 @@ function addSubtask() {
     subtasksArray.push(`${inputSubtask.value}`);
 
     inputSubtask.value = '';
+}
 
+function clearSubtask() {
+    let inputSubtask = document.getElementById('subtasks');
+
+    inputSubtask.value = '';
 }

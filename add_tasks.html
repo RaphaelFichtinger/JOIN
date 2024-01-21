@@ -56,11 +56,15 @@
 					</div>
 					<div class="task-input task-subtasks">
 						<label for="subtasks">Subtasks</label>
-						<input id="subtasks" type="text" placeholder="Add new Subtask">
+						<input onclick="changeIcons()" id="subtasks" type="text" placeholder="Add new Subtask">
 						<div id="subtasks-list" class="subtasks-list">
 							<ul id="list-item-subtasks" class="list-item-subtasks"></ul>
 						</div>
-						<img onclick="addSubtask()" class="subtasks-plus" src="./img/plus.svg" alt="">
+						<img id="subtasks-plus" class="subtasks-plus" src="./img/plus.svg" alt="">
+						<div id="image-click" class="image-click d-none">
+							<img onclick="clearSubtask()" class="subtasks-clear" src="./img/clear.svg" alt="">
+							<img onclick="addSubtask()" class="subtasks-check" src="./img/check-blue.svg" alt="">
+						</div>
 					</div>
 				</div>
 			</div>
