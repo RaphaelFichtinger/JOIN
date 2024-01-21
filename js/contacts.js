@@ -11,31 +11,39 @@ async function setContacts() {
 }
 
 async function loadContacts(){
-    try {
-    loadedContacts = JSON.parse(await getItem('contacts'));
-    } catch(e){
-    console.error('Loading error:', e);
-    }
+  try {
+      loadedContacts = JSON.parse(await getItem('contacts')) || [];
+  } catch(e){
+      console.error('Loading error:', e);
+  }
+  loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
   renderContacts();
 }
 
 function renderContacts() {
   overlay = document.getElementById('contactlist');
   overlay.innerHTML = '';
+  let currentLetter = null; 
+  
   for (let i = 0; i < loadedContacts.length; i++) {
-      let contact = loadedContacts[i];
-      let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
-      let backgroundColor = contact.color; 
-      overlay.innerHTML += `
-          <div id="contactcard-container" onclick="showContactDetails(${i})">
-              <div id="contact-cyrcle-div"> 
-                  <div style="background-color: ${backgroundColor};" id="contact-cyrcle">${initials}</div>
-              </div>
-              <div id="contact-details">
-                  <div id="contact-name">${contact.name}</div>
-                  <div id="contact-email">${contact.email}</div>
-              </div>
-          </div>`;
+    let contact = loadedContacts[i];
+    let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
+    let backgroundColor = contact.color; 
+
+    if (initials.charAt(0) !== currentLetter) {
+      currentLetter = initials.charAt(0);
+      overlay.innerHTML += `<div id="alphabet-tab">${currentLetter}</div>`;
+    }
+    overlay.innerHTML += `
+      <div id="contactcard-container" onclick="showContactDetails(${i})">
+          <div id="contact-cyrcle-div"> 
+              <div style="background-color: ${backgroundColor};" id="contact-cyrcle">${initials}</div>
+          </div>
+          <div id="contact-details">
+              <div id="contact-name">${contact.name}</div>
+              <div id="contact-email">${contact.email}</div>
+          </div>
+      </div>`;
   }
 }
 function showContactDetails(i) {
@@ -127,6 +135,10 @@ function saveContactChanges(i) {
   loadedContacts[i].color = backgroundColor;
   setItem('contacts', JSON.stringify(loadedContacts));
   overlay.innerHTML = '';
+  loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
+    
+  setItem('loadedContacts', JSON.stringify(loadedContacts));
+  setItem('contacts', JSON.stringify(loadedContacts));
   renderContacts();
   closeEdit();
 }
@@ -179,11 +191,14 @@ function saveNewContact(){
     'phone': document.getElementById('new-contact-input-number').value
   };
   loadedContacts.push(newContact);
+  loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
+    
   setItem('loadedContacts', JSON.stringify(loadedContacts));
   setItem('contacts', JSON.stringify(loadedContacts));
   renderContacts();
   closeEdit();
 }
+
 
 function deleteContact(i) {
   let overlay = document.getElementById('contact-overlay');
