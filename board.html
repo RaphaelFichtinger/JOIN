@@ -7,19 +7,22 @@
     <title>Document</title>
     <link rel="stylesheet" href="/CSS/default.css">
     <link rel="stylesheet" href="/CSS/board.css">
-    <script src="./js/loading.JS"></script>
+    <link rel="stylesheet" href="/CSS/default.css">
+    <script src="/js/loading.JS"></script>
+    <script src="/js/board.js"></script>
+    <script src="/js/add_task.js"></script>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(); loadAddTask(); init()">
     <div w3-include-html="header.html"></div>
     <div w3-include-html="sidebar.html"></div>
-
     <div class="main-board">
+        <div id="add-task-popup"></div>
         <div class="board-top">
             <h1 class="board-title">Board</h1>
             <div class="board-top-right">
                 <input class="input-board-top" placeholder="Find Task" type="text">
-                <button id="add-task-btn">Add task <img src="./img/add.png" alt=""></button>
+                <button id="add-task-btn" onclick="openAddTask()">Add task <img src="./img/add.png" alt=""></button>
             </div>
         </div>
         <div class="board-container">
@@ -37,7 +40,7 @@
                         </div>
                         <div class="subtasks">
                             <div class="progress-container">
-                                <div class="progress-bar" style="width: 50%;"></div>
+                                <div class="progress-bar" style="width: 0%;"></div>
                             </div>
                             <div>
                                 <p>0/2 Subtasks</p>
@@ -62,7 +65,34 @@
                     <p>In progress</p>
                     <img src="/img/plus-button.png">
                 </div>
-                <div id="in-progress" class="drag-area"></div>
+                <div id="in-progress" class="drag-area">
+                    <div class="task-card">
+                        <button class="task-type">User Story</button>
+                        <div class="task-text">
+                            <p id="task-title">Kochwelt Page & Recipe Recommender</p>
+                            <p id="task-details">Build start page with recipe recommendation...</p>
+                        </div>
+                        <div class="subtasks">
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 50%;"></div>
+                            </div>
+                            <div>
+                                <p>0/2 Subtasks</p>
+                            </div>
+
+                        </div>
+                        <div class="task-card-bottom">
+                            <div id="initials">
+                                <p id="initials-circle-1">AS</p>
+                                <p id="initials-circle-2">DE</p>
+                                <p id="initials-circle-3">EF</p>
+                            </div>
+                            <div>
+                                <img id="priority-image-small" src="/img/prio-baia.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="board-column">
                 <div class="board-column-title">
