@@ -160,21 +160,9 @@ label + .buttons {
 .task-subtasks {
 	position: relative;
 }
-.task-assigned-to::after,
-.task-category::after {
-	display: flex;
-	content: '';
-	background-image: url(../img/arrow_dropdown.svg);
-	width: 24px;
-	height: 24px;
-	position: absolute;
-	right: 12px;
-    top: 56%;
-}
+.dropdown,
 .subtasks-plus {
 	display: flex;
-	content: '';
-	background-image: url(../img/plus.svg);
 	width: 24px;
 	height: 24px;
 	position: absolute;
