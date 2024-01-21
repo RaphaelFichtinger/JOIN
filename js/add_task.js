@@ -12,8 +12,8 @@ let categoryValue = document.getElementById('category');
 async function init() {
     tasks = JSON.parse(await getItem('tasks'));
     await loadContacts();
-	getContacts();
     getCategories();
+	getContacts();
 }
 
 async function createNewTask() {
