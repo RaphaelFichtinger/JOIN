@@ -145,8 +145,8 @@ function setNewContact(i) {
     <div id="editing-div-leftside">
           <div id="edit-overlay-logo">
           </div>
-            <div id="edit-overlay-heading">Add Contact
-              <img id="vector5" src="../img/vector5vertical.png">
+            <div id="new-contact-overlay-heading"><h1>Add contact<h1>  <p id="new-contact-text">Tasks are better with a team!</p>
+              <img id="vector5-for-new" src="../img/vector5vertical.png">
             </div>
     </div>                
     <div id="editing-div-rightside">

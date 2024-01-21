@@ -65,9 +65,40 @@ body {
     margin-right: 46px;
 }
 
+#new-contact-overlay-heading{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+} 
+
+#new-contact-overlay-heading h1{
+    clear: both;
+    display:flex;
+    flex-direction: column;
+    align-items:  center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#new-contact-text{
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+
 #vector5{
     position: relative;
     right: 130px;
+}
+
+#vector5-for-new{
+    position: relative;
+    margin-top: 8px;
+    right: 140px;
+    width: 20%;
 }
 
 #close-edit{
@@ -308,7 +339,7 @@ body {
 }
 
 #edit-div{
-    background-image: url(/img/edit.svg);
+    background-image: url(/img/edit.png);
     background-position: left;
     background-repeat: no-repeat;
     background-size: contain;
