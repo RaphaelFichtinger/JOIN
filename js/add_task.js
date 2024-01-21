@@ -10,6 +10,7 @@ let dateDue = document.getElementById('due-date');
 let categoryValue = document.getElementById('category');
 
 async function init() {
+    tasks = JSON.parse(await getItem('tasks'));
     await loadContacts();
 	getContacts();
     getCategories();
