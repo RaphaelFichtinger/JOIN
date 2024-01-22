@@ -76,7 +76,7 @@ function showContactDetails(i) {
 }
 
 function showContactDetailsMobile(i) {
-  let overlay = document.getElementById('container-right-content');
+  let overlay = document.getElementById('container-right-mobile');
   let overlayMobile = document.getElementById('container-right-mobile');
   overlayMobile.classList.remove('d-none');
   let contact = loadedContacts[i];
@@ -85,10 +85,12 @@ function showContactDetailsMobile(i) {
   overlay.innerHTML = `
   <div id="contact-overlay">
     <div id="overlay-top-container">
+  
         <div id="contact-cyrcle-div-overlay">
             <div id="contact-cyrcle-overlay" style="background-color: ${backgroundColor};">${initials}
             </div> 
       </div>
+
       <div id="contact-mid-overlay">
           <div id="contact-name-overlay"> ${contact.name}</div>
                   <div id="edit-delete-div">
@@ -96,6 +98,7 @@ function showContactDetailsMobile(i) {
                       <div onclick="deleteContact(${i})" id="delete-div">Delete</div>
                   </div>
           </div>
+          <button id="close-mobile-details-btn" onclick="closeMobileDetails()">close</button>
       </div>
       <div id="heading-contact-information">Contact Information</div>
       <div id="overlay-bottom-container">
@@ -104,6 +107,11 @@ function showContactDetailsMobile(i) {
         </div>
     </div>
 `;
+}
+
+function closeMobileDetails(){
+  let mobileDetails = document.getElementById('container-right-mobile');
+  mobileDetails.classList.add('d-none');
 }
 
 
