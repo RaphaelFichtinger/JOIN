@@ -256,16 +256,14 @@ align-items: center;
 
 #maincontainer{
     margin-top: 96px;
-    margin-left: 232px;
     display: flex;
-    justify-content: center;
     flex-direction: row;
     position: relative;
-    left: 388px;
+    left: 232px;
     scroll-behavior: none;
 }
 
-#conatiner-left{
+#container-left{
     height: 85vh;
     width: 456px;
 }
@@ -509,7 +507,6 @@ align-items: center;
 #contactlist{
     align-items: start;
     overflow-y:scroll;  
-    position:fixed;
     height: 78%;
     width: 408px;
     padding-left:24px;
@@ -624,44 +621,63 @@ align-items: center;
     display: none;
 }
 
-#mobile-overlay{
-    width: vw;
-    background-color: white;
+#list-mobile{
+    width: 100vw;
+    height: 92vh;
+    position: absolute;
 }
 
-@media (max-width: 1400px) {
-    #maicontainer{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+#details-mobile{
+    height: 400px;
+    width: 400px;
+    position: absolute;
+    background-color: green;
+    z-index: 1;
+}
 
-    #top-content-container-right{
-        width: 100%;
-    }
+#details-mobile-btn{
+height: 20px;
+width: 20px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
 
-    #heading-contact-information{}
 
+}
+
+@media (max-width: 1400px){
     #container-right{
-        background-color: white;
-        margin-left: 0px;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        position: fixed;
-        top: 200px;
-        left: 300px;
+        margin-left: 18px;
     }
-    
-
-    #contactlist, #contact-btn {
-        display: none;
+    #contactlist{
+        max-width: 300px;
+        padding: 0px;
+        overflow-y: none;
     }
-
-    #sidebar{
-        display: none;
+    #contact-btn-div{
+        max-width: 300px;
     }
-
-    
+    #alphabet-tab{
+        max-width: 200px;
+    }
+    #contactcard-container{
+        max-width: 200px;
+        margin-left: 20px;
+        overflow: hidden;
+    }
+}
+@media (max-width: 1300px){
+    #text-div-static{
+        width: 200px;
+    }
+    }
+@media (max-width: 1225px){
+    #text-div-static{
+        width: 100px;
+    }
+}
+@media (max-width: 1145px){
+    #text-div-static{
+        width: 100px;
+    }
 }
