@@ -29,8 +29,23 @@ async function createNewTask() {
     })
 
     await setItem('tasks', JSON.stringify(tasks));
-
     clearFields();
+    successLightbox();
+}
+
+function successLightbox() {
+    let successLightbox = document.getElementById('success-lightbox');
+	let successButton = document.getElementById('success');
+	successLightbox.style.display = 'flex';
+	setTimeout(() => {
+		successButton.style.transition = 'transform 1s ease-in-out';
+		successButton.style.transform = 'translateY(30%)';
+
+		setTimeout(() => {
+			successLightbox.style.display = 'none';
+            successButton.style.transform = 'translateY(100%)';
+        }, 2000);
+	}, 150)
 }
 
 function clearFields() {
@@ -161,6 +176,22 @@ function changeIcons() {
     let subtaskPlus = document.getElementById('subtasks-plus');
     let subtaskIcons = document.getElementById('image-click');
 
+    // if(subtaskPlus.classList.contains('d-none')) {
+    //     subtaskPlus.classList.add('flex');
+    //     subtaskPlus.classList.remove('d-none');
+    // } else {
+    //     subtaskPlus.classList.add('d-none');
+    //     subtaskPlus.classList.remove('flex');
+    // }
+
+    // if(subtaskIcons.classList.contains('d-none')) {
+    //     subtaskIcons.classList.add('flex');
+    //     subtaskIcons.classList.remove('d-none');
+    // } else {
+    //     subtaskIcons.classList.add('d-none');
+    //     subtaskIcons.classList.remove('flex');
+    // }
+
     subtaskPlus.classList.add('d-none');
     subtaskIcons.classList.remove('d-none');
     subtaskIcons.classList.add('flex');
@@ -170,12 +201,28 @@ function addSubtask() {
     let inputSubtask = document.getElementById('subtasks');
     let listItemSubtasks = document.getElementById('list-item-subtasks');
 
-    listItemSubtasks.innerHTML += `<li>${inputSubtask.value}</li>`;
+    listItemSubtasks.innerHTML += `<li>
+        <div id="editableText" class="li-element flex space-between align-center">
+            <p>${inputSubtask.value}</p>
+            <div class="edit-delete-icons flex">
+                <img onclick="editSubtask()" class="subtasks-edit" src="./img/edit-subtask.svg" alt="Edit">
+                <img onclick="clearSubtask()" class="subtasks-delete" src="./img/delete-subtask.svg" alt="Delete">
+            </div>
+        </div>
+    </li>`;
 
     subtasksArray.push(`${inputSubtask.value}`);
 
     inputSubtask.value = '';
+
+    changeIcons();
 }
+
+function editSubtask() {
+    var textElement = document.getElementById('editableText');
+    textElement.contentEditable = true;
+    textElement.focus(); // Den Fokus auf das bearbeitbare Element setzen
+  }
 
 function clearSubtask() {
     let inputSubtask = document.getElementById('subtasks');

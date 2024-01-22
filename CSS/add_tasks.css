@@ -25,6 +25,7 @@ select {
 .leftside,
 .rightside {
 	width: 38.994%;
+	max-width: 600px;
 	gap: 32px;
 }
 .leftside {
@@ -129,6 +130,7 @@ label + .buttons {
 }
 .list-item-subtasks {
 	background-color: transparent;
+	width: 93%;
 }
 #added-contacts {
 	margin-top: 8px;
@@ -227,4 +229,46 @@ label + .buttons {
 	width: 24px;
 	height: 24px;
 	margin-left: 4px;
+}
+
+.success-lightbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+	z-index: -1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: none;
+    transition: all 0.5s ease-in-out;
+}
+.success {
+    height: 100%;
+    transform: translateY(100%);
+    transition: all 0.5s ease-in-out;
+}
+.success button {
+    display: flex;
+    padding: 15px 24px;
+    border-radius: 8px;
+    background-color: #2A3647;
+    color: white;
+    height: 48px;
+    line-height: 10px;
+    font-size: 21px;
+}
+
+@media screen and (max-width: 1000px) {
+	.form-container {
+		flex-direction: column;
+	}
+	.leftside, .rightside {
+		width: 100%;
+	}
+	.leftside {
+		border: none;
+	}
+	.rightside {
+		margin-top: 32px;
+	}
 }

@@ -15,7 +15,7 @@
 	<div id="add-task" class="add_task flex-column">
 		<h1>Add Task</h1>
 		<form onsubmit="createNewTask(); return false">
-			<div class="flex">
+			<div class="form-container flex">
 				<div class="leftside flex-column">
 					<div class="task-input task-title">
 						<label for="title">Title*</label>
@@ -75,6 +75,12 @@
 				<button class="button2">Create task</button>
 			</div>
 		</form>
+		<div id="success-lightbox" class="success-lightbox flex align-center justify-center">
+            <div id="success" class="success flex">
+                <button>Task added to board</button>
+				<img src="./img/board.svg" height="24" width="24" alt="board">
+            </div>
+        </div>
 	</div>
 	<script src="./js/loading.JS"></script>
 	<script src="./js/add_task.js"></script>
