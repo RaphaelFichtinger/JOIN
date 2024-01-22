@@ -35,7 +35,7 @@ function renderContacts() {
       overlay.innerHTML += `<div id="alphabet-tab">${currentLetter}</div>`;
     }
     overlay.innerHTML += `
-      <div id="contactcard-container" onclick="showContactDetails(${i})">
+      <div id="contactcard-container" onclick="showContactDetails(${i}), showContactDetailsMobile(${i})">
           <div id="contact-cyrcle-div"> 
               <div style="background-color: ${backgroundColor};" id="contact-cyrcle">${initials}</div>
           </div>
@@ -74,6 +74,38 @@ function showContactDetails(i) {
     </div>
 `;
 }
+
+function showContactDetailsMobile(i) {
+  let overlay = document.getElementById('container-right-content');
+  let overlayMobile = document.getElementById('container-right-mobile');
+  overlayMobile.classList.remove('d-none');
+  let contact = loadedContacts[i];
+  let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
+  let backgroundColor = contact.color;
+  overlay.innerHTML = `
+  <div id="contact-overlay">
+    <div id="overlay-top-container">
+        <div id="contact-cyrcle-div-overlay">
+            <div id="contact-cyrcle-overlay" style="background-color: ${backgroundColor};">${initials}
+            </div> 
+      </div>
+      <div id="contact-mid-overlay">
+          <div id="contact-name-overlay"> ${contact.name}</div>
+                  <div id="edit-delete-div">
+                      <div onclick="editContact(${i})" id="edit-div">Edit</div>
+                      <div onclick="deleteContact(${i})" id="delete-div">Delete</div>
+                  </div>
+          </div>
+      </div>
+      <div id="heading-contact-information">Contact Information</div>
+      <div id="overlay-bottom-container">
+              <div id="contact-email-overlay"><div><b>Email</b></div><div id="email-div">${contact.email}</div></div>
+              <div id="contact-telefon-overlay"><div><b>Phone</b></div><div id="telefon-div">${contact.phone}</div></div>
+        </div>
+    </div>
+`;
+}
+
 
 function getRandomColor() {
   const letters = '0123456789ABCDEF';

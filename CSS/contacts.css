@@ -641,8 +641,11 @@ width: 20px;
     position: absolute;
     top: 0px;
     right: 0px;
+}
 
-
+#container-right-mobile{
+    height: 0px;
+    width: 0px;
 }
 
 @media (max-width: 1400px){
@@ -680,4 +683,14 @@ width: 20px;
     #text-div-static{
         width: 100px;
     }
+    #container-right-mobile{
+        height: 900px;
+        width: 800px;
+        background-color: green;
+        position: absolute;
+        top: 200px;
+        left: 200px;
+        z-index: 1;
+    }
+    
 }
