@@ -1,7 +1,10 @@
 function loadAddTask() {
 let popup = document.getElementById('add-task-popup');
 popup.innerHTML += `<div id="add-task" class="add_task flex-column">
+<div id="popup-top" class="popup-top">
 <h1>Add Task</h1>
+<a href="#" onclick="closeAddTaskPopup()">X</a>
+</div>
 <form onsubmit="createNewTask(); return false">
     <div class="flex">
         <div class="leftside flex-column">
@@ -57,9 +60,22 @@ popup.innerHTML += `<div id="add-task" class="add_task flex-column">
         </div>
     </div>
     <div class="buttons-bottom">
+    <div><p>*This field is required</div>
+    <div class="buttons-container-end">
         <button class="button1" onclick="clearFields()" formnovalidate>Clear</button>
         <button class="button2">Create task</button>
+        </div>
     </div>
 </form>
 </div>`;
+}
+
+function openAddTaskPopup() {
+    let popup = document.getElementById('add-task-popup');
+    popup.style.display = 'block'
+}
+
+function closeAddTaskPopup() {
+    let popup = document.getElementById('add-task-popup');
+    popup.style.display = 'none'
 }
