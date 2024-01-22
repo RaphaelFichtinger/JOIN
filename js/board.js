@@ -1,6 +1,10 @@
+
+
+
+
 function loadAddTask() {
-let popup = document.getElementById('add-task-popup');
-popup.innerHTML += `<div id="add-task" class="add_task flex-column">
+    let popup = document.getElementById('add-task-popup');
+    popup.innerHTML += `<div id="add-task" class="add_task flex-column">
 <div id="popup-top" class="popup-top">
 <h1>Add Task</h1>
 <a href="#" onclick="closeAddTaskPopup()">X</a>
@@ -78,4 +82,28 @@ function openAddTaskPopup() {
 function closeAddTaskPopup() {
     let popup = document.getElementById('add-task-popup');
     popup.style.display = 'none'
+}
+
+function createTaskCard() {
+
+    let taskCard = document.getElementById('task-card');
+    for (let i = 0; i < tasks.length; i++) {
+        let title = tasks[i]['title'];
+        let category = tasks[i]['category'];
+        let fullName = tasks[i]['assign-to'];
+
+        // Überprüfen, ob 'assign-to' einen Wert hat und ob es ein String oder ein Array mit genau einem Element ist
+        if (fullName && (typeof fullName === 'string' || (Array.isArray(fullName) && fullName.length === 1))) {
+            let [fName, lName] = Array.isArray(fullName) ? fullName[0].split(' ') : fullName.split(' ');
+            let fNameInitial = fName ? fName.charAt(0) : '';
+            let lNameInitial = lName ? lName.charAt(0) : '';
+
+            console.log('Title:', title);
+            console.log('Category:', category);
+            console.log('First Name Initial:', fNameInitial);
+            console.log('Last Name Initial:', lNameInitial);
+        } else {
+            console.error('Ungültiger Wert für assign-to:', fullName);
+        }
+    }
 }
