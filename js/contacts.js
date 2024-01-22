@@ -82,10 +82,11 @@ function showContactDetailsMobile(i) {
   let contact = loadedContacts[i];
   let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
   let backgroundColor = contact.color;
-  overlay.innerHTML = `
+  overlayMobile.innerHTML = `
   <div id="contact-overlay">
     <div id="overlay-top-container">
-  
+    <div id="heading-div-static">Contacts</div>
+    <div id="text-div-static">Better with a team</div>
         <div id="contact-cyrcle-div-overlay">
             <div id="contact-cyrcle-overlay" style="background-color: ${backgroundColor};">${initials}
             </div> 
@@ -94,8 +95,8 @@ function showContactDetailsMobile(i) {
       <div id="contact-mid-overlay">
           <div id="contact-name-overlay"> ${contact.name}</div>
                   <div id="edit-delete-div">
-                      <div onclick="editContact(${i})" id="edit-div">Edit</div>
-                      <div onclick="deleteContact(${i})" id="delete-div">Delete</div>
+                      <div onclick="editMobileContact(${i})" id="edit-div">Edit</div>
+                      <div onclick="deleteMobileContact(${i})" id="delete-div">Delete</div>
                   </div>
           </div>
           <button id="close-mobile-details-btn" onclick="closeMobileDetails()">close</button>
@@ -162,6 +163,46 @@ function editContact(i) {
 </div>
   `;
 }
+
+function editMobileContact(i) {
+  let overlay = document.getElementById('editing-overlay-mobile');
+  overlay.classList.remove('d-none');
+  let contact = loadedContacts[i];
+  let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
+  let backgroundColor = contact.color;
+  overlay.innerHTML = `
+<div id="edit-mobile">
+    <div id="editing-div-leftside-mobile">
+          <div id="edit-overlay-logo-mobile">
+          </div>
+            <div id="edit-overlay-heading">Edit Contact
+              <img id="vector5" src="../img/vector5vertical.png">
+            </div>
+    </div>                
+    <div id="editing-div-rightside">
+          <div id="close-edit" onclick="closeEdit()">
+          </div>
+            <div id="cyrcle-and-inputs-div">
+            <div id="edit-cyrcle-overlay" style="background-color: ${backgroundColor};">${initials}
+          
+              </div>
+              <div id="edit-content-rightside">
+                <div id="edit-inputs">
+                <input id="edit-input-name" type="text" value="${contact.name}">
+                <input id="edit-input-mail"  type="email" value="${contact.email}">
+                <input id="edit-input-number"  type="text" value="${contact.phone}">
+                </div>
+                <div id="save-delete-div">
+                  <button onclick="deleteContact(${i})"id="delete-btn-edit">Delete</button>
+                  <div id="save-btn-div" onclick="saveContactChanges(${i})"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
+              </div>
+              </div>
+            </div>
+      </div>
+</div>
+  `;
+}
+
 
 function saveContactChanges(i) {
   let editedName = document.getElementById('edit-input-name');

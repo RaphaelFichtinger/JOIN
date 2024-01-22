@@ -13,6 +13,17 @@ body {
     right: 150px;
     top: 300px;
 }
+
+#editing-overlay-mobile{
+    background-color: #1d2b3f;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 98vh;
+    width: 100vw;
+    overflow: hidden;
+    z-index: 3;
+}
 /* here begins the edit contact overlay*/ 
 #edit{
     background-color: #aab6c7;
@@ -23,6 +34,7 @@ body {
     border-radius: 20px;
     display: flex;
     flex-direction: row;
+    z-index: 5;
 }
 
 #editing-div-leftside{
@@ -32,6 +44,14 @@ body {
     background-color: #33435a;
     z-index: 1;
     width: 453px;
+}
+
+#editing-div-leftside-mobile{
+    z-index: 1;
+    height: 592px;
+    border-radius: 20px 0px 0px 20px;
+    background-color: #33435a;
+    z-index: 1;
 }
 
 #editing-div-rightside{
@@ -644,12 +664,25 @@ width: 20px;
 }
 
 #container-right-mobile{
-    height: 0px;
-    width: 0px;
+    height: 1px;
+    width: 1px;
+    z-index: -4;
+
 }
 
 
 @media (max-width: 1400px){
+    #edit-mobile{
+        background-color: #aab6c7;
+        max-width: 612px;
+        height: 592px;
+        position: absolute;
+        z-index: 1;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        z-index: 5;
+    }
     #container-right{
         margin-left: 18px;
     }
@@ -704,5 +737,5 @@ width: 20px;
     #container-right{
         display:none;
     }
-    
+
 }
