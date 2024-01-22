@@ -625,8 +625,7 @@ align-items: center;
 }
 
 #mobile-overlay{
-    height: 100vh;
-    width: 100vw;
+    width: vw;
     background-color: white;
 }
 
@@ -638,17 +637,31 @@ align-items: center;
         justify-content: center;
     }
 
-    #container-right{
-        height: 100vh;
-        width: 1400px;
-        background-color: white;
-        left: 0px;
+    #top-content-container-right{
+        width: 100%;
     }
+
+    #heading-contact-information{}
+
+    #container-right{
+        background-color: white;
+        margin-left: 0px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        position: fixed;
+        top: 200px;
+        left: 300px;
+    }
+    
 
     #contactlist, #contact-btn {
         display: none;
     }
-    
+
+    #sidebar{
+        display: none;
+    }
 
     
 }
