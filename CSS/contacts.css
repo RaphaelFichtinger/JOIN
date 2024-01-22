@@ -257,14 +257,16 @@ align-items: center;
 #maincontainer{
     margin-top: 96px;
     margin-left: 232px;
-    position: fixed;
     display: flex;
     justify-content: center;
     flex-direction: row;
+    position: relative;
+    left: 388px;
+    scroll-behavior: none;
 }
 
 #conatiner-left{
-    height: 100vh;
+    height: 85vh;
     width: 456px;
 }
 
@@ -622,6 +624,31 @@ align-items: center;
     display: none;
 }
 
+#mobile-overlay{
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+}
 
+@media (max-width: 1400px) {
+    #maicontainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
+    #container-right{
+        height: 100vh;
+        width: 1400px;
+        background-color: white;
+        left: 0px;
+    }
 
+    #contactlist, #contact-btn {
+        display: none;
+    }
+    
+
+    
+}
