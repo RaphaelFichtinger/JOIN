@@ -551,14 +551,14 @@ label+.buttons {
 }
 
 .task-big-view-overlay {
-
     width: calc(100% - 232px);
     height: calc(100% - 96px);
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-
+    display: none;
+    background-color: black;
 }
 
 .task-type-overview {
@@ -569,11 +569,13 @@ label+.buttons {
 
 #task-big-view-card {
     z-index: 999;
-    background-color: yellow;
+    background-color: white;
     width: 485px;
     max-height: 881px;
     padding: 48px 40px 48px 40px;
     border-radius: 30px;
+    box-shadow: 0px 0px 4px 0px #00000029;
+    ;
 }
 
 #overview-title {
@@ -669,6 +671,67 @@ label+.buttons {
 .border-right {
     border-right: 3px solid #D1D1D1;
 }
+
+.type-close {
+    display: flex;
+    justify-content: space-between;
+}
+
+.type-close img {
+ object-fit: contain;
+}
+
+#task-big-view-edit-card {
+    z-index: 999;
+    background-color: white;
+    width: 485px;
+    max-height: 881px;
+    padding: 48px 40px 48px 40px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 4px 0px #00000029;
+    
+}
+
+#overview-edit-top {
+    width: 100%;
+}
+
+#overview-edit-title {
+    font-size: 20px;
+}
+
+#overview-edit-title-input {
+    margin-top: 8px;
+    width: 90%;
+}
+
+.overview-edit-description {
+    width: 100%;
+    margin-top: 24px;
+}
+
+.overview-edit-description textarea {
+    width: 90%;
+    margin-top: 8px;
+}
+
+.overview-edit-description p {
+    font-size: 20px;
+}
+
+.due-date-overview-edit input {
+    width: 90%;
+    margin-top: 8px;
+}
+
+.task-prio-overview-edit {
+    margin-top: 8px;
+    gap: 12px;
+}
+
+
+
+
 
 
 

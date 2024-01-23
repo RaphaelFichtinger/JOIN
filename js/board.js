@@ -107,3 +107,18 @@ function createTaskCard() {
         }
     }
 }
+
+function openTaskOverview() {
+    let overview = document.getElementById('overview-container');
+    overview.style.display = 'flex';
+}
+
+function closeTaskOverview() {
+    let overview = document.getElementById('overview-container');
+    overview.style.display = 'none';
+}
+
+function editTaskOverview() {
+    let overviewCard = document.getElementById('task-big-view-card');
+    overviewCard.style.display = 'none';
+}

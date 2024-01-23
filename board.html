@@ -18,9 +18,53 @@
     <div w3-include-html="sidebar.html"></div>
     <div class="main-board">
         <div id="add-task-popup" class="add-task-popup"></div>
-        <div class="task-big-view-overlay">
-            <div id="task-big-view-card">
-                <button class="task-type task-type-overview">User Story</button>
+        <div id="overview-container" class="task-big-view-overlay">
+            <form onsubmit="#">
+            <div id="task-big-view-edit-card">
+                
+                    <div id="overview-edit-top">
+                        <p id="overview-edit-title">Title</p>
+                        <input id="overview-edit-title-input" required placeholder="Enter a title" type="text" value="Kochwelt Page & Recipe Recommender">
+                    </div>
+                    <div class="overview-edit-description">
+                        <p>Description</p>
+                        <textarea name="description" id="description-overview-edit" cols="30" rows="5"></textarea>
+                    </div>
+                    <div class="due-date-overview-edit overview-edit-description">
+                        <p>Due date</p>
+                        <input required type="date">
+                    </div>
+                    <div class="overview-edit-description">
+                        <p class="priority-overview-edit">Priority</p>
+                        <div class="priority-edit-buttons">
+                            <div class="task-input task-prio-overview-edit">
+                                
+                                <div class="buttons flex task-prio-overview-edit">
+                                    <div id="priority-alta" class="priority-alta priority-button" onclick="selectPriority('alta')">Urgent</div>
+                                    <div id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</div>
+                                    <div id="priority-baia" class="priority-baia priority-button" onclick="selectPriority('baia')">Low</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="assigned-to-overview-edit">
+                        <div id="task-assigned-to" class="task-input task-assigned-to">
+                            <label for="assign-to">Assign to</label>
+                            <input onclick="openOverlay('contacts-list')" id="assign-to" type="text" placeholder="Select contacts to assign">
+                            <div id="contacts-list" class="contacts-list d-none">
+                                <div id="list-item" class="list-item"></div>
+                            </div>
+                            <div id="added-contacts" class="flex"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="task-big-view-card" class="d-none">
+                <div class="type-close">
+                    <button class="task-type task-type-overview">User Story</button>
+                    <img onclick="closeTaskOverview()" src="./img/close.png">
+                </div>
                 <div id="overview-card-top">
                     <p id="overview-title">Kochwelt Page & Recipe Recommender</p>
                     <p id="overview-details">Build start page with recipe recommendation.</p>
@@ -49,18 +93,19 @@
                     <p>Subtasks</p>
                     <div id="subtasks-checklist">
                         <div class="subtask">
-                                <input id="subtask-checkbox" type="checkbox">
-                                <p id="subtask-text">Implement Recipe Recommendation</p>
+                            <input id="subtask-checkbox" type="checkbox">
+                            <p id="subtask-text">Implement Recipe Recommendation</p>
                         </div>
                         <div class="subtask">
                             <input id="subtask-checkbox" type="checkbox">
                             <p id="subtask-text">Start Page Layout</p>
-                    </div>
+                        </div>
                     </div>
                 </div>
                 <div class="overview-bottom-buttons">
                     <button class="delete-overview border-right"><img src="./img/delete-subtask.svg"> Delete</button>
-                    <button class="delete-overview"><img src="./img/delete-subtask.svg">Edit</button>
+                    <button class="delete-overview" onclick="editTaskOverview()"><img
+                            src="./img/edit-subtask.svg">Edit</button>
 
                 </div>
 
@@ -80,7 +125,7 @@
                     <img src="/img/plus-button.png">
                 </div>
                 <div id="to-do" class="drag-area">
-                    <div id="task-card" class="task-card">
+                    <div id="task-card" class="task-card" onclick="openTaskOverview()">
                         <button class="task-type">User Story</button>
                         <div class="task-text">
                             <p id="task-title">Contact Form & Imprint</p>
