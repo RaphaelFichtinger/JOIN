@@ -8,6 +8,8 @@ let title = document.getElementById('title');
 let description = document.getElementById('description');
 let dateDue = document.getElementById('due-date');
 let categoryValue = document.getElementById('category');
+let assignTo = document.getElementById('assign-to');
+let contactsList = document.getElementById('contacts-list');
 
 async function init() {
     tasks = JSON.parse(await getItem('tasks'));
@@ -77,27 +79,31 @@ function clearFields() {
 function openOverlay(listId) {
     let overlayList = document.getElementById(`${listId}`);
 
-    if(overlayList.classList.contains('block')) {
-        overlayList.classList.remove('block');
-        overlayList.classList.add('d-none');
-    } else {
-        overlayList.classList.remove('d-none');
-        overlayList.classList.add('block');
-    }
+    overlayList.classList.toggle('active');
+
+    // if(overlayList.classList.contains('block')) {
+    //     overlayList.classList.remove('block');
+    //     overlayList.classList.add('d-none');
+    // } else {
+    //     overlayList.classList.remove('d-none');
+    //     overlayList.classList.add('block');
+    // }
 }
+
+assignTo.addEventListener('blur', (event) => {
+    contactsList.classList.remove('active');
+})
 
 function getContacts() {
     for (let i = 0; i < loadedContacts.length; i++) {
         let contactName = loadedContacts[i]['name'];
         let splittedLetters = contactName.split(" ");
-        let firstLetter = splittedLetters[0].charAt(0);
-        let secondLetter = splittedLetters[1].charAt(0);
 
         document.getElementById('list-item').innerHTML += `
             <div class="item flex align-center">
-                <div class="circle">${firstLetter}${secondLetter}</div>
+                <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
                 <div class="name" data-value="${contactName.toLowerCase()}">${contactName}</div>
-                <input id="checkbox_${i}" type="checkbox" class="checkbox" onclick="contactChecked(event, ${i}, '${firstLetter}', '${secondLetter}')">
+                <input id="checkbox_${i}" type="checkbox" class="checkbox" onclick="contactChecked(event, ${i})">
             </div>
         `;
     }
@@ -128,10 +134,8 @@ function contactChecked(event, index) {
         for (let j = 0; j < checkedContacts.length; j++) {
             let checkedContact = checkedContacts[j];
             let splittedLetters = checkedContact.split(" ");
-            let firstLetter = splittedLetters[0].charAt(0);
-            let secondLetter = splittedLetters[1].charAt(0);
             document.getElementById('added-contacts').innerHTML += `
-                <div class="circle">${firstLetter}${secondLetter}</div>
+                <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
             `;
         }
     }
@@ -153,8 +157,7 @@ function addCategory(i) {
     document.getElementById('category').value = `${category}`;
 
     let overlayList = document.getElementById('categories-list');
-    overlayList.classList.remove('block');
-    overlayList.classList.add('d-none');
+    overlayList.classList.remove('active');
 }
 
 function selectPriority(priority) {
@@ -178,22 +181,6 @@ function changeIcons() {
     let subtaskPlus = document.getElementById('subtasks-plus');
     let subtaskIcons = document.getElementById('image-click');
 
-    // if(subtaskPlus.classList.contains('d-none')) {
-    //     subtaskPlus.classList.add('flex');
-    //     subtaskPlus.classList.remove('d-none');
-    // } else {
-    //     subtaskPlus.classList.add('d-none');
-    //     subtaskPlus.classList.remove('flex');
-    // }
-
-    // if(subtaskIcons.classList.contains('d-none')) {
-    //     subtaskIcons.classList.add('flex');
-    //     subtaskIcons.classList.remove('d-none');
-    // } else {
-    //     subtaskIcons.classList.add('d-none');
-    //     subtaskIcons.classList.remove('flex');
-    // }
-
     subtaskPlus.classList.add('d-none');
     subtaskIcons.classList.remove('d-none');
     subtaskIcons.classList.add('flex');
@@ -203,12 +190,12 @@ function addSubtask() {
     let inputSubtask = document.getElementById('subtasks');
     let listItemSubtasks = document.getElementById('list-item-subtasks');
 
-    listItemSubtasks.innerHTML += `<li>
+    listItemSubtasks.innerHTML += `<li class="subtaskItem">
         <div id="editableText" class="li-element flex space-between align-center">
             <p>${inputSubtask.value}</p>
             <div class="edit-delete-icons flex">
                 <img onclick="editSubtask()" id="subtasks-edit" class="subtasks-edit" src="./img/edit-subtask.svg" alt="Edit">
-                <img onclick="clearSubtask()" id="subtasks-delete" class="subtasks-delete" src="./img/delete-subtask.svg" alt="Delete">
+                <img onclick="clearSubtask(event)" id="subtasks-delete" class="subtasks-delete" src="./img/delete-subtask.svg" alt="Delete">
             </div>
         </div>
     </li>`;
@@ -218,6 +205,11 @@ function addSubtask() {
     inputSubtask.value = '';
 
     changeIcons();
+}
+
+function clearSubtaskInput() {
+    let inputSubtask = document.getElementById('subtasks');
+    inputSubtask.value = '';
 }
 
 function editSubtask() {
@@ -231,8 +223,12 @@ function editSubtask() {
     deleteSubtasks.src = './img/check-blue.svg';
 }
 
-function clearSubtask() {
-    let inputSubtask = document.getElementById('subtasks');
+function clearSubtask(event) {
+    let deleteSubtask = event.target.closest('.subtaskItem');
+    deleteSubtask.remove();
 
-    inputSubtask.value = '';
+    let index = subtasksArray.indexOf(deleteSubtask.innerText.trim());
+    if(index !== -1) {
+        subtasksArray.splice(index, 1);
+    }
 }
