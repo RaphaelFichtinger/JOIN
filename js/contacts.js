@@ -127,7 +127,7 @@ function showContactDetailsMobile(i) {
                       <div onclick="deleteMobileContact(${i})" id="delete-div-mobile"">Delete</div>
                   </div>
           </div>
-          <button id="close-mobile-details-btn-mobile"" onclick="closeMobileDetails()">close</button>
+          <button id="close-mobile-details-btn-mobile"" onclick="closeMobileDetails()"></button>
       </div>
       <div id="heading-contact-information-mobile"">Contact Information</div>
       <div id="overlay-bottom-container-mobile"">

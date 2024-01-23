@@ -328,6 +328,24 @@ align-items: center;
     gap: 32px;
 }
 
+#overlay-top-container-mobile{
+    height: 200px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 32px;
+}
+
+#overlay-top-container-mobile button{
+    position: absolute;
+    right: 49px;
+    height: 30px;
+    width: 30px;
+    background-image: url(/img/arrow-left-line.png);
+    border: none;
+}
+
 #contact-cyrcle-overlay{
     display: flex;
     justify-content: center;
@@ -577,6 +595,10 @@ align-items: center;
     width: 60vw;
 }
 
+#contact-overlay-mobile{
+    width: 100vw;
+}
+
 #contact-overlay{
     width: 100vw;
 }
@@ -750,12 +772,10 @@ width: 20px;
         width: 100px;
     }
     #container-right-mobile{
-        height: 900px;
-        width: 800px;
+        height: 93vh;
+        width: 100vw;
         background-color: rgb(187, 187, 187);
         position: absolute;
-        top: 200px;
-        left: 232px;
         z-index: 1;
     }
     #close-mobile-btn-div{
@@ -773,7 +793,6 @@ width: 20px;
         display: none;
     }
     #contactlist-mobile{
-
         align-items: center;
         overflow-y:scroll;  
         height: 85vh;
@@ -785,16 +804,7 @@ width: 20px;
         align-items: center;
         flex-direction: column;
     }
-    #container-right-mobile{
-        height: 900px;
-        width: 800px;
-        z-index: 3;
-        flex-direction: column;
-        background-color: rgb(116, 116, 116);
-        position: absolute;
-        top: 100px;
-        left: 50px;
-    }
+
     #close-mobile-details-btn{
         height: 20px;
         width:20px;
