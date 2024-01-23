@@ -60,10 +60,10 @@ function renderContactsMobile() {
 
     if (initials.charAt(0) !== currentLetter) {
       currentLetter = initials.charAt(0);
-      overlay.innerHTML += `<div id="alphabet-tab">${currentLetter}</div>`;
+      overlay.innerHTML += `<div id="alphabet-tab-mobile">${currentLetter}</div>`;
     }
     overlay.innerHTML += `
-      <div id="contactcard-container" onclick="showContactDetailsMobile(${i})">
+      <div id="contactcard-container-mobile" onclick="showContactDetailsMobile(${i})">
           <div id="contact-cyrcle-div"> 
               <div style="background-color: ${backgroundColor};" id="contact-cyrcle">${initials}</div>
           </div>
@@ -305,6 +305,7 @@ function saveNewContact(){
   setItem('loadedContacts', JSON.stringify(loadedContacts));
   setItem('contacts', JSON.stringify(loadedContacts));
   renderContacts();
+  renderContactsMobile();
   closeEdit();
 }
 
