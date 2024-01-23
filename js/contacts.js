@@ -105,35 +105,34 @@ function showContactDetails(i) {
 }
 
 function showContactDetailsMobile(i) {
-  let overlay = document.getElementById('container-right-mobile');
   let overlayMobile = document.getElementById('container-right-mobile');
   overlayMobile.classList.remove('d-none');
   let contact = loadedContacts[i];
   let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
   let backgroundColor = contact.color;
   overlayMobile.innerHTML = `
-  <div id="contact-overlay">
-    <div id="overlay-top-container">
-    <div id="heading-div-static">Contacts</div>
-    <div id="text-div-static">Better with a team</div>
-        <div id="contact-cyrcle-div-overlay">
-            <div id="contact-cyrcle-overlay" style="background-color: ${backgroundColor};">${initials}
+  <div id="contact-overlay-mobile">
+    <div id="overlay-top-container-mobile">
+    <div id="heading-div-static-mobile">Contacts</div>
+    <div id="text-div-static-mobile">Better with a team</div>
+        <div id="contact-cyrcle-div-overlay-mobile">
+            <div id="contact-cyrcle-overlay-moble" style="background-color: ${backgroundColor};">${initials}
             </div> 
       </div>
 
-      <div id="contact-mid-overlay">
-          <div id="contact-name-overlay"> ${contact.name}</div>
-                  <div id="edit-delete-div">
-                      <div onclick="editMobileContact(${i})" id="edit-div">Edit</div>
-                      <div onclick="deleteMobileContact(${i})" id="delete-div">Delete</div>
+      <div id="contact-mid-overlay-mobile">
+          <div id="contact-name-overlay-mobile""> ${contact.name}</div>
+                  <div id="edit-delete-div-mobile"">
+                      <div onclick="editMobileContact(${i})" id="edit-div-mobile"">Edit</div>
+                      <div onclick="deleteMobileContact(${i})" id="delete-div-mobile"">Delete</div>
                   </div>
           </div>
-          <button id="close-mobile-details-btn" onclick="closeMobileDetails()">close</button>
+          <button id="close-mobile-details-btn-mobile"" onclick="closeMobileDetails()">close</button>
       </div>
-      <div id="heading-contact-information">Contact Information</div>
-      <div id="overlay-bottom-container">
-              <div id="contact-email-overlay"><div><b>Email</b></div><div id="email-div">${contact.email}</div></div>
-              <div id="contact-telefon-overlay"><div><b>Phone</b></div><div id="telefon-div">${contact.phone}</div></div>
+      <div id="heading-contact-information-mobile"">Contact Information</div>
+      <div id="overlay-bottom-container-mobile"">
+              <div id="contact-email-overlay-mobile""><div><b>Email</b></div><div id="email-div">${contact.email}</div></div>
+              <div id="contact-telefon-overlay-mobile""><div><b>Phone</b></div><div id="telefon-div">${contact.phone}</div></div>
         </div>
     </div>
 `;

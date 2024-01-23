@@ -672,9 +672,6 @@ width: 20px;
     right: 0px;
 }
 
-#container-right-mobile{
-    display: none;
-}
 
 
 @media (max-width: 1400px){
@@ -750,19 +747,22 @@ width: 20px;
         align-items: start;
         overflow-y:scroll;  
         height: 78%;
-        width: 408px;
-        padding-left:24px;
-        padding-right: 24px;
+        width: 500px;
+      
+        margin-left: 224px;
         padding-top: 32px;
         padding-bottom: 32px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        width: 100vh;
     }
     #container-right-mobile{
-        display: block;
+        height: 900px;
+        width: 800px;
+        z-index: 3;
+        flex-direction: column;
+        background-color: rgb(116, 116, 116);
     }
     #close-mobile-details-btn{
         height: 20px;
