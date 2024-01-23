@@ -311,12 +311,28 @@ align-items: center;
     padding-right: 30px;
 }
 
+#heading-div-static-mobile{
+    font-size: 20px;
+    width: 207px;
+    height: 74px;
+    display: flex;
+    align-items: center;
+}
+
 #text-div-static{
     font-weight: 400;
     margin-left: 30px;
     display: flex;
     align-items: center;
     font-size: 27px;
+}
+
+#text-div-static-mobile{
+    font-weight: 400;
+    margin-left: 0px;
+    display: flex;
+    align-items: center;
+    font-size: 17px;
 }
 
 #overlay-top-container{
@@ -332,8 +348,8 @@ align-items: center;
     height: 200px;
     width: 100vw;
     display: flex;
-    align-items: center;
-    flex-direction: row;
+    align-items: left;
+    flex-direction: column;
     gap: 32px;
 }
 
@@ -352,6 +368,19 @@ align-items: center;
     align-items: center;
     height: 120px;
     width: 120px;
+    border-radius: 50%;
+    background-color: rgb(86, 86, 86);
+    color: white;
+    font-size: 44px;
+    font-weight: 500;
+}
+
+#contact-cyrcle-overlay-mobile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 80px;
     border-radius: 50%;
     background-color: rgb(86, 86, 86);
     color: white;
@@ -512,6 +541,8 @@ align-items: center;
     display: flex;
     align-items: center;
 }
+
+
 
 #delete-div:hover{
     cursor: pointer;

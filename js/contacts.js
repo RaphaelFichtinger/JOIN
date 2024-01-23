@@ -111,23 +111,18 @@ function showContactDetailsMobile(i) {
   let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
   let backgroundColor = contact.color;
   overlayMobile.innerHTML = `
-  <div id="contact-overlay-mobile">
     <div id="overlay-top-container-mobile">
+    <button id="close-mobile-details-btn-mobile"" onclick="closeMobileDetails()"></button>
     <div id="heading-div-static-mobile">Contacts</div>
     <div id="text-div-static-mobile">Better with a team</div>
         <div id="contact-cyrcle-div-overlay-mobile">
-            <div id="contact-cyrcle-overlay-moble" style="background-color: ${backgroundColor};">${initials}
+            <div id="contact-cyrcle-overlay-mobile" style="background-color: ${backgroundColor};">${initials}
             </div> 
       </div>
 
       <div id="contact-mid-overlay-mobile">
           <div id="contact-name-overlay-mobile""> ${contact.name}</div>
-                  <div id="edit-delete-div-mobile"">
-                      <div onclick="editMobileContact(${i})" id="edit-div-mobile"">Edit</div>
-                      <div onclick="deleteMobileContact(${i})" id="delete-div-mobile"">Delete</div>
-                  </div>
-          </div>
-          <button id="close-mobile-details-btn-mobile"" onclick="closeMobileDetails()"></button>
+               
       </div>
       <div id="heading-contact-information-mobile"">Contact Information</div>
       <div id="overlay-bottom-container-mobile"">
