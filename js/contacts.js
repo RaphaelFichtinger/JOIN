@@ -18,6 +18,7 @@ async function loadContacts(){
   }
   loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
   renderContacts();
+  renderContactsMobile();
 }
 
 function renderContacts() {
@@ -35,7 +36,7 @@ function renderContacts() {
       overlay.innerHTML += `<div id="alphabet-tab">${currentLetter}</div>`;
     }
     overlay.innerHTML += `
-      <div id="contactcard-container" onclick="showContactDetails(${i}), showContactDetailsMobile(${i})">
+      <div id="contactcard-container" onclick="showContactDetails(${i})">
           <div id="contact-cyrcle-div"> 
               <div style="background-color: ${backgroundColor};" id="contact-cyrcle">${initials}</div>
           </div>
@@ -46,6 +47,34 @@ function renderContacts() {
       </div>`;
   }
 }
+
+function renderContactsMobile() {
+  overlay = document.getElementById('contactlist-mobile');
+  overlay.innerHTML = '';
+  let currentLetter = null; 
+  
+  for (let i = 0; i < loadedContacts.length; i++) {
+    let contact = loadedContacts[i];
+    let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
+    let backgroundColor = contact.color; 
+
+    if (initials.charAt(0) !== currentLetter) {
+      currentLetter = initials.charAt(0);
+      overlay.innerHTML += `<div id="alphabet-tab">${currentLetter}</div>`;
+    }
+    overlay.innerHTML += `
+      <div id="contactcard-container" onclick="showContactDetailsMobile(${i})">
+          <div id="contact-cyrcle-div"> 
+              <div style="background-color: ${backgroundColor};" id="contact-cyrcle">${initials}</div>
+          </div>
+          <div id="contact-details">
+              <div id="contact-name">${contact.name}</div>
+              <div id="contact-email">${contact.email}</div>
+          </div>
+      </div>`;
+  }
+}
+
 function showContactDetails(i) {
   let overlay = document.getElementById('container-right-content');
   let contact = loadedContacts[i];

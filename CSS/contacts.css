@@ -26,7 +26,7 @@ body {
 }
 /* here begins the edit contact overlay*/ 
 #edit{
-    background-color: #aab6c7;
+    background-color: #40669b;
     width: 1212px;
     height: 592px;
     position: absolute;
@@ -50,8 +50,8 @@ body {
     z-index: 1;
     height: 592px;
     border-radius: 20px 0px 0px 20px;
-    background-color: #33435a;
-    z-index: 1;
+    background-color: #125cc5;
+    z-index: 0;
 }
 
 #editing-div-rightside{
@@ -535,6 +535,15 @@ align-items: center;
     padding-bottom: 32px;
 }
 
+#contactlist-mobile{
+    width: 0px;
+    height: 0px;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    display: none;
+}
+
 #contactcard-container{
     height: 42px;
     display: flex;
@@ -664,10 +673,7 @@ width: 20px;
 }
 
 #container-right-mobile{
-    height: 1px;
-    width: 1px;
-    z-index: -4;
-
+    display: none;
 }
 
 
@@ -737,5 +743,30 @@ width: 20px;
     #container-right{
         display:none;
     }
-
+    #container-left{
+        display: none;
+    }
+    #contactlist-mobile{
+        align-items: start;
+        overflow-y:scroll;  
+        height: 78%;
+        width: 408px;
+        padding-left:24px;
+        padding-right: 24px;
+        padding-top: 32px;
+        padding-bottom: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100vh;
+    }
+    #container-right-mobile{
+        display: block;
+    }
+    #close-mobile-details-btn{
+        height: 20px;
+        width:20px;
+        background-color: red;
+    }
 }
