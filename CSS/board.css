@@ -558,7 +558,7 @@ label+.buttons {
     align-items: center;
     position: absolute;
     display: none;
-    background-color: black;
+    
 }
 
 .task-type-overview {
@@ -728,6 +728,12 @@ label+.buttons {
     margin-top: 8px;
     gap: 12px;
 }
+
+.margin-top {
+    margin-top: 24px;
+}
+
+
 
 
 
