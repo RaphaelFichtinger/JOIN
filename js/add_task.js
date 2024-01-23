@@ -38,12 +38,14 @@ function successLightbox() {
 	let successButton = document.getElementById('success');
 	successLightbox.style.display = 'flex';
 	setTimeout(() => {
+        successLightbox.style.zIndex = '2';
 		successButton.style.transition = 'transform 1s ease-in-out';
 		successButton.style.transform = 'translateY(30%)';
 
 		setTimeout(() => {
 			successLightbox.style.display = 'none';
             successButton.style.transform = 'translateY(100%)';
+            successLightbox.style.zIndex = '-1';
         }, 2000);
 	}, 150)
 }
@@ -205,8 +207,8 @@ function addSubtask() {
         <div id="editableText" class="li-element flex space-between align-center">
             <p>${inputSubtask.value}</p>
             <div class="edit-delete-icons flex">
-                <img onclick="editSubtask()" class="subtasks-edit" src="./img/edit-subtask.svg" alt="Edit">
-                <img onclick="clearSubtask()" class="subtasks-delete" src="./img/delete-subtask.svg" alt="Delete">
+                <img onclick="editSubtask()" id="subtasks-edit" class="subtasks-edit" src="./img/edit-subtask.svg" alt="Edit">
+                <img onclick="clearSubtask()" id="subtasks-delete" class="subtasks-delete" src="./img/delete-subtask.svg" alt="Delete">
             </div>
         </div>
     </li>`;
@@ -222,7 +224,12 @@ function editSubtask() {
     var textElement = document.getElementById('editableText');
     textElement.contentEditable = true;
     textElement.focus(); // Den Fokus auf das bearbeitbare Element setzen
-  }
+
+    let edit = document.getElementById('subtasks-edit');
+    let deleteSubtasks = document.getElementById('subtasks-delete');
+    edit.src = './img/delete-subtask.svg';
+    deleteSubtasks.src = './img/check-blue.svg';
+}
 
 function clearSubtask() {
     let inputSubtask = document.getElementById('subtasks');
