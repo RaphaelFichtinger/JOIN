@@ -51,6 +51,7 @@ function renderContacts() {
 function renderContactsMobile() {
   overlay = document.getElementById('contactlist-mobile');
   overlay.innerHTML = '';
+  overlay.innerHTML += '<img id="add-person-btn-mobile" src="../img/person_add.png">'
   let currentLetter = null; 
   
   for (let i = 0; i < loadedContacts.length; i++) {
@@ -71,7 +72,9 @@ function renderContactsMobile() {
               <div id="contact-name">${contact.name}</div>
               <div id="contact-email">${contact.email}</div>
           </div>
-      </div>`;
+      </div>
+        
+      `;
   }
 }
 
