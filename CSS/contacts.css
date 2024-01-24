@@ -734,12 +734,14 @@ opacity: 0;
 }
 
 @media (max-width: 1400px){
-
+    #editing-overlay{
+        position: absolute;
+        left: 50px;
+    }
     #sidebar{
-        display: none;
     }
     #maincontainer{
-        left: 48px;
+        margin-left: 24px;
     }
 
     #container-right{
@@ -818,9 +820,9 @@ opacity: 0;
         flex-direction: row;
         padding-top: 15px;
         padding-bottom: 15px;
-        padding-left: 48px;
+        padding-left: 24px;
         margin-top: 8px;
-        width: 82%;
+        width: 89%;
     }
 }
 @media (max-width: 1300px){
@@ -833,9 +835,12 @@ opacity: 0;
         width: 100px;
     }
 }
-@media (max-width: 845px){
+@media (max-width: 1050px){
     #text-div-static{
         width: 100px;
+    }
+    #sidebar{
+        display: none;
     }
     #contactlist-mobile{
         align-items: center;
@@ -843,7 +848,7 @@ opacity: 0;
         overflow-y: scroll;
         overflow-x: unset;
         position: fixed;
-        width: 94%;
+        width: 100%;
         margin-top: 150px;
         display: flex;
         align-items: center;
