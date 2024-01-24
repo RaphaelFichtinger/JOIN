@@ -112,23 +112,23 @@ function showContactDetailsMobile(i) {
   let backgroundColor = contact.color;
   overlayMobile.innerHTML = `
     <div id="overlay-top-container-mobile">
-      <button id="close-mobile-details-btn-mobile"" onclick="closeMobileDetails()"></button>
-          
-                <div id="heading-div-static-mobile">Contacts</div>
-                <div id="text-div-static-mobile">Better with a team</div>
-       
-                  <div id="contact-cyrcle-div-overlay-mobile">
-                      <div id="contact-cyrcle-mobile" style="background-color: ${backgroundColor};">${initials}</div> 
-                      <div id="contact-name-overlay-mobile""> ${contact.name}</div>
-                  </div>
-         
-                      <div id="heading-contact-information-mobile"">Contact Information</div>
+    <button id="close-mobile-details-btn-mobile"" onclick="closeMobileDetails()"></button>
+    <div id="heading-div-static-mobile">Contacts</div>
+    <div id="text-div-static-mobile">Better with a team</div>
+        <div id="contact-cyrcle-div-overlay-mobile">
+            <div id="contact-cyrcle-overlay-mobile" style="background-color: ${backgroundColor};">${initials}
+            </div> 
+      </div>
+
+      <div id="contact-mid-overlay-mobile">
+          <div id="contact-name-overlay-mobile""> ${contact.name}</div>
                
-                      <div id="overlay-bottom-container-mobile">
-                        <div id="contact-email-overlay-mobile"><b>Email</b><div id="email-div">${contact.email}</div></div>
-                        <div id="contact-telefon-overlay-mobile"><b>Phone</b><div id="telefon-div">${contact.phone}</div></div>
-                  </div>
-              <button id="edit-delete-btn-mobile">more</button>
+      </div>
+      <div id="heading-contact-information-mobile"">Contact Information</div>
+      <div id="overlay-bottom-container-mobile"">
+              <div id="contact-email-overlay-mobile""><div><b>Email</b></div><div id="email-div">${contact.email}</div></div>
+              <div id="contact-telefon-overlay-mobile""><div><b>Phone</b></div><div id="telefon-div">${contact.phone}</div></div>
+        </div>
     </div>
 `;
 }

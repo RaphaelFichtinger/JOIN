@@ -317,7 +317,6 @@ align-items: center;
     height: 74px;
     display: flex;
     align-items: center;
-    font-size: 38px;
 }
 
 #text-div-static{
@@ -352,13 +351,10 @@ align-items: center;
     align-items: left;
     flex-direction: column;
     gap: 32px;
-    margin-top: 100px;
-    margin-left: 24px;
 }
 
-#close-mobile-details-btn-mobile{
+#overlay-top-container-mobile button{
     position: absolute;
-    top: 30px;
     right: 49px;
     height: 30px;
     width: 30px;
@@ -366,18 +362,20 @@ align-items: center;
     border: none;
 }
 
-#edit-delete-btn-mobile{
-    position: fixed;
-    bottom: 20vh;
-    right: 10vw;
-    height: 68px;
-    width: 68px;
-    font-size: 14px;
+#contact-cyrcle-overlay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    width: 120px;
     border-radius: 50%;
+    background-color: rgb(86, 86, 86);
+    color: white;
+    font-size: 44px;
+    font-weight: 500;
 }
 
-
-#contact-cyrcle-mobile{
+#contact-cyrcle-overlay-mobile{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -386,24 +384,12 @@ align-items: center;
     border-radius: 50%;
     background-color: rgb(86, 86, 86);
     color: white;
-    font-size: 24px;
+    font-size: 44px;
     font-weight: 500;
-}
-
-#contact-cyrcle-div-overlay-mobile{
-    display: flex;
-    align-items:  center;
-    flex-direction: row;
-    gap: 20px;
-    width: 100vw;
 }
 
 #contact-name-overlay{
     font-size: 47px;
-}
-
-#contact-name-overlay-mobile{
-    font-size: 38px;
 }
 
 #edit-cyrcle{
@@ -556,32 +542,7 @@ align-items: center;
     align-items: center;
 }
 
-#overlay-bottom-container-mobile{
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
 
-#contact-email-overlay-mobile{
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-#contact-telefon-overlay-mobile{
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-#heading-contact-information-mobile{
-    font-size: 22px;
-    width: 207px;
-    height: 74px;
-    display: flex;
-    align-items: center;
-    width: 100vw;
-}
 
 #delete-div:hover{
     cursor: pointer;
@@ -792,7 +753,6 @@ width: 20px;
 
 
 
-
 @media (max-width: 1400px){
     #sidebar{
         display: none;
@@ -829,13 +789,21 @@ width: 20px;
     }
 }
 @media (max-width: 1300px){
-    #text-div-static-mobile{
+    #text-div-static{
         width: 200px;
     }
-
+    }
+@media (max-width: 1225px){
+    #text-div-static{
+        width: 100px;
+    }
+}
+@media (max-width: 1145px){
+    #text-div-static{
+        width: 100px;
     }
     #container-right-mobile{
-        height: 91vh;
+        height: 93vh;
         width: 100vw;
         background-color: rgb(187, 187, 187);
         position: absolute;
@@ -873,4 +841,4 @@ width: 20px;
         width:20px;
         background-color: red;
     }
-
+}
