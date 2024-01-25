@@ -119,7 +119,7 @@ function showContactDetailsMobile(i) {
     <div id="popup-btn-delete"><img id="popup-img-delete" src="../img/delete-subtask.svg"><p>Delete</p></div>
   </div>
       <div id="overlay-top-container-mobile">
-      <button id="mobile-more-btn" onclick="openPopup()" ></button>
+      <button id="mobile-more-btn" onclick="openOrClose()" ></button>
         <button id="close-mobile-details-btn" onclick="closeMobileDetails()"></button>
           <div id="heading-div-static-mobile">Contacts</div>
             <div id="text-div-static-mobile">Better with a team</div>
@@ -387,18 +387,27 @@ function deleteContactMobile(i) {
   closeMobileDetails();
 }
 
-function openPopup(){
+function openPopup() {
   let popup = document.getElementById('popup-window-container');
   popup.classList.remove('d-none');
   popup.classList.add('d-flex');
 }
 
-function closePopup(){
+function closePopup() {
   let popup = document.getElementById('popup-window-container');
   popup.classList.add('d-none');
   popup.classList.remove('d-flex');
 }
 
+function openOrClose() {
+  let popup = document.getElementById('popup-window-container');
+
+  if (popup.classList.contains('d-none')) {
+    openPopup();
+  } else {
+    closePopup();
+  }
+}
 
 
 
