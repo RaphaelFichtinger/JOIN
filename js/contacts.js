@@ -255,6 +255,12 @@ function closeEdit(){
   renderContacts();
 }
 
+function closeEditMobile(){
+  let editoverlay = document.getElementById('add-new-contact-mobile');
+  editoverlay.classList.add('d-none');
+  renderContactsMobile();
+}
+
 function setNewContact(i) {
   let overlay = document.getElementById('editing-overlay');
   overlay.classList.remove('d-none');
@@ -294,33 +300,32 @@ function setNewContactMobile(i) {
   let overlay = document.getElementById('adding-overlay-mobile');
   overlay.classList.remove('d-none');
   overlay.innerHTML = `
-  <div id="edit">
-      <div id="editing-div-leftside">
-            <div id="edit-overlay-logo">
-            </div>
-              <div id="new-contact-overlay-heading"><h1>Add contact<h1> <p id="new-contact-text">Tasks are better with a team!</p>
-                <img id="vector5-for-new" src="../img/vector5vertical.png">
+  <div id="add-new-contact-mobile">
+      <div id="new-contact-div-top-mobile">
+              <div id="new-contact-overlay-heading-mobile"><h1>Add contact<h1> <p id="new-contact-text">Tasks are better with a team!</p>
+                <img id="vector5-for-new-mobile" src="../img/vector5vertical.png">
               </div>
-      </div>                
-      <div id="editing-div-rightside">
-            <div id="close-edit" onclick="closeEdit()">
-            </div>
-              <div id="cyrcle-and-inputs-div">
-                <div id="edit-cyrcle-new-contact">
-                </div>
-                <div id="edit-content-rightside">
-                  <div id="edit-inputs">
-                  <input id="new-contact-input-name" placeholder="Name" type="text">
-                  <input id="new-contact-input-mail" placeholder="Email" type="email" >
-                  <input id="new-contact-input-number" placeholder="Phone" type="text" >
+      </div>   
+
+            <div id="editing-div-bottom-mobile">
+                  <div id="close-edit-mobile-btn" onclick="closeEditMobile()">
                   </div>
-                  <div id="save-delete-div">
-                  <div id="cancel-btn-div" onclick="closeEdit()"><button id="cancel-btn-edit">Cancel</button><img id="cancel-icon" src="../img/cancel.png"></div>
-                    <div id="save-btn-div" onclick="saveNewContact()"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
-                </div>
-                </div>
+                    <div id="cyrcle-and-inputs-div-mobile">
+                      <div id="edit-cyrcle-new-contact-mobile">
+                      </div>
+                      <div id="edit-content-rightside">
+                        <div id="edit-inputs">
+                        <input id="new-contact-input-name" placeholder="Name" type="text">
+                        <input id="new-contact-input-mail" placeholder="Email" type="email" >
+                        <input id="new-contact-input-number" placeholder="Phone" type="text" >
+                        </div>
+                        <div id="save-delete-div">
+                        <div id="cancel-btn-div" onclick="closeEdit()"><button id="cancel-btn-edit">Cancel</button><img id="cancel-icon" src="../img/cancel.png"></div>
+                          <div id="save-btn-div" onclick="saveNewContact()"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
+                      </div>
+                      </div>
+                    </div>
               </div>
-        </div>
   </div>
   `;
 }

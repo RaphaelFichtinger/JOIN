@@ -397,7 +397,6 @@ align-items: center;
     font-weight: 500;
     background-image: url(/img/person.svg);
     background-size: contain;
-
 }
 
 #edit-delete-div{
@@ -724,10 +723,6 @@ width: 0px;
 opacity: 0;
 }
 
-#adding-overlay-mobile{
-
-}
-
 @media (max-width: 1400px){
     #editing-overlay{
         position: absolute;
@@ -830,7 +825,78 @@ opacity: 0;
         width: 100px;
     }
 }
-@media (max-width: 1050px){
+@media (max-width: 1050px){     /*  breakpoint list */  
+    #edit-cyrcle-new-contact-mobile{
+   
+        height: 120px;
+        width: 120px;
+        border-radius: 50%;
+        background-color: rgb(209, 209, 209);
+        color: white;
+        font-size: 44px;
+        font-weight: 500;
+        background-image: url(/img/person.svg);
+        background-size: contain;
+        margin-bottom: 50vh;
+        position: absolute;
+    }
+    #close-edit-mobile-btn{
+        filter: brightness(100);
+        height: 48px;
+        width: 48px;
+        display: flex;
+        position: absolute;
+        top: 32px;
+        right: 32px;
+        width: 24px;
+        height: 24px;
+        justify-content: right;
+        font-size: medium;
+        color: grey;
+        background-image: url(/img/close.png);
+        background-repeat: no-repeat;
+    }
+    #cyrcle-and-inputs-div-mobile {
+        z-index: 1;
+        width: 100%;
+        background-color: #ffffff;
+        border: 2px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 50vh;
+    }
+    #vector5-for-new-mobile{
+        padding-bottom: 48px;
+    }
+    #new-contact-overlay-heading-mobile{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: white;
+        margin-top: 200px;
+        margin-left: 24px;
+        } 
+    #new-contact-div-top-mobile{
+        z-index: 1;
+        height: 592px;
+        border-radius: 20px 20px 0px 0px;
+        z-index: 1;
+    }                         
+    #add-new-contact-mobile{
+        background-color: rgba(42, 54, 71, 1);
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: 1;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        z-index: 5;
+        left: 0px;
+        top: 0px;
+    }
     #adding-overlay-mobile{
         background-color: red;
         height: 200px;
