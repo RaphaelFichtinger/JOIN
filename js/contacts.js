@@ -115,7 +115,7 @@ function showContactDetailsMobile(i) {
   let backgroundColor = contact.color;
   overlayMobile.innerHTML = `
   <div id="popup-window-container"class="d-none">
-    <div id="popup-btn-edit"><img id="popup-img-edit" src="../img/edit.png"><p>Edit</p></div>
+    <div id="popup-btn-edit" onclick="editMobileContact(${i})"><img id="popup-img-edit" src="../img/edit.png"><p>Edit</p></div>
     <div id="popup-btn-delete"><img id="popup-img-delete" src="../img/delete-subtask.svg"><p>Delete</p></div>
   </div>
       <div id="overlay-top-container-mobile">
@@ -209,7 +209,7 @@ function editMobileContact(i) {
             </div>
     </div>                
     <div id="editing-div-rightside">
-          <div id="close-edit" onclick="closeEdit()">
+          <div id="close-edit" onclick="closeEditMobile()">
           </div>
             <div id="cyrcle-and-inputs-div">
             <div id="edit-cyrcle-overlay" style="background-color: ${backgroundColor};">${initials}
@@ -260,6 +260,12 @@ function closeEdit(){
 }
 
 function closeEditMobile(){
+  let editoverlay = document.getElementById('editing-overlay-mobile');
+  editoverlay.classList.add('d-none');
+  renderContactsMobile();
+}
+
+function closeNewContactOverlayMobile(){
   let editoverlay = document.getElementById('add-new-contact-mobile');
   editoverlay.classList.add('d-none');
   renderContactsMobile();
@@ -324,7 +330,7 @@ function setNewContactMobile(i) {
                         <input id="new-contact-input-number-mobile" placeholder="Phone" type="text" >
                         </div>
                         <div id="save-delete-div-mobile">
-                        <div id="cancel-btn-div" onclick="closeEditMobile()"><button id="cancel-btn-edit">Cancel</button><img id="cancel-icon" src="../img/cancel.png"></div>
+                        <div id="cancel-btn-div" onclick="closeNewContactOverlayMobile()"><button id="cancel-btn-edit">Cancel</button><img id="cancel-icon" src="../img/cancel.png"></div>
                           <div id="save-btn-div" onclick="saveNewContact()"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
                       </div>
                       </div>
