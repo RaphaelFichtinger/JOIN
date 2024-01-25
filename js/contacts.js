@@ -114,15 +114,19 @@ function showContactDetailsMobile(i) {
   let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
   let backgroundColor = contact.color;
   overlayMobile.innerHTML = `
-    <div id="overlay-top-container-mobile">
-    <button id="mobile-more-btn" ></button>
-      <button id="close-mobile-details-btn" onclick="closeMobileDetails()"></button>
-        <div id="heading-div-static-mobile">Contacts</div>
-          <div id="text-div-static-mobile">Better with a team</div>
-          <div id="contact-cyrcle-div-overlay-mobile">
-                <div id="contact-cyrcle-overlay-mobile" style="background-color: ${backgroundColor};">${initials}
-            </div> 
-                  <div id="contact-name-overlay-mobile""> ${contact.name}</div>
+  <div id="popup-window-container"class="d-none">
+    <div id="popup-btn-edit"><img id="popup-img-edit" src="../img/edit.png"><p>Edit</p></div>
+    <div id="popup-btn-delete"><img id="popup-img-delete" src="../img/delete-subtask.svg"><p>Delete</p></div>
+  </div>
+      <div id="overlay-top-container-mobile">
+      <button id="mobile-more-btn" onclick="openPopup()" ></button>
+        <button id="close-mobile-details-btn" onclick="closeMobileDetails()"></button>
+          <div id="heading-div-static-mobile">Contacts</div>
+            <div id="text-div-static-mobile">Better with a team</div>
+            <div id="contact-cyrcle-div-overlay-mobile">
+                  <div id="contact-cyrcle-overlay-mobile" style="background-color: ${backgroundColor};">${initials}
+              </div> 
+                    <div id="contact-name-overlay-mobile""> ${contact.name}</div>
     </div>
   
             <div id="heading-contact-information-mobile"">Contact Information</div>
@@ -382,6 +386,19 @@ function deleteContactMobile(i) {
   renderContactsMobile();
   closeMobileDetails();
 }
+
+function openPopup(){
+  let popup = document.getElementById('popup-window-container');
+  popup.classList.remove('d-none');
+  popup.classList.add('d-flex');
+}
+
+function closePopup(){
+  let popup = document.getElementById('popup-window-container');
+  popup.classList.add('d-none');
+  popup.classList.remove('d-flex');
+}
+
 
 
 
