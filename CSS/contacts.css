@@ -724,6 +724,10 @@ width: 0px;
 opacity: 0;
 }
 
+#adding-overlay-mobile{
+
+}
+
 @media (max-width: 1400px){
     #editing-overlay{
         position: absolute;
@@ -739,8 +743,8 @@ opacity: 0;
         margin-left: 18px;
     }
     #heading-div-static-mobile{
-        font-size: 32px;
-        font-weight: 300px;
+        font-size: 48px;
+        font-weight: 600;
         width: 207px;
         height: 74px;
         display: flex;
@@ -756,9 +760,6 @@ opacity: 0;
 
     #alphabet-tab{
         max-width: 200px;
-    }
-    #contactlist-mobile{
-
     }
     #contactcard-container{
         max-width: 200px;
@@ -783,21 +784,25 @@ opacity: 0;
         color: white;
         font-size: 22px;
         font-weight: 500;
+        margin-top: 18px;
     }
     #contact-name-overlay-mobile{
-        font-size: 22px;
+        font-size: 24px;
+        font-weight: 500;
     }
     #heading-contact-information-mobile{
         font-size: 18px;
         font-weight: 300;
+        margin-top: 16px;
     }
     #contact-email-overlay-mobile{
         display: flex;
         flex-direction: column;
         gap: 18px;
+        margin-top: 8px;
     }
     #contact-telefon-overlay-mobile{
-        margin-top: 32px;
+        margin-top: 18px;
         display: flex;
         flex-direction: column;
         gap: 18px;
@@ -827,7 +832,6 @@ opacity: 0;
 }
 @media (max-width: 1050px){
     #adding-overlay-mobile{
-        position: absolute;
         background-color: red;
         height: 200px;
         width: 200px;
@@ -902,7 +906,11 @@ opacity: 0;
         background-image: url(/img/arrow-left-line.png);
         background-position: center;
         position: absolute;
-        right: 49px;
+        right: 45px;
         border: none;
+        margin-right: 4pxpx;
     }
 }
+
+    
+

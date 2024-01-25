@@ -51,7 +51,7 @@ function renderContacts() {
 function renderContactsMobile() {
   overlay = document.getElementById('contactlist-mobile');
   overlay.innerHTML = '';
-  overlay.innerHTML += '<div id="adding-overlay-mobile" class="d-none" onclick="SetNewContactMobile()"></div><img id="add-person-btn-mobile" src="../img/person_add.png" onclick="showContactDetailsMobile()">'
+  overlay.innerHTML += '<div id="adding-overlay-mobile"></div><img id="add-person-btn-mobile" src="../img/person_add.png" onclick="setNewContactMobile()">'
   let currentLetter = null; 
   
   for (let i = 0; i < loadedContacts.length; i++) {
