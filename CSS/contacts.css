@@ -328,7 +328,7 @@ align-items: center;
     margin-left: 0px;
     display: flex;
     align-items: center;
-    font-size: 17px;
+    font-size: 20px;
 }
 
 #overlay-top-container{
@@ -825,7 +825,15 @@ opacity: 0;
         width: 100px;
     }
 }
-@media (max-width: 1050px){                                           /*  breakpoint list */  
+@media (max-width: 1050px){                                           /*  breakpoint list */ 
+    #save-delete-div-mobile{
+        margin-top: 34px;
+        width: 249px;
+        height: 59px;
+        display: flex;
+        gap: 24px;
+        justify-content: center;
+    }
     #new-contact-input-name-mobile{
         height: 50px;
         border: 1px solid grey;
@@ -905,12 +913,13 @@ opacity: 0;
         z-index: 1;
         width: 100%;
         background-color: #ffffff;
-        border: 2px solid black;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         height: 52vh;
+        padding-bottom: 28px;
+        width: 100vw;
     }
     #vector5-for-new-mobile{
         padding-bottom: 48px;
@@ -940,22 +949,19 @@ opacity: 0;
         bottom: 0px;
     }
     #adding-overlay-mobile{
-        background-color: red;
-        height: 200px;
-        width: 200px;
-        top: 20px;
+   
     }
     #mobile-more-btn{
-        bottom: 134px;
+        bottom: 128px;
         right: 32px;
-       background-color:rgba(42, 54, 71, 1);
-       height: 68px;
-       width: 68px;
-       border-radius: 50%;
-       background-image: url(/img/more_vert.png);
-       background-repeat: no-repeat;
-       background-position: center;
-       position: absolute;
+        background-color:rgba(42, 54, 71, 1);
+        height: 68px;
+        width: 68px;
+        border-radius: 50%;
+        background-image: url(/img/more_vert.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
     }
     #text-div-static{
         width: 100px;

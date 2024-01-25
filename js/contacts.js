@@ -319,7 +319,7 @@ function setNewContactMobile(i) {
                         <input id="new-contact-input-mail-mobile" placeholder="Email" type="email" >
                         <input id="new-contact-input-number-mobile" placeholder="Phone" type="text" >
                         </div>
-                        <div id="save-delete-div">
+                        <div id="save-delete-div-mobile">
                         <div id="cancel-btn-div" onclick="closeEditMobile()"><button id="cancel-btn-edit">Cancel</button><img id="cancel-icon" src="../img/cancel.png"></div>
                           <div id="save-btn-div" onclick="saveNewContact()"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
                       </div>
