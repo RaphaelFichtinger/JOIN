@@ -351,15 +351,6 @@ align-items: center;
     margin-top: 32px;
 }
 
-#overlay-top-container-mobile button{
-    position: absolute;
-    right: 49px;
-    height: 30px;
-    width: 30px;
-    background-image: url(/img/arrow-left-line.png);
-    border: none;
-}
-
 #contact-cyrcle-overlay{
     display: flex;
     justify-content: center;
@@ -835,16 +826,35 @@ opacity: 0;
     }
 }
 @media (max-width: 1050px){
+    #adding-overlay-mobile{
+        position: absolute;
+        background-color: red;
+        height: 200px;
+        width: 200px;
+        top: 20px;
+    }
+    #mobile-more-btn{
+        bottom: 134px;
+        right: 32px;
+       background-color:rgba(42, 54, 71, 1);
+       height: 68px;
+       width: 68px;
+       border-radius: 50%;
+       background-image: url(/img/more_vert.png);
+       background-repeat: no-repeat;
+       background-position: center;
+       position: absolute;
+    }
     #text-div-static{
         width: 100px;
     }
     #add-person-btn-mobile{
         position: fixed;
-        height: 34px;
-        width: 34px;
+        height: 32px;
+        width: 32px;
         padding: 18px;
-        bottom: 112px;
-        right: 48px;
+        bottom: 32px;
+        right: 32px;
         background-color: #2A3647;
         border-radius: 50%;
     }
@@ -874,7 +884,6 @@ opacity: 0;
     #close-mobile-btn-div{
         height: 20px;
         width: 20px;
-        background-color: green;
     }
     #close-mobile-details-btn{
         margin-left: 200px;
@@ -886,8 +895,14 @@ opacity: 0;
         display: none;
     }
     #close-mobile-details-btn{
-        height: 20px;
-        width:20px;
+        height: 32px;
+        width: 32px;
+        background-repeat: no-repeat;
         background-color: rgb(255, 255, 255);
+        background-image: url(/img/arrow-left-line.png);
+        background-position: center;
+        position: absolute;
+        right: 49px;
+        border: none;
     }
 }
