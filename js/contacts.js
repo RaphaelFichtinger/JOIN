@@ -313,14 +313,14 @@ function setNewContactMobile(i) {
                     <div id="cyrcle-and-inputs-div-mobile">
                       <div id="edit-cyrcle-new-contact-mobile">
                       </div>
-                      <div id="edit-content-rightside">
-                        <div id="edit-inputs">
-                        <input id="new-contact-input-name" placeholder="Name" type="text">
-                        <input id="new-contact-input-mail" placeholder="Email" type="email" >
-                        <input id="new-contact-input-number" placeholder="Phone" type="text" >
+                      <div id="edit-content-bottom-mobile">
+                        <div id="edit-inputs-mobile">
+                        <input id="new-contact-input-name-mobile" placeholder="Name" type="text">
+                        <input id="new-contact-input-mail-mobile" placeholder="Email" type="email" >
+                        <input id="new-contact-input-number-mobile" placeholder="Phone" type="text" >
                         </div>
                         <div id="save-delete-div">
-                        <div id="cancel-btn-div" onclick="closeEdit()"><button id="cancel-btn-edit">Cancel</button><img id="cancel-icon" src="../img/cancel.png"></div>
+                        <div id="cancel-btn-div" onclick="closeEditMobile()"><button id="cancel-btn-edit">Cancel</button><img id="cancel-icon" src="../img/cancel.png"></div>
                           <div id="save-btn-div" onclick="saveNewContact()"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
                       </div>
                       </div>
@@ -346,6 +346,22 @@ function saveNewContact(){
   closeEdit();
 }
 
+function saveNewContactMobile(){
+  let newContact = {
+    'name': document.getElementById('new-contact-input-name').value,
+    'email': document.getElementById('new-contact-input-mail').value,
+    'phone': document.getElementById('new-contact-input-number').value
+  };
+  loadedContacts.push(newContact);
+  loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
+    
+  setItem('loadedContacts', JSON.stringify(loadedContacts));
+  setItem('contacts', JSON.stringify(loadedContacts));
+  renderContacts();
+  renderContactsMobile();
+  closeEdit();
+}
+
 
 function deleteContact(i) {
   let overlay = document.getElementById('contact-overlay');
@@ -355,6 +371,16 @@ function deleteContact(i) {
   overlay.innerHTML=``;
   renderContacts();
   closeEdit();
+}
+
+function deleteContactMobile(i) {
+  let overlay = document.getElementById('adding-overlay-mobile');
+  loadedContacts.splice(i, 1);
+  setItem('loadedContacts', JSON.stringify(loadedContacts));
+  setItem('contacts', JSON.stringify(loadedContacts));
+  overlay.innerHTML=``;
+  renderContactsMobile();
+  closeMobileDetails();
 }
 
 
