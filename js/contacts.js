@@ -200,34 +200,33 @@ function editMobileContact(i) {
   let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
   let backgroundColor = contact.color;
   overlay.innerHTML = `
-<div id="edit-mobile">
-    <div id="editing-div-leftside-mobile">
-          <div id="edit-overlay-logo-mobile">
+  <div id="edit-mobile">
+  <div id="edit-contact-div-top-mobile">
+          <div id="new-contact-overlay-heading-mobile"><h1>Edit contact<h1> <p id="new-contact-text">Tasks are better with a team!</p>
+            <img id="vector5-for-new-mobile" src="../img/vector5vertical.png">
           </div>
-            <div id="edit-overlay-heading">Edit Contact
-              <img id="vector5" src="../img/vector5vertical.png">
-            </div>
-    </div>                
-    <div id="editing-div-rightside">
-          <div id="close-edit" onclick="closeEditMobile()">
-          </div>
-            <div id="cyrcle-and-inputs-div">
-            <div id="edit-cyrcle-overlay" style="background-color: ${backgroundColor};">${initials}
-          
+  </div>   
+
+        <div id="editing-div-bottom-mobile">
+              <div id="close-edit-mobile-btn" onclick="closeEditMobile()">
               </div>
-              <div id="edit-content-rightside">
-                <div id="edit-inputs">
-                <input id="edit-input-name" type="text" value="${contact.name}">
-                <input id="edit-input-mail"  type="email" value="${contact.email}">
-                <input id="edit-input-number"  type="text" value="${contact.phone}">
+                <div id="cyrcle-and-inputs-div-mobile">
+                <div id="edit-cyrcle-overlay" style="background-color: ${backgroundColor};">${initials}</div>
                 </div>
-                <div id="save-delete-div">
-                  <button onclick="deleteContact(${i})"id="delete-btn-edit">Delete</button>
-                  <div id="save-btn-div" onclick="saveContactChanges(${i})"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
-              </div>
-              </div>
-            </div>
-      </div>
+                  </div>
+                  <div id="edit-content-bottom-mobile">
+                    <div id="edit-inputs-mobile">
+                    <input id="edit-contact-input-name-mobile" placeholder="Name" type="text" value="${contact.name}">
+                    <input id="edit-contact-input-mail-mobile" placeholder="Email" type="email" value="${contact.email}" >
+                    <input id="edit-contact-input-number-mobile" placeholder="Phone" type="text" value="${contact.phone}" >
+                    </div>
+                    <div id="save-delete-div-mobile">
+                    <div id="cancel-btn-div" onclick="closeNewContactOverlayMobile()"><button id="cancel-btn-edit">Delete</button><img id="cancel-icon" src="../img/cancel.png"></div>
+                      <div id="save-btn-div" onclick="saveNewContact()"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
+                  </div>
+                  </div>
+                </div>
+          </div>
 </div>
   `;
 }
@@ -330,9 +329,8 @@ function setNewContactMobile(i) {
                         <input id="new-contact-input-number-mobile" placeholder="Phone" type="text" >
                         </div>
                         <div id="save-delete-div-mobile">
-                        <div id="cancel-btn-div" onclick="closeNewContactOverlayMobile()"><button id="cancel-btn-edit">Cancel</button><img id="cancel-icon" src="../img/cancel.png"></div>
-                          <div id="save-btn-div" onclick="saveNewContact()"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
-                      </div>
+                          <div id="create-btn-div-mobile" onclick="saveNewContact()"><button id="save-btn-edit-mobile">Create Contact</button><img id="check-icon" src="../img/check.png"></div>
+                      </div> 
                       </div>
                     </div>
               </div>
