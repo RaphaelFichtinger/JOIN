@@ -65,6 +65,7 @@ label + .buttons {
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 	width: 136px;
 	padding: 16px 10px;
+	cursor: pointer;
 }
 .priority-alta::after,
 .priority-baia::after {
@@ -169,7 +170,6 @@ label + .buttons {
 .task-category,
 .task-subtasks {
 	position: relative;
-	z-index: 2;
 }
 .dropdown,
 .subtasks-plus {
@@ -192,6 +192,11 @@ label + .buttons {
 .task-subtasks .subtasks-clear {
 	border-right: 1px solid #D1D1D1;
 	padding-right: 4px;
+}
+.edit-delete-icons {
+	position: relative;
+	z-index: 3;
+	cursor: pointer;
 }
 .buttons-bottom {
 	display: flex;
