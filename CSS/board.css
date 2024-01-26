@@ -25,7 +25,7 @@
     background-repeat: no-repeat;
     background-color: white;
     background-position: 272px, 292px;
-    padding-right: 16px;
+    padding: 2px 9px;
 
 }
 
@@ -64,10 +64,11 @@
 }
 
 .board-column {
-    width: 100%;
+    width: 248px;
     max-width: 246px;
     background-color: #F6F7F8;
     max-height: 688px;
+
 }
 
 .board-column-title {
@@ -731,6 +732,10 @@ label+.buttons {
 
 .margin-top {
     margin-top: 24px;
+}
+
+.half-w {
+    width: 50% !important;
 }
 
 

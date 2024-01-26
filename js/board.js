@@ -1,4 +1,12 @@
 
+async function init() {
+    tasks = JSON.parse(await getItem('tasks'));
+    await loadContacts();
+    getCategories();
+    getContacts();
+}
+
+
 
 
 
@@ -35,7 +43,7 @@ function loadAddTask() {
                 <input type="date" id="due-date" value="dd/mm/yyyy" required>
             </div>
             <div class="task-input task-prio">
-                <label for="prio">Prio</label>
+                <label>Prio</label>
                 <div class="buttons flex">
                     <div id="priority-alta" class="priority-alta priority-button" onclick="selectPriority('alta')">Urgent</div>
                     <div id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</div>
@@ -86,24 +94,17 @@ function closeAddTaskPopup() {
 
 function createTaskCard() {
 
-    let taskCard = document.getElementById('task-card');
+
     for (let i = 0; i < tasks.length; i++) {
         let title = tasks[i]['title'];
         let category = tasks[i]['category'];
         let fullName = tasks[i]['assign-to'];
-
-        // Überprüfen, ob 'assign-to' einen Wert hat und ob es ein String oder ein Array mit genau einem Element ist
-        if (fullName && (typeof fullName === 'string' || (Array.isArray(fullName) && fullName.length === 1))) {
-            let [fName, lName] = Array.isArray(fullName) ? fullName[0].split(' ') : fullName.split(' ');
-            let fNameInitial = fName ? fName.charAt(0) : '';
-            let lNameInitial = lName ? lName.charAt(0) : '';
-
-            console.log('Title:', title);
-            console.log('Category:', category);
-            console.log('First Name Initial:', fNameInitial);
-            console.log('Last Name Initial:', lNameInitial);
-        } else {
-            console.error('Ungültiger Wert für assign-to:', fullName);
+        for (let i = 0; i < loadedContacts.length; i++) {
+            let contact = loadedContacts[i];
+            let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
+            let backgroundColor = contact.color;
+            console.log(initials);
+            console.log(backgroundColor);
         }
     }
 }
@@ -121,4 +122,55 @@ function closeTaskOverview() {
 function editTaskOverview() {
     let overviewCard = document.getElementById('task-big-view-card');
     overviewCard.style.display = 'none';
+}
+
+function generateTaskCards() {
+    for (let i = 0; i < tasks.length; i++) {
+        let title = tasks[i]['title'];
+        let category = tasks[i]['category'];
+        let fullName = tasks[i]['assign-to'];
+        console.log(fullName);
+    
+    
+        
+        let toDoColumn = document.getElementById('to-do');
+        toDoColumn.innerHTML += `<div id="task-card" class="task-card" onclick="openTaskOverview()">
+    <button class="task-type">${category}</button>
+    <div class="task-text">
+        <p id="task-title">${title}</p>
+        <p id="task-details">Create a contact form and imprint page...</p>
+    </div>
+    <div class="subtasks">
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 0%;"></div>
+        </div>
+        <div>
+            <p>0/2 Subtasks</p>
+        </div>
+
+    </div>
+    <div class="task-card-bottom">
+        <div id="initials">
+            <p id="initials-circle-1">${initials}</p>
+        </div>
+        <div>
+            <img id="priority-image-small" src="/img/prio-baia.svg">
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div class="board-column">`;
+    }
+}
+
+function getInitials(fullName) {
+    // Split den vollen Namen in Vor- und Nachnamen
+    const names = fullName.split(' ');
+
+    // Initialen erstellen
+    const initials = names.map(name => name.charAt(0));
+
+    // Die Initialen zu einem String verbinden und in Großbuchstaben umwandeln
+    return initials.join('').toUpperCase();
 }

@@ -11,15 +11,16 @@
     <script src="/js/loading.JS"></script>
     <script src="/js/board.js"></script>
     <script src="/js/add_task.js"></script>
+    <script src="/js/contacts.js"></script>
 </head>
 
-<body onload="includeHTML(); loadAddTask(); init()">
+<body onload="includeHTML(), loadAddTask(), init(), generateTaskCards()">
     <div w3-include-html="header.html"></div>
     <div w3-include-html="sidebar.html"></div>
     <div class="main-board">
         <div id="add-task-popup" class="add-task-popup"></div>
         <div id="overview-container" class="task-big-view-overlay">
-            <form onsubmit="#">
+            <form class="half-w"onsubmit="">
             <div id="task-big-view-edit-card">
                 
                     <div id="overview-edit-top">
@@ -60,7 +61,7 @@
                     </div>
                 </form>
             </div>
-            <div id="task-big-view-card" class="#">
+            <div id="task-big-view-card" class="d-none">
                 <div class="type-close">
                     <button class="task-type task-type-overview">User Story</button>
                     <img onclick="closeTaskOverview()" src="./img/close.png">
@@ -91,13 +92,13 @@
                 </div>
                 <div class="subtasks-overview">
                     <p>Subtasks</p>
-                    <div id="subtasks-checklist">
+                    <div id="subtasks-checklist-overview">
                         <div class="subtask">
-                            <input id="subtask-checkbox" type="checkbox">
+                            <input id="subtask-checkbox1" type="checkbox">
                             <p id="subtask-text">Implement Recipe Recommendation</p>
                         </div>
                         <div class="subtask">
-                            <input id="subtask-checkbox" type="checkbox">
+                            <input id="subtask-checkbox2" type="checkbox">
                             <p id="subtask-text">Start Page Layout</p>
                         </div>
                     </div>
@@ -125,32 +126,7 @@
                     <img src="/img/plus-button.png">
                 </div>
                 <div id="to-do" class="drag-area">
-                    <div id="task-card" class="task-card" onclick="openTaskOverview()">
-                        <button class="task-type">User Story</button>
-                        <div class="task-text">
-                            <p id="task-title">Contact Form & Imprint</p>
-                            <p id="task-details">Create a contact form and imprint page...</p>
-                        </div>
-                        <div class="subtasks">
-                            <div class="progress-container">
-                                <div class="progress-bar" style="width: 0%;"></div>
-                            </div>
-                            <div>
-                                <p>0/2 Subtasks</p>
-                            </div>
-
-                        </div>
-                        <div class="task-card-bottom">
-                            <div id="initials">
-                                <p id="initials-circle-1">AS</p>
-                                <p id="initials-circle-2">DE</p>
-                                <p id="initials-circle-3">EF</p>
-                            </div>
-                            <div>
-                                <img id="priority-image-small" src="/img/prio-baia.svg">
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="board-column">
