@@ -211,7 +211,7 @@ function editMobileContact(i) {
               <div id="close-edit-mobile-btn" onclick="closeEditMobile()">
               </div>
                 <div id="cyrcle-and-inputs-div-mobile">
-                <div id="edit-cyrcle-overlay" style="background-color: ${backgroundColor};">${initials}</div>
+                <div id="edit-cyrcle-overlay-mobile" style="background-color: ${backgroundColor};">${initials}</div>
                 </div>
                   </div>
                   <div id="edit-content-bottom-mobile">
@@ -221,8 +221,8 @@ function editMobileContact(i) {
                     <input id="edit-contact-input-number-mobile" placeholder="Phone" type="text" value="${contact.phone}" >
                     </div>
                     <div id="save-delete-div-mobile">
-                    <div id="cancel-btn-div" onclick="closeNewContactOverlayMobile()"><button id="cancel-btn-edit">Delete</button><img id="cancel-icon" src="../img/cancel.png"></div>
-                      <div id="save-btn-div" onclick="saveNewContact()"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
+                    <div id="cancel-btn-div" onclick="deleteContactMobile(${i})"><button id="cancel-btn-edit">Delete</button></div>
+                      <div id="save-btn-div" onclick="saveContactChangesMobile(${i})"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
                   </div>
                   </div>
                 </div>
@@ -250,6 +250,26 @@ function saveContactChanges(i) {
   setItem('contacts', JSON.stringify(loadedContacts));
   renderContacts();
   closeEdit();
+}
+
+function saveContactChangesMobile(i) {
+  let editedName = document.getElementById('edit-contact-input-name-mobile');
+  let editedEmail = document.getElementById('edit-contact-input-mail-moible');
+  let editedPhone = document.getElementById('edit-contact-input-number-mobile');
+  let overlay = document.getElementById('editing-overlay-mobile');
+  let backgroundColor =  getRandomColor();
+  loadedContacts[i].name = editedName.value;
+  loadedContacts[i].email = editedEmail.value;
+  loadedContacts[i].phone = editedPhone.value;
+  loadedContacts[i].color = backgroundColor;
+  setItem('contacts', JSON.stringify(loadedContacts));
+  overlay.innerHTML = '';
+  loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
+    
+  setItem('loadedContacts', JSON.stringify(loadedContacts));
+  setItem('contacts', JSON.stringify(loadedContacts));
+  renderContactsMobile();
+  closeEditMobile();
 }
 
 function closeEdit(){
@@ -388,6 +408,7 @@ function deleteContactMobile(i) {
   setItem('contacts', JSON.stringify(loadedContacts));
   overlay.innerHTML=``;
   renderContactsMobile();
+  closeEditMobile();
   closeMobileDetails();
 }
 

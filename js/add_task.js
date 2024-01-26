@@ -3,6 +3,8 @@ let checkedContacts = [];
 let categories = ['Technical Task', 'User Story'];
 let subtasksArray = [];
 let priorityVariable;
+let toDo;
+let currentSubtask;
 
 let title = document.getElementById('title');
 let description = document.getElementById('description');
@@ -27,7 +29,8 @@ async function createNewTask() {
         'date': dateDue.value,
         'priority': priorityVariable,
         'category': categoryValue.value,
-        'subtasks': subtasksArray
+        'subtasks': subtasksArray,
+        'status': toDo
     })
 
     await setItem('tasks', JSON.stringify(tasks));
@@ -76,9 +79,9 @@ function clearFields() {
 	category.value = '';
 }
 
-function openOverlay(listId) {
+function openOverlay(event, listId) {
+    event.stopPropagation();
     let overlayList = document.getElementById(`${listId}`);
-
     overlayList.classList.toggle('active');
 
     // if(overlayList.classList.contains('block')) {
@@ -90,9 +93,14 @@ function openOverlay(listId) {
     // }
 }
 
-assignTo.addEventListener('blur', (event) => {
-    contactsList.classList.remove('active');
-})
+// assignTo.addEventListener('blur', (event) => {
+//     contactsList.classList.remove('active');
+// })
+
+function closeOverlay() {
+    let overlayList = document.getElementById('contacts-list');
+    overlayList.classList.remove('active');
+}
 
 function getContacts() {
     for (let i = 0; i < loadedContacts.length; i++) {
@@ -193,8 +201,8 @@ function addSubtask() {
     listItemSubtasks.innerHTML += `<li class="subtaskItem">
         <div id="editableText" class="li-element flex space-between align-center">
             <p>${inputSubtask.value}</p>
-            <div class="edit-delete-icons flex">
-                <img onclick="editSubtask()" id="subtasks-edit" class="subtasks-edit" src="./img/edit-subtask.svg" alt="Edit">
+            <div id="edit-delete-icons" class="edit-delete-icons flex">
+                <img onclick="editSubtask(event)" id="subtasks-edit" class="subtasks-edit" src="./img/edit-subtask.svg" alt="Edit">
                 <img onclick="clearSubtask(event)" id="subtasks-delete" class="subtasks-delete" src="./img/delete-subtask.svg" alt="Delete">
             </div>
         </div>
@@ -203,8 +211,6 @@ function addSubtask() {
     subtasksArray.push(`${inputSubtask.value}`);
 
     inputSubtask.value = '';
-
-    changeIcons();
 }
 
 function clearSubtaskInput() {
@@ -212,15 +218,19 @@ function clearSubtaskInput() {
     inputSubtask.value = '';
 }
 
-function editSubtask() {
-    var textElement = document.getElementById('editableText');
+function editSubtask(event) {
+    let textElement = event.target.closest('#editableText');
     textElement.contentEditable = true;
     textElement.focus(); // Den Fokus auf das bearbeitbare Element setzen
 
-    let edit = document.getElementById('subtasks-edit');
-    let deleteSubtasks = document.getElementById('subtasks-delete');
-    edit.src = './img/delete-subtask.svg';
-    deleteSubtasks.src = './img/check-blue.svg';
+    currentSubtask = textElement.innerText;
+
+    let edit = event.target.closest('#edit-delete-icons');
+    edit.innerHTML = '';
+    edit.innerHTML = `
+        <img onclick="clearSubtask(event)" id="subtasks-delete" class="subtasks-delete" src="./img/delete-subtask.svg" alt="Delete">
+        <img onclick="saveEditSubtask(event)" class="subtasks-check" src="./img/check-blue.svg" alt="">
+    `;
 }
 
 function clearSubtask(event) {
@@ -231,4 +241,21 @@ function clearSubtask(event) {
     if(index !== -1) {
         subtasksArray.splice(index, 1);
     }
+}
+
+function saveEditSubtask(event) {
+    let textElement = event.target.closest('#editableText');
+    textElement.contentEditable = false;
+
+    let indexOfsubtask = subtasksArray.indexOf(currentSubtask);
+    subtasksArray[indexOfsubtask] = textElement.innerText.trim();
+
+    let edit = event.target.closest('#edit-delete-icons');
+    edit.innerHTML = '';
+    edit.innerHTML = `
+        <img onclick="editSubtask()" id="subtasks-edit" class="subtasks-edit" src="./img/edit-subtask.svg" alt="Edit">
+        <img onclick="clearSubtask(event)" id="subtasks-delete" class="subtasks-delete" src="./img/delete-subtask.svg" alt="Delete">
+    `;
+
+    currentSubtask = '';
 }

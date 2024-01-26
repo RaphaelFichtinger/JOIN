@@ -9,13 +9,11 @@ body {
 
 #editing-overlay{
     background-color: #1d2b3f;
-    width: 1212px;
-    height: 592px;
+    width: 100vw;
+    height: 100vh;
     position: absolute;
     z-index: 1;
     border-radius: 20px;
-    right: 150px;
-    top: 300px;
 }
 
 #editing-overlay-mobile{
@@ -39,6 +37,8 @@ body {
     display: flex;
     flex-direction: row;
     z-index: 5;
+    top: 200px;
+    left: 300px;
 }
 
 #editing-div-leftside{
@@ -147,10 +147,10 @@ align-items: center;
     display: flex;
     align-items: center;
     flex-direction: row;
+    justify-content: space-evenly;
     width: 100%;
     background-color: #ffffff;
     height: 100%;
-    gap: 50px;
     border-radius: 0px 20px 20px 0px;
 }
 
@@ -229,6 +229,7 @@ align-items: center;
     font-weight: 400;
     background-color: rgba(42, 54, 71, 1);
     color: white;
+    border: none;
 }
 
 /* here begins the add contact overlay*/ 
@@ -294,7 +295,6 @@ align-items: center;
 
 #container-right{
     height: 100%;
-    margin-left: 94px;
 }
 
 #top-content-container-right{
@@ -551,12 +551,12 @@ align-items: center;
 #contactlist{
     align-items: start;
     overflow-y:scroll;  
-    height: 89%;
+    position: fixed;
+    height: 900px;
     width: 408px;
-    padding-left:24px;
-    padding-right: 24px;
     padding-top: 32px;
     padding-bottom: 32px;
+    background-color: white;
 }
 
 
@@ -572,18 +572,17 @@ align-items: center;
 #contactcard-container{
     height: 42px;
     display: flex;
-    gap: 35px;
+    gap: 24px;
     align-items: center;
     flex-direction: row;
     padding-top: 15px;
     padding-bottom: 15px;
     margin-top: 8px;
-    width: 364px;
     padding-left: 24px;
 }
 
 #contactcard-container:hover{
-    background-color: #2A3647;
+    background-color: #a0a0a0;
     border-radius: 8px;
     cursor: pointer;
     color: white;
@@ -671,6 +670,8 @@ align-items: center;
     border: 2px solid white;
 }
 
+#edit-content-rightside{
+}
 
 #edit-cyrcle-overlay{
     display: flex;
@@ -683,7 +684,6 @@ align-items: center;
     color: white;
     border: 2px solid white;
     font-size: 47px;
-    position: absolute;
 }
 
 #single-contact{
@@ -750,7 +750,6 @@ opacity: 0;
         align-items: center;
     }
     #contactlist{
-        max-width: 300px;
         padding: 0px;
     }
     #contact-btn-div{
@@ -769,7 +768,7 @@ opacity: 0;
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 32px;
+        gap: 18px;
         margin-top: 0px;
     }
     #contact-cyrcle-overlay-mobile{
@@ -786,8 +785,8 @@ opacity: 0;
         margin-top: 18px;
     }
     #contact-name-overlay-mobile{
-        font-size: 24px;
-        font-weight: 500;
+        font-size: 28px;
+        font-weight: 600;
     }
     #heading-contact-information-mobile{
         font-size: 18px;
@@ -830,6 +829,21 @@ opacity: 0;
     }
 }
 @media (max-width: 1050px){                                           /*  breakpoint list */ 
+
+    #edit-cyrcle-overlay-mobile{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 120px;
+        width: 120px;
+        border-radius: 50%;
+        background-color: rgb(86, 86, 86);
+        color: white;
+        border: 2px solid white;
+        font-size: 47px;
+        position: absolute;
+    }
+
     #popup-window-container{
         position: absolute;
         bottom: 200px;
