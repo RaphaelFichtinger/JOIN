@@ -9,13 +9,11 @@ body {
 
 #editing-overlay{
     background-color: #1d2b3f;
-    width: 1212px;
-    height: 592px;
+    width: 100vw;
+    height: 100vh;
     position: absolute;
     z-index: 1;
     border-radius: 20px;
-    right: 150px;
-    top: 300px;
 }
 
 #editing-overlay-mobile{
@@ -39,6 +37,8 @@ body {
     display: flex;
     flex-direction: row;
     z-index: 5;
+    top: 200px;
+    left: 300px;
 }
 
 #editing-div-leftside{
@@ -147,10 +147,10 @@ align-items: center;
     display: flex;
     align-items: center;
     flex-direction: row;
+    justify-content: space-evenly;
     width: 100%;
     background-color: #ffffff;
     height: 100%;
-    gap: 50px;
     border-radius: 0px 20px 20px 0px;
 }
 
@@ -229,6 +229,7 @@ align-items: center;
     font-weight: 400;
     background-color: rgba(42, 54, 71, 1);
     color: white;
+    border: none;
 }
 
 /* here begins the add contact overlay*/ 
@@ -294,7 +295,6 @@ align-items: center;
 
 #container-right{
     height: 100%;
-    margin-left: 94px;
 }
 
 #top-content-container-right{
@@ -328,7 +328,7 @@ align-items: center;
     margin-left: 0px;
     display: flex;
     align-items: center;
-    font-size: 17px;
+    font-size: 20px;
 }
 
 #overlay-top-container{
@@ -349,15 +349,6 @@ align-items: center;
     gap: 20px;
     margin-left: 24px;
     margin-top: 32px;
-}
-
-#overlay-top-container-mobile button{
-    position: absolute;
-    right: 49px;
-    height: 30px;
-    width: 30px;
-    background-image: url(/img/arrow-left-line.png);
-    border: none;
 }
 
 #contact-cyrcle-overlay{
@@ -406,7 +397,6 @@ align-items: center;
     font-weight: 500;
     background-image: url(/img/person.svg);
     background-size: contain;
-
 }
 
 #edit-delete-div{
@@ -561,12 +551,12 @@ align-items: center;
 #contactlist{
     align-items: start;
     overflow-y:scroll;  
-    height: 89%;
+    position: fixed;
+    height: 900px;
     width: 408px;
-    padding-left:24px;
-    padding-right: 24px;
     padding-top: 32px;
     padding-bottom: 32px;
+    background-color: white;
 }
 
 
@@ -582,18 +572,17 @@ align-items: center;
 #contactcard-container{
     height: 42px;
     display: flex;
-    gap: 35px;
+    gap: 24px;
     align-items: center;
     flex-direction: row;
     padding-top: 15px;
     padding-bottom: 15px;
     margin-top: 8px;
-    width: 364px;
     padding-left: 24px;
 }
 
 #contactcard-container:hover{
-    background-color: #2A3647;
+    background-color: #a0a0a0;
     border-radius: 8px;
     cursor: pointer;
     color: white;
@@ -681,6 +670,8 @@ align-items: center;
     border: 2px solid white;
 }
 
+#edit-content-rightside{
+}
 
 #edit-cyrcle-overlay{
     display: flex;
@@ -693,7 +684,6 @@ align-items: center;
     color: white;
     border: 2px solid white;
     font-size: 47px;
-    margin-left: 48px;
 }
 
 #single-contact{
@@ -703,6 +693,10 @@ align-items: center;
 
 .d-none{
     display: none;
+}
+
+.d-flex{
+    display: flex;
 }
 
 #list-mobile{
@@ -748,15 +742,14 @@ opacity: 0;
         margin-left: 18px;
     }
     #heading-div-static-mobile{
-        font-size: 32px;
-        font-weight: 300px;
+        font-size: 48px;
+        font-weight: 600;
         width: 207px;
         height: 74px;
         display: flex;
         align-items: center;
     }
     #contactlist{
-        max-width: 300px;
         padding: 0px;
     }
     #contact-btn-div{
@@ -765,9 +758,6 @@ opacity: 0;
 
     #alphabet-tab{
         max-width: 200px;
-    }
-    #contactlist-mobile{
-
     }
     #contactcard-container{
         max-width: 200px;
@@ -778,7 +768,7 @@ opacity: 0;
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 32px;
+        gap: 18px;
         margin-top: 0px;
     }
     #contact-cyrcle-overlay-mobile{
@@ -792,21 +782,25 @@ opacity: 0;
         color: white;
         font-size: 22px;
         font-weight: 500;
+        margin-top: 18px;
     }
     #contact-name-overlay-mobile{
-        font-size: 22px;
+        font-size: 28px;
+        font-weight: 600;
     }
     #heading-contact-information-mobile{
         font-size: 18px;
         font-weight: 300;
+        margin-top: 16px;
     }
     #contact-email-overlay-mobile{
         display: flex;
         flex-direction: column;
         gap: 18px;
+        margin-top: 8px;
     }
     #contact-telefon-overlay-mobile{
-        margin-top: 32px;
+        margin-top: 18px;
         display: flex;
         flex-direction: column;
         gap: 18px;
@@ -834,17 +828,240 @@ opacity: 0;
         width: 100px;
     }
 }
-@media (max-width: 1050px){
+@media (max-width: 1050px){                                           /*  breakpoint list */ 
+
+    #edit-cyrcle-overlay-mobile{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 120px;
+        width: 120px;
+        border-radius: 50%;
+        background-color: rgb(86, 86, 86);
+        color: white;
+        border: 2px solid white;
+        font-size: 47px;
+        position: absolute;
+    }
+
+    #popup-window-container{
+        position: absolute;
+        bottom: 200px;
+        right: 100px;
+        width: 96px;
+        background-color: rgb(255, 255, 255);
+        border-radius: 20px 20px 0px 20px;
+        border: 1px solid grey;
+        box-shadow: 0px 10px 20px 0px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 12px;
+        font-size: 16px;
+        font-weight: 100;
+        padding: 10px;
+        padding-left: 18px;
+        }
+        #popup-btn-edit{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 8px;
+        }
+        #popup-btn-delete{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 8px;
+        }
+    #save-delete-div-mobile{
+        margin-top: 34px;
+        width: 249px;
+        height: 59px;
+        display: flex;
+        gap: 24px;
+        justify-content: center;
+    }
+    #new-contact-input-name-mobile{
+        height: 50px;
+        border: 1px solid grey;
+        border-radius: 10px;
+        font-size: 20px;
+        padding-left: 20px;
+        background: url(/img/person.png);
+        background-repeat: no-repeat;
+        background-position: 95%;
+    }
+    #new-contact-input-mail-mobile{
+        height: 50px;
+        border: 1px solid grey;
+        border-radius: 10px;
+        font-size: 20px;
+        padding-left: 20px; 
+        background: url(/img/mail.png);
+        background-repeat: no-repeat;
+        background-position: 95%;
+    }
+    #new-contact-input-number-mobile{
+        height: 50px;
+        border: 1px solid grey;
+        border-radius: 10px;
+        font-size: 20px;
+        padding-left: 20px;
+        background: url(/img/call.png);
+        background-repeat: no-repeat;
+        background-position: 95%;
+    }
+    #edit-contact-input-name-mobile{
+        height: 50px;
+        border: 1px solid grey;
+        border-radius: 10px;
+        font-size: 20px;
+        padding-left: 20px;
+        background: url(/img/person.png);
+        background-repeat: no-repeat;
+        background-position: 95%;
+    }
+    #edit-contact-input-mail-mobile{
+        height: 50px;
+        border: 1px solid grey;
+        border-radius: 10px;
+        font-size: 20px;
+        padding-left: 20px; 
+        background: url(/img/mail.png);
+        background-repeat: no-repeat;
+        background-position: 95%;
+    }
+    #edit-contact-input-number-mobile{
+        height: 50px;
+        border: 1px solid grey;
+        border-radius: 10px;
+        font-size: 20px;
+        padding-left: 20px;
+        background: url(/img/call.png);
+        background-repeat: no-repeat;
+        background-position: 95%;
+    }
+    #edit-inputs-mobile{
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        width: 60vw;
+    }
+    #save-btn-edit-mobile{
+        height: 72px;
+        width: 270px;
+        background-color: #1d2b3f;
+        border: none;
+        border-radius: 20px;
+        color: white;
+        font-size: 21px;
+        font-weight: 600;
+        margin-top: 8px;
+    }
+    #edit-content-bottom-mobile{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-bottom: 48px;
+        background-color: white;
+        height: 50vh;
+    }
+    #edit-cyrcle-new-contact-mobile{
+        height: 120px;
+        width: 120px;
+        border-radius: 50%;
+        background-color: rgb(209, 209, 209);
+        color: white;
+        font-size: 44px;
+        font-weight: 500;
+        background-image: url(/img/person.svg);
+        background-size: contain;
+        margin-bottom: 52vh;
+        position: absolute;
+    }
+    #close-edit-mobile-btn{
+        filter: brightness(100);
+        height: 48px;
+        width: 48px;
+        display: flex;
+        position: absolute;
+        top: 32px;
+        right: 32px;
+        width: 24px;
+        height: 24px;
+        justify-content: right;
+        font-size: medium;
+        color: grey;
+        background-image: url(/img/close.png);
+        background-repeat: no-repeat;
+    }
+    #cyrcle-and-inputs-div-mobile {
+        z-index: 1;
+        width: 100%;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-bottom: 28px;
+        width: 100vw;
+    }
+    #vector5-for-new-mobile{
+        padding-bottom: 48px;
+    }
+    #new-contact-overlay-heading-mobile{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: white;
+        margin-top: 200px;
+        margin-left: 24px;
+        } 
+    #new-contact-div-top-mobile{
+        height: 592px;
+        border-radius: 20px 20px 0px 0px;
+    }    
+    #edit-contact-div-top-mobile{
+        height: 30vh;
+        border-radius: 20px 20px 0px 0px;
+    }                     
+    #add-new-contact-mobile{
+        background-color: rgba(42, 54, 71, 1);
+        width: 100vw;
+        position: fixed;
+        z-index: 1;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        left: 0px;
+        top: 0px;
+        bottom: 0px;
+    }
+
+    #mobile-more-btn{
+        bottom: 128px;
+        right: 32px;
+        background-color:rgba(42, 54, 71, 1);
+        height: 68px;
+        width: 68px;
+        border-radius: 50%;
+        background-image: url(/img/more_vert.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+    }
     #text-div-static{
         width: 100px;
     }
     #add-person-btn-mobile{
         position: fixed;
-        height: 34px;
-        width: 34px;
+        height: 32px;
+        width: 32px;
         padding: 18px;
-        bottom: 112px;
-        right: 48px;
+        bottom: 32px;
+        right: 32px;
         background-color: #2A3647;
         border-radius: 50%;
     }
@@ -874,7 +1091,6 @@ opacity: 0;
     #close-mobile-btn-div{
         height: 20px;
         width: 20px;
-        background-color: green;
     }
     #close-mobile-details-btn{
         margin-left: 200px;
@@ -886,8 +1102,18 @@ opacity: 0;
         display: none;
     }
     #close-mobile-details-btn{
-        height: 20px;
-        width:20px;
+        height: 32px;
+        width: 32px;
+        background-repeat: no-repeat;
         background-color: rgb(255, 255, 255);
+        background-image: url(/img/arrow-left-line.png);
+        background-position: center;
+        position: absolute;
+        right: 45px;
+        border: none;
+        margin-right: 4px;
     }
 }
+
+    
+
