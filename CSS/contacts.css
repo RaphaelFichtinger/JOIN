@@ -9,13 +9,11 @@ body {
 
 #editing-overlay{
     background-color: #1d2b3f;
-    width: 1212px;
-    height: 592px;
+    width: 100vw;
+    height: 100vh;
     position: absolute;
     z-index: 1;
     border-radius: 20px;
-    right: 150px;
-    top: 300px;
 }
 
 #editing-overlay-mobile{
@@ -39,6 +37,8 @@ body {
     display: flex;
     flex-direction: row;
     z-index: 5;
+    top: 200px;
+    left: 300px;
 }
 
 #editing-div-leftside{
@@ -295,7 +295,6 @@ align-items: center;
 
 #container-right{
     height: 100%;
-    margin-left: 94px;
 }
 
 #top-content-container-right{
@@ -552,12 +551,12 @@ align-items: center;
 #contactlist{
     align-items: start;
     overflow-y:scroll;  
-    height: 89%;
+    position: fixed;
+    height: 900px;
     width: 408px;
-    padding-left:24px;
-    padding-right: 24px;
     padding-top: 32px;
     padding-bottom: 32px;
+    background-color: white;
 }
 
 
@@ -573,18 +572,17 @@ align-items: center;
 #contactcard-container{
     height: 42px;
     display: flex;
-    gap: 35px;
+    gap: 24px;
     align-items: center;
     flex-direction: row;
     padding-top: 15px;
     padding-bottom: 15px;
     margin-top: 8px;
-    width: 364px;
     padding-left: 24px;
 }
 
 #contactcard-container:hover{
-    background-color: #2A3647;
+    background-color: #a0a0a0;
     border-radius: 8px;
     cursor: pointer;
     color: white;
@@ -752,7 +750,6 @@ opacity: 0;
         align-items: center;
     }
     #contactlist{
-        max-width: 300px;
         padding: 0px;
     }
     #contact-btn-div{
