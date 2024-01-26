@@ -1,12 +1,12 @@
 
 
-async function init() {
-    tasks = JSON.parse(await getItem('tasks'));
-    loadAddTask();
+async function renderBoard() {
+    await loadTasks();
     await loadContacts();
+    getCategories();
+	getContacts();
     generateTaskCards();
 }
-
 
 
 
@@ -48,18 +48,28 @@ function editTaskOverview() {
 }
 
 function generateTaskCards() {
+    let toDoColumn = document.getElementById('to-do');
     for (let i = 0; i < tasks.length; i++) {
         let title = tasks[i]['title'];
         let category = tasks[i]['category'];
         let fullName = tasks[i]['assign-to'];
         let description = tasks[i]['description'];
+        let subArrayLength = tasks[i]['subtasks'].length;
+        let priority = tasks[i]['priority'];
+        let priorityImage = document.getElementById(`priority-image-small${i}`);
+        if (priority == 'Low') {
+            priorityImage.src ="./img/prio-baia.svg"
+        } else {
+            console.log('low')
+        };
+        
         
         // Call the getInitials function to get the initials
         let initials = getInitials(fullName);
 
         // Rest of your code...
 
-        let toDoColumn = document.getElementById('to-do');
+        
         toDoColumn.innerHTML += `<div id="task-card" class="task-card" onclick="openTaskOverview()">
     <button class="task-type">${category}</button>
     <div class="task-text">
@@ -71,7 +81,7 @@ function generateTaskCards() {
             <div class="progress-bar" style="width: 0%;"></div>
         </div>
         <div>
-            <p>0/2 Subtasks</p>
+            <p>0/${subArrayLength} Subtasks</p>
         </div>
 
     </div>
@@ -80,7 +90,7 @@ function generateTaskCards() {
             <p id="initials-circle-1">${initials}</p>
         </div>
         <div>
-            <img id="priority-image-small" src="/img/prio-baia.svg">
+        <img id=`priority-image-small${i}` src="">
         </div>
     </div>
 </div>

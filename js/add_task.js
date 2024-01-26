@@ -17,6 +17,7 @@ async function init() {
     await loadContacts();
     getCategories();
 	getContacts();
+    console.log('add');
 }
 
 async function createNewTask() {
