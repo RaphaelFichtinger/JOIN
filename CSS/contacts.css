@@ -768,7 +768,7 @@ opacity: 0;
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 32px;
+        gap: 18px;
         margin-top: 0px;
     }
     #contact-cyrcle-overlay-mobile{
@@ -785,8 +785,8 @@ opacity: 0;
         margin-top: 18px;
     }
     #contact-name-overlay-mobile{
-        font-size: 24px;
-        font-weight: 500;
+        font-size: 28px;
+        font-weight: 600;
     }
     #heading-contact-information-mobile{
         font-size: 18px;
