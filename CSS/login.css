@@ -1,32 +1,36 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 .login-header {
     display: flex;
     justify-content: space-between;
-    margin: 67px 122px 63px 77px;
+    padding: 67px 122px 63px 77px;
 }
 .login-header img {
     margin-top: 13px;
 }
-.button-login-top a {
+.button-login-top a,
+.button-login-mobile a {
     text-decoration: none;
     gap: 35px;
 }
-#content{
+#content {
     display: flex;
     justify-content: center;
+    margin-bottom: 200px;
 }
 .login-lightbox {
     max-width: 652px;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 652px;
+    background-color: #FFFFFF;
+    width: 100%;
     border-radius: 30px;
-    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.04);
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     padding: 48px 0;
+    margin: 0 16px;
 }
-#heading-container{
+#heading-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,7 +40,7 @@
     padding-bottom: 16px;
     margin-bottom: 32px;
 }
-#input-container{
+#input-container {
     display: flex;
     justify-content: center;
     gap: 32px;
@@ -44,11 +48,13 @@
     flex-direction: column;
     width: 422px;
 }
-#input-email{
-    background: url(../img/mail.png);
-    background-repeat: no-repeat;
-    background-position: 377px;
-    background-attachment: 7px 7px;
+.input-email-container,
+.input-password-container {
+    position: relative;
+    width: 100%;
+}
+#input-email,
+#input-password {
     height: 44px;
     width: 100%;
     border-radius: 10px;
@@ -56,23 +62,19 @@
     font-size: 20px;
     text-indent: 20px;
 }
-#input-password{
-    background: url(/img/lock.png);
-    background-repeat: no-repeat;
-    background-position: 377px;
-    background-attachment: 7px 7px;
-    height: 44px;
-    width: 100%;
-    border-radius: 10px;
-    border: 1px solid #d1d1d1;
-    font-size: 20px;
-    text-indent: 20px;
+.input-email-image,
+.input-password-image {
+    position: absolute;
+    top: 50%;
+    right: 21px;
+    transform: translateY(-50%);
 }
-#checkbox-div{
+#checkbox-div {
     gap: 8px;
-    margin: 16px auto 0 28%;
+    margin-top: 16px;
+    width: 422px;
 }
-#buttons-container{
+#buttons-container {
     gap: 35px;
     margin-top: 32px;
 }
@@ -99,4 +101,47 @@ a {
     margin-top: 32px;
     color: red;
     width: 422px;
+}
+.button-login-mobile {
+    display: none;
+}
+.privacy-policy {
+    gap: 24px;
+    color: #A8A8A8;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    position: relative;
+    bottom: 40px;
+    margin-top: auto;
+}
+
+@media screen and (max-width: 700px) {
+    .login-header {
+        padding: 40px;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .login-header img {
+        width: 64px;
+    }
+    #input-container,
+    #checkbox-div,
+    #error-info {
+        width: calc(100% - 32px);
+    }
+    #buttons-container {
+        flex-direction: column;
+        gap: 21px;
+    }
+    .button-login-top {
+        display: none;
+    }
+    .button-login-mobile {
+        display: flex;
+        margin-top: 57px;
+    }
 }

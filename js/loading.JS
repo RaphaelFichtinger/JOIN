@@ -1,4 +1,5 @@
 let loadedContacts = [];
+let tasks = [];
 
 const STORAGE_TOKEN = '0SUZWQWFOE8PEF8QOE5A57VYG0N48AWXZYFBZWYB';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
@@ -25,6 +26,10 @@ async function loadContacts(){
   } catch(e){
   console.error('Loading error:', e);
   }
+}
+
+async function loadTasks() {
+  tasks = JSON.parse(await getItem('tasks'));
 }
 
 

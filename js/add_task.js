@@ -1,9 +1,8 @@
-let tasks = [];
 let checkedContacts = [];
 let categories = ['Technical Task', 'User Story'];
 let subtasksArray = [];
 let priorityVariable;
-let toDo;
+let toDo = 'to do';
 let currentSubtask;
 
 let title = document.getElementById('title');
@@ -14,7 +13,7 @@ let assignTo = document.getElementById('assign-to');
 let contactsList = document.getElementById('contacts-list');
 
 async function init() {
-    tasks = JSON.parse(await getItem('tasks'));
+    await loadTasks();
     await loadContacts();
     getCategories();
 	getContacts();

@@ -5,15 +5,12 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>JOIN summary</title>
-	<script src="/js/summary.js"></script>
-	<script src="/js/contacts.js"></script>
-	<script src="./js/loading.JS"></script>
 
 	<link rel="stylesheet" href="/CSS/default.css">
 	<link rel="stylesheet" href="/CSS/summary.css">
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(); renderSummary()">
 	<div w3-include-html="header.html"></div>
 	<div w3-include-html="sidebar.html"></div>
 
@@ -32,7 +29,7 @@
 				<div class="box todo">
 					<img class="box-top-image" src="./img/edit.svg" alt="">
 					<div class="inner-box-text">
-						<h2>1</h2>
+						<h2 id="to-do">0</h2>
 						<p>To-do</p>
 					</div>
 				</div>
@@ -49,7 +46,7 @@
 					<div class="inner-box-left">
 						<img class="box-top-image" src="./img/urgent.png" alt="">
 						<div id="inner-box-urgent">
-							<h2 id="urgent-heading">1</h2>
+							<h2 id="urgent-heading">0</h2>
 							<p id="urgent-text">Urgent</p>
 						</div>
 					</div>
@@ -67,7 +64,7 @@
 			</div>
 			<div class="box-bottom">
 				<div class="box-small tasks-in-board">
-					<h2>5</h2>
+					<h2 id="task-in-board">5</h2>
 					<p>Tasks in Board</p>
 				</div>
 				<div class="box-small tasks-in-progress">
@@ -81,6 +78,9 @@
 			</div>
 		</div>
 	</div>
+	<script src="./js/loading.JS"></script>
+	<script src="./js/contacts.js"></script>
+	<script src="./js/add_task.js"></script>
+	<script src="./js/summary.js"></script>
 </body>
-
 </html>
