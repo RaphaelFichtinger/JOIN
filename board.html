@@ -194,7 +194,7 @@
                     <p>To do</p>
                     <img src="/img/plus-button.png">
                 </div>
-                <div id="to-do" class="drag-area">
+                <div id="to-do" class="drag-area" ondrop="moveTo('to-do')" ondragleave="removeHighlight('do-to')" ondragover="allowDrop(event); highlight('do-to')">
                     
                 </div>
             </div>
@@ -203,7 +203,7 @@
                     <p>In progress</p>
                     <img src="/img/plus-button.png">
                 </div>
-                <div id="in-progress" class="drag-area">
+                <div id="in-progress" class="drag-area" ondrop="moveTo('in-progress')" ondragleave="removeHighlight('in-progress')" ondragover="allowDrop(event); highlight('in-progress')">
                     <div class="task-card">
                         <button class="task-type">User Story</button>
                         <div class="task-text">
@@ -237,13 +237,13 @@
                     <p>Await feedback</p>
                     <img src="/img/plus-button.png">
                 </div>
-                <div id="await-feedback" class="drag-area"></div>
+                <div id="await-feedback" class="drag-area" ondrop="moveTo('await-feedback')" ondragleave="removeHighlight('await-feedback')" ondragover="allowDrop(event); highlight('await-feedback')"></div>
             </div>
             <div class="board-column">
                 <div class="board-column-title">
                     <p>Done</p>
                 </div>
-                <div id="done-tasks" class="drag-area"></div>
+                <div id="done-tasks" class="drag-area" ondrop="moveTo('done-tasks')" ondragleave="removeHighlight('done-tasks')" ondragover="allowDrop(event); highlight('done-tasks')"></div>
             </div>
         </div>
     </div>

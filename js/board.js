@@ -6,8 +6,105 @@ async function renderBoard() {
     getCategories();
 	getContacts();
     generateTaskCards();
+    updateHTML();
 }
 
+function updateHTML() {
+    // To do Table
+    let tasksTodo = tasks.filter(t => t['status'] == 'to do');
+
+    document.getElementById('to-do').innerHTML = '';
+
+    for (let index = 0; index < tasksTodo.length; index++) {
+        const element = tasksTodo[index];
+        document.getElementById('to-do').innerHTML += generateTodoHTML(element);
+    }
+
+    // In progress Table
+    let tasksInProgress = tasks.filter(t => t['status'] == 'in progress');
+
+    document.getElementById('in-progress').innerHTML = '';
+
+    for (let index = 0; index < tasksInProgress.length; index++) {
+        const element = tasksInProgress[index];
+        document.getElementById('in-progress').innerHTML += generateTodoHTML(element);
+    }
+
+    // Await feedback Table
+    let tasksAwaitFeedback = tasks.filter(t => t['status'] == 'await feedback');
+
+    document.getElementById('await-feedback').innerHTML = '';
+
+    for (let index = 0; index < tasksAwaitFeedback.length; index++) {
+        const element = tasksAwaitFeedback[index];
+        document.getElementById('await-feedback').innerHTML += generateTodoHTML(element);
+    }
+
+    // Await feedback Table
+    let tasksDone = tasks.filter(t => t['status'] == 'done');
+
+    document.getElementById('done-tasks').innerHTML = '';
+
+    for (let index = 0; index < tasksDone.length; index++) {
+        const element = tasksDone[index];
+        document.getElementById('done-tasks').innerHTML += generateTodoHTML(element);
+    }
+}
+
+let currentDraggedElement;
+
+function generateTodoHTML(element) {
+    // Call the getInitials function to get the initials
+    let initials = getInitials(fullName);
+    return `
+    <div id="task-card" class="task-card" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTaskOverview()">
+        <button class="task-type">${element['category']}</button>
+        <div class="task-text">
+            <p id="task-title">${element['title']}</p>
+            <p id="task-details">${element['description']}</p>
+        </div>
+        <div class="subtasks">
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 0%;"></div>
+            </div>
+            <div>
+                <p>0/${element['subtasks'].length} Subtasks</p>
+            </div>
+        </div>
+        <div class="task-card-bottom">
+            <div id="initials">
+                <p id="initials-circle-1">${initials}</p>
+            </div>
+            <div>
+            <img id="priority-image-small${index}" src="">
+            </div>
+        </div>
+    </div>
+    `;
+}
+
+function startDragging(id) { //die Id markiert das Element das gerade verschoben wird
+    currentDraggedElement = id;
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function moveTo(status) {
+    tasks[currentDraggedElement]['status'] = status;
+    updateHTML();
+}
+
+//highlight auf das Board geben
+function highlight(id) {
+    document.getElementById(id).classList.add('drag-area-highlight');
+}
+
+//highlight vom Board entfernen
+function removeHighlight(id) {
+    document.getElementById(id).classList.remove('drag-area-highlight');
+}
 
 
 
