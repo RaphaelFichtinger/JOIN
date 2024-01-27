@@ -12,7 +12,7 @@ let categoryValue = document.getElementById('category');
 let assignTo = document.getElementById('assign-to');
 let contactsList = document.getElementById('contacts-list');
 
-async function init() {
+async function renderTask() {
     await loadTasks();
     await loadContacts();
     getCategories();
@@ -79,23 +79,17 @@ function clearFields() {
 	category.value = '';
 }
 
+// function combinedClickFunction(event) {
+//     if(event.target.closest('.item') == null) {
+//         closeOverlay();
+//     }
+// }
+
 function openOverlay(event, listId) {
     event.stopPropagation();
     let overlayList = document.getElementById(`${listId}`);
     overlayList.classList.toggle('active');
-
-    // if(overlayList.classList.contains('block')) {
-    //     overlayList.classList.remove('block');
-    //     overlayList.classList.add('d-none');
-    // } else {
-    //     overlayList.classList.remove('d-none');
-    //     overlayList.classList.add('block');
-    // }
 }
-
-// assignTo.addEventListener('blur', (event) => {
-//     contactsList.classList.remove('active');
-// })
 
 function closeOverlay() {
     let overlayList = document.getElementById('contacts-list');

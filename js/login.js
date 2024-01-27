@@ -7,6 +7,8 @@ function login() {
 		console.log(signedUpUser);
 
 		if(email.value == signedUpUser.email && password.value == signedUpUser.password) {
+			logedInPerson = signedUpUser['name'];
+			localStorage.setItem('logedIn Person', JSON.stringify(logedInPerson))
 			window.location.href = './summary.html';
 			return;
 		}

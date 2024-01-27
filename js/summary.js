@@ -1,47 +1,119 @@
+let prioritySummaryVariable = 0;
+let toDoVariable = 0;
+let doneVariable = 0;
+let tasksInProgressVariable = 0;
+let awaitingFeedbackVariable = 0;
+let toDo = document.getElementById('to-do');
+let done = document.getElementById('done');
+let tasksInBoard = document.getElementById('tasks-in-board');
+let tasksInProgress = document.getElementById('tasks-in-progress');
+let awaitingFeedback = document.getElementById('awaiting-feedback');
+
+let datesUrgent = [];
+let urgentDate = document.getElementById('urgent-date');
+let greeting = document.getElementById('greeting');
+
 async function renderSummary() {
-	let priorityVariable = 0;
-	let toDOVariable = 0;
-	let taskInBoard = document.getElementById('task-in-board');
-	let toDo = document.getElementById('to-do');
 	await loadTasks();
+	getGreeting();
+	getLoginName();
 
-	taskInBoard.innerHTML = tasks.length;
+	tasksInBoard.innerHTML = tasks.length;
 
+	loopTasks();
+	getDateFromInput()
+}
+
+function loopTasks() {
 	for (let i = 0; i < tasks.length; i++) {
 		let task = tasks[i];
-		console.log(task);
 		let priority = task['priority'];
-		let status = task['status'];
 		if(priority === 'Urgent') {
 			let urgentHeading = document.getElementById('urgent-heading');
-			priorityVariable++
-			urgentHeading.innerHTML = priorityVariable;
+			prioritySummaryVariable++
+			urgentHeading.innerHTML = prioritySummaryVariable;
+
+			datesUrgent.push(task['date'])
 		}
-		if(status === 'to do') {
-			toDOVariable++;
-			toDo.innerHTML = toDOVariable;
-		}
-		getDateFromInput();
+		checkStatus(i);
+	}
+}
+
+function checkStatus(i) {
+	let task = tasks[i];
+	let status = task['status'];
+
+	if(status === 'to do') {
+		toDoVariable++;
+		toDo.innerHTML = toDoVariable;
+	} else if(status === 'done') {
+		doneVariable++
+		done.innerHTML = doneVariable;
+	} else if(status === 'tasks in progress') {
+		tasksInProgressVariable++
+		tasksInProgress.innerHTML = tasksInProgressVariable;
+	} else if(status === 'awaiting feedback') {
+		awaitingFeedbackVariable++
+		awaitingFeedback.innerHTML = awaitingFeedbackVariable
 	}
 }
 
 function getDateFromInput() {
-	// Das ursprüngliche Datum vom Input-Feld
-	var inputDatum = "2024-01-27";
+	let currentDate = new Date();
 
-	// Datum in ein JavaScript Date-Objekt umwandeln
-	var datumObjekt = new Date(inputDatum);
+	// Funktion, um den Unterschied zwischen zwei Daten zu berechnen
+	function dateDifferenceInDays(date1, date2) {
+		const oneDay = 24 * 60 * 60 * 1000; // Stunden * Minuten * Sekunden * Millisekunden
+		const diffInMilliseconds = Math.abs(date1 - date2);
+		return Math.round(diffInMilliseconds / oneDay);
+	}
 
-	// Gewünschtes Datumsformat erstellen
-	var tag = datumObjekt.getDate();
-	var monat = datumObjekt.getMonth() + 1; // Beachte: Monate beginnen bei 0
-	var jahr = datumObjekt.getFullYear();
+	// Wandelt die Datums-Strings in Date-Objekte um
+	let dateObjects = datesUrgent.map(function(dateString) {
+		// Zerlege das Datum und erstelle ein Date-Objekt
+		let dateParts = dateString.split("-");
+		return new Date(dateParts[0], dateParts[1] - 1, dateParts[2]); // Monate in JavaScript sind 0-basiert, daher -1
+	});
 
-	// Nullen vor einzelnen Ziffern hinzufügen
-	monat = monat < 10 ? '0' + monat : monat;
-	tag = tag < 10 ? '0' + tag : tag;
+	// Finde das Datum im Array, das am nächsten zum aktuellen Datum ist
+	let closestDate = dateObjects.reduce(function (prev, curr) {
+		let prevDiff = dateDifferenceInDays(currentDate, prev);
+		let currDiff = dateDifferenceInDays(currentDate, curr);
+		return currDiff < prevDiff ? curr : prev;
+	});
 
-	// Das Datum im gewünschten Format ausgeben
-	var gewuenschtesDatum = tag + '.' + monat + '.' + jahr;
-	console.log(gewuenschtesDatum);
+	// Formatieren und ausgeben
+	let formattedDate = closestDate.toLocaleDateString("en-US", {
+		month: "long",
+		day: "numeric",
+		year: "numeric",
+	});
+
+	urgentDate.innerHTML = formattedDate;
+}
+
+function getGreeting() {
+	let currentDate = new Date();
+	let currentTime = currentDate.getHours();
+
+	let greetingText;
+
+	switch (true) {
+		case currentTime >= 4 && currentTime < 12:
+			greetingText = 'Good morning,';
+			break;
+		case currentTime >= 12 && currentTime < 17:
+			greetingText = 'Good afternoon,';
+			break;
+		case currentTime >= 17 && currentTime < 23:
+			greetingText = 'Good evening,';
+			break;
+		default:
+			greetingText = 'Good night,';
+	}
+	greeting.textContent = greetingText;
+}
+
+function getLoginName() {
+	document.getElementById('loged-in-person').textContent = logedInPerson;
 }
