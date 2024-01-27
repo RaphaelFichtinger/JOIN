@@ -727,6 +727,9 @@ width: 0px;
 opacity: 0;
 }
 @media (max-width: 1650px){
+    #header{
+        display: none;
+    }
     #edit{
         left: 242px;
         min-width: none;
@@ -1157,6 +1160,15 @@ opacity: 0;
         margin-right: 4px;
     }
 }
+@media(max-width: 700px){
+    #edit-inputs-mobile{
+        margin-top: 48px;
+    }
+    #new-contact-overlay-heading-mobile{
+        margin-top: 124px;
+    }
+    #edit-content-bottom-mobile{
 
-    
+    }
+}
 
