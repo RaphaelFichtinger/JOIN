@@ -4,6 +4,9 @@ let subtasksArray = [];
 let priorityVariable;
 let toDo = 'to do';
 let currentSubtask;
+let nextTaskId = 0;
+
+nextTaskId = localStorage.getItem('nextTaskId');
 
 let title = document.getElementById('title');
 let description = document.getElementById('description');
@@ -21,8 +24,10 @@ async function renderTask() {
 }
 
 async function createNewTask() {
+    const taskId = generateId(); // Rufe die Funktion auf, um die nächste ID zu erhalten
 
     tasks.push({
+        'id': taskId,
         'title': title.value,
         'description': description.value,
         'assign-to': checkedContacts,
@@ -34,8 +39,16 @@ async function createNewTask() {
     })
 
     await setItem('tasks', JSON.stringify(tasks));
+    localStorage.setItem('nextTaskId', JSON.stringify(nextTaskId));
     clearFields();
     successLightbox();
+}
+
+// Funktion zum Generieren der nächsten verfügbaren ID
+function generateId() {
+    const currentId = nextTaskId;
+    nextTaskId += 1; // Erhöhe die Variable für die nächste ID
+    return currentId;
 }
 
 function successLightbox() {
