@@ -1,11 +1,18 @@
 
 
 async function renderBoard() {
+    console.log('succes1');
     await loadTasks();
+    
     await loadContacts();
+    
     getCategories();
+    
 	getContacts();
+    
     generateTaskCards();
+    console.log('succes2');
+    
 }
 
 
@@ -56,20 +63,11 @@ function generateTaskCards() {
         let description = tasks[i]['description'];
         let subArrayLength = tasks[i]['subtasks'].length;
         let priority = tasks[i]['priority'];
-        let priorityImage = document.getElementById(`priority-image-small${i}`);
-        if (priority == 'Low') {
-            priorityImage.src ="./img/prio-baia.svg"
-        } else {
-            console.log('low')
-        };
+        
         
         
         // Call the getInitials function to get the initials
-        let initials = getInitials(fullName);
-
-        // Rest of your code...
-
-        
+        let initials = getInitials(fullName);        
         toDoColumn.innerHTML += `<div id="task-card" class="task-card" onclick="openTaskOverview()">
     <button class="task-type">${category}</button>
     <div class="task-text">
@@ -97,6 +95,14 @@ function generateTaskCards() {
 </div>
 </div>
 <div class="board-column">`;
+let priorityImage = document.getElementById(`priority-image-small${i}`);
+        if (priority == 'Low') {
+            priorityImage.src ="./img/prio-baia.svg"
+        } if (priority == 'Urgent') {
+            priorityImage.src ="./img/prio-alta.svg"
+        } if (priority == 'Medium') {
+            priorityImage.src ="./img/prio-media.svg"
+        }
     }
 }
 
