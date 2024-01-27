@@ -154,6 +154,7 @@ align-items: center;
     color: grey;
     background-image: url(/img/close.png);
     background-repeat: no-repeat;
+    filter: brightness(100);
 }
 
 #close-edit:hover{
@@ -305,7 +306,7 @@ align-items: center;
 }
 
 #container-left{
-    height: 85vh;
+    height: 100vh;
     width: 456px;
 }
 
@@ -765,6 +766,14 @@ opacity: 0;
 }
 
 @media (max-width: 1400px){
+    #container-left{
+        height: 100vh;
+        width: 300px;
+    }
+    #cyrcle-and-inputs-div{
+        padding-top:18px;
+        padding-bottom: 18px;
+    }
     #edit{
         left: 25vw;
         top: 1vh;
@@ -888,8 +897,6 @@ opacity: 0;
     }
 }
 @media (max-width: 1050px){                                           /*  breakpoint list */ 
-  
-  
     #editing-overlay{
         display: none;
     }

@@ -1,15 +1,3 @@
-// sets test-contacts that are in the contactbook 
-// use this function manually to fetch.post a new pseudo contact 
-async function setContacts() {
-  loadedContacts.push({
-      'name': 'Milka Kuh',
-      'email': 'milka@test.de',
-      'phone': '4234234',
-      'color': getRandomColor() 
-  });
-  await setItem('loadedContacts', JSON.stringify(loadedContacts));
-}
-
 async function loadContacts(){
   try {
       loadedContacts = JSON.parse(await getItem('contacts')) || [];
