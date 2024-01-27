@@ -202,7 +202,7 @@ function editMobileContact(i) {
   overlay.innerHTML = `
   <div id="edit-mobile">
   <div id="edit-contact-div-top-mobile">
-          <div id="new-contact-overlay-heading-mobile"><h1>Edit contact<h1> <p id="new-contact-text">Tasks are better with a team!</p>
+          <div id="new-contact-overlay-heading-mobile"><h1 id="static-heading-edit-mobile">Edit contact<h1> <p id="new-contact-text">Tasks are better with a team!</p>
             <img id="vector5-for-new-mobile" src="../img/vector5vertical.png">
           </div>
   </div>   
@@ -300,7 +300,7 @@ function setNewContact(i) {
       <div id="editing-div-leftside">
             <div id="edit-overlay-logo">
             </div>
-              <div id="new-contact-overlay-heading"><h1>Add contact<h1>  <p id="new-contact-text">Tasks are better with a team!</p>
+              <div id="new-contact-overlay-heading"><h1 id="static-heading-add">Add contact<h1>  <p id="new-contact-text">Tasks are better with a team!</p>
                 <img id="vector5-for-new" src="../img/vector5vertical.png">
               </div>
       </div>                
@@ -333,7 +333,7 @@ function setNewContactMobile(i) {
   overlay.innerHTML = `
   <div id="add-new-contact-mobile">
       <div id="new-contact-div-top-mobile">
-              <div id="new-contact-overlay-heading-mobile"><h1>Add contact<h1> <p id="new-contact-text">Tasks are better with a team!</p>
+              <div id="new-contact-overlay-heading-mobile"><h1 id="static-heading-add-mobile">Add contact<h1> <p id="new-contact-text">Tasks are better with a team!</p>
                 <img id="vector5-for-new-mobile" src="../img/vector5vertical.png">
               </div>
       </div>   
