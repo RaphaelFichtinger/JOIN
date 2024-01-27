@@ -90,7 +90,7 @@ function generateTaskCards() {
             <p id="initials-circle-1">${initials}</p>
         </div>
         <div>
-        <img id=`priority-image-small${i}` src="">
+        <img id="priority-image-small${i}" src="">
         </div>
     </div>
 </div>

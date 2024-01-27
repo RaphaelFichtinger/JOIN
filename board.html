@@ -19,6 +19,7 @@
     <div w3-include-html="sidebar.html"></div>
     <div class="main-board">
         <div id="add-task-popup" class="add-task-popup"><div id="add-task" class="add_task flex-column">
+        <div id="close-task-button-div" onclick="closeAddTaskPopup()"><button>x</button></div>
             <h1>Add Task</h1>
             <form onsubmit="createNewTask(); return false">
                 <div class="form-container flex">
