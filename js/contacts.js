@@ -268,7 +268,9 @@ function saveContactChangesMobile(i) {
     
   setItem('loadedContacts', JSON.stringify(loadedContacts));
   setItem('contacts', JSON.stringify(loadedContacts));
+  renderContacts();
   renderContactsMobile();
+  showContactDetailsMobile(i);
   closeEditMobile();
 }
 
