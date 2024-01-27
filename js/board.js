@@ -19,7 +19,7 @@ async function renderBoard() {
 
 function updateHTML() {
     // To do Table
-    let tasksTodo = tasks.filter(t => t['status'] == 'to do');
+    let tasksTodo = tasks.filter(t => t['status'] == 'to-do');
 
     document.getElementById('to-do').innerHTML = '';
 
@@ -29,7 +29,7 @@ function updateHTML() {
     }
 
     // In progress Table
-    let tasksInProgress = tasks.filter(t => t['status'] == 'in progress');
+    let tasksInProgress = tasks.filter(t => t['status'] == 'in-progress');
 
     document.getElementById('in-progress').innerHTML = '';
 
@@ -39,7 +39,7 @@ function updateHTML() {
     }
 
     // Await feedback Table
-    let tasksAwaitFeedback = tasks.filter(t => t['status'] == 'await feedback');
+    let tasksAwaitFeedback = tasks.filter(t => t['status'] == 'await-feedback');
 
     document.getElementById('await-feedback').innerHTML = '';
 
@@ -49,7 +49,7 @@ function updateHTML() {
     }
 
     // Await feedback Table
-    let tasksDone = tasks.filter(t => t['status'] == 'done');
+    let tasksDone = tasks.filter(t => t['status'] == 'done-tasks');
 
     document.getElementById('done-tasks').innerHTML = '';
 

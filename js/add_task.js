@@ -2,11 +2,11 @@ let checkedContacts = [];
 let categories = ['Technical Task', 'User Story'];
 let subtasksArray = [];
 let priorityVariable;
-let toDo = 'to do';
+let toDo = 'to-do';
 let currentSubtask;
 let nextTaskId = 0;
 
-nextTaskId = localStorage.getItem('nextTaskId');
+nextTaskId = JSON.parse(localStorage.getItem('nextTaskId'));
 
 let title = document.getElementById('title');
 let description = document.getElementById('description');
@@ -24,7 +24,7 @@ async function renderTask() {
 }
 
 async function createNewTask() {
-    const taskId = generateId(); // Rufe die Funktion auf, um die nächste ID zu erhalten
+    let taskId = generateId(); // Rufe die Funktion auf, um die nächste ID zu erhalten
 
     tasks.push({
         'id': taskId,
@@ -46,9 +46,12 @@ async function createNewTask() {
 
 // Funktion zum Generieren der nächsten verfügbaren ID
 function generateId() {
-    const currentId = nextTaskId;
-    nextTaskId += 1; // Erhöhe die Variable für die nächste ID
-    return currentId;
+    if(tasks.length == 0) {
+        return nextTaskId = 0;
+    } else {
+        nextTaskId += 1; // Erhöhe die Variable für die nächste ID
+        return nextTaskId;
+    }
 }
 
 function successLightbox() {
