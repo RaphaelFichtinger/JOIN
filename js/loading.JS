@@ -1,5 +1,8 @@
 let loadedContacts = [];
 let tasks = [];
+let logedInPerson = '';
+
+logedInPerson = JSON.parse(localStorage.getItem('logedIn Person'));
 
 const STORAGE_TOKEN = '0SUZWQWFOE8PEF8QOE5A57VYG0N48AWXZYFBZWYB';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
@@ -32,10 +35,6 @@ async function loadTasks() {
   tasks = JSON.parse(await getItem('tasks'));
 }
 
-
-
-
-
 function includeHTML() {
     var z, i, elmnt, file, xhttp;
     /* Loop through a collection of all HTML elements: */
@@ -62,5 +61,4 @@ function includeHTML() {
         return;
      }
    }
-  }
-
+}

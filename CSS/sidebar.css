@@ -1,6 +1,9 @@
 #sidebar {
-    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-around;
+    position: fixed;
     left: 0;
     top: 0;
     width: 232px;
@@ -15,10 +18,14 @@
     width: 100px;
 }
 .side-menu {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     gap: 15px;
 }
 .navi {
+    display: flex;
+    align-items: center;
     color: #FFFFFF;
     gap: 8px;
     padding: 8px 0 8px 56px;
@@ -27,14 +34,13 @@
     background-color: #091931;
 }
 .privacy-text {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
     width: 100%;
     gap: 20px;
     height: 317px;
     margin-top: 200px;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column
-    ;
 }
 .info-text {
     color: #A8A8A8;
