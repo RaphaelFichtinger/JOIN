@@ -116,7 +116,7 @@ function showContactDetailsMobile(i) {
   overlayMobile.innerHTML = `
   <div id="popup-window-container"class="d-none">
     <div id="popup-btn-edit" onclick="editMobileContact(${i})"><img id="popup-img-edit" src="../img/edit.png"><p>Edit</p></div>
-    <div id="popup-btn-delete"><img id="popup-img-delete" src="../img/delete-subtask.svg"><p>Delete</p></div>
+    <div id="popup-btn-delete" onclick="deleteContactMobile(${i})"><img id="popup-img-delete" src="../img/delete-subtask.svg"><p>Delete</p></div>
   </div>
       <div id="overlay-top-container-mobile">
       <button id="mobile-more-btn" onclick="openOrClose()" ></button>
@@ -254,7 +254,7 @@ function saveContactChanges(i) {
 
 function saveContactChangesMobile(i) {
   let editedName = document.getElementById('edit-contact-input-name-mobile');
-  let editedEmail = document.getElementById('edit-contact-input-mail-moible');
+  let editedEmail = document.getElementById('edit-contact-input-mail-mobile');
   let editedPhone = document.getElementById('edit-contact-input-number-mobile');
   let overlay = document.getElementById('editing-overlay-mobile');
   let backgroundColor =  getRandomColor();
@@ -349,7 +349,7 @@ function setNewContactMobile(i) {
                         <input id="new-contact-input-number-mobile" placeholder="Phone" type="text" >
                         </div>
                         <div id="save-delete-div-mobile">
-                          <div id="create-btn-div-mobile" onclick="saveNewContact()"><button id="save-btn-edit-mobile">Create Contact</button><img id="check-icon" src="../img/check.png"></div>
+                          <div id="create-btn-div-mobile" onclick="saveNewContactMobile()"><button id="save-btn-edit-mobile">Create Contact</button><img id="check-icon" src="../img/check.png"></div>
                       </div> 
                       </div>
                     </div>
@@ -376,9 +376,9 @@ function saveNewContact(){
 
 function saveNewContactMobile(){
   let newContact = {
-    'name': document.getElementById('new-contact-input-name').value,
-    'email': document.getElementById('new-contact-input-mail').value,
-    'phone': document.getElementById('new-contact-input-number').value
+    'name': document.getElementById('new-contact-input-name-mobile').value,
+    'email': document.getElementById('new-contact-input-mail-mobile').value,
+    'phone': document.getElementById('new-contact-input-number-mobile').value
   };
   loadedContacts.push(newContact);
   loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
