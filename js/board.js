@@ -1,7 +1,7 @@
 
 
 async function renderBoard() {
-    console.log('succes1');
+   
     await loadTasks();
     
     await loadContacts();
@@ -12,7 +12,8 @@ async function renderBoard() {
     
     generateTaskCards();
     updateHTML();
-    console.log('succes2');
+    console.log('success');
+   
     
 }
 
@@ -24,7 +25,7 @@ function updateHTML() {
 
     for (let index = 0; index < tasksTodo.length; index++) {
         const element = tasksTodo[index];
-        document.getElementById('to-do').innerHTML += generateTodoHTML(element);
+        document.getElementById('to-do').innerHTML += generateTodoHTML(element, index);
     }
 
     // In progress Table
@@ -34,7 +35,7 @@ function updateHTML() {
 
     for (let index = 0; index < tasksInProgress.length; index++) {
         const element = tasksInProgress[index];
-        document.getElementById('in-progress').innerHTML += generateTodoHTML(element);
+        document.getElementById('in-progress').innerHTML += generateTodoHTML(element, index);
     }
 
     // Await feedback Table
@@ -44,7 +45,7 @@ function updateHTML() {
 
     for (let index = 0; index < tasksAwaitFeedback.length; index++) {
         const element = tasksAwaitFeedback[index];
-        document.getElementById('await-feedback').innerHTML += generateTodoHTML(element);
+        document.getElementById('await-feedback').innerHTML += generateTodoHTML(element, index);
     }
 
     // Await feedback Table
@@ -54,14 +55,15 @@ function updateHTML() {
 
     for (let index = 0; index < tasksDone.length; index++) {
         const element = tasksDone[index];
-        document.getElementById('done-tasks').innerHTML += generateTodoHTML(element);
+        document.getElementById('done-tasks').innerHTML += generateTodoHTML(element, index);
     }
 }
 
 let currentDraggedElement;
 
-function generateTodoHTML(element) {
+function generateTodoHTML(element, index) {
     // Call the getInitials function to get the initials
+    let fullName = element['assign-to'];
     let initials = getInitials(fullName);
     return `
     <div id="task-card" class="task-card" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTaskOverview()">
@@ -209,7 +211,6 @@ function getInitials(fullName) {
         // Extract the first element of the array
         fullName = fullName[0];
     } else {
-        console.error('Invalid fullName:', fullName);
         return ''; // or handle the error in a way that makes sense for your application
     }
 

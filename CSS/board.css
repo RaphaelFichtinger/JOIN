@@ -753,6 +753,10 @@ label + .buttons {
     width: 50% !important;
 }
 
+.drag-area-highlight {
+    background-color: black;
+}
+
 
 
 
