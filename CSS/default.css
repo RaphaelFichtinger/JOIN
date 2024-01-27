@@ -57,7 +57,7 @@ body {
 	display: block;
 }
 .d-none {
-	display: none;
+	display: none!important;
 }
 h1 {
 	font-size: 61px;
