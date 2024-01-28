@@ -426,12 +426,21 @@ function openOrClose() {
 }
 
 
+function popupWindow() {
+  let overlay = document.getElementById('popup-window-overlay');
+  
+  // Entferne die Klasse 'd-none'
+  overlay.classList.remove('d-none');
+  
+  // Setze die Höhe und Breite auf 100vw
+  overlay.style.height = '100vw';
+  overlay.style.width = '100vw';
 
-
-
-
-
-
-
-
+  // Füge die Klasse 'd-none' und entferne die Höhe/Breite nach 2 Sekunden wieder hinzu
+  setTimeout(function() {
+    overlay.classList.add('d-none');
+    overlay.style.height = '';
+    overlay.style.width = '';
+  }, 1000);
+}
 
