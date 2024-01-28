@@ -165,15 +165,16 @@ function editContact(i) {
           
               </div>
               <div id="edit-content-rightside">
-                <div id="edit-inputs">
-                <input id="edit-input-name" type="text" value="${contact.name}">
-                <input id="edit-input-mail"  type="email" value="${contact.email}">
-                <input id="edit-input-number"  type="text" value="${contact.phone}">
-                </div>
+                        <div id="edit-inputs">
+                        <input id="edit-input-name" type="text" value="${contact.name}">
+                        <input id="edit-input-mail"  type="email" value="${contact.email}">
+                        <input id="edit-input-number"  type="text" value="${contact.phone}">
+                        </div>
                 <div id="save-delete-div">
                   <button onclick="deleteContact(${i})"id="delete-btn-edit">Delete</button>
-                  <div id="save-btn-div" onclick="saveContactChanges(${i})"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png"></div>
-              </div>
+                    <div id="save-btn-div" onclick="saveContactChanges(${i})"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png">
+                    </div>
+                </div>
               </div>
             </div>
       </div>
