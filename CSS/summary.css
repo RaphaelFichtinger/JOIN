@@ -88,7 +88,6 @@
 .tasks-in-progress,
 .awaiting-feedback {
     width: 168px;
-
 }
 .inner-box-left,
 .inner-box-right {
@@ -152,4 +151,97 @@
     transition: transform 0.2s ease-in-out;
     background-color: #2A3647 !important;
     color: white;
+}
+.box-small:hover{
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+    background-color: #2A3647 !important;
+    color: white;
+}
+
+@media (max-width: 1350px) {
+    .box-right{
+        position: absolute;
+        height: 100vh;
+        width: 100vw;
+        z-index: 2;
+        top: 0px;
+        background-color: white;
+        left: 0vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        padding-left: 0px;
+        display: none;
+    }
+}
+
+@media (max-width: 1000px) {
+    #sidebar{
+        display: none !important;
+    }
+    #main-container{
+        margin-left: 0px;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        flex-direction: column;
+    }
+    #heading-container{
+        margin-left: 0;
+    }
+    .main-box{
+        margin-left: 0;
+    }
+}
+
+@media (max-width:695px) {
+    #heading-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .box-top{
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        font-size: 2px !important;
+    }
+    .inner-box-text h2 {
+        font-size: 32px;
+        line-height: 76px;
+        margin: 0;
+    }
+    .inner-box-text p {
+        font-size: 18px;
+    }
+    #inner-box-urgent{
+        margin-left: 8px !important;
+        margin-right: 8px !important;
+        padding-right: 8px !important;
+    }
+    .box-middle{
+    }
+    .box-urgent {
+        width: 100vw !important;
+        padding-left: 2vw !important;
+        padding-right: 8px !;
+    }
+
+    
+    .todo,
+    .done {
+        width: 204px;
+        gap: 32px;
+    }
+
+    .tasks-in-board,
+    .tasks-in-progress,
+    .awaiting-feedback {
+        width: 168px;
+    }
 }
