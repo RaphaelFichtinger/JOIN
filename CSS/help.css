@@ -8,10 +8,32 @@ body {
     font-family: 'Inter';
 }
 
+.heading1{
+    margin-bottom: 0px;
+    margin-left: 24px;
+}
+
+#how-to-use{
+    margin-top: 24px;
+    margin-bottom: 18px;
+}
+
+#mainheading-top{
+    margin-bottom: 28px;
+}
+
+.heading2{
+    margin-top: 0px;
+}
+
+.txtsub{
+    margin-left: 24px;
+}
+
 .content {
-    margin-left: 326px;
-    margin-top: 64px;
-    width: calc(100% - 422px)
+    margin-left: 300px;
+    margin-top: 124px;
+    max-width: 1200px;
 }
 .help-main {
     display: flex;
@@ -50,4 +72,9 @@ body {
     font-size: 3.5rem;
 }
 
-
+.step{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    
+}
