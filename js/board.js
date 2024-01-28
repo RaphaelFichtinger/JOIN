@@ -1,20 +1,8 @@
-
-
 async function renderBoard() {
-   
     await loadTasks();
-    
     await loadContacts();
-    
-    getCategories();
-    
-	getContacts();
-    
     generateTaskCards();
     updateHTML();
-    console.log('success');
-   
-    
 }
 
 function updateHTML() {
@@ -130,6 +118,7 @@ function changeIcons() {
 
 function openAddTaskPopup() {
     let popup = document.getElementById('add-task-popup');
+    popup.innerHTML = returnTask();
     popup.style.display = 'block'
 }
 

@@ -21,6 +21,13 @@ async function renderTask() {
 }
 
 async function createNewTask() {
+    let title = document.getElementById('title');
+    let description = document.getElementById('description');
+    let dateDue = document.getElementById('due-date');
+    let categoryValue = document.getElementById('category');
+    let assignTo = document.getElementById('assign-to');
+    let contactsList = document.getElementById('contacts-list');
+    let contactsListMobile = document.getElementById('contacts-list-mobile');
     let taskId = generateId(); // Rufe die Funktion auf, um die nächste ID zu erhalten
 
     tasks.push({
@@ -69,6 +76,9 @@ function successLightbox() {
 }
 
 function clearFields() {
+    let title = document.getElementById('title');
+    let description = document.getElementById('description');
+    let dateDue = document.getElementById('due-date');
     let assignTo = document.getElementById('contacts-list');
     let assignToMobile = document.getElementById('contacts-list-mobile');
     let addedContacts = document.getElementById('added-contacts');
