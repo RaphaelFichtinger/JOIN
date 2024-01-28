@@ -21,13 +21,41 @@ body {
     position: absolute;
     top: 0px;
     left: 0px;
-    height: 98vh;
+    height: 100vh;
     width: 100vw;
     overflow: hidden;
     z-index: 3;
 }
 /* here begins the edit contact overlay*/ 
-#edit{
+@keyframes fadeAndSlideIn {
+    0% {
+      opacity: 0;
+      transform: translateX(100vw);
+    }
+    50% {
+      opacity: 0; 
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeAndSlideInMobile {
+    0% {
+      opacity: 0;
+      transform: translateY(100vh);
+    }
+    50% {
+      opacity: 0; 
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  #edit {
     background-color: #40669b;
     min-width: 1212px;
     height: 592px;
@@ -36,12 +64,13 @@ body {
     border-radius: 20px;
     display: flex;
     flex-direction: row;
-    z-index: 5;
     top: 200px;
-    left: 25vw;
-    right: 25vw;
-}
-
+    left: 22vw;
+    animation-name: fadeAndSlideIn;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+  }
+  
 #editing-div-leftside{
     z-index: 1;
     height: 592px;
@@ -736,7 +765,11 @@ width: 20px;
 height: 0px;
 width: 0px;
 opacity: 0;
+animation-name: fadeAndSlideInMobile;
+animation-duration: 0.5s;
+animation-timing-function: ease-in;
 }
+
 @media (max-width: 1650px){
     #header{
         display: none;
@@ -901,6 +934,12 @@ opacity: 0;
     }
 }
 @media (max-width: 1050px){                                           /*  breakpoint list */ 
+    #edit-mobile{
+        animation-name: fadeAndSlideInMobile;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-in;
+      }
+    }
     #editing-overlay{
         display: none;
     }
@@ -1111,7 +1150,10 @@ opacity: 0;
         flex-direction: column;
         left: 0px;
         top: 0px;
-    }
+        animation-name: fadeAndSlideInMobile;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-in;
+      }
 
     #mobile-more-btn{
         bottom: 118px;
@@ -1188,10 +1230,9 @@ opacity: 0;
         border: none;
         margin-right: 4px;
     }
-}
+
 @media(max-width: 700px){
     #edit-inputs-mobile{
     }
-
 }
 
