@@ -14,6 +14,7 @@ let dateDue = document.getElementById('due-date');
 let categoryValue = document.getElementById('category');
 let assignTo = document.getElementById('assign-to');
 let contactsList = document.getElementById('contacts-list');
+let contactsListMobile = document.getElementById('contacts-list-mobile');
 
 async function renderTask() {
     await loadTasks();
@@ -73,12 +74,17 @@ function successLightbox() {
 
 function clearFields() {
     let assignTo = document.getElementById('contacts-list');
+    let assignToMobile = document.getElementById('contacts-list-mobile');
     let addedContacts = document.getElementById('added-contacts');
+    let addedContactsMobile = document.getElementById('added-contacts-mobile');
     let subtasks = document.getElementById('list-item-subtasks');
 
     assignTo.classList.add('d-none');
     assignTo.classList.remove('block');
+    assignToMobile.classList.add('d-none');
+    assignToMobile.classList.remove('block');
     addedContacts.innerHTML = '';
+    addedContactsMobile.innerHTML = '';
     removePriority();
     subtasks.innerHTML = '';
     subtasksArray = [];
@@ -103,7 +109,9 @@ function openOverlay(event, listId) {
 
 function closeOverlay() {
     let overlayList = document.getElementById('contacts-list');
+    let overlayListMobile = document.getElementById('contacts-list-mobile');
     overlayList.classList.remove('active');
+    overlayListMobile.classList.remove('active');
 }
 
 function getContacts() {
@@ -111,14 +119,19 @@ function getContacts() {
         let contactName = loadedContacts[i]['name'];
         let splittedLetters = contactName.split(" ");
 
-        document.getElementById('list-item').innerHTML += `
-            <div class="item flex align-center" onclick="contactChecked(event, ${i})">
-                <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
-                <div class="name" data-value="${contactName.toLowerCase()}">${contactName}</div>
-                <input id="checkbox_${i}" type="checkbox" class="checkbox">
-            </div>
-        `;
+        document.getElementById('list-item').innerHTML += generateContactsHtml(splittedLetters, contactName, i);
+        document.getElementById('list-item-mobile').innerHTML += generateContactsHtml(splittedLetters, contactName, i);
     }
+}
+
+function generateContactsHtml(splittedLetters, contactName, i) {
+    return `
+        <div class="item flex align-center" onclick="contactChecked(event, ${i})">
+            <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
+            <div class="name" data-value="${contactName.toLowerCase()}">${contactName}</div>
+            <input id="checkbox_${i}" type="checkbox" class="checkbox">
+        </div>
+    `
 }
 
 function contactChecked(event, index) {
@@ -139,12 +152,16 @@ function contactChecked(event, index) {
     }
 
     document.getElementById('added-contacts').innerHTML = '';
+    document.getElementById('added-contacts-mobile').innerHTML = '';
 
     if(checkedContacts.length > 0) {
         for (let j = 0; j < checkedContacts.length; j++) {
             let checkedContact = checkedContacts[j];
             let splittedLetters = checkedContact.split(" ");
             document.getElementById('added-contacts').innerHTML += `
+                <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
+            `;
+            document.getElementById('added-contacts-mobile').innerHTML += `
                 <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
             `;
         }
