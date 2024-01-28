@@ -4,9 +4,6 @@ let subtasksArray = [];
 let priorityVariable;
 let toDo = 'to-do';
 let currentSubtask;
-let nextTaskId = 0;
-
-nextTaskId = JSON.parse(localStorage.getItem('nextTaskId'));
 
 let title = document.getElementById('title');
 let description = document.getElementById('description');
@@ -21,7 +18,6 @@ async function renderTask() {
     await loadContacts();
     getCategories();
 	getContacts();
-    console.log('add');
 }
 
 async function createNewTask() {
@@ -40,7 +36,7 @@ async function createNewTask() {
     })
 
     await setItem('tasks', JSON.stringify(tasks));
-    localStorage.setItem('nextTaskId', JSON.stringify(nextTaskId));
+    await setItem('nextTaskId', JSON.stringify(nextTaskId));
     clearFields();
     successLightbox();
 }

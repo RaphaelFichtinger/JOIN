@@ -1,6 +1,7 @@
 let loadedContacts = [];
 let tasks = [];
 let logedInPerson = '';
+let nextTaskId = 0;
 
 logedInPerson = JSON.parse(localStorage.getItem('logedIn Person'));
 
@@ -33,6 +34,7 @@ async function loadContacts(){
 
 async function loadTasks() {
   tasks = JSON.parse(await getItem('tasks'));
+  nextTaskId = JSON.parse(await getItem('nextTaskId'));
 }
 
 function includeHTML() {
