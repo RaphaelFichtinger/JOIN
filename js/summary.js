@@ -43,16 +43,16 @@ function checkStatus(i) {
 	let task = tasks[i];
 	let status = task['status'];
 
-	if(status === 'to do') {
+	if(status === 'to-do') {
 		toDoVariable++;
 		toDo.innerHTML = toDoVariable;
-	} else if(status === 'done') {
+	} else if(status === 'done-tasks') {
 		doneVariable++
 		done.innerHTML = doneVariable;
-	} else if(status === 'tasks in progress') {
+	} else if(status === 'tasks-in-progress') {
 		tasksInProgressVariable++
 		tasksInProgress.innerHTML = tasksInProgressVariable;
-	} else if(status === 'awaiting feedback') {
+	} else if(status === 'awaiting-feedback') {
 		awaitingFeedbackVariable++
 		awaitingFeedback.innerHTML = awaitingFeedbackVariable
 	}

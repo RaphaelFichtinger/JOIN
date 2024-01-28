@@ -25,9 +25,17 @@
 						<label for="description">Description</label>
 						<textarea name="description" id="description" cols="30" rows="7" placeholder="Enter a Description"></textarea>
 					</div>
+					<div class="task-input task-prio">
+						<label for="prio">Prio</label>
+						<div class="buttons flex">
+							<div id="priority-alta" class="priority-alta priority-button" onclick="selectPriority('alta')">Urgent</div>
+							<div id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</div>
+							<div id="priority-baia" class="priority-baia priority-button" onclick="selectPriority('baia')">Low</div>
+						</div>
+					</div>
 					<div id="task-assigned-to" class="task-input task-assigned-to">
 						<label for="assign-to">Assign to</label>
-						<input onclick="openOverlay(event, 'contacts-list')" id="assign-to" type="text" placeholder="Select contacts to assign">
+						<input onclick="openOverlay(event, 'contacts-list')" id="assign-to" type="text" placeholder="Select contacts to assign" readonly>
 						<img onclick="openOverlay(event, 'contacts-list')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown" tabindex="0">
 						<div id="contacts-list" class="contacts-list">
 							<div id="list-item" class="list-item"></div>
@@ -50,11 +58,20 @@
 					</div>
 					<div id="task-category" class="task-input task-category">
 						<label for="category">Category*</label>
-						<input onclick="openOverlay(event, 'categories-list')" id="category" type="text" placeholder="Select task category">
+						<input onclick="openOverlay(event, 'categories-list')" id="category" type="text" placeholder="Select task category" readonly>
 						<img onclick="openOverlay(event, 'categories-list')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown">
 						<div id="categories-list" class="categories-list">
 							<div id="list-item-category" class="list-item-category"></div>
 						</div>
+					</div>
+					<div id="task-assigned-to" class="task-input task-assigned-to">
+						<label for="assign-to">Assign to</label>
+						<input onclick="openOverlay(event, 'contacts-list')" id="assign-to" type="text" placeholder="Select contacts to assign" readonly>
+						<img onclick="openOverlay(event, 'contacts-list')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown" tabindex="0">
+						<div id="contacts-list" class="contacts-list">
+							<div id="list-item" class="list-item"></div>
+						</div>
+						<div id="added-contacts" class="flex"></div>
 					</div>
 					<div class="task-input task-subtasks">
 						<label for="subtasks">Subtasks</label>
