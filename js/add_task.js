@@ -95,12 +95,6 @@ function clearFields() {
 	category.value = '';
 }
 
-// function combinedClickFunction(event) {
-//     if(event.target.closest('.item') == null) {
-//         closeOverlay();
-//     }
-// }
-
 function openOverlay(event, listId) {
     event.stopPropagation();
     let overlayList = document.getElementById(`${listId}`);
@@ -118,10 +112,10 @@ function getContacts() {
         let splittedLetters = contactName.split(" ");
 
         document.getElementById('list-item').innerHTML += `
-            <div class="item flex align-center">
+            <div class="item flex align-center" onclick="contactChecked(event, ${i})">
                 <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
                 <div class="name" data-value="${contactName.toLowerCase()}">${contactName}</div>
-                <input id="checkbox_${i}" type="checkbox" class="checkbox" onclick="contactChecked(event, ${i})">
+                <input id="checkbox_${i}" type="checkbox" class="checkbox">
             </div>
         `;
     }
@@ -143,8 +137,6 @@ function contactChecked(event, index) {
             checkedContacts.splice(indexToRemove, 1);
         }
     }
-
-    console.log(checkedContacts); // Hier kannst du das Array der ausgewählten Kontakte verwenden oder anderweitig verarbeiten
 
     document.getElementById('added-contacts').innerHTML = '';
 

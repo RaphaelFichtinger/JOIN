@@ -1,16 +1,21 @@
+body {
+	min-height: 100vh;
+}
 .add_task {
-	align-items: center;
     width: calc(100% - 232px);
     margin: 0 0 0 auto;
     height: 100%;
-	margin-top: 206px;
+	padding-top: 206px;
 }
-form,
 .add_task h1 {
-	width: 94.744%;
+	width: 80.8%;
+	padding-left: 8%;
 }
 form {
 	margin-top: 48px;
+	width: 80.8%;
+	max-width: 1073px;
+    padding-left: 8%;
 }
 label,
 input,
@@ -24,7 +29,7 @@ select {
 }
 .leftside,
 .rightside {
-	width: 38.994%;
+	width: 45.1%;
 	max-width: 600px;
 	gap: 32px;
 }
@@ -32,6 +37,12 @@ select {
 	border-right: 1px solid #D1D1D1;
     padding-right: 48px;
     margin-right: 48px;
+}
+.leftside .task-prio {
+	display: none;
+}
+.rightside .task-assigned-to {
+	display: none;
 }
 .task-input {
 	display: flex;
@@ -51,21 +62,21 @@ label + .buttons {
 }
 .task-prio .buttons {
 	flex-wrap: wrap;
-	gap: 16px;
+	gap: 15px;
 }
 .priority-button {
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
     border-radius: 10px;
-	font-size: 20px;
+    font-size: 20px;
     background: #FFFFFF;
-	border: none;
+    border: none;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
-	width: 136px;
-	padding: 16px 10px;
-	cursor: pointer;
+    width: 136px;
+    padding: 16px 0;
+    cursor: pointer;
 }
 .priority-alta::after,
 .priority-baia::after {
@@ -202,7 +213,6 @@ label + .buttons {
 	display: flex;
     justify-content: flex-end;
 	margin-top: 146px;
-	margin-right: 14.5%;
 	gap: 16px;
 }
 .button1 {
@@ -283,16 +293,60 @@ label + .buttons {
 }
 
 @media screen and (max-width: 1000px) {
+	#sidebar {
+		display: none!important;
+	}
+	.add_task {
+		width: 100%;
+		padding-top: 128px;
+	}
+	form {
+		margin-top: 32px;
+	}
 	.form-container {
 		flex-direction: column;
+		margin-bottom: 120px
 	}
 	.leftside, .rightside {
 		width: 100%;
+		max-width: 100%;
 	}
 	.leftside {
 		border: none;
+		padding-right: 0;
+    	margin-right: 0;
+	}
+	.leftside .task-prio,
+	.rightside .task-assigned-to {
+		display: flex;
 	}
 	.rightside {
 		margin-top: 32px;
+	}
+	.rightside .task-prio,
+	.leftside .task-assigned-to {
+		display: none;
+	}
+	.buttons-bottom {
+		position: fixed;
+		bottom: 0;
+		background-color: #F6F7F8;
+		width: calc(100% - 32px);
+		left: 0;
+		padding: 16px;
+		margin-top: 0;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.add_task h1 {
+		padding-left: 16px;
+	}
+	form {
+		padding-left: 16px;
+    	width: calc(100% - 32px);
+	}
+	.buttons-bottom .button1 {
+		display: none;
 	}
 }
