@@ -21,7 +21,7 @@ body {
     position: absolute;
     top: 0px;
     left: 0px;
-    height: 100vh;
+    height: 98vh;
     width: 100vw;
     overflow: hidden;
     z-index: 3;
@@ -67,7 +67,7 @@ body {
     top: 200px;
     left: 22vw;
     animation-name: fadeAndSlideIn;
-    animation-duration: 0.5s;
+    animation-duration: 0.4s;
     animation-timing-function: ease-in;
   }
   
@@ -639,6 +639,9 @@ align-items: center;
 
 #contact-overlay{
     width: 100vw;
+    animation-name: fadeAndSlideIn;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in;
 }
 
 #contact-btn-div{
@@ -765,11 +768,7 @@ width: 20px;
 height: 0px;
 width: 0px;
 opacity: 0;
-animation-name: fadeAndSlideInMobile;
-animation-duration: 0.5s;
-animation-timing-function: ease-in;
 }
-
 @media (max-width: 1650px){
     #header{
         display: none;
@@ -938,7 +937,11 @@ animation-timing-function: ease-in;
         animation-name: fadeAndSlideInMobile;
         animation-duration: 0.5s;
         animation-timing-function: ease-in;
-      }
+    }
+    #add-new-contact-mobile{
+        animation-name: fadeAndSlideInMobile;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-in;  
     }
     #editing-overlay{
         display: none;
@@ -1133,6 +1136,7 @@ animation-timing-function: ease-in;
         color: white;
         margin-left: 24px;
         padding-top: 100px;
+        
         } 
     #new-contact-div-top-mobile{
         min-height: 48vh;
@@ -1150,10 +1154,7 @@ animation-timing-function: ease-in;
         flex-direction: column;
         left: 0px;
         top: 0px;
-        animation-name: fadeAndSlideInMobile;
-        animation-duration: 0.5s;
-        animation-timing-function: ease-in;
-      }
+    }
 
     #mobile-more-btn{
         bottom: 118px;
@@ -1204,6 +1205,9 @@ animation-timing-function: ease-in;
         position: fixed;
         opacity: 100;
         top: 0px;
+        animation-name: fadeAndSlideIn;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-in;
     }
     #close-mobile-btn-div{
         height: 20px;
@@ -1230,9 +1234,10 @@ animation-timing-function: ease-in;
         border: none;
         margin-right: 4px;
     }
-
+}
 @media(max-width: 700px){
     #edit-inputs-mobile{
     }
+
 }
 
