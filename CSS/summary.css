@@ -16,6 +16,8 @@
 #text-summary {
     font-size: 27px;
     font-weight: 400;
+    background-position: center;
+    height: 40px;
 }
 .main-box {
     margin-top: 56px;
@@ -27,7 +29,8 @@
     justify-content: center;
     align-items: center;
     width: 500px;
-    }
+
+}
 .box-right {
     padding-left: 80px;
 }
@@ -82,7 +85,7 @@
 }
 .todo,
 .done {
-    width: 264px;
+    width: 186px;
     gap: 32px;
 }
 .urgent {
@@ -115,7 +118,6 @@
     border-radius: 30px;
     flex-direction: column;
     box-shadow: 0px 0px 4px 0px rgb(0, 0, 0, 0.1);
-    height: 200px;
 }
 .box-small h2 {
     font-size: 64px;
@@ -163,11 +165,16 @@
     color: white;
 }
 #urgent-box{
-    width: 560px !important;
+    width: 396px !important;
+    padding-left: 24px;
+    padding-right: 24px;
 }
 .box-small{
-    width: 168px !important;
-    height: 168px !important;
+    width: 116px !important;
+    height: 116px !important;
+}
+#vec5{
+    display: none;
 }
 
 
@@ -190,6 +197,19 @@
 }
 
 @media (max-width: 1000px) {
+    #heading-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    #heading-summary {
+        font-size: 61px;
+        font-weight: 700;
+        border-right: 0px solid #29ABE2;
+        padding-right: 30px;
+        margin-right: 0px;
+    }
     #sidebar{
         display: none !important;
     }
@@ -207,6 +227,9 @@
     }
     .main-box{
         margin-left: 0;
+    }
+    #vec5{
+        display: block;
     }
 }
 
@@ -248,7 +271,7 @@
         padding: 8px;
     }
     .box-bottom{
-        gap: 8px;
+        gap: 24px !important;
     }
 
     .tasks-in-board,
