@@ -113,9 +113,9 @@
     align-items: center;
     background-color: #FFFFFF;
     border-radius: 30px;
-    height: 168px;
     flex-direction: column;
     box-shadow: 0px 0px 4px 0px rgb(0, 0, 0, 0.1);
+    height: 200px;
 }
 .box-small h2 {
     font-size: 64px;
@@ -184,8 +184,8 @@
         justify-content: center;
         align-items: center;
         flex-direction: row;
-        padding-left: 0px;
-        display: none;
+        padding-left: 0px;    
+        display: none;    /*  OVERLAY GOOD MORNING /*OVERLAY GOOD MORNING */  /*  OVERLAY GOOD MORNING */ 
     }
 }
 
@@ -281,7 +281,7 @@
     }
     .box-bottom{
         height: 160px;
-        width: 100vw;
+        width: 98vw;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -293,11 +293,12 @@
         padding-right: 8px !important;
     }
     .box-small{
-        width: 100px !important;
         height: 128px !important;
         padding: 8px !important;
     }
-    p{
+    .box-bottom{
+        padding-left: 8px;
+        padding-right: 8px;
     }
     .box-bottom p {
         font-size: 18px;
