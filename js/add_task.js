@@ -5,6 +5,10 @@ let priorityVariable;
 let toDo = 'to-do';
 let currentSubtask;
 
+let titleLock = true;
+let dateLock = true;
+let categoryLock = true;
+
 let title = document.getElementById('title');
 let description = document.getElementById('description');
 let dateDue = document.getElementById('due-date');
@@ -12,6 +16,7 @@ let categoryValue = document.getElementById('category');
 let assignTo = document.getElementById('assign-to');
 let contactsList = document.getElementById('contacts-list');
 let contactsListMobile = document.getElementById('contacts-list-mobile');
+let buttonCreateTask = document.getElementById('button-create-task');
 let timestamp = getTimestampId();
 
 async function renderTask() {
@@ -19,6 +24,30 @@ async function renderTask() {
     await loadContacts();
     getCategories();
 	getContacts();
+}
+
+title.addEventListener('input', function() {
+    if(this.value !== '') {
+        titleLock = false;
+        console.log(titleLock);
+    }
+    if(!titleLock && !dateLock && !categoryLock) {
+        enableAddTaskButton();
+    }
+})
+
+dateDue.addEventListener('input', function() {
+    if(this.value !== '') {
+        dateLock = false;
+        console.log(dateLock);
+    }
+    if(!titleLock && !dateLock && !categoryLock) {
+        enableAddTaskButton();
+    }
+})
+
+function enableAddTaskButton() {
+    buttonCreateTask.disabled = false;
 }
 
 async function createNewTask() {
@@ -47,6 +76,7 @@ async function createNewTask() {
     await setItem('nextTaskId', JSON.stringify(nextTaskId));
     clearFields();
     successLightbox();
+    buttonCreateTask.disabled = true;
 }
 
 // Funktion zum Generieren der nächsten verfügbaren ID
@@ -142,6 +172,7 @@ function generateContactsHtml(splittedLetters, contactName, i) {
 }
 
 function contactChecked(event, index) {
+    event.stopPropagation();
     let checkbox = event.target;
     let contactName = loadedContacts[index]['name'];
 
@@ -192,6 +223,12 @@ function addCategory(i) {
 
     let overlayList = document.getElementById('categories-list');
     overlayList.classList.remove('active');
+
+    categoryLock = false;
+
+    if(!titleLock && !dateLock && !categoryLock) {
+        enableAddTaskButton();
+    }
 }
 
 function selectPriority(priority) {

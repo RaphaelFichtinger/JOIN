@@ -54,7 +54,7 @@ function generateTodoHTML(element, index) {
     let fullName = element['assign-to'];
     let initials = getInitials(fullName);
     return `
-    <div id="task-card" class="task-card" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTaskOverview()">
+    <div id="task-card-${index}" class="task-card" draggable="true" ondragstart="startDragging(${index})" onclick="openTaskOverview()">
         <button class="task-type">${element['category']}</button>
         <div class="task-text">
             <p id="task-title">${element['title']}</p>
@@ -83,7 +83,6 @@ function generateTodoHTML(element, index) {
 function startDragging(id) { //die Id markiert das Element das gerade verschoben wird
     console.log(id);
     currentDraggedElement = id;
-    
 }
 
 function allowDrop(ev) {
@@ -122,6 +121,8 @@ function openAddTaskPopup() {
     let popup = document.getElementById('add-task-popup');
     popup.innerHTML = returnTask();
     popup.style.display = 'block'
+    getCategories();
+	getContacts();
 }
 
 function closeAddTaskPopup() {
