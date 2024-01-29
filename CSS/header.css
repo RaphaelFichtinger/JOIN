@@ -32,6 +32,9 @@
     color: #29ABE2;
     font-weight: 700;
 }
+#header-mobile{
+    height: 0px;
+}
 
 @media (max-width:600px) {
     #header-right{
@@ -39,4 +42,38 @@
         margin-left: 10px;
     }
 }
+@media (max-width: 1050px){
+    #header-mobile{
+    height: 80px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+    z-index: 200;
+    box-shadow: 0px 0px 10px 1px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 68vw;
+   
+}
+    #logo-header-mobile{
+    height: 54px; 
+    margin-left: 16px;      
+}
+#cycle-name-mobile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 50%;
+    min-height: 56px;
+    min-width: 56px;
+    border: 3px solid #2A3647;
+}
+#cycle-name-mobile p {
+    color: #29ABE2 !important;
+    font-weight: 700;
+}
 
+}
