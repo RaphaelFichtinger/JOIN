@@ -757,8 +757,8 @@ label + .buttons {
     background-color: black;
 }
 
-#in-progress {
-    height: 100vh;
+.drag-area {
+    height: 100%;
 }
 
 

@@ -13,14 +13,7 @@ function returnTask() {
 						<label for="description">Description</label>
 						<textarea name="description" id="description" cols="30" rows="7" placeholder="Enter a Description"></textarea>
 					</div>
-					<div class="task-input task-prio">
-						<label for="prio">Prio</label>
-						<div class="buttons flex">
-							<div id="priority-alta" class="priority-alta priority-button" onclick="selectPriority('alta')">Urgent</div>
-							<div id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</div>
-							<div id="priority-baia" class="priority-baia priority-button" onclick="selectPriority('baia')">Low</div>
-						</div>
-					</div>
+					
 					<div id="task-assigned-to" class="task-input task-assigned-to">
 						<label for="assign-to">Assign to</label>
 						<input onclick="openOverlay(event, 'contacts-list')" id="assign-to" type="text" placeholder="Select contacts to assign" readonly>

@@ -12,6 +12,7 @@ let categoryValue = document.getElementById('category');
 let assignTo = document.getElementById('assign-to');
 let contactsList = document.getElementById('contacts-list');
 let contactsListMobile = document.getElementById('contacts-list-mobile');
+let timestamp = getTimestampId();
 
 async function renderTask() {
     await loadTasks();
@@ -31,7 +32,7 @@ async function createNewTask() {
     let taskId = generateId(); // Rufe die Funktion auf, um die nächste ID zu erhalten
 
     tasks.push({
-        'id': taskId,
+        'id': timestamp,
         'title': title.value,
         'description': description.value,
         'assign-to': checkedContacts,
@@ -283,4 +284,10 @@ function saveEditSubtask(event) {
     `;
 
     currentSubtask = '';
+}
+
+function getTimestampId() {
+    let timestamp = new Date().getTime();
+    console.log(timestamp);
+    return timestamp;
 }

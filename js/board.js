@@ -81,7 +81,9 @@ function generateTodoHTML(element, index) {
 }
 
 function startDragging(id) { //die Id markiert das Element das gerade verschoben wird
+    console.log(id);
     currentDraggedElement = id;
+    
 }
 
 function allowDrop(ev) {
@@ -218,6 +220,15 @@ function openOverlay(event, listId) {
     let overlayList = document.getElementById(`${listId}`);
     overlayList.classList.toggle('active');
 }
+
+async function clearTasks() {
+    let tasks = [];
+    await setItem('tasks', JSON.stringify(tasks));
+    await setItem('nextTaskId', JSON.stringify(nextTaskId));
+    updateHTML();
+}
+
+
 
 
 
