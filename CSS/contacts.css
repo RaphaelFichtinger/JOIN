@@ -944,7 +944,8 @@ opacity: 0;
         width: 300px;
     }
 }
-@media (max-width: 1050px){                                           /*  breakpoint list */ 
+@media (max-width: 1050px){    
+                                /*  breakpoint list */ 
     #edit-mobile{
         animation-name: fadeAndSlideInMobile;
         animation-duration: 0.5s;
