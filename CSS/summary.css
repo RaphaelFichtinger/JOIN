@@ -32,7 +32,7 @@
     
 }
 .box-right {
-    padding-right: 300px;
+    padding-right: 34vw;
 }
 .box-right .greeting {
     font-size: 47px;
@@ -179,7 +179,7 @@
 }
 
 
-@media (max-width: 1350px) {
+@media (max-width: 1170px) {
     .box-right{
         position: absolute;
         height: 100vh;
