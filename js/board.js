@@ -6,14 +6,16 @@ async function renderBoard() {
 }
 
 function updateHTML() {
+    let cardIndex = 0;
     // To do Table
     let tasksTodo = tasks.filter(t => t['status'] == 'to-do');
 
     document.getElementById('to-do').innerHTML = '';
 
     for (let index = 0; index < tasksTodo.length; index++) {
+        cardIndex++;
         const element = tasksTodo[index];
-        document.getElementById('to-do').innerHTML += generateTodoHTML(element, index);
+        document.getElementById('to-do').innerHTML += generateTodoHTML(element, cardIndex);
     }
 
     // In progress Table
@@ -22,8 +24,9 @@ function updateHTML() {
     document.getElementById('in-progress').innerHTML = '';
 
     for (let index = 0; index < tasksInProgress.length; index++) {
+        cardIndex++;
         const element = tasksInProgress[index];
-        document.getElementById('in-progress').innerHTML += generateTodoHTML(element, index);
+        document.getElementById('in-progress').innerHTML += generateTodoHTML(element, cardIndex);
     }
 
     // Await feedback Table
@@ -32,8 +35,9 @@ function updateHTML() {
     document.getElementById('await-feedback').innerHTML = '';
 
     for (let index = 0; index < tasksAwaitFeedback.length; index++) {
+        cardIndex++;
         const element = tasksAwaitFeedback[index];
-        document.getElementById('await-feedback').innerHTML += generateTodoHTML(element, index);
+        document.getElementById('await-feedback').innerHTML += generateTodoHTML(element, cardIndex);
     }
 
     // Await feedback Table
@@ -42,8 +46,9 @@ function updateHTML() {
     document.getElementById('done-tasks').innerHTML = '';
 
     for (let index = 0; index < tasksDone.length; index++) {
+        cardIndex++;
         const element = tasksDone[index];
-        document.getElementById('done-tasks').innerHTML += generateTodoHTML(element, index);
+        document.getElementById('done-tasks').innerHTML += generateTodoHTML(element, cardIndex);
     }
 }
 
