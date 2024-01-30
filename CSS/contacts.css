@@ -8,6 +8,28 @@ body {
     position: fixed !important;
 }
 
+#popup-window-overlay{
+    position: fixed;
+    background-color: #ffffff;
+    z-index: 3;
+    animation-name: fadeAndSlideIn;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+    top:0px;
+    height: 100vh;
+}
+
+#success-overlay-inside{
+    font-size: 68px;
+    font-weight: 400;
+    color: #007CEE;
+    background-color: white;
+    position: absolute;
+    top: 500px;
+
+
+}
+
 #editing-overlay{
     width: 100vw;
     height: 100vh;
@@ -631,18 +653,7 @@ align-items: center;
     color: rgb(0, 0, 0);
 }
 
-#popup-window-overlay{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #ffffff;
-    z-index: 3;
-    animation-name: fadeAndSlideIn;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-in;
-}
+
 
 
 #contact-overlay-mobile{

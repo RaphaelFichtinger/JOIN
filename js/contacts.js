@@ -114,6 +114,8 @@ function saveContactChanges(i) {
   setItem('contacts', JSON.stringify(loadedContacts));
   renderContacts();
   closeEdit();
+  popupWindow();
+
 }
 
 function saveContactChangesMobile(i) {
@@ -136,6 +138,8 @@ function saveContactChangesMobile(i) {
   renderContactsMobile();
   showContactDetailsMobile(i);
   closeEditMobile();
+  popupWindow();
+
 }
 
 function closeEdit(){
@@ -182,6 +186,8 @@ function saveNewContact(){
   renderContacts();
   renderContactsMobile();
   closeEdit();
+  popupWindow();
+
 }
 
 function saveNewContactMobile(){
@@ -198,6 +204,7 @@ function saveNewContactMobile(){
   renderContacts();
   renderContactsMobile();
   closeEdit();
+  popupWindow();
 }
 
 
@@ -209,6 +216,8 @@ function deleteContact(i) {
   overlay.innerHTML=``;
   renderContacts();
   closeEdit();
+  popupWindow();
+
 }
 
 function deleteContactMobile(i) {
@@ -220,6 +229,7 @@ function deleteContactMobile(i) {
   renderContactsMobile();
   closeEditMobile();
   closeMobileDetails();
+  popupWindow();
 }
 
 function openPopup() {
@@ -247,9 +257,10 @@ function openOrClose() {
 
 function popupWindow() {
   let overlay = document.getElementById('popup-window-overlay');
-  
+  let rest = document.getElementById('edit');
   // Entferne die Klasse 'd-none'
   overlay.classList.remove('d-none');
+  
   
   // Setze die Höhe und Breite auf 100vw
   overlay.style.height = '100vw';
