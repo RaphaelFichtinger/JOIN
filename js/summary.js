@@ -14,6 +14,7 @@ let urgentDate = document.getElementById('urgent-date');
 let greeting = document.getElementById('greeting');
 
 async function renderSummary() {
+	document.getElementById('header').innerHTML = headerTemplate();
 	await loadTasks();
 	getGreeting();
 	getLoginName();
@@ -21,7 +22,7 @@ async function renderSummary() {
 	tasksInBoard.innerHTML = tasks.length;
 
 	loopTasks();
-	getDateFromInput()
+	getDateFromInput();
 }
 
 function loopTasks() {
@@ -59,37 +60,42 @@ function checkStatus(i) {
 }
 
 function getDateFromInput() {
-	let currentDate = new Date();
 
-	// Funktion, um den Unterschied zwischen zwei Daten zu berechnen
-	function dateDifferenceInDays(date1, date2) {
-		const oneDay = 24 * 60 * 60 * 1000; // Stunden * Minuten * Sekunden * Millisekunden
-		const diffInMilliseconds = Math.abs(date1 - date2);
-		return Math.round(diffInMilliseconds / oneDay);
+	if(datesUrgent.length > 0) {
+		let currentDate = new Date();
+
+		// Funktion, um den Unterschied zwischen zwei Daten zu berechnen
+		function dateDifferenceInDays(date1, date2) {
+			const oneDay = 24 * 60 * 60 * 1000; // Stunden * Minuten * Sekunden * Millisekunden
+			const diffInMilliseconds = Math.abs(date1 - date2);
+			return Math.round(diffInMilliseconds / oneDay);
+		}
+
+		// Wandelt die Datums-Strings in Date-Objekte um
+		let dateObjects = datesUrgent.map(function(dateString) {
+			// Zerlege das Datum und erstelle ein Date-Objekt
+			let dateParts = dateString.split("-");
+			return new Date(dateParts[0], dateParts[1] - 1, dateParts[2]); // Monate in JavaScript sind 0-basiert, daher -1
+		});
+
+		// Finde das Datum im Array, das am nächsten zum aktuellen Datum ist
+		let closestDate = dateObjects.reduce(function (prev, curr) {
+			let prevDiff = dateDifferenceInDays(currentDate, prev);
+			let currDiff = dateDifferenceInDays(currentDate, curr);
+			return currDiff < prevDiff ? curr : prev;
+		});
+
+		// Formatieren und ausgeben
+		let formattedDate = closestDate.toLocaleDateString("en-US", {
+			month: "long",
+			day: "numeric",
+			year: "numeric",
+		});
+
+		urgentDate.innerHTML = formattedDate;
+	} else {
+		urgentDate.innerHTML = 'No urgent task!';
 	}
-
-	// Wandelt die Datums-Strings in Date-Objekte um
-	let dateObjects = datesUrgent.map(function(dateString) {
-		// Zerlege das Datum und erstelle ein Date-Objekt
-		let dateParts = dateString.split("-");
-		return new Date(dateParts[0], dateParts[1] - 1, dateParts[2]); // Monate in JavaScript sind 0-basiert, daher -1
-	});
-
-	// Finde das Datum im Array, das am nächsten zum aktuellen Datum ist
-	let closestDate = dateObjects.reduce(function (prev, curr) {
-		let prevDiff = dateDifferenceInDays(currentDate, prev);
-		let currDiff = dateDifferenceInDays(currentDate, curr);
-		return currDiff < prevDiff ? curr : prev;
-	});
-
-	// Formatieren und ausgeben
-	let formattedDate = closestDate.toLocaleDateString("en-US", {
-		month: "long",
-		day: "numeric",
-		year: "numeric",
-	});
-
-	urgentDate.innerHTML = formattedDate;
 }
 
 function getGreeting() {
@@ -115,5 +121,9 @@ function getGreeting() {
 }
 
 function getLoginName() {
-	document.getElementById('loged-in-person').textContent = logedInPerson;
+	if(logedInAsGuest) {
+		document.getElementById('loged-in-person').textContent = logedInGuest;
+	} else if(logedInWithName) {
+		document.getElementById('loged-in-person').textContent = logedInPerson;
+	}
 }

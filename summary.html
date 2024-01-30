@@ -7,13 +7,13 @@
 	<title>JOIN summary</title>
 
 	<link rel="stylesheet" href="./CSS/default.css">
+	<link rel="stylesheet" href="./CSS/header.css">
 	<link rel="stylesheet" href="./CSS/summary.css">
 </head>
 
-<body onload="includeHTML(); renderSummary()">
-	<div w3-include-html="header.html"></div>
+<body onload="includeHTML(); renderSummary(); headerTemplate(); renderTemplates()">
 	<div w3-include-html="sidebar.html"></div>
-
+	<div id="header"></div>
 	<div id="main-container">
 		<div id="heading-container" class="flex align-center">
 			<div id="heading-summary">
@@ -81,6 +81,8 @@
 		</div>
 	</div>
 	<script src="./js/loading.JS"></script>
+	<script src="./templates/loadTemplates.js"></script>
+	<script src="./js/header.js"></script>
 	<script src="./js/summary.js"></script>
 </body>
 </html>

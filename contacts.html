@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="./CSS/sidebar.css">
     <link rel="stylesheet" href="./CSS/header.css">
 </head>
-<body onload="includeHTML(), renderContactsMobile(), loadContacts()">
-    <div w3-include-html="header.html"></div>
+<body onload="includeHTML(), renderContactsMobile(), loadContacts(); renderTemplates()">
+    <div id="header"></div>
     <div w3-include-html="sidebar.html"></div>
     <div id="header-mobile"><img id="logo-header-mobile" src="./img/start_logo.svg" alt=""><div id="cycle-name-mobile"><p>TE</p></div></div>
     <div id="sidebar-mobile" class="d-none">
@@ -40,6 +40,8 @@
     </div>
 </div>
 <script src="./js/loading.JS"></script>
+<script src="./js/header.js"></script>
+<script src="./templates/loadTemplates.js"></script>
 <script src="./js/contacts.js"></script>
 <script src="./js/script.js"></script>
 <script src="./js/HTMLTemplates.js"></script>

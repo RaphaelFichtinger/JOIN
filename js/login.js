@@ -8,7 +8,11 @@ function login() {
 
 		if(email.value == signedUpUser.email && password.value == signedUpUser.password) {
 			logedInPerson = signedUpUser['name'];
-			localStorage.setItem('logedIn Person', JSON.stringify(logedInPerson))
+			logedInWithName = true;
+			if(logedInWithName) {
+				localStorage.setItem('logedIn Person', JSON.stringify(logedInPerson));
+				localStorage.setItem('logedIn with Name', JSON.stringify(logedInWithName));
+			}
 			window.location.href = './summary.html';
 			return;
 		}
@@ -27,4 +31,11 @@ async function resetForm(email, password) {
 function showError() {
 	let noLogedIn = document.getElementById('error-info');
 	noLogedIn.innerHTML = 'Du bist nicht angemeldet.';
+}
+
+function guestLogin() {
+	logedInAsGuest = true;
+	if(logedInAsGuest) {
+		localStorage.setItem('logedIn as Guest', JSON.stringify(logedInAsGuest));
+	}
 }

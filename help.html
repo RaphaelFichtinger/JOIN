@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="./CSS/help.css">
 
 </head>
-<body onload="includeHTML()">
-        <div w3-include-html="header.html"></div>
+<body onload="includeHTML(); renderTemplates()">
     <div w3-include-html="sidebar.html"></div>
+    <div id="header"></div>
     <section class="content">
         <h1 id="mainheading-top">Help</h1>
         <p>
@@ -111,5 +111,7 @@
           </div>
         </div>
         <script src="./js/loading.JS"></script>
+        <script src="./templates/loadTemplates.js"></script>
+        <script src="./js/header.js"></script>
 </body>
 </html>

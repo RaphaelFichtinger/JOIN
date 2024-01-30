@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="./CSS/header.css">
 	<link rel="stylesheet" href="./CSS/add_tasks.css">
 </head>
-<body onclick="closeOverlay()" onload="includeHTML(); renderTask()">
-	<div w3-include-html="header.html"></div>
+<body onclick="closeOverlay()" onload="includeHTML(); renderTask(); renderTemplates()">
     <div w3-include-html="sidebar.html"></div>
+	<div id="header"></div>
 	<div id="add-task" class="add_task flex-column">
 		<h1>Add Task</h1>
 		<form onsubmit="createNewTask(); return false">
@@ -104,6 +104,8 @@
         </div>
 	</div>
 	<script src="./js/loading.JS"></script>
+	<script src="./templates/loadTemplates.js"></script>
+	<script src="./js/header.js"></script>
 	<script src="./js/add_task.js"></script>
 </body>
 </html>
