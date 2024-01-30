@@ -14,7 +14,6 @@ let urgentDate = document.getElementById('urgent-date');
 let greeting = document.getElementById('greeting');
 
 async function renderSummary() {
-	document.getElementById('header').innerHTML = headerTemplate();
 	await loadTasks();
 	getGreeting();
 	getLoginName();
