@@ -370,6 +370,7 @@ label + .buttons {
 .list-item-subtasks {
 	background-color: transparent;
 	width: 93%;
+    height: 80px;
 }
 #added-contacts {
 	margin-top: 8px;
@@ -690,11 +691,12 @@ label + .buttons {
     z-index: 999;
     background-color: white;
     width: 485px;
-    max-height: 881px;
     padding: 48px 40px 48px 40px;
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px #00000029;
-    
+    display: none;
+    height: 70%;
+
 }
 
 #overview-edit-top {
@@ -748,6 +750,32 @@ label + .buttons {
 
 .drag-area {
     height: 100%;
+}
+
+.edit-ok-button {
+    margin-top: 117px;
+    display: flex;
+    justify-content: end;
+}
+
+.edit-ok-button button {
+    padding: 15px 16px;
+    border-radius: 8px;
+    background-color: #2A3647;
+    color: white;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    font-size: 21px;
+    font-weight: 700;
+    gap: 4px;
+    width: 96px;
+    height: 57px;
+    gap: 12px;
+}
+
+.edit-ok-button img {
+    height: 14px;
 }
 
 

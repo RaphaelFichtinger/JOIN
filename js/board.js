@@ -105,10 +105,6 @@ function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
-
-
-
-
 function changeIcons() {
     let subtaskPlus = document.getElementById('subtasks-plus');
     let subtaskIcons = document.getElementById('image-click');
@@ -134,6 +130,7 @@ function closeAddTaskPopup() {
 function openTaskOverview() {
     let overview = document.getElementById('overview-container');
     overview.style.display = 'flex';
+    createOverview();
 }
 
 function closeTaskOverview() {
@@ -143,7 +140,12 @@ function closeTaskOverview() {
 
 function editTaskOverview() {
     let overviewCard = document.getElementById('task-big-view-card');
+    let overviewEdit = document.getElementById('task-big-view-edit-card');
+    
     overviewCard.style.display = 'none';
+    overviewEdit.style.display = 'block';
+    
+
 }
 
 function generateTaskCards() {
@@ -160,7 +162,7 @@ function generateTaskCards() {
         
         // Call the getInitials function to get the initials
         let initials = getInitials(fullName);        
-        toDoColumn.innerHTML += `<div id="task-card" class="task-card" onclick="openTaskOverview()">
+        toDoColumn.innerHTML += `<div id="task-card" class="task-card" onclick="openTaskOverview(${i})">
     <button class="task-type">${category}</button>
     <div class="task-text">
         <p id="task-title">${title}</p>
@@ -230,7 +232,57 @@ async function clearTasks() {
     updateHTML();
 }
 
+function createOverview() {
+    
+    let overviewCard = document.getElementById('task-big-view-card');
+    
+    
+    overviewCard.innerHTML = `<div class="type-close">
+    <button class="task-type task-type-overview">User Story</button>
+    <img onclick="closeTaskOverview()" src="./img/close.png">
+</div>
+<div id="overview-card-top">
+    <p id="overview-title">Kochwelt Page & Recipe Recommender</p>
+    <p id="overview-details">Build start page with recipe recommendation.</p>
+    <div class="overview-date">
+        <p>Due date: </p>
+        <p> 10/05/2023</p>
+    </div>
+    <div class="overview-date">
+        <p>Priority:</p>
+        <p>Medium</p>
+        <img src="./img/prio-media.svg">
+    </div>
+</div>
+<div class="assigned-to-overview">
+    <p>Assigned To:</p>
+    <div id="overview-contact">
+        <p id="overview-initials">EM</p>
+        <p id="overview-fullname">Emmanuel Mauer</p>
+    </div>
+    <div id="overview-contact">
+        <p id="overview-initials">EM</p>
+        <p id="overview-fullname">Emmanuel Mauer</p>
+    </div>
+</div>
+<div class="subtasks-overview">
+    <p>Subtasks</p>
+    <div id="subtasks-checklist-overview">
+        <div class="subtask">
+            <input id="subtask-checkbox1" type="checkbox">
+            <p id="subtask-text">Implement Recipe Recommendation</p>
+        </div>
+        <div class="subtask">
+            <input id="subtask-checkbox2" type="checkbox">
+            <p id="subtask-text">Start Page Layout</p>
+        </div>
+    </div>
+</div>
+<div class="overview-bottom-buttons">
+    <button class="delete-overview border-right"><img src="./img/delete-subtask.svg"> Delete</button>
+    <button class="delete-overview" onclick="editTaskOverview()"><img
+            src="./img/edit-subtask.svg">Edit</button>
 
-
-
+</div>`;
+}
 
