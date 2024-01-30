@@ -1,13 +1,10 @@
 .main-board {
     margin-top: 96px;
     margin-left: 232px;
-    background-color: #F6F7F8;
 }
-
-#close-task-button-div{
+#close-task-button-div {
     margin-left: 60vw;
 }
-
 .board-top {
     display: flex;
     justify-content: space-between;
@@ -16,7 +13,6 @@
     margin-left: 96px;
     margin-right: 88px;
 }
-
 .input-board-top {
     width: 312px;
     height: 48px;
@@ -31,17 +27,14 @@
     padding: 2px 9px;
 
 }
-
 .input-board-top::placeholder {
     color: rgba(209, 209, 209, 1);
     padding-left: 16px;
 }
-
 .board-top-right {
     display: flex;
     gap: 32px;
 }
-
 #add-task-btn {
     padding: 15px 16px;
     border-radius: 8px;
@@ -56,7 +49,6 @@
     width: 160px;
     height: 48px;
 }
-
 .board-container {
     display: flex;
     justify-content: space-around;
@@ -65,15 +57,10 @@
     padding-right: 64px;
     gap: 26px;
 }
-
 .board-column {
     width: 248px;
-    max-width: 246px;
-    background-color: #F6F7F8;
-    max-height: 688px;
 
 }
-
 .board-column-title {
     display: flex;
     justify-content: space-between;
