@@ -55,7 +55,7 @@
     
 
 #sidebar-mobile{
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     height: 80px;
     background-color: #2A3647;

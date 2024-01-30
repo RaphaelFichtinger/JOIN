@@ -26,8 +26,6 @@ body {
     background-color: white;
     position: absolute;
     top: 500px;
-
-
 }
 
 #editing-overlay{
@@ -149,17 +147,17 @@ align-items: center;
 } 
 
 #static-heading-add{
-    font-size: 61px !important;
+    font-size: 61px ;
     margin-bottom: 0px;
 }
 
 #static-heading-add-mobile{
-    font-size: 61px !important;
+    font-size: 61px;
     margin-bottom: 0px;
 }
 
 #static-heading-edit-mobile{
-    font-size: 61px !important;
+    font-size: 61px ;
     margin-bottom: 0px;
 }
 
@@ -860,7 +858,7 @@ opacity: 0;
         margin-left: 38px;
     }
     #heading-div-static-mobile{
-        font-size: 48px;
+        font-size: 38px;
         font-weight: 600;
         width: 207px;
         height: 74px;
@@ -1261,7 +1259,38 @@ opacity: 0;
     }
 }
 @media(max-width: 700px){
-#contactlist-mobile{}
+    #static-heading-add-mobile{
+        font-size: 38px;
+        margin-bottom: 0px;
+    }
+    
+    #static-heading-edit-mobile{
+        font-size: 38px ;
+        margin-bottom: 0px;
+    }
+    #edit-inputs-mobile{
+        gap: 10px;
+    }
+    #save-delete-div-mobile{
+        margin-top: 8px;
+    }
+    #popup-window-overlay{
+    position: fixed;
+    background-color: #ffffff;
+    z-index: 3333;
+    animation-name: fadeAndSlideIn;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+}
+
+#success-overlay-inside{
+    font-size: 68px;
+    font-weight: 400;
+    color: #007CEE;
+    background-color: white;
+    position: absolute;
+    top: 200px;
+}
 
 }
 
