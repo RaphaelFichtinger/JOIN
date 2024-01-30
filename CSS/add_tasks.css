@@ -213,10 +213,15 @@ label + .buttons {
 	cursor: pointer;
 }
 .buttons-bottom {
-	display: flex;
-    justify-content: flex-end;
+    /*justify-content: flex-end;*/
 	margin-top: 146px;
+	padding-bottom: 32px;
+}
+.buttons {
 	gap: 16px;
+}
+.required-text {
+	padding-right: 7%;
 }
 .button1 {
 	display: flex;
@@ -344,6 +349,15 @@ label + .buttons {
 		left: 0;
 		padding: 16px;
 		margin-top: 0;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.buttons-bottom {
+		justify-content: flex-end;
+	}
+	.required-text {
+		display: none;
 	}
 }
 

@@ -106,9 +106,7 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 19px;
-    position: relative;
-    bottom: 40px;
-    margin-top: auto;
+    margin: 80px 0 32px 0;
 }
 .success-lightbox {
     position: fixed;
@@ -153,6 +151,9 @@ body {
 }
 
 @media screen and (max-width: 500px) {
+    #content {
+        margin-bottom: 40px;
+    }
     .vector {
         top: 8%;
         left: -26%;

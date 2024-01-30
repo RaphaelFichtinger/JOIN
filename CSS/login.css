@@ -112,9 +112,7 @@ a {
     font-style: normal;
     font-weight: 400;
     line-height: 19px;
-    position: relative;
-    bottom: 40px;
-    margin-top: auto;
+    margin: 80px 0 32px 0;
 }
 
 @media screen and (max-width: 700px) {
@@ -143,5 +141,12 @@ a {
     .button-login-mobile {
         display: flex;
         margin-top: 57px;
+    }
+    #content {
+        margin-bottom: 40px;
+    }
+    .button-login-mobile {
+        margin-top: 0;
+        margin-bottom: 0;
     }
 }

@@ -30,6 +30,7 @@ async function signUp() {
 			await setItem('signedUpUsers', JSON.stringify(signedUpUsers));
 			resetForm(email, password, confirm, name, checkbox);
 			showSuccessButton();
+			window.location.href = './login.html';
 		} else {
 			alert('Bitte bestätige unsere Privacy Policy');
 		}

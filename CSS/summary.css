@@ -25,14 +25,9 @@
 }
 .box-left {
      gap: 28px;
-    display: flex;
-    justify-content: center;
-    align-items: left;
-    width: 100%;
-    
 }
 .box-right {
-    padding-right: 34vw;
+    padding-left: 80px;
 }
 .box-right .greeting {
     font-size: 47px;
@@ -52,7 +47,6 @@
 .box-bottom {
     display: flex;
     gap: 32px;
-    width: 100% !important;
 }
 .inner-box-text {
     display: flex;
@@ -119,6 +113,7 @@
     border-radius: 30px;
     flex-direction: column;
     box-shadow: 0px 0px 4px 0px rgb(0, 0, 0, 0.1);
+    padding: 21px 0;
 }
 .box-small h2 {
     font-size: 64px;
@@ -138,17 +133,14 @@
     margin-left: 10px;
 }
 #urgent-text {
-    margin-left: 10px !important;
-}
-#urgent-heading {
-    margin-bottom: 0px;
+    padding-left: 10px;
 }
 #inner-box-urgent h2 {
     font-size: 64px;
     line-height: 76px;
     margin: 0;
 }
-.box-top-image{
+.box-top-image {
     border: solid white 1px;
     border-radius: 50%;
 }
@@ -159,28 +151,18 @@
     background-color: #2A3647 !important;
     color: white;
 }
-.box-small:hover{
+.box-small:hover {
     transform: scale(1.05);
     transition: transform 0.2s ease-in-out;
     background-color: #2A3647 !important;
     color: white;
 }
-#urgent-box{
-    width: 560px !important;
-    padding-left: 24px;
-    padding-right: 24px;
-}
-.box-small{
-    width: 168px !important;
-    height: 168px !important;
-}
-#vec5{
+#vec5 {
     display: none;
 }
 
-
 @media (max-width: 1170px) {
-    .box-right{
+    .box-right {
         position: absolute;
         height: 100vh;
         width: 100vw;
@@ -192,147 +174,71 @@
         justify-content: center;
         align-items: center;
         flex-direction: row;
-        padding-left: 0px;    
-        display: none;    /*  OVERLAY GOOD MORNING /*OVERLAY GOOD MORNING */  /*  OVERLAY GOOD MORNING */ 
+        padding-left: 0px;
+        display: none;
     }
 }
 
 @media (max-width: 1000px) {
-    #heading-container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    #heading-container {
         flex-direction: column;
+        align-items: flex-start;
+        margin-left: 0;
     }
     #heading-summary {
-        font-size: 61px;
-        font-weight: 700;
-        border-right: 0px solid #29ABE2;
-        padding-right: 30px;
-        margin-right: 0px;
+        border-right: none;
+        padding-right: 0;
+        margin-right: 0;
     }
-    #sidebar{
+    #sidebar {
         display: none !important;
     }
-    #main-container{
-        margin-left: 0px;
-        width: 100vw;
+    #main-container {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
         flex-direction: column;
-    }
-    #heading-container{
+        align-items: center;
         margin-left: 0;
+        width: 100%;
     }
-    .main-box{
-        margin-left: 0;
+    .main-box {
+        margin-left: 16px;
+        margin-right: 16px;
     }
-    #vec5{
+    #vec5 {
         display: block;
     }
 }
 
-@media (max-width:695px) {
-    #heading-container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+@media (max-width: 695px) {
+    .box-top,
+    .box-bottom {
+        gap: 8px;
     }
-    .box-top{
-        display: flex;
-        justify-content: center;
-        gap: 16px;
-    }
-    .inner-box-text h2 {
-        line-height: normal;
-        margin: 0;
-    }
-
-    #inner-box-urgent{
+    #inner-box-urgent {
         margin-left: 8px !important;
         margin-right: 8px !important;
         padding-right: 8px !important;
     }
-    .box-middle{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    #urgent-box{
-        width: 80vw;
+    #urgent-box {
+        width: 100%;
     }
     .todo,
     .done {
-        width: 170px;
+        width: 50%;
         gap: 16px;
         padding: 8px;
     }
-    .tasks-in-progress{
-        width: 16vw !important;
-    }
-    .box-bottom{
-        margin-left: 24px;
-        margin-right: 24px;
-    }
-    .tasks-in-board,
-    .tasks-in-progress,
-    .awaiting-feedback {
-        width: 140px;
-    }
-    .inner-box-text{
-        width: 100%;
-    }
-    #urgent-date{
-        line-height: normal;
+    .box-small {
+        width: 33%;
     }
 }
-@media (max-width:490px) {
-    #urgent-box{
-        width: 70vw !important;
-    }
-    .todo,
-    .done {
-        width: 116px;
-        gap: 8px;
-        padding: 8px;
-        height: 140px;
-    }
-    .box-top-image{
-        width: 40px !important;
+
+@media (max-width: 490px) {
+    .box-top-image {
+        width: 40px;
         height: 40px;
-    }
-    }
-    .box-bottom{
-        height: 160px;
-        width: 98vw;
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-    }
-    #urgent-box{
-        width: 80vw;
-        padding-left: 8px !important;
-        padding-right: 8px !important;
-    }
-    .box-small{
-        height: 128px !important;
-        padding: 8px !important;
-    }
-    .box-bottom{
-        padding-left: 8px;
-        padding-right: 8px;
     }
     .box-bottom p {
         font-size: 18px;
     }
-@media (max-width:385px) {
-    .box-small{
-        width: 80px !important;
-        height: 128px !important;
-        padding: 8px !important;
-    }
 }
-    
