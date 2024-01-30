@@ -3,28 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Board</title>
     <link rel="stylesheet" href="./CSS/default.css">
     <link rel="stylesheet" href="./CSS/board.css">
-    <link rel="stylesheet" href="./CSS/default.css">
-    <script src="./js/loading.JS"></script>
-    <script src="./js/board.js"></script>
-    <script src="./js/add_task.js"></script>
-    <script src="./js/HTMLTemplates.js"></script>
-    
-</head>
+    <link rel="stylesheet" href="./CSS/add_tasks.css">
+    <link rel="stylesheet" href="./CSS/header.css">
+    <link rel="stylesheet" href="./CSS/sidebar.css">
 
-<body onload="renderBoard(), includeHTML()">
-    <div w3-include-html="header.html"></div>
-    <div w3-include-html="sidebar.html"></div>
+</head>
+<body onload="renderBoard(); renderTemplates()">
+    <div id="header"></div>
+	<div id="sidebar"></div>
     <div class="main-board">
-        <div id="add-task-popup" class="add-task-popup">
-        </div>
+        <div id="add-task-popup" class="add-task-popup"></div>
         <div id="overview-container" class="task-big-view-overlay">
-            
             <div id="task-big-view-edit-card">
-                <form class="half-w"onsubmit=""></form>
-                
+                <form class="half-w"onsubmit="">
                     <div id="overview-edit-top">
                         <p id="overview-edit-title">Title</p>
                         <input id="overview-edit-title-input" required placeholder="Enter a title" type="text" value="Kochwelt Page & Recipe Recommender">
@@ -149,6 +143,12 @@
             </div>
         </div>
     </div>
+    <script src="./js/loading.JS"></script>
+    <script src="./templates/loadTemplates.js"></script>
+	<script src="./templates/header-template.js"></script>
+	<script src="./templates/sidebar-template.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./js/add_task.js"></script>
+    <script src="./templates/board-html-template.js"></script>
 </body>
-
 </html>

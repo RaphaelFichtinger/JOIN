@@ -6,14 +6,21 @@ function returnTask() {
 			<div class="form-container flex">
 				<div class="leftside flex-column">
 					<div class="task-input task-title">
-						<label for="title">Title*</label>
+						<label for="title">Title<span class="required-fields">*</span></label>
 						<input id="title" type="text" placeholder="Enter a title" required>
 					</div>
 					<div class="task-input task-description">
 						<label for="description">Description</label>
 						<textarea name="description" id="description" cols="30" rows="7" placeholder="Enter a Description"></textarea>
 					</div>
-					
+					<div class="task-input task-prio">
+						<label for="prio">Prio</label>
+						<div class="buttons flex">
+							<div id="priority-alta" class="priority-alta priority-button" onclick="selectPriority('alta')">Urgent</div>
+							<div id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</div>
+							<div id="priority-baia" class="priority-baia priority-button" onclick="selectPriority('baia')">Low</div>
+						</div>
+					</div>
 					<div id="task-assigned-to" class="task-input task-assigned-to">
 						<label for="assign-to">Assign to</label>
 						<input onclick="openOverlay(event, 'contacts-list')" id="assign-to" type="text" placeholder="Select contacts to assign" readonly>
@@ -26,7 +33,7 @@ function returnTask() {
 				</div>
 				<div class="rightside flex-column">
 					<div class="task-input task-date">
-						<label for="due-date">Due Date*</label>
+						<label for="due-date">Due Date<span class="required-fields">*</span></label>
 						<input type="date" id="due-date" value="dd/mm/yyyy" required>
 					</div>
 					<div class="task-input task-prio">
@@ -38,8 +45,8 @@ function returnTask() {
 						</div>
 					</div>
 					<div id="task-category" class="task-input task-category">
-						<label for="category">Category*</label>
-						<input onclick="openOverlay(event, 'categories-list')" id="category" type="text" placeholder="Select task category" readonly>
+						<label for="category">Category<span class="required-fields">*</span></label>
+						<input onclick="openOverlay(event, 'categories-list')" id="category" type="text" placeholder="Select task category" required readonly>
 						<img onclick="openOverlay(event, 'categories-list')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown">
 						<div id="categories-list" class="categories-list">
 							<div id="list-item-category" class="list-item-category"></div>
@@ -68,19 +75,21 @@ function returnTask() {
 					</div>
 				</div>
 			</div>
-			<div class="buttons-bottom">
-				<button class="button1" onclick="clearFields()" formnovalidate>Clear</button>
-				<button class="button2">Create task</button>
+			<div class="buttons-bottom flex align-center space-between">
+				<div class="required-text">
+					<p>This fields are required<span class="required-fields">*</span></p>
+				</div>
+				<div class="flex buttons">
+					<button class="button1" onclick="clearFields()" formnovalidate>Clear</button>
+					<button id="button-create-task" class="button2" disabled>Create task</button>
+				</div>
 			</div>
 		</form>
 		<div id="success-lightbox" class="success-lightbox flex align-center justify-center">
-			<div id="success" class="success flex">
-				<button>Task added to board</button>
-			</div>
-		</div>
+            <div id="success" class="success flex">
+                <button>Task added to board</button>
+            </div>
+        </div>
 	</div>
 	`;
 }
-
-
-
