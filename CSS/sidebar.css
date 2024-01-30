@@ -46,3 +46,26 @@
     color: #A8A8A8;
     padding-left: 56px;
 }
+#sidebar-mobile{
+    opacity: 0;
+}
+
+
+@media (max-width: 1050px) {
+    
+
+#sidebar-mobile{
+    position: absolute;
+    bottom: 0px;
+    height: 80px;
+    background-color: #2A3647;
+    left: 0px;
+    width: 100vw;
+    z-index: 777;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:row ;
+    opacity: 100;
+}
+}
