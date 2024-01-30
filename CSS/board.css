@@ -756,7 +756,7 @@ label + .buttons {
         flex-direction: column;
     }
     #to-do{
-        height: 300px;
+        min-height: 300px;
         background-color: #A8A8A8;
         width: 750px;
         border-radius: 20px;
@@ -765,9 +765,10 @@ label + .buttons {
         align-items: center;
         flex-direction: row;
         gap: 18px;
+        overflow-y: scroll;
     }
     #in-progress{
-        height: 300px;
+        min-height: 300px;
         background-color: #A8A8A8;
         width: 750px;
         border-radius: 20px;
@@ -776,9 +777,10 @@ label + .buttons {
         align-items: center;
         flex-direction: row;
         gap: 18px;
+        overflow-y: scroll;
     }
     #await-feedback{
-        height: 300px;
+        min-height: 300px;
         background-color: #A8A8A8;
         width: 750px;
         border-radius: 20px;
@@ -787,9 +789,10 @@ label + .buttons {
         align-items: center;
         flex-direction: row;
         gap: 18px;
+        overflow-y: scroll;
     }
     #done-tasks{
-        height: 300px;
+        min-height: 300px;
         background-color: #A8A8A8;
         width: 750px;
         border-radius: 20px;
@@ -798,6 +801,7 @@ label + .buttons {
         align-items: center;
         flex-direction: row;
         gap: 18px;
+        overflow-y: scroll;
 
     }
     .board-column-title{
