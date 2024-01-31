@@ -953,9 +953,11 @@ opacity: 0;
 }
 @media (max-width: 1000px){    
                                 /*  breakpoint list */ 
-
 #sidebar{
-    opacity: 0;
+    height: 0px;
+    position: fixed;
+    top: 0px;
+    height: 0px;
 }              
 .menu-mobile{
     display: flex;
