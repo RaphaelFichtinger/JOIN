@@ -30,6 +30,6 @@ function headerTemplate() {
 }
 
 function overlayHeaderShow() {
-let overlayHeader = document.getElementById('overlay-header');
-overlayHeader.classList.toggle('overlay-hidden');
+	let overlayHeader = document.getElementById('overlay-header');
+	overlayHeader.classList.toggle('overlay-hidden');
 }
