@@ -1,5 +1,4 @@
 function headerTemplate() {
-	let splittedLoginPerson = logedInPerson.split(" ");
 	return `
 	<div id="header-left">
 		<div id="text-top">Kanban Project Management Tool</div>
@@ -7,7 +6,7 @@ function headerTemplate() {
 	<div id="header-right">
 		<div id="help-icon"><img src="./img/help.svg" alt="Help"></div>
 		<div id="cycle-name">
-			<p id="initial-of-current-person">${splittedLoginPerson[0] ? splittedLoginPerson[0].charAt(0) : ''}${splittedLoginPerson[1] ? splittedLoginPerson[1].charAt(0) : ''}</p>
+			<p id="initial-of-current-person">TE</p>
 		</div>
 	</div>
 	`;

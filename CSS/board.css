@@ -483,54 +483,52 @@
 
 
 @media (max-width: 1250px){
+
     .board-container{
         flex-direction: column;
     }
     #to-do{
         min-height: 300px;
-        background-color: #A8A8A8;
-        width: 750px;
+        height: 100%;
         border-radius: 20px;
         border:  2px solid black;
         display: flex;
-        align-items: center;
-        flex-direction: row;
+        border:  0.5px solid rgb(101, 101, 101);
+        align-items: left;
+        flex-direction: column;
         gap: 18px;
-        overflow-y: scroll;
     }
     #in-progress{
         min-height: 300px;
-        background-color: #A8A8A8;
-        width: 750px;
+        height: 100%;
         border-radius: 20px;
         border:  2px solid black;
         display: flex;
-        align-items: center;
-        flex-direction: row;
+        align-items: left;
+        border:  0.5px solid rgb(101, 101, 101);
+        flex-direction: column;
         gap: 18px;
-        overflow-y: scroll;
     }
     #await-feedback{
         min-height: 300px;
-        background-color: #A8A8A8;
-        width: 750px;
+        height: 100%;
         border-radius: 20px;
-        border:  2px solid black;
+        border:  0.5px solid rgb(101, 101, 101);
         display: flex;
-        align-items: center;
-        flex-direction: row;
+        align-items: left;
+        flex-direction: column;
         gap: 18px;
         overflow-y: scroll;
     }
     #done-tasks{
         min-height: 300px;
-        background-color: #A8A8A8;
-        width: 750px;
+        height: 100%;
         border-radius: 20px;
         border:  2px solid black;
         display: flex;
-        align-items: center;
-        flex-direction: row;
+        align-items: left;
+        flex-direction: column;
+        border:  0.5px solid rgb(101, 101, 101);
         gap: 18px;
         overflow-y: scroll;
 
@@ -540,9 +538,6 @@
          gap: 18px;
          font-size: 24px;
     }
-
-
-
 }
 
 
