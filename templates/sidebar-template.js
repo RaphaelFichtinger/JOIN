@@ -25,3 +25,12 @@ function sidebarTemplate() {
 	</div>
 	`;
 }
+
+
+function sidebarTemplateMobile() {
+
+
+
+
+
+}

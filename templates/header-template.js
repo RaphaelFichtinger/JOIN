@@ -11,3 +11,10 @@ function headerTemplate() {
 	</div>
 	`;
 }
+
+function headerTemplateMobile() {
+
+return `<img id="logo-header-mobile" src="./img/start_logo.svg" alt="">
+<div id="cycle-name-mobile"><p>TE</p></div>`;
+
+}
