@@ -481,8 +481,7 @@
 .edit-ok-button img {
     height: 14px;
 }
-#sidebar-mobile{
-}
+
 @media (max-width:1150px) {
     .input-board-top {
         width: 65%;
@@ -504,9 +503,7 @@
 
 @media (max-width: 1000px){
 
-    #sidebar-mobile{
-        position: fixed;
-    }
+
     .board-column-title{
         margin-bottom: 16px;
     }
@@ -578,8 +575,7 @@
     }
 }
 @media (max-width:1050) {
-    #sidebar-mobile{
-    }
+
 }
 @media (max-width:825px) {
     .input-board-top{

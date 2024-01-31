@@ -51,13 +51,15 @@
     display: none;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
     #sidebar-mobile {
         display: flex;
-        position: absolute;
+        position: fixed;
         bottom: 0;
         height: 80px;
         background-color: #2A3647;
+        align-items: space-between;
+        flex-direction: row;
         left: 0;
         right: 0;
         z-index: 777;
