@@ -93,3 +93,55 @@ function returnTask() {
 	</div>
 	`;
 }
+
+function createOverviewHTMLTemplate(title, description){
+	return `
+    <div class="type-close">
+        <button class="task-type task-type-overview">User Story</button>
+        <img onclick="closeTaskOverview()" src="./img/close.png">
+    </div>
+    <div id="overview-card-top">
+        <p id="overview-title">${title}</p>
+        <p id="overview-details">${description}</p>
+        <div class="overview-date">
+            <p>Due date: </p>
+            <p> 10/05/2023</p>
+        </div>
+        <div class="overview-date">
+            <p>Priority:</p>
+            <p>Medium</p>
+            <img src="./img/prio-media.svg">
+        </div>
+    </div>
+    <div class="assigned-to-overview">
+        <p>Assigned To:</p>
+        <div id="overview-contact">
+            <p id="overview-initials">EM</p>
+            <p id="overview-fullname">Emmanuel Mauer</p>
+        </div>
+        <div id="overview-contact">
+            <p id="overview-initials">EM</p>
+            <p id="overview-fullname">Emmanuel Mauer</p>
+        </div>
+    </div>
+    <div class="subtasks-overview">
+        <p>Subtasks</p>
+        <div id="subtasks-checklist-overview">
+            <div class="subtask">
+                <input id="subtask-checkbox1" type="checkbox">
+                <p id="subtask-text">Implement Recipe Recommendation</p>
+            </div>
+            <div class="subtask">
+                <input id="subtask-checkbox2" type="checkbox">
+                <p id="subtask-text">Start Page Layout</p>
+            </div>
+        </div>
+    </div>
+    <div class="overview-bottom-buttons">
+        <button class="delete-overview border-right"><img src="./img/delete-subtask.svg"> Delete</button>
+        <button class="delete-overview" onclick="editTaskOverview()"><img
+                src="./img/edit-subtask.svg">Edit</button>
+
+    </div>
+    `;
+}
