@@ -11,6 +11,7 @@
     background-color: #2A3647;
     height: 100vh;
 }
+.d-none
 #sidebar a {
     text-decoration: none;
 }
@@ -47,16 +48,11 @@
     color: #A8A8A8;
     padding-left: 56px;
 }
-#sidebar-mobile{
-    opacity: 0;
-}
 
 
-@media (max-width: 1050px) {
-    
+
 
 #sidebar-mobile{
-    position: fixed;
     bottom: 0px;
     height: 80px;
     background-color: #2A3647;
@@ -67,6 +63,4 @@
     justify-content: center;
     align-items: center;
     flex-direction:row ;
-    opacity: 100;
-}
 }

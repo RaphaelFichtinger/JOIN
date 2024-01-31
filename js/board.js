@@ -5,45 +5,33 @@ async function renderBoard() {
     updateHTML();
 }
 
-function updateHTML() {
-    // To do Table
-    let tasksTodo = tasks.filter(t => t['status'] == 'to-do');
+document.querySelector('.input-board-top').addEventListener('input', function() {
+    searchTasks(this.value);
+});
 
-    document.getElementById('to-do').innerHTML = '';
+function searchTasks(query) {
+    const filteredTasks = tasks.filter(task => task.title.toLowerCase().includes(query.toLowerCase()));
+    updateHTML(filteredTasks);
+}
 
-    for (let index = 0; index < tasksTodo.length; index++) {
-        const element = tasksTodo[index];
-        document.getElementById('to-do').innerHTML += generateTodoHTML(element, index);
-    }
 
-    // In progress Table
-    let tasksInProgress = tasks.filter(t => t['status'] == 'in-progress');
+function updateHTML(filteredTasks = tasks) {
+    const taskStatusMap = {
+        'to-do': 'to-do',
+        'in-progress': 'in-progress',
+        'await-feedback': 'await-feedback',
+        'done-tasks': 'done-tasks',
+    };
 
-    document.getElementById('in-progress').innerHTML = '';
+    for (const status in taskStatusMap) {
+        const filteredStatusTasks = filteredTasks.filter(t => t['status'] == taskStatusMap[status]);
 
-    for (let index = 0; index < tasksInProgress.length; index++) {
-        const element = tasksInProgress[index];
-        document.getElementById('in-progress').innerHTML += generateTodoHTML(element, index);
-    }
+        document.getElementById(status).innerHTML = '';
 
-    // Await feedback Table
-    let tasksAwaitFeedback = tasks.filter(t => t['status'] == 'await-feedback');
-
-    document.getElementById('await-feedback').innerHTML = '';
-
-    for (let index = 0; index < tasksAwaitFeedback.length; index++) {
-        const element = tasksAwaitFeedback[index];
-        document.getElementById('await-feedback').innerHTML += generateTodoHTML(element, index);
-    }
-
-    // Await feedback Table
-    let tasksDone = tasks.filter(t => t['status'] == 'done-tasks');
-
-    document.getElementById('done-tasks').innerHTML = '';
-
-    for (let index = 0; index < tasksDone.length; index++) {
-        const element = tasksDone[index];
-        document.getElementById('done-tasks').innerHTML += generateTodoHTML(element, index);
+        for (let index = 0; index < filteredStatusTasks.length; index++) {
+            const element = filteredStatusTasks[index];
+            document.getElementById(status).innerHTML += generateTodoHTML(element, index);
+        }
     }
 }
 
