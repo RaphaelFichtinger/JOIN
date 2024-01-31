@@ -1,36 +1,8 @@
 async function renderBoard() {
-   loadBoardState();
     await loadTasks();
     await loadContacts();
     // generateTaskCards();
     updateHTML();
-}
-
-window.addEventListener('load', loadBoardState);
-
-async function saveBoardState() {
-    try {
-        // Speichere den aktuellen Stand des Boards im Remote Storage
-        await setItem('kanbanBoard', JSON.stringify(tasks));
-        console.log('Board state saved successfully.');
-    } catch (error) {
-        console.error('Error saving board state:', error);
-    }
-}
-
-async function loadBoardState() {
-    try {
-        const storedBoard = await getItem('kanbanBoard');
-        if (storedBoard) {
-            tasks = JSON.parse(storedBoard);
-            updateHTML();
-            console.log('Board state loaded successfully.');
-        } else {
-            console.log('No board state found.');
-        }
-    } catch (error) {
-        console.error('Error loading board state:', error);
-    }
 }
 
 
@@ -110,7 +82,6 @@ function allowDrop(ev) {
 function moveTo(status) {
     let currentTaskIndex = tasks.findIndex(task => task.id === currentDraggedElement);
     tasks[currentTaskIndex]['status'] = status;
-    saveBoardState();
     updateHTML();
 }
 
