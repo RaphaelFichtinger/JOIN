@@ -17,6 +17,7 @@
     align-items: center;
     margin-right: 40px;
     gap: 16px;
+    cursor: pointer;
 }
 #cycle-name{
     display: flex;
@@ -32,11 +33,44 @@
     color: #29ABE2;
     font-weight: 700;
 }
-#header-mobile{
-    height: 0px;
+#logo-header-mobile {
+    display: none;
+}
+.overlay-header.overlay-hidden {
+    display: none;
+}
+.overlay-header {
+    position: absolute;
+    top: 87px;
+    right: 16px;
+    z-index: 1;
+    background: #2A3647;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    padding: 26px;
+    border-radius: 20px 0px 20px 20px;
+    color: #CDCDCD;
+    gap: 16px;
+    cursor: pointer;
 }
 
-@media (max-width:600px) {
+@media screen and (max-width: 800px) {
+    #header #text-top,
+    #header #help-icon {
+        display: none;
+    }
+    #header-right {
+        margin-right: 16px;
+    }
+    #header-left {
+        margin-left: 16px;
+    }
+    #logo-header-mobile {
+        display: flex;
+        height: 54px;
+    }
+}
+
+/* @media (max-width:600px) {
     #header-right{
         margin-right: 10px;
         margin-left: 10px;
@@ -77,4 +111,4 @@
     font-weight: 700;
 }
 
-}
+} */
