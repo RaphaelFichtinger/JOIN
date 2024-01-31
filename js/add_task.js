@@ -4,6 +4,7 @@ let subtasksArray = [];
 let priorityVariable;
 let toDo = 'to-do';
 let currentSubtask;
+let finishedSubtasks = [];
 
 let titleLock = true;
 let dateLock = true;
@@ -26,25 +27,29 @@ async function renderTask() {
 	getContacts();
 }
 
-title.addEventListener('input', function() {
-    if(this.value !== '') {
-        titleLock = false;
-        console.log(titleLock);
-    }
-    if(!titleLock && !dateLock && !categoryLock) {
-        enableAddTaskButton();
-    }
-})
+if(title) {
+    title.addEventListener('input', function() {
+        if(this.value !== '') {
+            titleLock = false;
+            console.log(titleLock);
+        }
+        if(!titleLock && !dateLock && !categoryLock) {
+            enableAddTaskButton();
+        }
+    })
+}
 
-dateDue.addEventListener('input', function() {
-    if(this.value !== '') {
-        dateLock = false;
-        console.log(dateLock);
-    }
-    if(!titleLock && !dateLock && !categoryLock) {
-        enableAddTaskButton();
-    }
-})
+if(dateDue) {
+    dateDue.addEventListener('input', function() {
+        if(this.value !== '') {
+            dateLock = false;
+            console.log(dateLock);
+        }
+        if(!titleLock && !dateLock && !categoryLock) {
+            enableAddTaskButton();
+        }
+    })
+}
 
 function enableAddTaskButton() {
     buttonCreateTask.disabled = false;
@@ -55,10 +60,6 @@ async function createNewTask() {
     let description = document.getElementById('description');
     let dateDue = document.getElementById('due-date');
     let categoryValue = document.getElementById('category');
-    let assignTo = document.getElementById('assign-to');
-    let contactsList = document.getElementById('contacts-list');
-    let contactsListMobile = document.getElementById('contacts-list-mobile');
-    let taskId = generateId(); // Rufe die Funktion auf, um die nächste ID zu erhalten
 
     tasks.push({
         'id': timestamp,
@@ -69,6 +70,7 @@ async function createNewTask() {
         'priority': priorityVariable,
         'category': categoryValue.value,
         'subtasks': subtasksArray,
+        'finishedSubtasks': finishedSubtasks,
         'status': toDo
     })
 

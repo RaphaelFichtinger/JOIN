@@ -1,11 +1,8 @@
 async function renderBoard() {
     await loadTasks();
     await loadContacts();
-    // generateTaskCards();
     updateHTML();
 }
-
-
 
 document.querySelector('.input-board-top').addEventListener('input', function() {
     searchTasks(this.value);
@@ -71,7 +68,6 @@ function generateTodoHTML(element, index) {
 }
 
 function startDragging(id) { //die Id markiert das Element das gerade verschoben wird
-    console.log(id);
     currentDraggedElement = id;
 }
 
@@ -126,58 +122,6 @@ function editTaskOverview() {
     overviewEdit.style.display = 'block';
 }
 
-// function generateTaskCards() {
-//     let toDoColumn = document.getElementById('to-do');
-//     for (let i = 0; i < tasks.length; i++) {
-//         let title = tasks[i]['title'];
-//         let category = tasks[i]['category'];
-//         let fullName = tasks[i]['assign-to'];
-//         let description = tasks[i]['description'];
-//         let subArrayLength = tasks[i]['subtasks'].length;
-//         let priority = tasks[i]['priority'];
-        
-        
-        
-//         // Call the getInitials function to get the initials
-//         let initials = getInitials(fullName);        
-//         toDoColumn.innerHTML += `<div id="task-card" class="task-card" onclick="openTaskOverview(${i})">
-//     <button class="task-type">${category}</button>
-//     <div class="task-text">
-//         <p id="task-title">${title}</p>
-//         <p id="task-details">${description}</p>
-//     </div>
-//     <div class="subtasks">
-//         <div class="progress-container">
-//             <div class="progress-bar" style="width: 0%;"></div>
-//         </div>
-//         <div>
-//             <p>0/${subArrayLength} Subtasks</p>
-//         </div>
-
-//     </div>
-//     <div class="task-card-bottom">
-//         <div id="initials">
-//             <p id="initials-circle-1">${initials}</p>
-//         </div>
-//         <div>
-//         <img id="priority-image-small${i}" src="">
-//         </div>
-//     </div>
-// </div>
-// </div>
-// </div>
-// <div class="board-column">`;
-// let priorityImage = document.getElementById(`priority-image-small${i}`);
-//         if (priority == 'Low') {
-//             priorityImage.src ="./img/prio-baia.svg"
-//         } if (priority == 'Urgent') {
-//             priorityImage.src ="./img/prio-alta.svg"
-//         } if (priority == 'Medium') {
-//             priorityImage.src ="./img/prio-media.svg"
-//         }
-//     }
-// }
-
 function getInitials(fullName) {
     // Check if fullName is an array and has at least one element
     if (Array.isArray(fullName) && fullName.length > 0) {
@@ -197,12 +141,6 @@ function getInitials(fullName) {
     return initials.join('').toUpperCase();
 }
 
-// function openOverlay(event, listId) {
-//     event.stopPropagation(event);
-//     let overlayList = document.getElementById(`${listId}`);
-//     overlayList.classList.toggle('active');
-// }
-
 async function clearTasks() {
     let tasks = [];
     await setItem('tasks', JSON.stringify(tasks));
@@ -212,16 +150,18 @@ async function clearTasks() {
 
 function createOverview(i, id) {
     let title = tasks[i]['title'];
+    let date = tasks[i]['date'];
     let category = tasks[i]['category'];
-    let fullName = tasks[i]['assign-to'];
     let description = tasks[i]['description'];
     let subArrayLength = tasks[i]['subtasks'].length;
     let priority = tasks[i]['priority'];
     let overviewCard = document.getElementById('task-big-view-card');
 
+    generateAssignTo(i);
+
     overviewCard.innerHTML = `
     <div class="type-close">
-        <button class="task-type task-type-overview">User Story</button>
+        <button class="task-type task-type-overview">${category}</button>
         <img onclick="closeTaskOverview()" src="./img/close.png">
     </div>
     <div id="overview-card-top">
@@ -229,44 +169,81 @@ function createOverview(i, id) {
         <p id="overview-details">${description}</p>
         <div class="overview-date">
             <p>Due date: </p>
-            <p> 10/05/2023</p>
+            <p>${date.replace(/-/g, '/')}</p>
         </div>
-        <div class="overview-date">
+        <div class="overview-priority">
             <p>Priority:</p>
-            <p>Medium</p>
-            <img src="./img/prio-media.svg">
+            <p>${priority ? `${priority} <img src="./img/prio-${priority}.svg">` : 'No priority'}</p>
         </div>
     </div>
-    <div class="assigned-to-overview">
+    <div id="assigned-to-overview" class="assigned-to-overview">
         <p>Assigned To:</p>
-        <div id="overview-contact">
-            <p id="overview-initials">EM</p>
-            <p id="overview-fullname">Emmanuel Mauer</p>
-        </div>
-        <div id="overview-contact">
-            <p id="overview-initials">EM</p>
-            <p id="overview-fullname">Emmanuel Mauer</p>
-        </div>
+        ${generateAssignTo(i)}
     </div>
     <div class="subtasks-overview">
         <p>Subtasks</p>
-        <div id="subtasks-checklist-overview">
-            <div class="subtask">
-                <input id="subtask-checkbox1" type="checkbox">
-                <p id="subtask-text">Implement Recipe Recommendation</p>
-            </div>
-            <div class="subtask">
-                <input id="subtask-checkbox2" type="checkbox">
-                <p id="subtask-text">Start Page Layout</p>
-            </div>
-        </div>
+        ${generateSubtasks(i)}
     </div>
     <div class="overview-bottom-buttons">
-        <button class="delete-overview border-right"><img src="./img/delete-subtask.svg"> Delete</button>
-        <button class="delete-overview" onclick="editTaskOverview()"><img
-                src="./img/edit-subtask.svg">Edit</button>
-
+        <button class="delete-overview" onclick="deleteTask(${i})">
+            <img src="./img/delete-subtask.svg">
+            <p>Delete</p>
+        </button>
+        <button class="edit-overview" onclick="editTaskOverview()">
+            <img src="./img/edit-subtask.svg">
+            <p>Edit</p>
+        </button>
     </div>
     `;
 }
 
+function generateAssignTo(i) {
+    let fullNames = tasks[i]['assign-to'];
+    let generateHtml = '';
+    let initials;
+
+    for (let j = 0; j < fullNames.length; j++) {
+        let fullName = fullNames[j];
+        initials = fullName.split(" ");
+        generateHtml += `
+        <div id="overview-contact">
+            <p id="overview-initials">${initials[0] ? initials[0].charAt(0) : ''}${initials[1] ? initials[1].charAt(0) : ''}</p>
+            <p id="overview-fullname">${fullName}</p>
+        </div>
+        `;
+    }
+    return generateHtml;
+}
+
+function generateSubtasks(i) {
+    let subArray = tasks[i]['subtasks'];
+    let generateHtml = '';
+
+    for (let j = 0; j < subArray.length; j++) {
+        let subtask = subArray[j];
+        generateHtml += `
+        <div class="subtask">
+            <input id="subtask-checkbox-${j}" type="checkbox" onclick="finishedSubtask(${i}, ${j})">
+            <p id="subtask-text">${subtask}</p>
+        </div>
+        `;
+    }
+    return generateHtml;
+}
+
+async function finishedSubtask(i, j) {
+    let subArray = tasks[i]['subtasks'];
+    let subtask = subArray[j];
+    let checkbox = document.getElementById(`subtask-checkbox-${j}`)
+    if(checkbox.checked) {
+        finishedSubtasks.push(subtask)
+        await setItem('tasks', JSON.stringify(tasks));
+    }
+}
+
+async function deleteTask(i) {
+    tasks.splice(i, 1);
+    await setItem('tasks', JSON.stringify(tasks));
+    closeTaskOverview();
+    updateHTML();
+}

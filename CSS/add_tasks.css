@@ -89,28 +89,28 @@ label + .buttons {
 	margin-left: 8px;
 }
 .priority-alta::after {
-	background-image: url(../img/prio-alta.svg);
+	background-image: url(../img/prio-urgent.svg);
 }
 .priority-medium::after {
 	content: '';
-	background-image: url(../img/prio-media.svg);
+	background-image: url(../img/prio-medium.svg);
 	width: 20px;
 	height: 7px;
 }
 .priority-baia::after {
-	background-image: url(../img/prio-baia.svg);
+	background-image: url(../img/prio-low.svg);
 }
 .priority-alta.alta::after {
-	background-image: url(../img/prio-alta-white.svg);
+	background-image: url(../img/prio-urgent-white.svg);
 }
 .priority-medium.medium::after {
 	content: '';
-	background-image: url(../img/prio-media-white.svg);
+	background-image: url(../img/prio-medium-white.svg);
 	width: 20px;
 	height: 7px;
 }
 .priority-baia.baia::after {
-	background-image: url(../img/prio-baia-white.svg);
+	background-image: url(../img/prio-low-white.svg);
 }
 .alta {
 	background-color: red;

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./CSS/sidebar.css">
 
 </head>
-<body onload="renderBoard(), renderTemplates()">
+<body onload="renderBoard(); renderTemplates()">
     <div id="header"></div>
 	<div id="sidebar"></div>
     <div id="sidebar-mobile"></div>
@@ -91,7 +91,7 @@
                     <p>To do</p>
                     <img src="/img/plus-button.png">
                 </div>
-                <div id="to-do" class="drag-area" ondrop="moveTo('to-do')"  ondragover="allowDrop(event);">
+                <div id="to-do" class="drag-area" ondrop="moveTo('to-do')"  ondragover="allowDrop(event); highlight('to-do')" ondragleave="removeHighlight('to-do')">
                     
                 </div>
             </div>
@@ -100,33 +100,7 @@
                     <p>In progress</p>
                     <img src="/img/plus-button.png">
                 </div>
-                <div id="in-progress" class="drag-area" ondrop="moveTo('in-progress')" ondragover="allowDrop(event);">
-                    <div class="task-card">
-                        <button class="task-type">User Story</button>
-                        <div class="task-text">
-                            <p id="task-title">Kochwelt Page & Recipe Recommender</p>
-                            <p id="task-details">Build start page with recipe recommendation...</p>
-                        </div>
-                        <div class="subtasks">
-                            <div class="progress-container">
-                                <div class="progress-bar" style="width: 50%;"></div>
-                            </div>
-                            <div>
-                                <p>0/2 Subtasks</p>
-                            </div>
-
-                        </div>
-                        <div class="task-card-bottom">
-                            <div id="initials">
-                                <p id="initials-circle-1">AS</p>
-                                <p id="initials-circle-2">DE</p>
-                                <p id="initials-circle-3">EF</p>
-                            </div>
-                            <div>
-                                <img id="priority-image-small" src="/img/prio-baia.svg">
-                            </div>
-                        </div>
-                    </div>
+                <div id="in-progress" class="drag-area" ondrop="moveTo('in-progress')" ondragover="allowDrop(event); highlight('in-progress')" ondragleave="removeHighlight('in-progress')">
                 </div>
             </div>
             <div class="board-column">
@@ -134,13 +108,13 @@
                     <p>Await feedback</p>
                     <img src="/img/plus-button.png">
                 </div>
-                <div id="await-feedback" class="drag-area" ondrop="moveTo('await-feedback')" ondragover="allowDrop(event);"></div>
+                <div id="await-feedback" class="drag-area" ondrop="moveTo('await-feedback')" ondragover="allowDrop(event); highlight('await-feedback')" ondragleave="removeHighlight('await-feedback')"></div>
             </div>
             <div class="board-column">
                 <div class="board-column-title">
                     <p>Done</p>
                 </div>
-                <div id="done-tasks" class="drag-area" ondrop="moveTo('done-tasks')" ondragover="allowDrop(event);"></div>
+                <div id="done-tasks" class="drag-area" ondrop="moveTo('done-tasks')" ondragover="allowDrop(event); highlight('done-tasks')" ondragleave="removeHighlight('done-tasks')"></div>
             </div>
         </div>
     </div>
