@@ -457,10 +457,44 @@ body {
     height: 100%;
 }
 
+.main-edit-card {
+    overflow-x: hidden;
+    width: 110%;
+
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+   
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+    width: 10px;
+    
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+    max-height: 10px;
+
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
 .edit-ok-button {
     margin-top: 117px;
     display: flex;
     justify-content: end;
+    
 }
 
 .edit-ok-button button {
@@ -477,14 +511,20 @@ body {
     width: 96px;
     height: 57px;
     gap: 12px;
+    position: sticky;
 }
 
 .edit-ok-button img {
     height: 14px;
+    
 }
 
 .list-height {
     height: 80px;
+}
+
+.main-edit-card {
+
 }
 
 @media (max-width:1150px) {

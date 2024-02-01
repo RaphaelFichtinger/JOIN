@@ -4,7 +4,7 @@ async function renderBoard() {
     updateHTML();
 }
 
-document.querySelector('.input-board-top').addEventListener('input', function() {
+document.querySelector('.input-board-top').addEventListener('input', function () {
     searchTasks(this.value);
 });
 
@@ -96,7 +96,7 @@ function openAddTaskPopup() {
     popup.innerHTML = returnTask();
     popup.style.display = 'block'
     getCategories();
-	getContacts();
+    getContacts();
 }
 
 function closeAddTaskPopup() {
@@ -236,7 +236,7 @@ async function finishedSubtask(i, j) {
     let subArray = tasks[i]['subtasks'];
     let subtask = subArray[j];
     let checkbox = document.getElementById(`subtask-checkbox-${j}`)
-    if(checkbox.checked) {
+    if (checkbox.checked) {
         finishedSubtasks.push(subtask)
         await setItem('tasks', JSON.stringify(tasks));
     }
@@ -258,6 +258,7 @@ function generateEditCard(i) {
     let editCard = document.getElementById('task-big-view-edit-card');
     editCard.innerHTML = `
     <form onsubmit="">
+    <div class="main-edit-card">
     <div id="overview-edit-top">
         <p id="overview-edit-title">Title</p>
         <input id="overview-edit-title-input" required placeholder="Enter a title" type="text" value="Kochwelt Page & Recipe Recommender">
@@ -298,7 +299,7 @@ function generateEditCard(i) {
         <label for="subtasks">Subtasks</label>
         <input onclick="changeIcons()" id="subtasks" type="text" placeholder="Add new Subtask">
         <div id="subtasks-list" class="subtasks-list">
-            
+            <ul id="list-item-subtasks" class="list-item-subtasks list-height"></ul>
         </div>
         <img id="subtasks-plus" class="subtasks-plus" src="./img/plus.svg" alt="">
         <div id="image-click" class="image-click d-none">
@@ -306,20 +307,31 @@ function generateEditCard(i) {
             <img onclick="addSubtask()" class="subtasks-check" src="./img/check-blue.svg" alt="">
         </div>
     </div>
+</div>
     <div class="edit-ok-button">
         <button class="edit-ok-button-btn">OK <img src="./img/check.png" alt=""></button>
     </div>
 </form>`;
-let titleInput = document.getElementById('overview-edit-title-input');
-let descriptionArea = document.getElementById('description-overview-edit');
-let dueDateInput = document.getElementById('due-date-edit');
-let subtaskList = document.getElementById('list-item-subtasks');
-titleInput.value = title;
-descriptionArea.value = description;
-dueDateInput.value = date;
-console.log(subtasks);
-for (let j = 0; j < subtasks.length; j++) {
-    let subtask = subtasks[j];
-    subtaskList.innerHTML += `<li>${subtask}</li>`;
-}
+    let titleInput = document.getElementById('overview-edit-title-input');
+    let descriptionArea = document.getElementById('description-overview-edit');
+    let dueDateInput = document.getElementById('due-date-edit');
+    let subtaskList = document.getElementById('list-item-subtasks');
+    titleInput.value = title;
+    descriptionArea.value = description;
+    dueDateInput.value = date;
+    console.log(subtasks);
+    for (let j = 0; j < subtasks.length; j++) {
+        const subtask = subtasks[j];
+        subtaskList.innerHTML += `
+    <li class="subtaskItem">
+        <div id="editableText" class="li-element flex space-between align-center">
+            <p>${subtask}</p>
+            <div id="edit-delete-icons" class="edit-delete-icons flex">
+                <img onclick="editSubtask(event, ${j})" id="subtasks-edit" class="subtasks-edit" src="./img/edit-subtask.svg" alt="Edit">
+                <img onclick="clearSubtask(event)" id="subtasks-delete" class="subtasks-delete" src="./img/delete-subtask.svg" alt="Delete">
+            </div>
+        </div>
+    </li>
+  `;
+    }
 }

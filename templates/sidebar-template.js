@@ -20,8 +20,8 @@ function sidebarTemplate() {
 		</a>
 	</div>
 	<div class="privacy-text">
-		<p class="info-text">Privacy Policy</p>
-		<p class="info-text">Legal Notice</p>
+	<a href="../Privacy.html" class="info-text">Privacy Policy</a>
+		<a href="../legal_notice.html" class="info-text">Legal Notice</a>
 	</div>
 	`;
 }
