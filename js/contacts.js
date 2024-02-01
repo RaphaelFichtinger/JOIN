@@ -68,7 +68,6 @@ function closeMobileDetails(){
   mobileDetails.classList.add('d-none');
 }
 
-
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
   let color = '#';
@@ -95,7 +94,6 @@ function editMobileContact(i) {
   let backgroundColor = contact.color;
   overlay.innerHTML =editMobileContactHTMLTemplate(backgroundColor, initials, contact, i);
 }
-
 
 function saveContactChanges(i) {
   if (validateEditContactInput()) {
