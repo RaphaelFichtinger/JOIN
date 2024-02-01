@@ -1,5 +1,3 @@
-/* contactcs templates*/ 
-
 function renderContactsHTMLTemplate(i, backgroundColor, initials, contact){
     return `
     <div id="contactcard-container" onclick="showContactDetails(${i})">

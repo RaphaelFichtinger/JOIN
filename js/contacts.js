@@ -98,49 +98,53 @@ function editMobileContact(i) {
 
 
 function saveContactChanges(i) {
-  let editedName = document.getElementById('edit-input-name');
-  let editedEmail = document.getElementById('edit-input-mail');
-  let editedPhone = document.getElementById('edit-input-number');
-  let overlay = document.getElementById('contact-overlay');
-  let backgroundColor =  getRandomColor();
-  loadedContacts[i].name = editedName.value;
-  loadedContacts[i].email = editedEmail.value;
-  loadedContacts[i].phone = editedPhone.value;
-  loadedContacts[i].color = backgroundColor;
-  setItem('contacts', JSON.stringify(loadedContacts));
-  overlay.innerHTML = '';
-  loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
-    
-  setItem('loadedContacts', JSON.stringify(loadedContacts));
-  setItem('contacts', JSON.stringify(loadedContacts));
-  renderContacts();
-  closeEdit();
-  popupWindow();
-
+  if (validateEditContactInput()) {
+      let editedName = document.getElementById('edit-input-name').value;
+      let editedEmail = document.getElementById('edit-input-mail').value;
+      let editedPhone = document.getElementById('edit-input-number').value;
+      let overlay = document.getElementById('contact-overlay');
+      let backgroundColor = getRandomColor();
+      loadedContacts[i].name = editedName;
+      loadedContacts[i].email = editedEmail;
+      loadedContacts[i].phone = editedPhone;
+      loadedContacts[i].color = backgroundColor;
+      setItem('contacts', JSON.stringify(loadedContacts));
+      overlay.innerHTML = '';
+      loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
+      setItem('loadedContacts', JSON.stringify(loadedContacts));
+      setItem('contacts', JSON.stringify(loadedContacts));
+      renderContacts();
+      closeEdit();
+      popupWindow();
+  } else {
+      alert('Bitte fülle alle Felder aus, um die Änderungen zu speichern.');
+  }
 }
 
 function saveContactChangesMobile(i) {
-  let editedName = document.getElementById('edit-contact-input-name-mobile');
-  let editedEmail = document.getElementById('edit-contact-input-mail-mobile');
-  let editedPhone = document.getElementById('edit-contact-input-number-mobile');
-  let overlay = document.getElementById('editing-overlay-mobile');
-  let backgroundColor =  getRandomColor();
-  loadedContacts[i].name = editedName.value;
-  loadedContacts[i].email = editedEmail.value;
-  loadedContacts[i].phone = editedPhone.value;
-  loadedContacts[i].color = backgroundColor;
-  setItem('contacts', JSON.stringify(loadedContacts));
-  overlay.innerHTML = '';
-  loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
-    
-  setItem('loadedContacts', JSON.stringify(loadedContacts));
-  setItem('contacts', JSON.stringify(loadedContacts));
-  renderContacts();
-  renderContactsMobile();
-  showContactDetailsMobile(i);
-  closeEditMobile();
-  popupWindow();
-
+  if (validateEditMobileContactInput()) {
+      let editedName = document.getElementById('edit-contact-input-name-mobile').value;
+      let editedEmail = document.getElementById('edit-contact-input-mail-mobile').value;
+      let editedPhone = document.getElementById('edit-contact-input-number-mobile').value;
+      let overlay = document.getElementById('editing-overlay-mobile');
+      let backgroundColor = getRandomColor();
+      loadedContacts[i].name = editedName;
+      loadedContacts[i].email = editedEmail;
+      loadedContacts[i].phone = editedPhone;
+      loadedContacts[i].color = backgroundColor;
+      setItem('contacts', JSON.stringify(loadedContacts));
+      overlay.innerHTML = '';
+      loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
+      setItem('loadedContacts', JSON.stringify(loadedContacts));
+      setItem('contacts', JSON.stringify(loadedContacts));
+      renderContacts();
+      renderContactsMobile();
+      showContactDetailsMobile(i);
+      closeEditMobile();
+      popupWindow();
+  } else {
+      alert('Bitte fülle alle Felder aus, um die Änderungen zu speichern.');
+  }
 }
 
 function closeEdit(){
@@ -174,6 +178,7 @@ function setNewContactMobile(i) {
 }
 
 function saveNewContact(){
+  if (validateNewContactInput()) {
   let newContact = {
     'name': document.getElementById('new-contact-input-name').value,
     'email': document.getElementById('new-contact-input-mail').value,
@@ -188,24 +193,31 @@ function saveNewContact(){
   renderContactsMobile();
   closeEdit();
   popupWindow();
-
+} else {
+  alert('Bitte fülle alle Felder aus, um einen Kontakt zu erstellen.');
+}
 }
 
-function saveNewContactMobile(){
-  let newContact = {
-    'name': document.getElementById('new-contact-input-name-mobile').value,
-    'email': document.getElementById('new-contact-input-mail-mobile').value,
-    'phone': document.getElementById('new-contact-input-number-mobile').value
-  };
-  loadedContacts.push(newContact);
-  loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
-    
-  setItem('loadedContacts', JSON.stringify(loadedContacts));
-  setItem('contacts', JSON.stringify(loadedContacts));
-  renderContacts();
-  renderContactsMobile();
-  closeEdit();
-  popupWindow();
+function saveNewContactMobile() {
+  if (validateNewMobileContactInput()) {
+      let newContact = {
+          'name': document.getElementById('new-contact-input-name-mobile').value,
+          'email': document.getElementById('new-contact-input-mail-mobile').value,
+          'phone': document.getElementById('new-contact-input-number-mobile').value
+      };
+
+      loadedContacts.push(newContact);
+      loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
+
+      setItem('loadedContacts', JSON.stringify(loadedContacts));
+      setItem('contacts', JSON.stringify(loadedContacts));
+      renderContacts();
+      renderContactsMobile();
+      closeEdit();
+      popupWindow();
+  } else {
+      alert('Bitte fülle alle Felder aus, um einen Kontakt zu erstellen.');
+  }
 }
 
 
@@ -275,3 +287,38 @@ function popupWindow() {
   }, 1000);
 }
 
+function validateContactInput(name, email, phone) {
+  return name.trim() !== '' && email.trim() !== '' && phone.trim() !== '';
+}
+
+function validateNewContactInput() {
+  let name = document.getElementById('new-contact-input-name').value;
+  let email = document.getElementById('new-contact-input-mail').value;
+  let phone = document.getElementById('new-contact-input-number').value;
+  return validateContactInput(name, email, phone);
+}
+
+function validateNewMobileContactInput() {
+  let name = document.getElementById('new-contact-input-name-mobile').value;
+  let email = document.getElementById('new-contact-input-mail-mobile').value;
+  let phone = document.getElementById('new-contact-input-number-mobile').value;
+  return validateContactInput(name, email, phone);
+}
+
+function validateEditContactInput() {
+  let editedName = document.getElementById('edit-input-name').value;
+  let editedEmail = document.getElementById('edit-input-mail').value;
+  let editedPhone = document.getElementById('edit-input-number').value;
+  return validateContactInput(editedName, editedEmail, editedPhone);
+}
+
+function validateEditMobileContactInput() {
+  let editedName = document.getElementById('edit-contact-input-name-mobile').value;
+  let editedEmail = document.getElementById('edit-contact-input-mail-mobile').value;
+  let editedPhone = document.getElementById('edit-contact-input-number-mobile').value;
+
+  console.log('Name:', editedName);
+  console.log('Email:', editedEmail);
+  console.log('Phone:', editedPhone);
+  return validateContactInput(editedName, editedEmail, editedPhone);
+}
