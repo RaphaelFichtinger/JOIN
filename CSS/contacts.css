@@ -708,18 +708,7 @@ align-items: center;
     font-weight: 400;
 }
 
-#alphabet-tab-mobile{
-    display: flex;
-    align-items: center;
-    height: 24px;
-    border-bottom: 1px solid rgba(209, 209, 209, 1);
-    width: 80vw;
-    padding-left: 36px;
-    padding-top: 17px ;
-    padding-bottom: 17px;
-    font-size: 20px;
-    font-weight: 400;
-}
+
 
 #contact-cyrcle{
     display: flex;
@@ -957,6 +946,18 @@ margin-top: 80px;
 }
 @media (max-width: 1000px){    
                                 /*  breakpoint list */ 
+#alphabet-tab-mobile{
+    display: flex;
+    align-items: center;
+    height: 24px;
+    border-bottom: 1px solid rgba(209, 209, 209, 1);
+    width: 80vw;
+    padding-left: 36px;
+    padding-top: 17px ;
+    padding-bottom: 17px;
+    font-size: 20px;
+    font-weight: 400;
+}                                
 #sidebar{
     height: 0px;
     position: fixed;

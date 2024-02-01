@@ -21,8 +21,9 @@ function renderContacts() {
 
     if (initials.charAt(0) !== currentLetter) {
       currentLetter = initials.charAt(0);
-      overlay.innerHTML += renderContactsHTMLTemplate(i, backgroundColor, initials, contact);
+      overlay.innerHTML += `<div id="alphabet-tab">${currentLetter}</div>`;
   }
+  overlay.innerHTML += renderContactsHTMLTemplate(i, backgroundColor, initials, contact);
 }
 }
 
