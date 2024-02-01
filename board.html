@@ -11,67 +11,16 @@
     <link rel="stylesheet" href="./CSS/sidebar.css">
 
 </head>
-<body onload="renderBoard(); renderTemplates()">
+<body onload="renderBoard(), renderTemplates()">
     <div id="header"></div>
+    <div id="header-mobile" class="d-none"></div>
 	<div id="sidebar"></div>
-    <div id="sidebar-mobile"></div>
+    <div id="sidebar-mobile" ></div>
     <div class="main-board">
         <div id="add-task-popup" class="add-task-popup"></div>
         <div id="overview-container" class="task-big-view-overlay">
             <div id="task-big-view-edit-card">
-                <form class="half-w"onsubmit="">
-                    <div id="overview-edit-top">
-                        <p id="overview-edit-title">Title</p>
-                        <input id="overview-edit-title-input" required placeholder="Enter a title" type="text" value="Kochwelt Page & Recipe Recommender">
-                    </div>
-                    <div class="overview-edit-description">
-                        <p>Description</p>
-                        <textarea name="description" id="description-overview-edit" cols="30" rows="5"></textarea>
-                    </div>
-                    <div class="due-date-overview-edit overview-edit-description">
-                        <p>Due date</p>
-                        <input required type="date">
-                    </div>
-                    <div class="overview-edit-description">
-                        <p class="priority-overview-edit">Priority</p>
-                        <div class="priority-edit-buttons">
-                            <div class="task-input task-prio-overview-edit">
-                                
-                                <div class="buttons flex task-prio-overview-edit">
-                                    <div id="priority-alta" class="priority-alta priority-button" onclick="selectPriority('alta')">Urgent</div>
-                                    <div id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</div>
-                                    <div id="priority-baia" class="priority-baia priority-button" onclick="selectPriority('baia')">Low</div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="assigned-to-overview-edit  margin-top">
-                        <div id="task-assigned-to" class="task-input task-assigned-to">
-                            <label for="assign-to">Assign to</label>
-                            <input onclick="openOverlay('contacts-list')" id="assign-to-edit" type="text" placeholder="Select contacts to assign">
-                            <div id="contacts-list" class="contacts-list d-none">
-                                <div id="list-item" class="list-item"></div>
-                            </div>
-                            <div id="added-contacts" class="flex"></div>
-                        </div>
-                    </div>
-                    <div class="task-input task-subtasks margin-top">
-						<label for="subtasks">Subtasks</label>
-						<input onclick="changeIcons()" id="subtasks" type="text" placeholder="Add new Subtask">
-						<div id="subtasks-list" class="subtasks-list">
-							<ul id="list-item-subtasks" class="list-item-subtasks"></ul>
-						</div>
-						<img id="subtasks-plus" class="subtasks-plus" src="./img/plus.svg" alt="">
-						<div id="image-click" class="image-click d-none">
-							<img onclick="clearSubtaskInput()" class="subtasks-clear" src="./img/clear.svg" alt="">
-							<img onclick="addSubtask()" class="subtasks-check" src="./img/check-blue.svg" alt="">
-						</div>
-					</div>
-                    <div class="edit-ok-button">
-                        <button class="edit-ok-button-btn">OK <img src="./img/check.png" alt=""></button>
-                    </div>
-                </form>
+                
             </div>
             <div id="task-big-view-card" class="">
                 
@@ -91,7 +40,7 @@
                     <p>To do</p>
                     <img src="/img/plus-button.png">
                 </div>
-                <div id="to-do" class="drag-area" ondrop="moveTo('to-do')"  ondragover="allowDrop(event); highlight('to-do')" ondragleave="removeHighlight('to-do')">
+                <div id="to-do" class="drag-area" ondrop="moveTo('to-do')"  ondragover="allowDrop(event);">
                     
                 </div>
             </div>
@@ -100,7 +49,33 @@
                     <p>In progress</p>
                     <img src="/img/plus-button.png">
                 </div>
-                <div id="in-progress" class="drag-area" ondrop="moveTo('in-progress')" ondragover="allowDrop(event); highlight('in-progress')" ondragleave="removeHighlight('in-progress')">
+                <div id="in-progress" class="drag-area" ondrop="moveTo('in-progress')" ondragover="allowDrop(event);">
+                    <div class="task-card">
+                        <button class="task-type">User Story</button>
+                        <div class="task-text">
+                            <p id="task-title">Kochwelt Page & Recipe Recommender</p>
+                            <p id="task-details">Build start page with recipe recommendation...</p>
+                        </div>
+                        <div class="subtasks">
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 50%;"></div>
+                            </div>
+                            <div>
+                                <p>0/2 Subtasks</p>
+                            </div>
+
+                        </div>
+                        <div class="task-card-bottom">
+                            <div id="initials">
+                                <p id="initials-circle-1">AS</p>
+                                <p id="initials-circle-2">DE</p>
+                                <p id="initials-circle-3">EF</p>
+                            </div>
+                            <div>
+                                <img id="priority-image-small" src="/img/prio-baia.svg">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="board-column">
@@ -108,13 +83,13 @@
                     <p>Await feedback</p>
                     <img src="/img/plus-button.png">
                 </div>
-                <div id="await-feedback" class="drag-area" ondrop="moveTo('await-feedback')" ondragover="allowDrop(event); highlight('await-feedback')" ondragleave="removeHighlight('await-feedback')"></div>
+                <div id="await-feedback" class="drag-area" ondrop="moveTo('await-feedback')" ondragover="allowDrop(event);"></div>
             </div>
             <div class="board-column">
                 <div class="board-column-title">
                     <p>Done</p>
                 </div>
-                <div id="done-tasks" class="drag-area" ondrop="moveTo('done-tasks')" ondragover="allowDrop(event); highlight('done-tasks')" ondragleave="removeHighlight('done-tasks')"></div>
+                <div id="done-tasks" class="drag-area" ondrop="moveTo('done-tasks')" ondragover="allowDrop(event);"></div>
             </div>
         </div>
     </div>

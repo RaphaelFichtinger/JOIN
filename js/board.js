@@ -115,11 +115,12 @@ function closeTaskOverview() {
     overview.style.display = 'none';
 }
 
-function editTaskOverview() {
+function editTaskOverview(i) {
     let overviewCard = document.getElementById('task-big-view-card');
     let overviewEdit = document.getElementById('task-big-view-edit-card');
     overviewCard.style.display = 'none';
     overviewEdit.style.display = 'block';
+    generateEditCard(i);
 }
 
 function getInitials(fullName) {
@@ -189,7 +190,7 @@ function createOverview(i, id) {
             <img src="./img/delete-subtask.svg">
             <p>Delete</p>
         </button>
-        <button class="edit-overview" onclick="editTaskOverview()">
+        <button class="edit-overview" onclick="editTaskOverview(${i})">
             <img src="./img/edit-subtask.svg">
             <p>Edit</p>
         </button>
@@ -246,4 +247,73 @@ async function deleteTask(i) {
     await setItem('tasks', JSON.stringify(tasks));
     closeTaskOverview();
     updateHTML();
+}
+
+function generateEditCard(i) {
+    let title = tasks[i]['title'];
+    let date = tasks[i]['date'];
+    let category = tasks[i]['category'];
+    let description = tasks[i]['description'];
+    let subArrayLength = tasks[i]['subtasks'].length;
+    let priority = tasks[i]['priority'];
+    let editCard = document.getElementById('task-big-view-edit-card');
+    editCard.innerHTML = `<form onsubmit="">
+    <div id="overview-edit-top">
+        <p id="overview-edit-title">Title</p>
+        <input id="overview-edit-title-input" required placeholder="Enter a title" type="text" value="Kochwelt Page & Recipe Recommender">
+    </div>
+    <div class="overview-edit-description">
+        <p>Description</p>
+        <textarea name="description" id="description-overview-edit" cols="30" rows="5"></textarea>
+    </div>
+    <div class="due-date-overview-edit overview-edit-description">
+        <p>Due date</p>
+        <input required id="due-date-edit" type="date">
+    </div>
+    <div class="overview-edit-description">
+        <p class="priority-overview-edit">Priority</p>
+        <div class="priority-edit-buttons">
+            <div class="task-input task-prio-overview-edit">
+                
+                <div class="buttons flex task-prio-overview-edit">
+                    <div id="priority-alta" class="priority-alta priority-button" onclick="selectPriority('alta')">Urgent</div>
+                    <div id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</div>
+                    <div id="priority-baia" class="priority-baia priority-button" onclick="selectPriority('baia')">Low</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="assigned-to-overview-edit  margin-top">
+        <div id="task-assigned-to" class="task-input task-assigned-to">
+            <label for="assign-to">Assign to</label>
+            <input onclick="openOverlay('contacts-list')" id="assign-to-edit" type="text" placeholder="Select contacts to assign">
+            <div id="contacts-list" class="contacts-list d-none">
+                <div id="list-item" class="list-item"></div>
+            </div>
+            <div id="added-contacts" class="flex"></div>
+        </div>
+    </div>
+    <div class="task-input task-subtasks margin-top">
+        <label for="subtasks">Subtasks</label>
+        <input onclick="changeIcons()" id="subtasks" type="text" placeholder="Add new Subtask">
+        <div id="subtasks-list" class="subtasks-list">
+            <ul id="list-item-subtasks" class="list-item-subtasks list-height"></ul>
+        </div>
+        <img id="subtasks-plus" class="subtasks-plus" src="./img/plus.svg" alt="">
+        <div id="image-click" class="image-click d-none">
+            <img onclick="clearSubtaskInput()" class="subtasks-clear" src="./img/clear.svg" alt="">
+            <img onclick="addSubtask()" class="subtasks-check" src="./img/check-blue.svg" alt="">
+        </div>
+    </div>
+    <div class="edit-ok-button">
+        <button class="edit-ok-button-btn">OK <img src="./img/check.png" alt=""></button>
+    </div>
+</form>`;
+let titleInput = document.getElementById('overview-edit-title-input');
+let descriptionArea = document.getElementById('description-overview-edit');
+let dueDateInput = document.getElementById('due-date-edit');
+titleInput.value = title;
+descriptionArea.value = description;
+dueDateInput.value = date;
 }

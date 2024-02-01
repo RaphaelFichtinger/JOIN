@@ -399,7 +399,8 @@ body {
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px #00000029;
     display: none;
-    height: 70%;
+   
+    
 
 }
 
@@ -480,6 +481,10 @@ body {
 
 .edit-ok-button img {
     height: 14px;
+}
+
+.list-height {
+    height: 80px;
 }
 
 @media (max-width:1150px) {
