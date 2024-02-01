@@ -12,6 +12,7 @@ let awaitingFeedback = document.getElementById('awaiting-feedback');
 let datesUrgent = [];
 let urgentDate = document.getElementById('urgent-date');
 let greeting = document.getElementById('greeting');
+let greetingMobile = document.getElementById('greeting-mobile');
 
 async function renderSummary() {
 	await loadTasks();
@@ -22,6 +23,25 @@ async function renderSummary() {
 
 	loopTasks();
 	getDateFromInput();
+
+	if(window.innerWidth < 1170) {
+		overlayGreetingMobile();
+	}
+}
+
+function overlayGreetingMobile() {
+	let overlayGreetingMobile = document.getElementById('overlay-greeting-mobile');
+	setTimeout(() => {
+		overlayGreetingMobile.style.zIndex = '10';
+		overlayGreetingMobile.style.transition = 'all 1s ease-in-out';
+		overlayGreetingMobile.style.opacity = '1';
+	}, 500)
+
+	setTimeout(() => {
+		overlayGreetingMobile.style.zIndex = '-1';
+		overlayGreetingMobile.style.transition = 'all 1s ease-in-out';
+		overlayGreetingMobile.style.opacity = '0';
+	}, 3000)
 }
 
 function loopTasks() {
@@ -117,12 +137,14 @@ function getGreeting() {
 			greetingText = 'Good night,';
 	}
 	greeting.textContent = greetingText;
+	greetingMobile.textContent = greetingText;
 }
 
 function getLoginName() {
 	if(logedInAsGuest) {
 		document.getElementById('loged-in-person').textContent = logedInGuest;
+		document.getElementById('loged-in-person-mobile').textContent = logedInGuest;
 	} else if(logedInWithName) {
-		document.getElementById('loged-in-person').textContent = logedInPerson;
+		document.getElementById('loged-in-person-mobile').textContent = logedInPerson;
 	}
 }

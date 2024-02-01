@@ -29,13 +29,13 @@
 .box-right {
     padding-left: 80px;
 }
-.box-right .greeting {
+.greeting {
     font-size: 47px;
     font-style: normal;
     font-weight: 500;
     line-height: 56px;
 }
-.box-right .loged-in-person {
+.loged-in-person {
     color: #29ABE2;
     font-size: 64px;
     font-style: normal;
@@ -160,6 +160,18 @@
 #vec5 {
     display: none;
 }
+#overlay-greeting-mobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+    z-index: -1;
+    opacity: 0;
+    transition: all .2s ease-in-out;
+}
 
 @media (max-width: 1170px) {
     .box-right {
@@ -230,6 +242,12 @@
     }
     .box-small {
         width: 33%;
+    }
+    .greeting {
+        font-size: 36px;
+    }
+    .loged-in-person {
+        font-size: 47px;
     }
 }
 
