@@ -252,12 +252,12 @@ async function deleteTask(i) {
 function generateEditCard(i) {
     let title = tasks[i]['title'];
     let date = tasks[i]['date'];
-    let category = tasks[i]['category'];
     let description = tasks[i]['description'];
     let subArrayLength = tasks[i]['subtasks'].length;
-    let priority = tasks[i]['priority'];
+    let subtasks = tasks[i]['subtasks'];
     let editCard = document.getElementById('task-big-view-edit-card');
-    editCard.innerHTML = `<form onsubmit="">
+    editCard.innerHTML = `
+    <form onsubmit="">
     <div id="overview-edit-top">
         <p id="overview-edit-title">Title</p>
         <input id="overview-edit-title-input" required placeholder="Enter a title" type="text" value="Kochwelt Page & Recipe Recommender">
@@ -298,7 +298,7 @@ function generateEditCard(i) {
         <label for="subtasks">Subtasks</label>
         <input onclick="changeIcons()" id="subtasks" type="text" placeholder="Add new Subtask">
         <div id="subtasks-list" class="subtasks-list">
-            <ul id="list-item-subtasks" class="list-item-subtasks list-height"></ul>
+            
         </div>
         <img id="subtasks-plus" class="subtasks-plus" src="./img/plus.svg" alt="">
         <div id="image-click" class="image-click d-none">
@@ -313,7 +313,13 @@ function generateEditCard(i) {
 let titleInput = document.getElementById('overview-edit-title-input');
 let descriptionArea = document.getElementById('description-overview-edit');
 let dueDateInput = document.getElementById('due-date-edit');
+let subtaskList = document.getElementById('list-item-subtasks');
 titleInput.value = title;
 descriptionArea.value = description;
 dueDateInput.value = date;
+console.log(subtasks);
+for (let j = 0; j < subtasks.length; j++) {
+    let subtask = subtasks[j];
+    subtaskList.innerHTML += `<li>${subtask}</li>`;
+}
 }
