@@ -78,6 +78,7 @@ function allowDrop(ev) {
 function moveTo(status) {
     let currentTaskIndex = tasks.findIndex(task => task.id === currentDraggedElement);
     tasks[currentTaskIndex]['status'] = status;
+    setItem('tasks', JSON.stringify(tasks));   //saves status of our board
     updateHTML();
 }
 
