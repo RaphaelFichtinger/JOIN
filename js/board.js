@@ -158,45 +158,8 @@ function createOverview(i, id) {
     let subArrayLength = tasks[i]['subtasks'].length;
     let priority = tasks[i]['priority'];
     let overviewCard = document.getElementById('task-big-view-card');
-
     generateAssignTo(i);
-
-    overviewCard.innerHTML = `
-    <div class="type-close">
-        <button class="task-type task-type-overview">${category}</button>
-        <img onclick="closeTaskOverview()" src="./img/close.png">
-    </div>
-    <div id="overview-card-top">
-        <p id="overview-title">${title}</p>
-        <p id="overview-details">${description}</p>
-        <div class="overview-date">
-            <p>Due date: </p>
-            <p>${date.replace(/-/g, '/')}</p>
-        </div>
-        <div class="overview-priority">
-            <p>Priority:</p>
-            <p>${priority ? `${priority} <img src="./img/prio-${priority}.svg">` : 'No priority'}</p>
-        </div>
-    </div>
-    <div id="assigned-to-overview" class="assigned-to-overview">
-        <p>Assigned To:</p>
-        ${generateAssignTo(i)}
-    </div>
-    <div class="subtasks-overview">
-        <p>Subtasks</p>
-        ${generateSubtasks(i)}
-    </div>
-    <div class="overview-bottom-buttons">
-        <button class="delete-overview" onclick="deleteTask(${i})">
-            <img src="./img/delete-subtask.svg">
-            <p>Delete</p>
-        </button>
-        <button class="edit-overview" onclick="editTaskOverview(${i})">
-            <img src="./img/edit-subtask.svg">
-            <p>Edit</p>
-        </button>
-    </div>
-    `;
+    overviewCard.innerHTML = createOverviewHTMLTemplate(category, title, description, date, priority, i)
 }
 
 function generateAssignTo(i) {
@@ -257,62 +220,7 @@ function generateEditCard(i) {
     let subArrayLength = tasks[i]['subtasks'].length;
     let subtasks = tasks[i]['subtasks'];
     let editCard = document.getElementById('task-big-view-edit-card');
-    editCard.innerHTML = `
-    <form onsubmit="">
-    <div class="main-edit-card">
-    <div id="overview-edit-top">
-        <p id="overview-edit-title">Title</p>
-        <input id="overview-edit-title-input" required placeholder="Enter a title" type="text" value="Kochwelt Page & Recipe Recommender">
-    </div>
-    <div class="overview-edit-description">
-        <p>Description</p>
-        <textarea name="description" id="description-overview-edit" cols="30" rows="5"></textarea>
-    </div>
-    <div class="due-date-overview-edit overview-edit-description">
-        <p>Due date</p>
-        <input required id="due-date-edit" type="date">
-    </div>
-    <div class="overview-edit-description">
-        <p class="priority-overview-edit">Priority</p>
-        <div class="priority-edit-buttons">
-            <div class="task-input task-prio-overview-edit">
-                
-                <div class="buttons flex task-prio-overview-edit">
-                    <div id="priority-alta" class="priority-alta priority-button" onclick="selectPriority('alta')">Urgent</div>
-                    <div id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</div>
-                    <div id="priority-baia" class="priority-baia priority-button" onclick="selectPriority('baia')">Low</div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="assigned-to-overview-edit  margin-top">
-        <div id="task-assigned-to" class="task-input task-assigned-to">
-            <label for="assign-to">Assign to</label>
-            <input onclick="openOverlay('contacts-list')" id="assign-to-edit" type="text" placeholder="Select contacts to assign">
-            <div id="contacts-list" class="contacts-list d-none">
-                <div id="list-item" class="list-item"></div>
-            </div>
-            <div id="added-contacts" class="flex"></div>
-        </div>
-    </div>
-    <div class="task-input task-subtasks margin-top">
-        <label for="subtasks">Subtasks</label>
-        <input onclick="changeIcons()" id="subtasks" type="text" placeholder="Add new Subtask">
-        <div id="subtasks-list" class="subtasks-list">
-            <ul id="list-item-subtasks" class="list-item-subtasks list-height"></ul>
-        </div>
-        <img id="subtasks-plus" class="subtasks-plus" src="./img/plus.svg" alt="">
-        <div id="image-click" class="image-click d-none">
-            <img onclick="clearSubtaskInput()" class="subtasks-clear" src="./img/clear.svg" alt="">
-            <img onclick="addSubtask()" class="subtasks-check" src="./img/check-blue.svg" alt="">
-        </div>
-    </div>
-</div>
-    <div class="edit-ok-button">
-        <button class="edit-ok-button-btn">OK <img src="./img/check.png" alt=""></button>
-    </div>
-</form>`;
+    editCard.innerHTML =generateEditTaskHTMLTemplate();
     let titleInput = document.getElementById('overview-edit-title-input');
     let descriptionArea = document.getElementById('description-overview-edit');
     let dueDateInput = document.getElementById('due-date-edit');

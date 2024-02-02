@@ -9,22 +9,18 @@
     <link rel="stylesheet" href="./CSS/add_tasks.css">
     <link rel="stylesheet" href="./CSS/header.css">
     <link rel="stylesheet" href="./CSS/sidebar.css">
-
 </head>
 <body onload="renderBoard(), renderTemplates()">
     <div id="header"></div>
     <div id="header-mobile" class="d-none"></div>
-	<div id="sidebar"></div>
-    <div id="sidebar-mobile" ></div>
+    <div id="sidebar"></div>
+    <div id="sidebar-mobile"></div>
     <div class="main-board">
         <div id="add-task-popup" class="add-task-popup"></div>
         <div id="overview-container" class="task-big-view-overlay">
             <div id="task-big-view-edit-card">
-                
             </div>
             <div id="task-big-view-card" class="">
-                
-
             </div>
         </div>
         <div class="board-top">
@@ -40,8 +36,7 @@
                     <p>To do</p>
                     <img src="/img/plus-button.png">
                 </div>
-                <div id="to-do" class="drag-area" ondrop="moveTo('to-do')"  ondragover="allowDrop(event);">
-                    
+                <div id="to-do" class="drag-area" ondrop="moveTo('to-do')" ondragover="allowDrop(event);">
                 </div>
             </div>
             <div class="board-column">
@@ -63,7 +58,6 @@
                             <div>
                                 <p>0/2 Subtasks</p>
                             </div>
-
                         </div>
                         <div class="task-card-bottom">
                             <div id="initials">
@@ -83,20 +77,22 @@
                     <p>Await feedback</p>
                     <img src="/img/plus-button.png">
                 </div>
-                <div id="await-feedback" class="drag-area" ondrop="moveTo('await-feedback')" ondragover="allowDrop(event);"></div>
+                <div id="await-feedback" class="drag-area" ondrop="moveTo('await-feedback')"
+                    ondragover="allowDrop(event);"></div>
             </div>
             <div class="board-column">
                 <div class="board-column-title">
                     <p>Done</p>
                 </div>
-                <div id="done-tasks" class="drag-area" ondrop="moveTo('done-tasks')" ondragover="allowDrop(event);"></div>
+                <div id="done-tasks" class="drag-area" ondrop="moveTo('done-tasks')" ondragover="allowDrop(event);">
+                </div>
             </div>
         </div>
     </div>
     <script src="./js/loading.JS"></script>
     <script src="./templates/loadTemplates.js"></script>
-	<script src="./templates/header-template.js"></script>
-	<script src="./templates/sidebar-template.js"></script>
+    <script src="./templates/header-template.js"></script>
+    <script src="./templates/sidebar-template.js"></script>
     <script src="./js/board.js"></script>
     <script src="./js/add_task.js"></script>
     <script src="./templates/board-html-template.js"></script>

@@ -11,19 +11,23 @@
     background-color: #2A3647;
     height: 100vh;
 }
+
 #sidebar a {
     text-decoration: none;
 }
+
 .logo-sidebar {
     height: 120px;
     width: 100px;
 }
+
 .side-menu {
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 15px;
 }
+
 .navi {
     display: flex;
     align-items: center;
@@ -31,9 +35,11 @@
     gap: 8px;
     padding: 8px 0 8px 56px;
 }
+
 .navi:hover {
     background-color: #091931;
 }
+
 .privacy-text {
     display: flex;
     justify-content: flex-end;
@@ -48,6 +54,7 @@
     color: #A8A8A8;
     padding-left: 56px;
 }
+
 #sidebar-mobile {
     display: none;
 }
@@ -65,13 +72,16 @@
         right: 0;
         z-index: 777;
     }
-    #sidebar{
+
+    #sidebar {
         display: none;
     }
+
     .menu-mobile {
         width: 100%;
         gap: 25px;
     }
+
     #sidebar-mobile .navi {
         flex-direction: column;
         text-decoration: none;
@@ -82,12 +92,13 @@
 }
 
 @media (max-width:450px) {
-    .navi{
-align-items: center;
-justify-content: center;
-display: flex;
+    .navi {
+        align-items: center;
+        justify-content: center;
+        display: flex;
     }
 }
-.menu-mobile{
+
+.menu-mobile {
     gap: 8px;
 }
