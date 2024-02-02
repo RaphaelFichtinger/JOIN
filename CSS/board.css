@@ -622,7 +622,12 @@ body {
     }
 }
 @media (max-width:825px) {
-    .input-board-top{
-        margin-left: 20px;
-    }
+
+
+.board-top-right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 }
