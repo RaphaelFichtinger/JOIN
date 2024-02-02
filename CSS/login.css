@@ -115,7 +115,7 @@ a {
     margin: 80px 0 32px 0;
 }
 #overlay-logo {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;

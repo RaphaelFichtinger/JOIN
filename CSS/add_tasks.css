@@ -112,15 +112,18 @@ label + .buttons {
 .priority-baia.baia::after {
 	background-image: url(../img/prio-low-white.svg);
 }
-.alta {
+.alta,
+.alta-mobile {
 	background-color: red;
 	color: #FFFFFF;
 }
-.medium {
+.medium,
+.medium-mobile {
 	background-color: #FFA800;
 	color: #FFFFFF;
 }
-.baia {
+.baia,
+.baia-mobile {
 	background-color: green;
 	color: #FFFFFF;
 }

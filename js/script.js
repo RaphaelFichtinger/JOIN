@@ -5,7 +5,9 @@ async function init() {
 
 async function loadUsers(){
     try {
-        signedUpUsers = JSON.parse(await getItem('signedUpUsers'));
+		if(signedUpUsers) {
+			signedUpUsers = JSON.parse(await getItem('signedUpUsers'));
+		}
     } catch(e){
         console.error('Loading error:', e);
     }

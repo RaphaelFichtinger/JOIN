@@ -24,7 +24,9 @@ function headerTemplate() {
 	<div id="overlay-header" class="overlay-header overlay-hidden flex-column">
 		<p>Legal Notice</p>
 		<p>Privacy Policy</p>
-		<p>Log out</p>
+		<a href="../index.html">
+			<p onclick="logOut()">Log out</p>
+		</a>
 	</div>
 	`;
 }
@@ -32,4 +34,16 @@ function headerTemplate() {
 function overlayHeaderShow() {
 	let overlayHeader = document.getElementById('overlay-header');
 	overlayHeader.classList.toggle('overlay-hidden');
+}
+
+function logOut() {
+	if(logedInPerson) {
+		localStorage.removeItem('logedIn Person', '');
+	}
+	if(logedInAsGuest) {
+		localStorage.removeItem('logedIn as Guest', '');
+	}
+	if(logedInWithName) {
+		localStorage.removeItem('logedIn with Name', '');
+	}
 }
