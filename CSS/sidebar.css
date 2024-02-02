@@ -80,3 +80,14 @@
         width: 80px;
     }
 }
+
+@media (max-width:450px) {
+    .navi{
+align-items: center;
+justify-content: center;
+display: flex;
+    }
+}
+.menu-mobile{
+    gap: 8px;
+}
