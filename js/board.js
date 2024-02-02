@@ -41,6 +41,7 @@ function generateTodoHTML(element, index) {
     let fullNames = element['assign-to'];
     let subtasks = element['subtasks'];
     let finishedSubtasks = element['finishedSubtasks'];
+    let additionalContacs = document.getElementById('additoinalContacts');
     let progress = 0;
 
     if (finishedSubtasks && finishedSubtasks.length > 0) {
@@ -53,14 +54,9 @@ function generateTodoHTML(element, index) {
         let fullName = fullNames[f];
         let nameInitials = getInitials(fullName);
         let fullnamesTotalShown = fullNames.length - 3;
-        if (fullNames.length <= 3){
         initials += `<p id="initials-circle-${index}-${f}" class="initials-circle">${nameInitials}</p>`;
-        } else {
-            initials += `<p id="initials-circle-${index}-${f}" class="initials-circle">${nameInitials}</p><p>+${fullnamesTotalShown}</p>`;
-        }
+        
     }
-
-   
 
     return `
     <div id="task-card-${index}" class="task-card" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTaskOverview(${index}, ${element['id']})">
@@ -81,6 +77,7 @@ function generateTodoHTML(element, index) {
             <div id="initials">
                 ${initials}
             </div>
+            <div id="additionalContacs"></div>
             <div>
                 <img id="priority-image-small${index}" src="">
             </div>
@@ -138,6 +135,7 @@ function openTaskOverview(i, id) {
 function closeTaskOverview() {
     let overview = document.getElementById('overview-container');
     overview.style.display = 'none';
+    finishedSubtask(i, j);
 }
 
 function editTaskOverview(i) {
@@ -153,9 +151,9 @@ function getInitials(name) {
         let names = name.split(' ');
 
         if (names.length > 1) {
-            return names[0].charAt(0) + names[1].charAt(0);
+            return names[0].charAt(0).toUpperCase() + names[1].charAt(0).toUpperCase();
         } else if (names.length === 1) {
-            return names[0].charAt(0);
+            return names[0].charAt(0).toUpperCase();
         }
     }
 
