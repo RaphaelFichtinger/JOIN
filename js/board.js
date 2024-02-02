@@ -39,13 +39,28 @@ let currentDraggedElement;
 function generateTodoHTML(element, index) {
     // Call the getInitials function to get the initials
     let fullNames = element['assign-to'];
+    let subtasks = element['subtasks'];
+    let finishedSubtasks = element['finishedSubtasks'];
+    let progress = 0;
+
+    if (finishedSubtasks && finishedSubtasks.length > 0) {
+        progress = (finishedSubtasks.length / subtasks.length) * 100;
+    }
     let initials = '';
+    
 
     for (let f = 0; f < fullNames.length; f++) {
         let fullName = fullNames[f];
         let nameInitials = getInitials(fullName);
+        let fullnamesTotalShown = fullNames.length - 3;
+        if (fullNames.length <= 3){
         initials += `<p id="initials-circle-${index}-${f}" class="initials-circle">${nameInitials}</p>`;
+        } else {
+            initials += `<p id="initials-circle-${index}-${f}" class="initials-circle">${nameInitials}</p><p>+${fullnamesTotalShown}</p>`;
+        }
     }
+
+   
 
     return `
     <div id="task-card-${index}" class="task-card" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTaskOverview(${index}, ${element['id']})">
@@ -56,7 +71,7 @@ function generateTodoHTML(element, index) {
         </div>
         <div class="subtasks">
             <div class="progress-container">
-                <div class="progress-bar" style="width: 0%;"></div>
+                <div class="progress-bar" style="width: ${progress}%;"></div>
             </div>
             <div>
                 <p>0/${element['subtasks'].length} Subtasks</p>
@@ -247,4 +262,8 @@ function generateEditCard(i) {
     </li>
   `;
     }
+}
+
+function fillProgressBar() {
+
 }

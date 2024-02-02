@@ -164,7 +164,7 @@ body {
 }
 
 .progress-container {
-    max-width: 100px;
+    width: 100px;
     height: 8px;
     background-color: #F4F4F4;
     border-radius: 8px;
