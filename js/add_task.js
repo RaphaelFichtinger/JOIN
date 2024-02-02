@@ -178,6 +178,8 @@ function contactChecked(event, index) {
     event.stopPropagation();
     let checkbox = event.target;
     let contactName = loadedContacts[index]['name'];
+    let addedContacts = document.getElementById('added-contacts');
+    let addedContactsMobile = document.getElementById('added-contacts-mobile');
 
     if (checkbox.checked) {
         // Checkbox wurde ausgewählt
@@ -192,17 +194,19 @@ function contactChecked(event, index) {
         }
     }
 
-    document.getElementById('added-contacts').innerHTML = '';
-    document.getElementById('added-contacts-mobile').innerHTML = '';
+    addedContacts.innerHTML = '';
+    addedContactsMobile.innerHTML = '';
+    document.querySelector('.task-subtasks').style.marginTop = '0';
 
     if(checkedContacts.length > 0) {
+        document.querySelector('.task-subtasks').style.marginTop = '40px';
         for (let j = 0; j < checkedContacts.length; j++) {
             let checkedContact = checkedContacts[j];
             let splittedLetters = checkedContact.split(" ");
-            document.getElementById('added-contacts').innerHTML += `
+            addedContacts.innerHTML += `
                 <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
             `;
-            document.getElementById('added-contacts-mobile').innerHTML += `
+            addedContactsMobile.innerHTML += `
                 <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
             `;
         }

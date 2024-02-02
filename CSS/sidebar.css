@@ -2,11 +2,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 1;
+    z-index: 2;
     width: 232px;
     background-color: #2A3647;
     height: 100vh;
@@ -19,6 +18,7 @@
 .logo-sidebar {
     height: 120px;
     width: 100px;
+    margin-top: 64px;
 }
 
 .side-menu {
@@ -26,6 +26,7 @@
     flex-direction: column;
     width: 100%;
     gap: 15px;
+    margin-top: 114px;
 }
 
 .navi {
@@ -47,7 +48,8 @@
     width: 100%;
     gap: 20px;
     height: 317px;
-    margin-top: 200px;
+    margin-top: auto;
+    margin-bottom: 64px;
 }
 
 .info-text {
@@ -57,6 +59,18 @@
 
 #sidebar-mobile {
     display: none;
+}
+
+@media screen and (max-height: 900px) {
+    .logo-sidebar {
+        margin-top: 24px;
+    }
+    .side-menu {
+        margin-top: 56px;
+    }
+    .privacy-text {
+        margin-bottom: 24px;
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -86,7 +100,7 @@
         flex-direction: column;
         text-decoration: none;
         padding: 0;
-        gap: 4px;
+        gap: 0;
         width: 80px;
     }
 }

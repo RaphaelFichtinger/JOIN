@@ -158,7 +158,8 @@ label + .buttons {
 	background-color: transparent;
 	width: 93%;
 }
-#added-contacts {
+#added-contacts,
+#added-contacts-mobile {
 	margin-top: 8px;
 }
 .item,

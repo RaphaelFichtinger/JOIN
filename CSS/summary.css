@@ -213,8 +213,7 @@
         width: 100%;
     }
     .main-box {
-        margin-left: 16px;
-        margin-right: 16px;
+        margin-left: 0 16px 120px;
     }
     #vec5 {
         display: block;
