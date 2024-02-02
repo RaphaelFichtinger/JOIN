@@ -207,34 +207,6 @@ body {
     margin-right: -7px;
 }
 
-#initials-circle-2 {
-    height: 32px;
-    width: 32px;
-    border-radius: 45px;
-    background-color: green;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    border: 1px solid #ffffff;
-    font-size: 12px;
-    margin-left: -6px;
-}
-
-#initials-circle-3 {
-    height: 32px;
-    width: 32px;
-    border-radius: 45px;
-    background-color: grey;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    border: 1px solid #ffffff;
-    font-size: 12px;
-    margin-left: -6px;
-}
-
 #priority-image-small {
     margin-top: 12px;
 }
