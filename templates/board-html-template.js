@@ -16,12 +16,12 @@ function returnTask() {
 					<div class="task-input task-prio">
 						<label for="prio">Prio</label>
 						<div class="buttons flex">
-							<div id="priority-alta" class="priority-alta priority-button" onclick="selectPriority('alta')">Urgent</div>
-							<div id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</div>
-							<div id="priority-baia" class="priority-baia priority-button" onclick="selectPriority('baia')">Low</div>
+							<div id="priority-alta-mobile" class="priority-alta priority-button" onclick="selectPriority('alta-mobile')">Urgent</div>
+							<div id="priority-medium-mobile" class="priority-medium priority-button medium" onclick="selectPriority('medium-mobile')">Medium</div>
+							<div id="priority-baia-mobile" class="priority-baia priority-button" onclick="selectPriority('baia-mobile')">Low</div>
 						</div>
 					</div>
-					<div id="task-assigned-to" class="task-input task-assigned-to">
+					<div class="task-input task-assigned-to">
 						<label for="assign-to">Assign to</label>
 						<input onclick="openOverlay(event, 'contacts-list')" id="assign-to" type="text" placeholder="Select contacts to assign" readonly>
 						<img onclick="openOverlay(event, 'contacts-list')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown" tabindex="0">
@@ -52,9 +52,9 @@ function returnTask() {
 							<div id="list-item-category" class="list-item-category"></div>
 						</div>
 					</div>
-					<div id="task-assigned-to" class="task-input task-assigned-to">
-						<label for="assign-to">Assign to</label>
-						<input onclick="openOverlay(event, 'contacts-list-mobile')" id="assign-to" type="text" placeholder="Select contacts to assign" readonly>
+					<div class="task-input task-assigned-to">
+						<label for="assign-to-mobile">Assign to</label>
+						<input onclick="openOverlay(event, 'contacts-list-mobile')" id="assign-to-mobile" type="text" placeholder="Select contacts to assign" readonly>
 						<img onclick="openOverlay(event, 'contacts-list-mobile')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown" tabindex="0">
 						<div id="contacts-list-mobile" class="contacts-list">
 							<div id="list-item-mobile" class="list-item"></div>
@@ -147,7 +147,7 @@ function createOverviewHTMLTemplate(title, description){
 }
 
 function createOverviewHTMLTemplate(category, title, description, date, priority, i){
-	`
+	return `
     <div class="type-close">
         <button class="task-type task-type-overview">${category}</button>
         <img onclick="closeTaskOverview()" src="./img/close.png">
