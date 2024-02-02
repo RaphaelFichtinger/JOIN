@@ -145,6 +145,7 @@ function getLoginName() {
 		document.getElementById('loged-in-person').textContent = logedInGuest;
 		document.getElementById('loged-in-person-mobile').textContent = logedInGuest;
 	} else if(logedInWithName) {
+		document.getElementById('loged-in-person').textContent = logedInPerson;
 		document.getElementById('loged-in-person-mobile').textContent = logedInPerson;
 	}
 }

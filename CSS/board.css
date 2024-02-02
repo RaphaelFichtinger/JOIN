@@ -306,6 +306,7 @@ body {
     align-items: center;
     position: fixed;
     display: none;
+    z-index: 3;
 }
 
 #task-big-view-card {

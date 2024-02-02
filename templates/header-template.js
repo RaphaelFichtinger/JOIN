@@ -24,7 +24,7 @@ function headerTemplate() {
 	<div id="overlay-header" class="overlay-header overlay-hidden flex-column">
 		<p>Legal Notice</p>
 		<p>Privacy Policy</p>
-		<a href="../index.html">
+		<a href="./index.html">
 			<p onclick="logOut()">Log out</p>
 		</a>
 	</div>
