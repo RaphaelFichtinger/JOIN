@@ -16,6 +16,9 @@ body {
     height: 200px;
     background-color: rgba(0, 0, 0, 0.1);
     border: 1px dashed black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .drag-area-highlight {
