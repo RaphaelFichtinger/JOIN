@@ -192,7 +192,7 @@ body {
     justify-content: flex-start;
 }
 
-#initials-circle-1 {
+.initials-circle {
     height: 32px;
     width: 32px;
     border-radius: 45px;
@@ -203,6 +203,7 @@ body {
     color: white;
     border: 1px solid #ffffff;
     font-size: 12px;
+    margin-right: -7px;
 }
 
 #initials-circle-2 {

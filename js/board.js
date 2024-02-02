@@ -38,8 +38,15 @@ let currentDraggedElement;
 
 function generateTodoHTML(element, index) {
     // Call the getInitials function to get the initials
-    let fullName = element['assign-to'];
-    let initials = getInitials(fullName);
+    let fullNames = element['assign-to'];
+    let initials = '';
+
+    for (let f = 0; f < fullNames.length; f++) {
+        let fullName = fullNames[f];
+        let nameInitials = getInitials(fullName);
+        initials += `<p id="initials-circle-${index}-${f}" class="initials-circle">${nameInitials}</p>`;
+    }
+
     return `
     <div id="task-card-${index}" class="task-card" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTaskOverview(${index}, ${element['id']})">
         <button class="task-type">${element['category']}</button>
@@ -57,15 +64,17 @@ function generateTodoHTML(element, index) {
         </div>
         <div class="task-card-bottom">
             <div id="initials">
-                <p id="initials-circle-1">${initials}</p>
+                ${initials}
             </div>
             <div>
-            <img id="priority-image-small${index}" src="">
+                <img id="priority-image-small${index}" src="">
             </div>
         </div>
     </div>
     `;
 }
+
+
 
 function startDragging(id) { //die Id markiert das Element das gerade verschoben wird
     currentDraggedElement = id;
@@ -124,23 +133,18 @@ function editTaskOverview(i) {
     generateEditCard(i);
 }
 
-function getInitials(fullName) {
-    // Check if fullName is an array and has at least one element
-    if (Array.isArray(fullName) && fullName.length > 0) {
-        // Extract the first element of the array
-        fullName = fullName[0];
-    } else {
-        return ''; // or handle the error in a way that makes sense for your application
+function getInitials(name) {
+    if (name) {
+        let names = name.split(' ');
+
+        if (names.length > 1) {
+            return names[0].charAt(0) + names[1].charAt(0);
+        } else if (names.length === 1) {
+            return names[0].charAt(0);
+        }
     }
 
-    // Split den vollen Namen in Vor- und Nachnamen
-    const names = fullName.split(' ');
-
-    // Initialen erstellen
-    const initials = names.map(name => name.charAt(0));
-
-    // Die Initialen zu einem String verbinden und in Großbuchstaben umwandeln
-    return initials.join('').toUpperCase();
+    return '';
 }
 
 async function clearTasks() {
