@@ -116,14 +116,14 @@ function removeHighlight(id) {
 function openAddTaskPopup() {
     let popup = document.getElementById('add-task-popup');
     popup.innerHTML = returnTask();
-    popup.style.display = 'block'
+    popup.style.display = 'block';
     getCategories();
     getContacts();
 }
 
 function closeAddTaskPopup() {
     let popup = document.getElementById('add-task-popup');
-    popup.style.display = 'none'
+    popup.style.display = 'none';
 }
 
 function openTaskOverview(i, id) {

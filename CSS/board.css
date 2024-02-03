@@ -69,6 +69,14 @@ body {
     gap: 32px;
 }
 
+#add-task .close {
+    position: relative;
+    z-index: 1;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
 #add-task-btn {
     border-radius: 8px;
     background-color: #2A3647;
