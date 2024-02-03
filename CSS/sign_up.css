@@ -3,6 +3,10 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+a{
+color: rgb(113, 113, 113);
+
+}
 .signUp-page {
     overflow: hidden;
     min-height: 100vh;
