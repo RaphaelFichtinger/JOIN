@@ -41,8 +41,11 @@ function generateTodoHTML(element, index) {
     let fullNames = element['assign-to'];
     let subtasks = element['subtasks'];
     let finishedSubtasks = element['finishedSubtasks'];
-    let additionalContacs = document.getElementById('additoinalContacts');
+    let contactsArray = loadedContacts;
+    
+    let additionalContacs = document.getElementById('additionalContacts');
     let progress = 0;
+    
 
     if (finishedSubtasks && finishedSubtasks.length > 0) {
         progress = (finishedSubtasks.length / subtasks.length) * 100;
@@ -53,10 +56,14 @@ function generateTodoHTML(element, index) {
     for (let f = 0; f < fullNames.length; f++) {
         let fullName = fullNames[f];
         let nameInitials = getInitials(fullName);
-        let fullnamesTotalShown = fullNames.length - 3;
-        initials += `<p id="initials-circle-${index}-${f}" class="initials-circle">${nameInitials}</p>`;
-        
+        let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
+        let matchingColor = contactsArray[contactIndex].color;
+        console.log(matchingColor, fullName);
+        initials += `<p id="initials-circle-${f}" class="initials-circle" style='background-color : ${matchingColor}'>${nameInitials}</p>`;
+    
     }
+
+
 
     return `
     <div id="task-card-${index}" class="task-card" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTaskOverview(${index}, ${element['id']})">
