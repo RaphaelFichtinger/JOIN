@@ -213,10 +213,18 @@
         width: 100%;
     }
     .main-box {
-        margin-left: 0 16px 120px;
+        margin-left: 16px;
+        margin-right: 16px;
+        margin-bottom: 120px;
     }
     #vec5 {
         display: block;
+    }
+}
+
+@media (max-width: 825px) {
+    #heading-container {
+        padding-top: 24px;
     }
 }
 

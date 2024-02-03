@@ -41,6 +41,10 @@
     background-color: #091931;
 }
 
+#sidebar .active {
+    background-color: #091931;
+}
+
 .privacy-text {
     display: flex;
     justify-content: flex-end;
@@ -98,9 +102,11 @@
 
     #sidebar-mobile .navi {
         flex-direction: column;
+        height: 100%;
+        justify-content: center;
         text-decoration: none;
         padding: 0;
-        gap: 0;
+        gap: 4px;
         width: 80px;
     }
 }

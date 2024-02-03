@@ -196,7 +196,9 @@ function contactChecked(event, index) {
 
     addedContacts.innerHTML = '';
     addedContactsMobile.innerHTML = '';
-    document.querySelector('.task-subtasks').style.marginTop = '0';
+    if(window.innerWidth <= 1000) {
+        document.querySelector('.task-subtasks').style.marginTop = '0';
+    }
 
     if(checkedContacts.length > 0) {
         document.querySelector('.task-subtasks').style.marginTop = '40px';

@@ -116,14 +116,14 @@ function removeHighlight(id) {
 function openAddTaskPopup() {
     let popup = document.getElementById('add-task-popup');
     popup.innerHTML = returnTask();
-    popup.style.display = 'block'
+    popup.style.display = 'block';
     getCategories();
     getContacts();
 }
 
 function closeAddTaskPopup() {
     let popup = document.getElementById('add-task-popup');
-    popup.style.display = 'none'
+    popup.style.display = 'none';
 }
 
 function openTaskOverview(i, id) {
@@ -135,7 +135,7 @@ function openTaskOverview(i, id) {
 function closeTaskOverview() {
     let overview = document.getElementById('overview-container');
     overview.style.display = 'none';
-    finishedSubtask(i, j);
+    // finishedSubtask(i, j);
 }
 
 function editTaskOverview(i) {
@@ -199,13 +199,14 @@ function generateAssignTo(i) {
 
 function generateSubtasks(i) {
     let subArray = tasks[i]['subtasks'];
+    let finishedSubtasksArray = tasks[i]['finishedSubtasks'];
     let generateHtml = '';
 
     for (let j = 0; j < subArray.length; j++) {
         let subtask = subArray[j];
         generateHtml += `
         <div class="subtask">
-            <input id="subtask-checkbox-${j}" type="checkbox" onclick="finishedSubtask(${i}, ${j})">
+            <input id="subtask-checkbox-${j}" type="checkbox" ${finishedSubtasksArray.includes(subtask) ? `checked` : ''} onclick="finishedSubtask(${i}, ${j})">
             <p id="subtask-text">${subtask}</p>
         </div>
         `;
@@ -216,11 +217,18 @@ function generateSubtasks(i) {
 async function finishedSubtask(i, j) {
     let subArray = tasks[i]['subtasks'];
     let subtask = subArray[j];
+    let finishedSubtasksArray = tasks[i]['finishedSubtasks'];
     let checkbox = document.getElementById(`subtask-checkbox-${j}`)
     if (checkbox.checked) {
-        finishedSubtasks.push(subtask)
-        await setItem('tasks', JSON.stringify(tasks));
+        finishedSubtasksArray.push(subtask)
+    } else if(!checkbox.checked) {
+        let index = finishedSubtasksArray.indexOf(subtask);
+        if (index !== -1) {
+            finishedSubtasksArray.splice(index, 1);
+        }
     }
+    await setItem('tasks', JSON.stringify(tasks));
+    generateTodoHTML()
 }
 
 async function deleteTask(i) {

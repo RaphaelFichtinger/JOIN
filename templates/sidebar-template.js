@@ -2,20 +2,20 @@ function sidebarTemplate() {
 	return `
 	<img class="logo-sidebar" src="./img/sidebar_logo.png" alt="Logo">
 	<div class="side-menu">
-		<a href="./summary.html" class="navi">
+		<a id="summary" onclick="activePage('summary')" href="./summary.html" class="navi">
 			<img src="./img/summary.svg" alt="summary">
 			<p>Summary</p>
 		</a>
-		<a href="./add_tasks.html" class="navi">
-			<img src="./img/add-task.svg" alt="summary">
+		<a id="add-task" onclick="activePage('add-task')" href="./add_tasks.html" class="navi">
+			<img src="./img/add-task.svg" alt="add task">
 			<p>Add task</p>
 		</a>
-		<a href="board.html" class="navi">
-			<img src="./img/board.svg" alt="summary">
+		<a id="board" onclick="activePage('board')" href="board.html" class="navi">
+			<img src="./img/board.svg" alt="board">
 			<p>Board</p>
 		</a>
-		<a href="./contacts.html" class="navi">
-			<img src="./img/contacts.svg" alt="summary">
+		<a id="contacts" onclick="activePage('contacts')" href="./contacts.html" class="navi">
+			<img src="./img/contacts.svg" alt="contacts">
 			<p>Contacts</p>
 		</a>
 	</div>
@@ -34,17 +34,45 @@ function sidebarTemplateMobile() {
 			<p>Summary</p>
 		</a>
 		<a href="board.html" class="navi">
-			<img src="./img/board.svg" alt="summary">
+			<img src="./img/board.svg" alt="board">
 			<p>Board</p>
 		</a>
 		<a href="./add_tasks.html" class="navi">
-			<img src="./img/add-task.svg" alt="summary">
+			<img src="./img/add-task.svg" alt="add task">
 			<p>Add task</p>
 		</a>
 		<a href="./contacts.html" class="navi">
-			<img src="./img/contacts.svg" alt="summary">
+			<img src="./img/contacts.svg" alt="contacts">
 			<p>Contacts</p>
 		</a>
 	</div>
 	`;
 }
+
+// function selectSidebar() {
+// 	const currentPage = window.location.pathname;
+	
+// 	// Mapping von Seitenpfaden zu zugehörigen IDs
+// 	const idMappings = {
+// 	  './summary.html': ['summary'],
+// 	  './board.html': ['board'],
+// 	  './add_task.html': ['add-task'],
+// 	  './contacts.html': ['contacts'],
+// 	};
+
+// 	const ids = idMappings[currentPage];
+
+// 	if (ids) {
+// 	  ids.forEach(id => {
+// 		const sidebarItem = document.getElementById(id);
+
+// 		if (sidebarItem) {
+// 		  sidebarItem.classList.add('active');
+// 		  const firstChild = sidebarItem.children[0];
+// 		  if (firstChild) {
+// 			firstChild.classList.add('active');
+// 		  }
+// 		}
+// 	  });
+// 	}
+//   }
