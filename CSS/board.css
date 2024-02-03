@@ -2,11 +2,11 @@ body {
     height: calc(100vh - 96px);
 }
 
+/* popup add task */
 .main-board #add-task-popup .add_task {
     width: 100%;
     padding: 64px;
 }
-
 .main-board #add-task-popup .add_task h1,
 .main-board #add-task-popup .add_task form {
     padding-left: 0;
@@ -14,6 +14,7 @@ body {
 
 .drag-area {
     height: 200px;
+    min-height: 100px;
     background-color: rgba(0, 0, 0, 0.1);
     border: 1px dashed black;
     display: flex;
@@ -21,28 +22,23 @@ body {
     align-items: center;
 }
 
-.drag-area-highlight {
-    background-color: rgba(0, 0, 0, 0.2);
-}
-
+/* main board */
 .main-board {
+    height: 100%;
     margin-top: 96px;
     margin-left: 232px;
 }
-
 #close-task-button-div {
     margin-left: 60vw;
 }
-
 .board-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 110px;
-    margin-left: 96px;
+    margin-left: 64px;
     margin-right: 88px;
 }
-
 .input-board-top {
     width: 312px;
     height: 48px;
@@ -55,15 +51,12 @@ body {
     background-color: white;
     background-position: 272px, 292px;
     padding: 2px 9px;
-    margin-left: 20px;
 
 }
-
 .input-board-top::placeholder {
     color: rgba(209, 209, 209, 1);
     padding-left: 16px;
 }
-
 .board-top-right {
     display: flex;
     gap: 32px;
@@ -99,6 +92,7 @@ body {
     padding-left: 64px;
     padding-right: 64px;
     gap: 26px;
+    max-width: 1208px;
 }
 
 .board-column {
@@ -109,7 +103,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 24px;
     font-size: 20px;
     font-weight: 700;
     color: #42526E;
@@ -122,7 +115,6 @@ body {
 
 .task-card {
     width: 220px;
-    height: 220px;
     background-color: white;
     margin-top: 8px;
     border-radius: 24px;
@@ -231,25 +223,6 @@ body {
     margin-left: 5vw;
     top: 152px;
     border-radius: 24px;
-}
-
-@media screen and (max-width: 1000px) {
-    .form-container {
-        flex-direction: column;
-    }
-
-    .leftside,
-    .rightside {
-        width: 100%;
-    }
-
-    .leftside {
-        border: none;
-    }
-
-    .rightside {
-        margin-top: 32px;
-    }
 }
 
 .buttons-container-end {
@@ -411,6 +384,12 @@ body {
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px #00000029;
     display: none;
+    margin-top: 80px;
+}
+
+#task-big-view-edit-card form {
+    width: auto;
+    padding-left: 0;
 }
 
 #overview-edit-top {
@@ -468,7 +447,6 @@ body {
 
 .main-edit-card {
     overflow-x: hidden;
-    width: 110%;
 }
 
 ::-webkit-scrollbar {
@@ -524,142 +502,87 @@ body {
     height: 80px;
 }
 
-@media (max-width: 1240px) {
+@media screen and (max-width: 1325px) {
     .board-container {
-        max-width: 500px;
+        flex-direction: column;
     }
-
-    .board-container {
-        gap: 8px;
+    .board-column {
+        width: 100%;
+    }
+    .drag-area {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 24px;
     }
 }
 
-@media (max-width:1170px) {
-    .board-container {
+@media screen and (max-width: 1150px) {
+    .board-top {
         flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
     }
 }
 
 @media (max-width: 1000px) {
-    .board-title {
-        margin-right: 20px;
+    .form-container {
+        flex-direction: column;
     }
-
+    .leftside,
+    .rightside {
+        width: 100%;
+    }
+    .leftside {
+        border: none;
+    }
+    .rightside {
+        margin-top: 32px;
+    }
     #sidebar-mobile {
         position: fixed;
     }
-
     .board-column-title {
         margin-bottom: 16px;
     }
-
     .main-board {
-        margin-left: 24px;
+        margin-left: 0;
         margin-top: 100px;
     }
-
-    .board-container {
-        flex-direction: column;
-    }
-
-    #to-do {
-        min-height: 300px;
-        height: 100%;
-        border-radius: 20px;
-        border: 2px solid black;
-        display: flex;
-        border: 0.5px solid rgb(101, 101, 101);
-        align-items: left;
-        flex-direction: column;
-        gap: 18px;
-    }
-
-    #in-progress {
-        min-height: 300px;
-        height: 100%;
-        border-radius: 20px;
-        border: 2px solid black;
-        display: flex;
-        align-items: left;
-        border: 0.5px solid rgb(101, 101, 101);
-        flex-direction: column;
-        gap: 18px;
-    }
-
-    #await-feedback {
-        min-height: 300px;
-        height: 100%;
-        border-radius: 20px;
-        border: 0.5px solid rgb(101, 101, 101);
-        display: flex;
-        align-items: left;
-        flex-direction: column;
-        gap: 18px;
-        overflow-y: scroll;
-    }
-
-    #done-tasks {
-        min-height: 300px;
-        height: 100%;
-        border-radius: 20px;
-        border: 2px solid black;
-        display: flex;
-        align-items: left;
-        flex-direction: column;
-        border: 0.5px solid rgb(101, 101, 101);
-        gap: 18px;
-        overflow-y: scroll;
-    }
-
-    .board-column-title {
-        justify-content: center;
-        gap: 18px;
-        font-size: 24px;
-        width: 74vw;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: baseline;
+    .task-big-view-overlay {
+        width: 100%;
     }
 }
 
 @media (max-width:825px) {
-    .board-top-right {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-
     .main-board {
         margin-left: 0;
     }
-}
-
-@media (max-width: 550px) {
-    .board-container {
-        margin-left: 2vw;
-    }
-}
-
-@media (max-width:450px) {
     .board-top {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-        padding-top: 16px;
-    }
-
-    .board-title {
-        margin-right: 0px;
-    }
-
-    .input-board-top {
+        padding-left: 8%;
+        padding-right: 8%;
         margin-left: 0;
+        margin-right: 0;
+        padding-top: 24px;
     }
+    .board-container {
+        padding-left: 8%;
+        padding-right: 8%;
+    }
+}
 
+@media (max-width:620px) {
     .board-top-right {
-        gap: 32px;
+        flex-direction: column;
+    }
+    #overview-title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width:500px) {
+    .board-top,
+    .board-container {
+        padding-left: 16px;
+        padding-right: 16px;
     }
 }

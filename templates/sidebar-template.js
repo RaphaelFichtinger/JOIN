@@ -49,26 +49,30 @@ function sidebarTemplateMobile() {
 	`;
 }
 
-let currentLinkId = null;
+// function selectSidebar() {
+// 	const currentPage = window.location.pathname;
+	
+// 	// Mapping von Seitenpfaden zu zugehörigen IDs
+// 	const idMappings = {
+// 	  './summary.html': ['summary'],
+// 	  './board.html': ['board'],
+// 	  './add_task.html': ['add-task'],
+// 	  './contacts.html': ['contacts'],
+// 	};
 
-if(localStorage.getItem('active Page')) {
-	currentLinkId = JSON.parse(localStorage.getItem('active Page'));
-	restoreActivePage(); // Call the function on page load
-}
+// 	const ids = idMappings[currentPage];
 
+// 	if (ids) {
+// 	  ids.forEach(id => {
+// 		const sidebarItem = document.getElementById(id);
 
-function activePage(linkId) {
-	if (currentLinkId) {
-		document.getElementById(currentLinkId).classList.remove('active');
-	}
-
-	document.getElementById(linkId).classList.add('active');
-	currentLinkId = linkId;
-	localStorage.setItem('active Page', JSON.stringify(currentLinkId));
-}
-
-function restoreActivePage() {
-	if (currentLinkId) {
-	  activePage(currentLinkId);
-	}
-  }
+// 		if (sidebarItem) {
+// 		  sidebarItem.classList.add('active');
+// 		  const firstChild = sidebarItem.children[0];
+// 		  if (firstChild) {
+// 			firstChild.classList.add('active');
+// 		  }
+// 		}
+// 	  });
+// 	}
+//   }
