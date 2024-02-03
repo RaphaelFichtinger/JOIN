@@ -222,6 +222,12 @@
     }
 }
 
+@media (max-width: 825px) {
+    #heading-container {
+        padding-top: 24px;
+    }
+}
+
 @media (max-width: 695px) {
     .box-top,
     .box-bottom {

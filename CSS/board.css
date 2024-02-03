@@ -5,11 +5,7 @@ body {
 /* popup add task */
 .main-board #add-task-popup .add_task {
     width: 100%;
-    padding: 64px;
-}
-.main-board #add-task-popup .add_task h1,
-.main-board #add-task-popup .add_task form {
-    padding-left: 0;
+    padding: 64px 0 0;
 }
 
 .drag-area {
@@ -81,7 +77,7 @@ body {
     font-size: 21px;
     font-weight: 700;
     gap: 4px;
-    width: 160px;
+    padding: 0 16px;
     height: 48px;
 }
 
@@ -217,7 +213,6 @@ body {
     background-color: white;
     z-index: 999;
     height: 750;
-    width: 70%;
     display: flex;
     position: absolute;
     margin-left: 5vw;
@@ -257,13 +252,11 @@ body {
 /* overview card */
 .task-big-view-overlay {
     width: calc(100% - 232px);
-    height: calc(100% - 96px);
-    display: flex;
     justify-content: center;
-    align-items: center;
     position: absolute;
     display: none;
     z-index: 3;
+    top: 80px;
 }
 
 #task-big-view-card {
@@ -377,19 +370,18 @@ body {
 }
 
 #task-big-view-edit-card {
-    z-index: 999;
     background-color: white;
     width: 485px;
     padding: 48px 40px 48px 40px;
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px #00000029;
     display: none;
-    margin-top: 80px;
 }
 
 #task-big-view-edit-card form {
     width: auto;
     padding-left: 0;
+    margin-top: 0;
 }
 
 #overview-edit-top {
@@ -472,7 +464,7 @@ body {
 }
 
 .edit-ok-button {
-    margin-top: 117px;
+    margin-top: 16%;
     display: flex;
     justify-content: end;
 }
@@ -499,7 +491,7 @@ body {
 }
 
 .list-height {
-    height: 80px;
+    width: 83%!important;
 }
 
 @media screen and (max-width: 1325px) {
@@ -527,6 +519,7 @@ body {
 @media (max-width: 1000px) {
     .form-container {
         flex-direction: column;
+        margin-bottom: 64px!important;
     }
     .leftside,
     .rightside {
@@ -550,6 +543,12 @@ body {
     }
     .task-big-view-overlay {
         width: 100%;
+    }
+    .add-task-popup {
+        display: block;
+        width: calc(100% - 80px);
+        margin-left: 40px;
+        margin-right: 40px;
     }
 }
 
@@ -576,6 +575,18 @@ body {
     }
     #overview-title {
         font-size: 36px;
+    }
+    .add_task h1 {
+        font-size: 48px;
+    }
+    .add-task-popup {
+        width: calc(100% - 32px);
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+    #task-big-view-edit-card {
+        width: calc(100% - 32px);
+        margin: 0 16px;
     }
 }
 
