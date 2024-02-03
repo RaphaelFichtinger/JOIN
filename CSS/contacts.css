@@ -963,9 +963,11 @@ margin-top: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 16px;
- 
-}                  
+
+}
+.menu-mobile p {
+    margin: 0;
+}
     #edit-mobile{
         animation-name: fadeAndSlideInMobile;
         animation-duration: 0.5s;
