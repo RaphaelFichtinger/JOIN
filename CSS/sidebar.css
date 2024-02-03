@@ -41,6 +41,10 @@
     background-color: #091931;
 }
 
+#sidebar .active {
+    background-color: #091931;
+}
+
 .privacy-text {
     display: flex;
     justify-content: flex-end;
