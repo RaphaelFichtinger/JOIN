@@ -70,7 +70,7 @@ function generateTodoHTML(element, index) {
                 <div class="progress-bar" style="width: ${progress}%;"></div>
             </div>
             <div>
-                <p>0/${element['subtasks'].length} Subtasks</p>
+                <p>${finishedSubtasks.length}/${element['subtasks'].length} Subtasks</p>
             </div>
         </div>
         <div class="task-card-bottom">
