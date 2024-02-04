@@ -1,7 +1,5 @@
 let currentLinkId = null;
 
-
-
 function activePage() {
 	currentLinkId = localStorage.getItem('active Page');
 	linkId = JSON.parse(currentLinkId)
@@ -10,3 +8,4 @@ function activePage() {
 	currentLinkId = linkId;
 	localStorage.setItem('active Page', JSON.stringify(currentLinkId));
 }
+

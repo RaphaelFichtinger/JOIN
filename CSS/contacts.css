@@ -1164,7 +1164,7 @@ margin-top: 80px;
         justify-content: center;
         color: white;
         margin-left: 24px;
-        padding-top: 100px;
+        padding-top: 80px;
         
         } 
     #new-contact-div-top-mobile{
@@ -1303,11 +1303,116 @@ margin-top: 80px;
         height: 54px;
         width: 200px;
     }
-    #edit-content-bottom-mobile{
+    #edit-cyrcle-overlay-mobile {
+
     }
     #header{
         z-index: 5555;
     }
-
 }
+@media (max-height: 867px) {
+    #new-contact-overlay-heading-mobile h1{
+        max-height: 20px;
+    }
+    #edit-contact-div-top-mobile{
+    max-height: 200px;
+    }
+    #edit-content-bottom-mobile {
+        max-height: 600px;
+        background-color: white;
+        position: absolute;
+        bottom: 80px;
+        background-color: white;
+    }
+    #edit-cyrcle-new-contact-mobile {
+        margin-bottom: 100px;
+        z-index: 2;
+    }
+    #edit-cyrcle-overlay-mobile{
+        z-index: 2;
+        height: 78px;
+        width: 78px;
+        top: 32vh;
+    }
+    #save-delete-div-mobile{
+        margin-bottom: 200px;
+    }
+}
+@media (max-height:795px)
+    {
+        #edit-cyrcle-new-contact-mobile {
+            max-height: 78px;
+           max-width: 78px;
+        }
+        #edit-cyrcle-overlay-mobile {
+        max-height: 78px;
+           max-width: 78px;
+           z-index: 2;
+           position: absolute;
+           top: 248px;
+        }
+        #save-delete-div-mobile{
+            margin-bottom: 0px;
+            max-height: fit-content;
+        }
+        #edit-content-bottom-mobile {
+            gap: 40px;
+        }
+        #edit-inputs-mobile{
+            margin-top: 42px;
+        }
+        #save-delete-div-mobile{
+            margin-top: 0px;
+        }
+        #new-contact-overlay-heading-mobile h1{
+            max-height: 0px;
+        }
+        #vector5-for-mibile{
+            padding: 0;
+        }
+    }
+    @media (max-height:743px){
+   #edit-inputs-mobile{
+        margin-top: 78px;
+   } 
+   #edit-content-bottom-mobile{
+    gap: 0px;
+   }
+}
+@media (max-height: 695px){
+    #edit-inputs-mobile{
+        height: 100px;
+        gap: 16px;
+    }
+    #edit-content-bottom-mobile {
+        height: 45vh;
+}
+}
+@media (max-height: 616px) {
+    #save-btn-div{
+        max-height: 24px;
+    }
+    #cancel-btn-div{
+        max-height: 24px;
+    }
+    #save-btn-edit{
+        max-height: 24px;
+    }
+    #cancel-btn-edit{
+        max-height: 24px;
+    }
+    #edit-cyrcle-overlay-mobile{
+        top: 200px;
+    }
+}
+@media (max-height: 533px) {
+    #edit-cyrcle-overlay-mobile{
+        top: 150px;
+    }
+    #edit-inputs-mobile{
+        margin-top:50px;
+    }
+}
+
+
 
