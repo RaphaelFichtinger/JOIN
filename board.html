@@ -25,14 +25,14 @@
             <h1 class="board-title">Board</h1>
             <div class="board-top-right">
                 <input class="input-board-top" placeholder="Find Task" type="text">
-                <button id="add-task-btn" onclick="openAddTaskPopup()">Add task <img src="./img/add.png"></button>
+                <button id="add-task-btn" onclick="openAddTaskPopup('to-do')">Add task <img src="./img/add.png"></button>
             </div>
         </div>
         <div class="board-container">
             <div class="board-column ">
                 <div class="board-column-title">
                     <p>To do</p>
-                    <img src="./img/plus-button.png">
+                    <img src="./img/plus-button.png" onclick="openAddTaskPopup('to-do')">
                 </div>
                 <div id="to-do" class="drag-area" ondrop="moveTo('to-do')" ondragover="allowDrop(event);">
                 </div>
@@ -40,7 +40,7 @@
             <div class="board-column">
                 <div class="board-column-title">
                     <p>In progress</p>
-                    <img src="./img/plus-button.png">
+                    <img src="./img/plus-button.png" onclick="openAddTaskPopup('in-progress')">
                 </div>
                 <div id="in-progress" class="drag-area" ondrop="moveTo('in-progress')" ondragover="allowDrop(event);">
                 </div>
@@ -48,7 +48,7 @@
             <div class="board-column">
                 <div class="board-column-title">
                     <p>Await feedback</p>
-                    <img src="./img/plus-button.png">
+                    <img src="./img/plus-button.png" onclick="openAddTaskPopup('await-feedback')">
                 </div>
                 <div id="await-feedback" class="drag-area" ondrop="moveTo('await-feedback')"
                     ondragover="allowDrop(event);"></div>

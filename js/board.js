@@ -116,9 +116,9 @@ function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
-function openAddTaskPopup() {
+function openAddTaskPopup(status) {
     let popup = document.getElementById('add-task-popup');
-    popup.innerHTML = returnTask();
+    popup.innerHTML = returnTask(status);
     popup.style.display = 'block';
     getCategories();
     getContacts();

@@ -56,7 +56,7 @@ function enableAddTaskButton() {
     buttonCreateTask.disabled = false;
 }
 
-async function createNewTask() {
+async function createNewTask(status) {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
     let dateDue = document.getElementById('due-date');
@@ -72,7 +72,7 @@ async function createNewTask() {
         'category': categoryValue.value,
         'subtasks': subtasksArray,
         'finishedSubtasks': finishedSubtasks,
-        'status': toDo
+        'status': status
     })
 
     await setItem('tasks', JSON.stringify(tasks));

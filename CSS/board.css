@@ -484,6 +484,12 @@ body {
     width: 83%!important;
 }
 
+.close-edit {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
 @media screen and (max-width: 1325px) {
     .board-container {
         flex-direction: column;

@@ -1,11 +1,11 @@
-function returnTask() {
+function returnTask(status) {
 	return `
 	<div id="add-task" class="add_task flex-column">
         <div class="flex align-center">
             <h1>Add Task</h1>
             <img onclick="closeAddTaskPopup()" class="close" src="./img/close.png">
         </div>
-		<form onsubmit="createNewTask(); return false">
+		<form onsubmit="createNewTask(status); return false">
 			<div class="form-container flex">
 				<div class="leftside flex-column">
 					<div class="task-input task-title">
@@ -141,6 +141,7 @@ function generateEditTaskHTMLTemplate() {
     <form onsubmit="">
     <div class="main-edit-card">
     <div id="overview-edit-top">
+    <div class="close-edit" onclick="closeTaskOverview()"><img src="../img/close.png"> </div>
         <p id="overview-edit-title">Title</p>
         <input id="overview-edit-title-input" required placeholder="Enter a title" type="text" value="Kochwelt Page & Recipe Recommender">
     </div>
