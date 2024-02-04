@@ -347,12 +347,13 @@ label + .buttons {
 	}
 	.buttons-bottom {
 		position: fixed;
-		bottom: 0;
+		bottom: 80px;
 		background-color: #F6F7F8;
 		width: calc(100% - 32px);
 		left: 0;
 		padding: 16px;
 		margin-top: 0;
+		z-index: 10;
 	}
 }
 

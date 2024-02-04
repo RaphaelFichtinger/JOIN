@@ -42,16 +42,13 @@ function generateTodoHTML(element, index) {
     let subtasks = element['subtasks'];
     let finishedSubtasks = element['finishedSubtasks'];
     let contactsArray = loadedContacts;
-    
     let additionalContacs = document.getElementById('additionalContacts');
     let progress = 0;
-    
 
     if (finishedSubtasks && finishedSubtasks.length > 0) {
         progress = (finishedSubtasks.length / subtasks.length) * 100;
     }
     let initials = '';
-    
 
     for (let f = 0; f < fullNames.length; f++) {
         let fullName = fullNames[f];
@@ -60,13 +57,12 @@ function generateTodoHTML(element, index) {
         let matchingColor = contactsArray[contactIndex].color;
         console.log(matchingColor, fullName);
         initials += `<p id="initials-circle-${f}" class="initials-circle" style='background-color : ${matchingColor}'>${nameInitials}</p>`;
-    
     }
 
 
 
     return `
-    <div id="task-card-${index}" class="task-card" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTaskOverview(${index}, ${element['id']})">
+    <div id="task-card-${index}" class="task-card" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTaskOverview(${element['id']})">
         <button class="task-type">${element['category']}</button>
         <div class="task-text">
             <p id="task-title">${element['title']}</p>
@@ -133,10 +129,10 @@ function closeAddTaskPopup() {
     popup.style.display = 'none';
 }
 
-function openTaskOverview(i, id) {
+function openTaskOverview(id) {
     let overview = document.getElementById('overview-container');
     overview.style.display = 'flex';
-    createOverview(i, id);
+    createOverview(id);
 }
 
 function closeTaskOverview() {
@@ -145,12 +141,16 @@ function closeTaskOverview() {
     // finishedSubtask(i, j);
 }
 
-function editTaskOverview(i) {
+function editTaskOverview(id) {
+    let task = tasks.find(task => task.id === id);
+
     let overviewCard = document.getElementById('task-big-view-card');
     let overviewEdit = document.getElementById('task-big-view-edit-card');
     overviewCard.style.display = 'none';
     overviewEdit.style.display = 'block';
-    generateEditCard(i);
+    if (task) {
+        generateEditCard(task);
+    }
 }
 
 function getInitials(name) {
@@ -174,20 +174,25 @@ async function clearTasks() {
     updateHTML();
 }
 
-function createOverview(i, id) {
-    let title = tasks[i]['title'];
-    let date = tasks[i]['date'];
-    let category = tasks[i]['category'];
-    let description = tasks[i]['description'];
-    let subArrayLength = tasks[i]['subtasks'].length;
-    let priority = tasks[i]['priority'];
+function createOverview(id) {
+    // Finde die Aufgabe mit der gegebenen ID
+    let task = tasks.find(task => task.id === id);
+    console.log(task);
+
+    let title = task['title'];
+    let date = task['date'];
+    let category = task['category'];
+    let description = task['description'];
+    let subArrayLength = task['subtasks'].length;
+    let priority = task['priority'];
     let overviewCard = document.getElementById('task-big-view-card');
-    generateAssignTo(i);
-    overviewCard.innerHTML = createOverviewHTMLTemplate(category, title, description, date, priority, i)
+    generateAssignTo(task.id);
+    overviewCard.innerHTML = createOverviewHTMLTemplate(category, title, description, date, priority, task)
 }
 
-function generateAssignTo(i) {
-    let fullNames = tasks[i]['assign-to'];
+function generateAssignTo(id) {
+    let task = tasks.find(task => task.id === id);
+    let fullNames = task['assign-to'];
     let generateHtml = '';
     let initials;
 
@@ -204,16 +209,17 @@ function generateAssignTo(i) {
     return generateHtml;
 }
 
-function generateSubtasks(i) {
-    let subArray = tasks[i]['subtasks'];
-    let finishedSubtasksArray = tasks[i]['finishedSubtasks'];
+function generateSubtasks(id) {
+    let task = tasks.find(task => task.id === id);
+    let subArray = task['subtasks'];
+    let finishedSubtasksArray = task['finishedSubtasks'];
     let generateHtml = '';
 
     for (let j = 0; j < subArray.length; j++) {
         let subtask = subArray[j];
         generateHtml += `
         <div class="subtask">
-            <input id="subtask-checkbox-${j}" type="checkbox" ${finishedSubtasksArray.includes(subtask) ? `checked` : ''} onclick="finishedSubtask(${i}, ${j})">
+            <input id="subtask-checkbox-${j}" type="checkbox" ${finishedSubtasksArray.includes(subtask) ? `checked` : ''} onclick="finishedSubtask(${task.id}, ${j})">
             <p id="subtask-text">${subtask}</p>
         </div>
         `;
@@ -221,10 +227,11 @@ function generateSubtasks(i) {
     return generateHtml;
 }
 
-async function finishedSubtask(i, j) {
-    let subArray = tasks[i]['subtasks'];
+async function finishedSubtask(id, j) {
+    let task = tasks.find(task => task.id === id);
+    let subArray = task['subtasks'];
     let subtask = subArray[j];
-    let finishedSubtasksArray = tasks[i]['finishedSubtasks'];
+    let finishedSubtasksArray = task['finishedSubtasks'];
     let checkbox = document.getElementById(`subtask-checkbox-${j}`)
     if (checkbox.checked) {
         finishedSubtasksArray.push(subtask)
@@ -235,22 +242,27 @@ async function finishedSubtask(i, j) {
         }
     }
     await setItem('tasks', JSON.stringify(tasks));
-    generateTodoHTML()
+    updateHTML();
 }
 
-async function deleteTask(i) {
-    tasks.splice(i, 1);
+async function deleteTask(id) {
+    let taskIndex = tasks.findIndex(task => task.id === id);
+    if (taskIndex !== -1) {
+        // Die Aufgabe wurde gefunden, jetzt kannst du sie löschen
+        tasks.splice(taskIndex, 1);
+    }
     await setItem('tasks', JSON.stringify(tasks));
     closeTaskOverview();
     updateHTML();
 }
 
-function generateEditCard(i) {
-    let title = tasks[i]['title'];
-    let date = tasks[i]['date'];
-    let description = tasks[i]['description'];
-    let subArrayLength = tasks[i]['subtasks'].length;
-    let subtasks = tasks[i]['subtasks'];
+
+function generateEditCard(task) {
+    let title = task['title'];
+    let date = task['date'];
+    let description = task['description'];
+    let subArrayLength = task['subtasks'].length;
+    let subtasks = task['subtasks'];
     let editCard = document.getElementById('task-big-view-edit-card');
     editCard.innerHTML =generateEditTaskHTMLTemplate();
     let titleInput = document.getElementById('overview-edit-title-input');
