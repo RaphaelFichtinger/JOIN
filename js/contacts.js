@@ -7,6 +7,7 @@ async function loadContacts(){
   loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
   renderContacts();
   renderContactsMobile();
+  setActivePage4();
 }
 
 function renderContacts() {
@@ -22,9 +23,19 @@ function renderContacts() {
     if (initials.charAt(0) !== currentLetter) {
       currentLetter = initials.charAt(0);
       overlay.innerHTML += `<div id="alphabet-tab">${currentLetter}</div>`;
+    }
+    overlay.innerHTML += `<div id="contact-card-container-${i}" class="contact-card-container" onclick="handleContactClick(${i})">${renderContactsHTMLTemplate(i, backgroundColor, initials, contact)}</div>`;
   }
-  overlay.innerHTML += renderContactsHTMLTemplate(i, backgroundColor, initials, contact);
 }
+function handleContactClick(index) {
+  const contactContainers = document.querySelectorAll('.contact-card-container');
+  contactContainers.forEach((container, i) => {
+    if (i === index) {
+      container.classList.add('active');
+    } else {
+      container.classList.remove('active');
+    }
+  });
 }
 
 function renderContactsMobile() {
@@ -315,8 +326,6 @@ function validateEditMobileContactInput() {
   let editedEmail = document.getElementById('edit-contact-input-mail-mobile').value;
   let editedPhone = document.getElementById('edit-contact-input-number-mobile').value;
 
-  console.log('Name:', editedName);
-  console.log('Email:', editedEmail);
-  console.log('Phone:', editedPhone);
+
   return validateContactInput(editedName, editedEmail, editedPhone);
 }

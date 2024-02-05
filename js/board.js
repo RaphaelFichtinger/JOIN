@@ -2,6 +2,7 @@ async function renderBoard() {
     await loadTasks();
     await loadContacts();
     updateHTML();
+    setActivePage3();
 }
 
 document.querySelector('.input-board-top').addEventListener('input', function () {
@@ -37,7 +38,6 @@ function updateHTML(filteredTasks = tasks) {
 let currentDraggedElement;
 
 function generateTodoHTML(element, index) {
-    // Call the getInitials function to get the initials
     let fullNames = element['assign-to'];
     let subtasks = element['subtasks'];
     let finishedSubtasks = element['finishedSubtasks'];

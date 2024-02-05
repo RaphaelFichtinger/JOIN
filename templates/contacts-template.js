@@ -1,6 +1,8 @@
+
+
 function renderContactsHTMLTemplate(i, backgroundColor, initials, contact){
     return `
-    <div id="contactcard-container" onclick="showContactDetails(${i})">
+    <div id="contactcard-container" class="contact" onclick="showContactDetails(${i})">
         <div id="contact-cyrcle-div"> 
             <div style="background-color: ${backgroundColor};" id="contact-cyrcle">${initials}</div>
         </div>
@@ -13,7 +15,7 @@ function renderContactsHTMLTemplate(i, backgroundColor, initials, contact){
 
   function renderContactsMobileHTMLTemplate(i, backgroundColor, initials, contact){
     return`
-    <div id="contactcard-container-mobile" onclick="showContactDetailsMobile(${i})">
+    <div id="contactcard-container-mobile" class="contact" onclick="showContactDetailsMobile(${i})" >
     <div id="contact-cyrcle-div"> 
         <div style="background-color: ${backgroundColor};" id="contact-cyrcle">${initials}</div>
     </div>
