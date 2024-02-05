@@ -144,6 +144,7 @@ function closeTaskOverview() {
     // finishedSubtask(i, j);
 }
 
+
 function editTaskOverview(id) {
     let task = tasks.find(task => task.id === id);
     let overviewCard = document.getElementById('task-big-view-card');
