@@ -1,5 +1,3 @@
-
-
 function renderContactsHTMLTemplate(i, backgroundColor, initials, contact){
     return `
     <div id="contactcard-container" class="contact" onclick="showContactDetails(${i})">

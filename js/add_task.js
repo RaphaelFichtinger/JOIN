@@ -143,7 +143,7 @@ function clearFields() {
 }
 
 function openOverlay(event, listId) {
-    event.stopPropagation();
+    event.stopPropagation;
     let overlayList = document.getElementById(`${listId}`);
     overlayList.classList.toggle('active');
 }

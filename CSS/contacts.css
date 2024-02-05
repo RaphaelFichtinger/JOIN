@@ -4,7 +4,6 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-
 .contact-card-container.active {
   background-color: #afafaf; 
   border-radius: 10px;
