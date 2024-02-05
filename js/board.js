@@ -332,21 +332,18 @@ function generateEditCard(task) {
     getContacts();
 }
 
-function saveEditChanges(id) {
+async function saveEditChanges(id) {
     let task = tasks.find(task => task.id === id);
 
     let titleEdit = document.getElementById('overview-edit-title-input').value;
     let descriptionArea = document.getElementById('description-overview-edit').value;
     let dueDateInput = document.getElementById('due-date-edit').value;
-
-    tasks[task].title = titleEdit;
-    tasks[task].description = descriptionArea;
-    tasks[task].duDate = dueDateInput;
-    tasks[task]['assign-to'] = checkedContacts;
-    tasks[task]['subtasks'] = subtasksArray;
-
-    setItem('tasks', JSON.stringify(tasks));
-
+    task.title = titleEdit;
+    task.description = descriptionArea;
+    task.duDate = dueDateInput;
+    task['assign-to'] = checkedContacts;
+    task['subtasks'] = subtasksArray;
+    await setItem('tasks', JSON.stringify(tasks));
     clearArrays();
 }
 
