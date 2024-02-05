@@ -130,8 +130,10 @@ function closeAddTaskPopup() {
 }
 
 function openTaskOverview(id) {
+    let overviewEdit = document.getElementById('task-big-view-edit-card');
     let overview = document.getElementById('overview-container');
     let overviewCard = document.getElementById('task-big-view-card');
+    overviewEdit.style.display = 'none';
     overview.style.display = 'flex';
     overviewCard.style.display = 'flex';
     overviewCard.style.flexDirection = 'column';
@@ -160,7 +162,7 @@ function closeEditCard() {
     let overviewEdit = document.getElementById('task-big-view-edit-card');
     let overview = document.getElementById('overview-container');
     overview.style.display = 'none';
-    overviewEdit.style.display = 'none';
+    
 }
 
 
