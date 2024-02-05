@@ -138,7 +138,7 @@ function createOverviewHTMLTemplate(category, title, description, date, priority
 
 function generateEditTaskHTMLTemplate(task) {
 	return `
-    <form onsubmit="saveEditChanges(${task.id})">
+    <form onsubmit="saveEditChanges(${task.id}); return false">
         <div class="main-edit-card">
             <div id="overview-edit-top">
                 <div class="close-edit" onclick="closeTaskOverview()"><img src="../img/close.png"> </div>
@@ -165,7 +165,7 @@ function generateEditTaskHTMLTemplate(task) {
                     </div>
                 </div>
             </div>
-            <div class="assigned-to-overview-edit  margin-top">
+            <div class="assigned-to-overview-edit">
                 <div id="task-assigned-to" class="task-input task-assigned-to">
                     <label for="assign-to">Assign to</label>
                     <input onclick="openOverlay(event, 'contacts-list')" id="assign-to-edit" type="text" placeholder="Select contacts to assign">
@@ -175,7 +175,7 @@ function generateEditTaskHTMLTemplate(task) {
                     <div id="added-contacts" class="flex"></div>
                 </div>
             </div>
-            <div class="task-input task-subtasks margin-top">
+            <div class="task-input task-subtasks">
                 <label for="subtasks">Subtasks</label>
                 <input onclick="changeIcons()" id="subtasks" type="text" placeholder="Add new Subtask">
                 <div id="subtasks-list" class="subtasks-list">

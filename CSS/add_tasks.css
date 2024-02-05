@@ -343,6 +343,7 @@ label + .buttons {
 	}
 	.rightside {
 		margin-top: 32px;
+		margin-bottom: 120px;
 	}
 	.rightside .task-prio,
 	.leftside .task-assigned-to {

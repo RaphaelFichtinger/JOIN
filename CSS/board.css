@@ -399,7 +399,6 @@ body {
 
 .overview-edit-description {
     width: 100%;
-    margin-top: 24px;
 }
 
 .overview-edit-description textarea {
@@ -421,10 +420,6 @@ body {
     gap: 12px;
 }
 
-.margin-top {
-    margin-top: 24px;
-}
-
 .half-w {
     width: 50% !important;
 }
@@ -439,6 +434,9 @@ body {
 
 .main-edit-card {
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 }
 
 ::-webkit-scrollbar {
