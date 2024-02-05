@@ -316,8 +316,8 @@ function validateEditMobileContactInput() {
   let editedEmail = document.getElementById('edit-contact-input-mail-mobile').value;
   let editedPhone = document.getElementById('edit-contact-input-number-mobile').value;
 
-  console.log('Name:', editedName);
-  console.log('Email:', editedEmail);
-  console.log('Phone:', editedPhone);
+
   return validateContactInput(editedName, editedEmail, editedPhone);
 }
+
+

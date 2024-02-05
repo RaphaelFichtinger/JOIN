@@ -4,6 +4,10 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+.selected{
+    background-color: #40669b;
+}
+
 #popup-window-overlay{
     position: fixed;
     background-color: #ffffff;
