@@ -302,7 +302,8 @@ function generateEditCard(task) {
     }
 }
 
-function saveChanges(task) {
-
+function saveEditChanges() {
+let titleEdit = document.getElementById('overview-edit-title-input').value;
+console.log(titleEdit);
 }
 
