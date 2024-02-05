@@ -305,11 +305,14 @@ function generateEditCard(task) {
     let description = task['description'];
     let subArrayLength = task['subtasks'].length;
     let subtasks = task['subtasks'];
+    let assignToArray = task['assign-to'];
     let editCard = document.getElementById('task-big-view-edit-card');
     editCard.innerHTML =generateEditTaskHTMLTemplate(task);
     let titleInput = document.getElementById('overview-edit-title-input');
     let descriptionArea = document.getElementById('description-overview-edit');
     let dueDateInput = document.getElementById('due-date-edit');
+    let contactsList = document.getElementById('list-item');
+    let addedContacts = document.getElementById('added-contacts');
     let subtaskList = document.getElementById('list-item-subtasks');
     titleInput.value = title;
     descriptionArea.value = description;
@@ -326,10 +329,23 @@ function generateEditCard(task) {
                 </div>
             </div>
         </li>
-    `;
-    subtasksArray.push(subtask)
+        `;
+        subtasksArray.push(subtask);
     }
+
     getContacts();
+
+    for (let j = 0; j < assignToArray.length; j++) {
+        if(assignToArray.length > 0) {
+            document.querySelector('.task-subtasks').style.marginTop = '40px';
+        }
+        let assignTo = assignToArray[j];
+        let splittedLetters = assignTo.split(" ");
+        addedContacts.innerHTML += `
+            <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
+        `;
+        checkedContacts.push(assignTo);
+    }
 }
 
 async function saveEditChanges(id) {
