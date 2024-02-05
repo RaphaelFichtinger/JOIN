@@ -38,7 +38,6 @@ function updateHTML(filteredTasks = tasks) {
 let currentDraggedElement;
 
 function generateTodoHTML(element, index) {
-    // Call the getInitials function to get the initials
     let fullNames = element['assign-to'];
     let subtasks = element['subtasks'];
     let finishedSubtasks = element['finishedSubtasks'];

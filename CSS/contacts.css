@@ -4,8 +4,11 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-.selected{
-    background-color: #40669b;
+
+.contact-card-container.active {
+  background-color: #afafaf; 
+  border-radius: 10px;
+  margin-left: 2px;
 }
 
 #popup-window-overlay{
@@ -645,7 +648,6 @@ align-items: center;
 }
 
 #contactcard-container:hover{
-    background-color: #e2e2e2;
     border-radius: 8px;
     cursor: pointer;
     color: rgb(0, 0, 0);

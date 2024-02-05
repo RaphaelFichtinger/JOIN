@@ -23,9 +23,19 @@ function renderContacts() {
     if (initials.charAt(0) !== currentLetter) {
       currentLetter = initials.charAt(0);
       overlay.innerHTML += `<div id="alphabet-tab">${currentLetter}</div>`;
+    }
+    overlay.innerHTML += `<div id="contact-card-container-${i}" class="contact-card-container" onclick="handleContactClick(${i})">${renderContactsHTMLTemplate(i, backgroundColor, initials, contact)}</div>`;
   }
-  overlay.innerHTML += renderContactsHTMLTemplate(i, backgroundColor, initials, contact);
 }
+function handleContactClick(index) {
+  const contactContainers = document.querySelectorAll('.contact-card-container');
+  contactContainers.forEach((container, i) => {
+    if (i === index) {
+      container.classList.add('active');
+    } else {
+      container.classList.remove('active');
+    }
+  });
 }
 
 function renderContactsMobile() {
@@ -319,5 +329,3 @@ function validateEditMobileContactInput() {
 
   return validateContactInput(editedName, editedEmail, editedPhone);
 }
-
-
