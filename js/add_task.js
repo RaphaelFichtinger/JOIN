@@ -54,6 +54,7 @@ if(dateDue) {
 }
 
 function enableAddTaskButton() {
+    let buttonCreateTask = document.getElementById('button-create-task');
     buttonCreateTask.disabled = false;
 }
 
@@ -143,7 +144,7 @@ function clearFields() {
 }
 
 function openOverlay(event, listId) {
-    event.stopPropagation;
+    event.stopPropagation();
     let overlayList = document.getElementById(`${listId}`);
     overlayList.classList.toggle('active');
 }
@@ -235,6 +236,7 @@ function addCategory(i) {
     overlayList.classList.remove('active');
 
     categoryLock = false;
+    console.log(categoryLock);
 
     if(!titleLock && !dateLock && !categoryLock) {
         enableAddTaskButton();

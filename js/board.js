@@ -122,6 +122,33 @@ function openAddTaskPopup(status) {
     popup.style.display = 'block';
     getCategories();
     getContacts();
+
+    let title = document.getElementById('title');
+    let dateDue = document.getElementById('due-date');
+
+    if(title) {
+        title.addEventListener('input', function() {
+            if(this.value !== '') {
+                titleLock = false;
+                console.log(titleLock);
+            }
+            if(!titleLock && !dateLock && !categoryLock) {
+                enableAddTaskButton();
+            }
+        })
+    }
+
+    if(dateDue) {
+        dateDue.addEventListener('input', function() {
+            if(this.value !== '') {
+                dateLock = false;
+                console.log(dateLock);
+            }
+            if(!titleLock && !dateLock && !categoryLock) {
+                enableAddTaskButton();
+            }
+        })
+    }
 }
 
 function closeAddTaskPopup() {
