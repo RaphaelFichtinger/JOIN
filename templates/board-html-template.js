@@ -136,66 +136,60 @@ function createOverviewHTMLTemplate(category, title, description, date, priority
     `;
 }
 
-function generateEditTaskHTMLTemplate() {
+function generateEditTaskHTMLTemplate(task) {
 	return `
-    <form onsubmit="">
-    <div class="main-edit-card">
-    <div id="overview-edit-top">
-    <div class="close-edit" onclick="closeTaskOverview()"><img src="../img/close.png"> </div>
-        <p id="overview-edit-title">Title</p>
-        <input id="overview-edit-title-input" required placeholder="Enter a title" type="text" value="Kochwelt Page & Recipe Recommender">
-    </div>
-    <div class="overview-edit-description">
-        <p>Description</p>
-        <textarea name="description" id="description-overview-edit" cols="30" rows="5"></textarea>
-    </div>
-    <div class="due-date-overview-edit overview-edit-description">
-        <p>Due date</p>
-        <input required id="due-date-edit" type="date">
-    </div>
-    <div class="overview-edit-description">
-        <p class="priority-overview-edit">Priority</p>
-        <div class="priority-edit-buttons">
-            <div class="task-input task-prio-overview-edit">
-                
-                <div class="buttons flex task-prio-overview-edit">
-                    <div id="priority-alta" class="priority-alta priority-button" onclick="selectPriority('alta')">Urgent</div>
-                    <div id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</div>
-                    <div id="priority-baia" class="priority-baia priority-button" onclick="selectPriority('baia')">Low</div>
+    <form onsubmit="saveEditChanges(${task.id})">
+        <div class="main-edit-card">
+            <div id="overview-edit-top">
+                <div class="close-edit" onclick="closeTaskOverview()"><img src="../img/close.png"> </div>
+                <p id="overview-edit-title">Title</p>
+                <input id="overview-edit-title-input" required placeholder="Enter a title" type="text" value="Kochwelt Page & Recipe Recommender">
+            </div>
+            <div class="overview-edit-description">
+                <p>Description</p>
+                <textarea name="description" id="description-overview-edit" cols="30" rows="5"></textarea>
+            </div>
+            <div class="due-date-overview-edit overview-edit-description">
+                <p>Due date</p>
+                <input required id="due-date-edit" type="date">
+            </div>
+            <div class="overview-edit-description">
+                <p class="priority-overview-edit">Priority</p>
+                <div class="priority-edit-buttons">
+                    <div class="task-input task-prio-overview-edit">
+                        <div class="buttons flex task-prio-overview-edit">
+                            <div id="priority-alta" class="priority-alta priority-button" onclick="selectPriority('alta')">Urgent</div>
+                            <div id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</div>
+                            <div id="priority-baia" class="priority-baia priority-button" onclick="selectPriority('baia')">Low</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="assigned-to-overview-edit  margin-top">
+                <div id="task-assigned-to" class="task-input task-assigned-to">
+                    <label for="assign-to">Assign to</label>
+                    <input onclick="openOverlay(event, 'contacts-list')" id="assign-to-edit" type="text" placeholder="Select contacts to assign">
+                    <div id="contacts-list" class="contacts-list">
+                        <div id="list-item" class="list-item"></div>
+                    </div>
+                    <div id="added-contacts" class="flex"></div>
+                </div>
+            </div>
+            <div class="task-input task-subtasks margin-top">
+                <label for="subtasks">Subtasks</label>
+                <input onclick="changeIcons()" id="subtasks" type="text" placeholder="Add new Subtask">
+                <div id="subtasks-list" class="subtasks-list">
+                    <ul id="list-item-subtasks" class="list-item-subtasks list-height"></ul>
+                </div>
+                <img id="subtasks-plus" class="subtasks-plus" src="./img/plus.svg" alt="">
+                <div id="image-click" class="image-click d-none">
+                    <img onclick="clearSubtaskInput()" class="subtasks-clear" src="./img/clear.svg" alt="">
+                    <img onclick="addSubtask()" class="subtasks-check" src="./img/check-blue.svg" alt="">
                 </div>
             </div>
         </div>
-
-    </div>
-    <div class="assigned-to-overview-edit  margin-top">
-        <div id="task-assigned-to" class="task-input task-assigned-to">
-            <label for="assign-to">Assign to</label>
-            <input onclick="openOverlay('contacts-list')" id="assign-to-edit" type="text" placeholder="Select contacts to assign">
-            <div id="contacts-list" class="contacts-list d-none">
-                <div id="list-item" class="list-item"></div>
-            </div>
-            <div id="added-contacts" class="flex"></div>
+        <div class="edit-ok-button">
+            <button class="edit-ok-button-btn">OK <img src="./img/check.png" alt=""></button>
         </div>
-    </div>
-    <div class="task-input task-subtasks margin-top">
-        <label for="subtasks">Subtasks</label>
-        <input onclick="changeIcons()" id="subtasks" type="text" placeholder="Add new Subtask">
-        <div id="subtasks-list" class="subtasks-list">
-            <ul id="list-item-subtasks" class="list-item-subtasks list-height"></ul>
-        </div>
-        <img id="subtasks-plus" class="subtasks-plus" src="./img/plus.svg" alt="">
-        <div id="image-click" class="image-click d-none">
-            <img onclick="clearSubtaskInput()" class="subtasks-clear" src="./img/clear.svg" alt="">
-            <img onclick="addSubtask()" class="subtasks-check" src="./img/check-blue.svg" alt="">
-        </div>
-    </div>
-</div>
-    <div class="edit-ok-button">
-        <button class="edit-ok-button-btn">OK <img src="./img/check.png" alt=""></button>
-    </div>
-</form>`
-
-
-
-
-}
+    </form>
+    `};

@@ -314,25 +314,43 @@ function generateEditCard(task) {
     titleInput.value = title;
     descriptionArea.value = description;
     dueDateInput.value = date;
-    console.log(subtasks);
     for (let j = 0; j < subtasks.length; j++) {
         const subtask = subtasks[j];
         subtaskList.innerHTML += `
-    <li class="subtaskItem">
-        <div id="editableText" class="li-element flex space-between align-center">
-            <p>${subtask}</p>
-            <div id="edit-delete-icons" class="edit-delete-icons flex">
-                <img onclick="editSubtask(event, ${j})" id="subtasks-edit" class="subtasks-edit" src="./img/edit-subtask.svg" alt="Edit">
-                <img onclick="clearSubtask(event)" id="subtasks-delete" class="subtasks-delete" src="./img/delete-subtask.svg" alt="Delete">
+        <li class="subtaskItem">
+            <div id="editableText" class="li-element flex space-between align-center">
+                <p>${subtask}</p>
+                <div id="edit-delete-icons" class="edit-delete-icons flex">
+                    <img onclick="editSubtask(event, ${j})" id="subtasks-edit" class="subtasks-edit" src="./img/edit-subtask.svg" alt="Edit">
+                    <img onclick="clearSubtask(event)" id="subtasks-delete" class="subtasks-delete" src="./img/delete-subtask.svg" alt="Delete">
+                </div>
             </div>
-        </div>
-    </li>
-  `;
+        </li>
+    `;
+    subtasksArray.push(subtask)
     }
+    getContacts();
 }
 
-function saveEditChanges() {
-let titleEdit = document.getElementById('overview-edit-title-input').value;
-console.log(titleEdit);
+function saveEditChanges(id) {
+    let task = tasks.find(task => task.id === id);
+
+    let titleEdit = document.getElementById('overview-edit-title-input').value;
+    let descriptionArea = document.getElementById('description-overview-edit').value;
+    let dueDateInput = document.getElementById('due-date-edit').value;
+
+    tasks[task].title = titleEdit;
+    tasks[task].description = descriptionArea;
+    tasks[task].duDate = dueDateInput;
+    tasks[task]['assign-to'] = checkedContacts;
+    tasks[task]['subtasks'] = subtasksArray;
+
+    setItem('tasks', JSON.stringify(tasks));
+
+    clearArrays();
 }
 
+function clearArrays() {
+    checkedContacts = [];
+    subtasksArray = [];
+}

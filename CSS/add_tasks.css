@@ -154,6 +154,9 @@ label + .buttons {
     overflow: auto;
 	z-index: 3;
 }
+.list-item {
+	z-index: 4;
+}
 .list-item-subtasks {
 	background-color: transparent;
 	width: 93%;

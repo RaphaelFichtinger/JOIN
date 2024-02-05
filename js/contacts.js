@@ -117,11 +117,9 @@ function saveContactChanges(i) {
       loadedContacts[i].email = editedEmail;
       loadedContacts[i].phone = editedPhone;
       loadedContacts[i].color = backgroundColor;
-      setItem('contacts', JSON.stringify(loadedContacts));
       overlay.innerHTML = '';
       loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
       setItem('loadedContacts', JSON.stringify(loadedContacts));
-      setItem('contacts', JSON.stringify(loadedContacts));
       renderContacts();
       closeEdit();
       popupWindow();

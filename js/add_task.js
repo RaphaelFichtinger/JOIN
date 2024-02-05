@@ -162,7 +162,9 @@ function getContacts() {
         let splittedLetters = contactName.split(" ");
 
         document.getElementById('list-item').innerHTML += generateContactsHtml(splittedLetters, contactName, i);
-        document.getElementById('list-item-mobile').innerHTML += generateContactsHtml(splittedLetters, contactName, i);
+        if(document.getElementById('list-item-mobile')) {
+            document.getElementById('list-item-mobile').innerHTML += generateContactsHtml(splittedLetters, contactName, i);
+        }
     }
 }
 
@@ -197,7 +199,10 @@ function contactChecked(event, index) {
     }
 
     addedContacts.innerHTML = '';
-    addedContactsMobile.innerHTML = '';
+
+    if(addedContactsMobile) {
+        addedContactsMobile.innerHTML = '';
+    }
     if(window.innerWidth <= 1000) {
         document.querySelector('.task-subtasks').style.marginTop = '0';
     }
@@ -210,9 +215,11 @@ function contactChecked(event, index) {
             addedContacts.innerHTML += `
                 <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
             `;
-            addedContactsMobile.innerHTML += `
-                <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
-            `;
+            if(addedContactsMobile) {
+                addedContactsMobile.innerHTML += `
+                    <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
+                `;
+            }
         }
     }
 }
