@@ -143,7 +143,6 @@ function closeTaskOverview() {
 
 function editTaskOverview(id) {
     let task = tasks.find(task => task.id === id);
-
     let overviewCard = document.getElementById('task-big-view-card');
     let overviewEdit = document.getElementById('task-big-view-edit-card');
     overviewCard.style.display = 'none';
