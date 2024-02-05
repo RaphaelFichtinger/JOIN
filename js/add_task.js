@@ -26,6 +26,7 @@ async function renderTask() {
     await loadContacts();
     getCategories();
 	getContacts();
+    setActivePage2();
 }
 
 if(title) {

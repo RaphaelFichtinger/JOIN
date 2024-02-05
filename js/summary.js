@@ -23,6 +23,7 @@ async function renderSummary() {
 
 	loopTasks();
 	getDateFromInput();
+	setActivePage1();
 
 	if(window.innerWidth < 1170) {
 		overlayGreetingMobile();

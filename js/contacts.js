@@ -7,6 +7,7 @@ async function loadContacts(){
   loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
   renderContacts();
   renderContactsMobile();
+  setActivePage4();
 }
 
 function renderContacts() {

@@ -2,6 +2,7 @@ async function renderBoard() {
     await loadTasks();
     await loadContacts();
     updateHTML();
+    setActivePage3();
 }
 
 document.querySelector('.input-board-top').addEventListener('input', function () {
