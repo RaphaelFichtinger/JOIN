@@ -319,7 +319,7 @@ function clearSubtask(event) {
     }
 }
 
-function saveEditSubtask(event) {
+async function saveEditSubtask(event) {
     let textElement = event.target.closest('#editableText');
     textElement.contentEditable = false;
 
