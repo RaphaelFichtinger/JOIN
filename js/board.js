@@ -131,7 +131,10 @@ function closeAddTaskPopup() {
 
 function openTaskOverview(id) {
     let overview = document.getElementById('overview-container');
+    let overviewCard = document.getElementById('task-big-view-card');
     overview.style.display = 'flex';
+    overviewCard.style.display = 'flex';
+    overviewCard.style.flexDirection = 'column';
     createOverview(id);
 }
 
@@ -152,6 +155,16 @@ function editTaskOverview(id) {
         generateEditCard(task);
     }
 }
+
+function closeEditCard() {
+    
+    let overviewEdit = document.getElementById('task-big-view-edit-card');
+    let overview = document.getElementById('overview-container');
+    overview.style.display = 'none';
+    overviewEdit.style.display = 'none';
+}
+
+
 
 function getInitials(name) {
     if (name) {
@@ -264,7 +277,7 @@ function generateEditCard(task) {
     let subArrayLength = task['subtasks'].length;
     let subtasks = task['subtasks'];
     let editCard = document.getElementById('task-big-view-edit-card');
-    editCard.innerHTML =generateEditTaskHTMLTemplate();
+    editCard.innerHTML =generateEditTaskHTMLTemplate(task);
     let titleInput = document.getElementById('overview-edit-title-input');
     let descriptionArea = document.getElementById('description-overview-edit');
     let dueDateInput = document.getElementById('due-date-edit');
@@ -289,6 +302,7 @@ function generateEditCard(task) {
     }
 }
 
-function fillProgressBar() {
+function saveChanges(task) {
 
 }
+
