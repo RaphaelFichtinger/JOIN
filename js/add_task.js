@@ -160,18 +160,20 @@ function getContacts() {
     for (let i = 0; i < loadedContacts.length; i++) {
         let contactName = loadedContacts[i]['name'];
         let splittedLetters = contactName.split(" ");
-
-        document.getElementById('list-item').innerHTML += generateContactsHtml(splittedLetters, contactName, i);
+        let contactColor = loadedContacts[i]['color'];
+        console.log(contactColor);
+        document.getElementById('list-item').innerHTML += generateContactsHtml(splittedLetters, contactName, i, contactColor);
+      
         if(document.getElementById('list-item-mobile')) {
-            document.getElementById('list-item-mobile').innerHTML += generateContactsHtml(splittedLetters, contactName, i);
+            document.getElementById('list-item-mobile').innerHTML += generateContactsHtml(splittedLetters, contactName, i, contactColor);
         }
     }
 }
 
-function generateContactsHtml(splittedLetters, contactName, i) {
+function generateContactsHtml(splittedLetters, contactName, i, contactColor) {
     return `
         <div class="item flex align-center" onclick="contactChecked(event, ${i})">
-            <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
+            <div class="circle" style='background-color : ${contactColor}'>${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
             <div class="name" data-value="${contactName.toLowerCase()}">${contactName}</div>
             <input id="checkbox_${i}" type="checkbox" class="checkbox">
         </div>

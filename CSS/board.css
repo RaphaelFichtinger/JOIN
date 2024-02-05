@@ -441,7 +441,6 @@ body {
 
 ::-webkit-scrollbar {
     width: 14px;
-    display: none;
   }
   
   ::-webkit-scrollbar-thumb {
