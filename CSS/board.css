@@ -315,11 +315,12 @@ body {
     align-items: center;
 }
 
-#overview-initials {
+
+
+.overview-in {
+    border-radius: 50% !important;
     height: 42px;
     width: 42px;
-    background-color: #0038FF;
-    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
