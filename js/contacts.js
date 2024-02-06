@@ -106,8 +106,7 @@ function editMobileContact(i) {
   overlay.innerHTML =editMobileContactHTMLTemplate(backgroundColor, initials, contact, i);
 }
 
-function saveContactChanges(event, i) {
-  event.preventDefault();
+function saveContactChanges(i) {
   if (validateEditContactInput()) {
       let editedName = document.getElementById('edit-input-name').value;
       let editedEmail = document.getElementById('edit-input-mail').value;

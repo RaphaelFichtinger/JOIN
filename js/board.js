@@ -246,7 +246,11 @@ function generateAssignTo(id) {
         initials = fullName.split(" ");
         generateHtml += `
         <div id="overview-contact">
-            <p id="overview-initials style='background-color : ${matchingColor}' ">${initials[0] ? initials[0].charAt(0) : ''}${initials[1] ? initials[1].charAt(0) : ''}</p>
+            <p class="overview-in" style= 'border-radius : 50%;   height: 42px; display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            width: 42px; background-color : ${matchingColor}' ">${initials[0] ? initials[0].charAt(0) : ''}${initials[1] ? initials[1].charAt(0) : ''}</p>
             <p id="overview-fullname">${fullName}</p>
         </div>
         `;

@@ -5,7 +5,7 @@ function returnTask(status) {
             <h1>Add Task</h1>
             <img onclick="closeAddTaskPopup()" class="close" src="./img/close.png">
         </div>
-		<form onsubmit="createNewTask(status); return false">
+		<form onsubmit="createNewTask(${status}); return false">
 			<div class="form-container flex">
 				<div class="leftside flex-column">
 					<div class="task-input task-title">
