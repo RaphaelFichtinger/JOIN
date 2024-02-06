@@ -127,10 +127,6 @@ label + .buttons {
 	background-color: green;
 	color: #FFFFFF;
 }
-.task-assigned-to,
-.task-category {
-	height: 80px;
-}
 .contacts-list,
 .categories-list,
 .subtasks-list {
@@ -154,6 +150,9 @@ label + .buttons {
     overflow: auto;
 	z-index: 3;
 }
+.list-item-subtasks {
+    max-height: 110px;
+}
 .list-item {
 	z-index: 4;
 }
@@ -175,8 +174,8 @@ label + .buttons {
 	justify-content: center;
 	align-items: center;
 	color: #FFFFFF;
-	width: 42px;
-	height: 42px;
+	min-width: 42px;
+	min-height: 42px;
 	border-radius: 50%;
 	background-color: black;
 	margin-right: 16px;
@@ -191,6 +190,9 @@ label + .buttons {
 .task-category,
 .task-subtasks {
 	position: relative;
+}
+.task-assigned-to {
+	overflow: hidden;
 }
 .dropdown,
 .subtasks-plus {

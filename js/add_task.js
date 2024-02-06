@@ -1,7 +1,7 @@
 let checkedContacts = [];
 let categories = ['Technical Task', 'User Story'];
 let subtasksArray = [];
-let priorityVariable;
+let priorityVariable = 'Medium';
 let toDo = 'to-do';
 let currentSubtask;
 let finishedSubtasks = [];
@@ -82,6 +82,9 @@ async function createNewTask(status) {
     clearFields();
     successLightbox();
     buttonCreateTask.disabled = true;
+    setTimeout(() => {
+        window.location.href = './board.html';
+    }, 3000)
 }
 
 // Funktion zum Generieren der nächsten verfügbaren ID
@@ -120,6 +123,7 @@ function clearFields() {
     let addedContacts = document.getElementById('added-contacts');
     let addedContactsMobile = document.getElementById('added-contacts-mobile');
     let subtasks = document.getElementById('list-item-subtasks');
+    let priorityButtonMedium = document.getElementById(`priority-medium`);
 
     assignTo.classList.add('d-none');
     assignTo.classList.remove('block');
@@ -128,6 +132,7 @@ function clearFields() {
     addedContacts.innerHTML = '';
     addedContactsMobile.innerHTML = '';
     removePriority();
+    priorityButtonMedium.classList.add('medium');
     subtasks.innerHTML = '';
     subtasksArray = [];
     checkedContacts = [];
@@ -152,8 +157,10 @@ function openOverlay(event, listId) {
 function closeOverlay() {
     let overlayList = document.getElementById('contacts-list');
     let overlayListMobile = document.getElementById('contacts-list-mobile');
+    let categoriesList = document.getElementById('categories-list');
     overlayList.classList.remove('active');
     overlayListMobile.classList.remove('active');
+    categoriesList.classList.remove('active');
 }
 
 function getContacts() {
@@ -205,12 +212,8 @@ function contactChecked(event, index) {
     if(addedContactsMobile) {
         addedContactsMobile.innerHTML = '';
     }
-    if(window.innerWidth <= 1000) {
-        document.querySelector('.task-subtasks').style.marginTop = '0';
-    }
 
     if(checkedContacts.length > 0) {
-        document.querySelector('.task-subtasks').style.marginTop = '40px';
         for (let j = 0; j < checkedContacts.length; j++) {
             let checkedContact = checkedContacts[j];
             let splittedLetters = checkedContact.split(" ");
@@ -261,15 +264,11 @@ function selectPriority(priority) {
 }
 
 function removePriority() {
-    let button = document.querySelectorAll('.priority-button');
-    button.forEach(function(event) {
-        event.classList.remove('alta');
-        event.classList.remove('medium');
-        event.classList.remove('baia');
-        event.classList.remove('alta-mobile');
-        event.classList.remove('medium-mobile');
-        event.classList.remove('baia-mobile');
-    })
+    let buttons = document.querySelectorAll('.priority-button');
+    for (let i = 0; i < buttons.length; i++) {
+        let button = buttons[i];
+        button.classList.remove('alta', 'medium', 'baia', 'alta-mobile', 'medium-mobile', 'baia-mobile');
+    }
 }
 
 function changeIcons() {
