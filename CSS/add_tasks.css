@@ -153,8 +153,16 @@ label + .buttons {
 .list-item-subtasks {
     max-height: 110px;
 }
+.list-item-category {
+	border: 1px solid lightgray;
+    border-radius: 12px;
+	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+}
 .list-item {
 	z-index: 4;
+	border: 1px solid lightgray;
+    border-radius: 12px;
+	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 .list-item-subtasks {
 	background-color: transparent;
@@ -191,9 +199,6 @@ label + .buttons {
 .task-subtasks {
 	position: relative;
 }
-.task-assigned-to {
-	overflow: hidden;
-}
 .dropdown,
 .subtasks-plus {
 	display: flex;
@@ -202,7 +207,11 @@ label + .buttons {
 	position: absolute;
 	right: 12px;
     top: 56%;
-	cursor: pointer;
+    cursor: pointer;
+}
+.dropdown {
+    top: 50%;
+    transform: translateY(-50%);
 }
 .task-subtasks .image-click {
     height: 24px;

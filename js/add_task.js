@@ -177,7 +177,7 @@ function getContacts() {
 function generateContactsHtml(splittedLetters, contactName, i, contactColor) {
     return `
         <div class="item flex align-center" onclick="contactChecked(event, ${i})">
-            <div class="circle" style='background-color : ${contactColor}'>${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
+            <div class="circle" style="background-color : ${contactColor}">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
             <div class="name" data-value="${contactName.toLowerCase()}">${contactName}</div>
             <input id="checkbox_${i}" type="checkbox" class="checkbox">
         </div>
@@ -214,12 +214,13 @@ function contactChecked(event, index) {
         for (let j = 0; j < checkedContacts.length; j++) {
             let checkedContact = checkedContacts[j];
             let splittedLetters = checkedContact.split(" ");
+            let contactColor = loadedContacts[index]['color'];
             addedContacts.innerHTML += `
-                <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
+                <div class="circle" style="background-color:${contactColor}">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
             `;
             if(addedContactsMobile) {
                 addedContactsMobile.innerHTML += `
-                    <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
+                    <div class="circle" style="background-color:${contactColor}">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
                 `;
             }
         }
