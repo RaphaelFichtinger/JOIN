@@ -77,7 +77,7 @@ function renderContactsHTMLTemplate(i, backgroundColor, initials, contact){
 
   function editContactHTMLTemplate(backgroundColor, initials, contact, i){
     return `
-    <div id="edit">
+    <form id="edit" onsubmit="saveContactChanges(event, ${i})">
         <div id="editing-div-leftside">
               <div id="edit-overlay-logo">
               </div>
@@ -94,19 +94,19 @@ function renderContactsHTMLTemplate(i, backgroundColor, initials, contact){
                   </div>
                   <div id="edit-content-rightside">
                             <div id="edit-inputs">
-                            <input id="edit-input-name" type="text" value="${contact.name}">
-                            <input id="edit-input-mail"  type="email" value="${contact.email}">
-                            <input id="edit-input-number"  type="text" value="${contact.phone}">
+                            <input id="edit-input-name" type="text" value="${contact.name}" required>
+                            <input id="edit-input-mail"  type="email" value="${contact.email}" required>
+                            <input id="edit-input-number"  type="text" value="${contact.phone}" required>
                             </div>
                     <div id="save-delete-div">
                       <button onclick="deleteContact(${i})"id="delete-btn-edit">Delete</button>
-                        <div id="save-btn-div" onclick="saveContactChanges(${i})"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png">
+                        <div id="save-btn-div" type="submit"><button id="save-btn-edit">Save</button><img id="check-icon" src="../img/check.png">
                         </div>
                     </div>
                   </div>
                 </div>
           </div>
-    </div>
+    </form>
       `
   }
 
