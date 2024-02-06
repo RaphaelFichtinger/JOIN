@@ -193,7 +193,7 @@ body {
 
 .initials-circle {
     height: 32px;
-    width: 32px;
+    min-width: 32px;
     border-radius: 45px;
     background-color: blue;
     display: flex;
