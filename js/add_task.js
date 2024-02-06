@@ -188,17 +188,22 @@ function contactChecked(event, index) {
     event.stopPropagation();
     let checkbox = event.target;
     let contactName = loadedContacts[index]['name'];
+    let contactColor = loadedContacts[index]['color'];
     let addedContacts = document.getElementById('added-contacts');
     let addedContactsMobile = document.getElementById('added-contacts-mobile');
 
     if (checkbox.checked) {
         // Checkbox wurde ausgewählt
-        if (!checkedContacts.includes(contactName)) {
-            checkedContacts.push(contactName);
+        let includedName = checkedContacts.find(c => c.name == contactName)
+        if (!checkedContacts.includes(includedName)) {
+            checkedContacts.push({
+                'name': contactName,
+                'color': contactColor
+            });
         }
     } else {
         // Checkbox wurde abgewählt
-        let indexToRemove = checkedContacts.indexOf(contactName);
+        let indexToRemove = checkedContacts.findIndex(c => c.name == contactName);
         if (indexToRemove !== -1) {
             checkedContacts.splice(indexToRemove, 1);
         }
@@ -213,8 +218,9 @@ function contactChecked(event, index) {
     if(checkedContacts.length > 0) {
         for (let j = 0; j < checkedContacts.length; j++) {
             let checkedContact = checkedContacts[j];
-            let splittedLetters = checkedContact.split(" ");
-            let contactColor = loadedContacts[index]['color'];
+            let splittedLetters = checkedContact['name'].split(" ");
+            let contactColor = checkedContact['color'];
+
             addedContacts.innerHTML += `
                 <div class="circle" style="background-color:${contactColor}">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
             `;
@@ -226,6 +232,7 @@ function contactChecked(event, index) {
         }
     }
 }
+
 
 function getCategories() {
     for (let i = 0; i < categories.length; i++) {
