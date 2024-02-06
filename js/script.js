@@ -34,10 +34,18 @@ async function signUp() {
 			showSuccessButton();
 			window.location.href = './index.html';
 		} else {
-			alert('Bitte bestätige unsere Privacy Policy');
+			let privacyUnchecked = document.getElementById('error-privacy');
+			privacyUnchecked.innerHTML = 'Bitte bestätige unsere Privacy Policy';
+			setTimeout(() => {
+				privacyUnchecked.innerHTML = '';
+			}, 2000)
 		}
 	} else {
-		alert('Das Passwort stimmt nicht überein');
+		let passwordIncorrect = document.getElementById('error-password');
+		passwordIncorrect.innerHTML = 'Das Passwort stimmt nicht überein';
+		setTimeout(() => {
+			passwordIncorrect.innerHTML = '';
+		}, 2000)
 	}
 }
 

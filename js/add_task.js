@@ -33,7 +33,6 @@ if(title) {
     title.addEventListener('input', function() {
         if(this.value !== '') {
             titleLock = false;
-            console.log(titleLock);
         }
         if(!titleLock && !dateLock && !categoryLock) {
             enableAddTaskButton();
@@ -45,7 +44,6 @@ if(dateDue) {
     dateDue.addEventListener('input', function() {
         if(this.value !== '') {
             dateLock = false;
-            console.log(dateLock);
         }
         if(!titleLock && !dateLock && !categoryLock) {
             enableAddTaskButton();
@@ -168,9 +166,8 @@ function getContacts() {
         let contactName = loadedContacts[i]['name'];
         let splittedLetters = contactName.split(" ");
         let contactColor = loadedContacts[i]['color'];
-        console.log(contactColor);
         document.getElementById('list-item').innerHTML += generateContactsHtml(splittedLetters, contactName, i, contactColor);
-      
+
         if(document.getElementById('list-item-mobile')) {
             document.getElementById('list-item-mobile').innerHTML += generateContactsHtml(splittedLetters, contactName, i, contactColor);
         }
@@ -248,7 +245,6 @@ function addCategory(i) {
     overlayList.classList.remove('active');
 
     categoryLock = false;
-    console.log(categoryLock);
 
     if(!titleLock && !dateLock && !categoryLock) {
         enableAddTaskButton();
@@ -348,6 +344,5 @@ async function saveEditSubtask(event) {
 
 function getTimestampId() {
     let timestamp = new Date().getTime();
-    console.log(timestamp);
     return timestamp;
 }
