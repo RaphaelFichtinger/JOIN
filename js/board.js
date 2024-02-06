@@ -237,13 +237,16 @@ function generateAssignTo(id) {
     let fullNames = task['assign-to'];
     let generateHtml = '';
     let initials;
+    let contactsArray = loadedContacts;
 
     for (let j = 0; j < fullNames.length; j++) {
         let fullName = fullNames[j];
+        let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
+        let matchingColor = contactsArray[contactIndex].color;
         initials = fullName.split(" ");
         generateHtml += `
         <div id="overview-contact">
-            <p id="overview-initials">${initials[0] ? initials[0].charAt(0) : ''}${initials[1] ? initials[1].charAt(0) : ''}</p>
+            <p id="overview-initials style='background-color : ${matchingColor}' ">${initials[0] ? initials[0].charAt(0) : ''}${initials[1] ? initials[1].charAt(0) : ''}</p>
             <p id="overview-fullname">${fullName}</p>
         </div>
         `;
