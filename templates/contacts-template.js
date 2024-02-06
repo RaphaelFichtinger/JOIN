@@ -94,6 +94,7 @@ function renderContactsHTMLTemplate(i, backgroundColor, initials, contact){
                   </div>
                   <div id="edit-content-rightside">
                             <div id="edit-inputs">
+                            <div id="empty-fields-message"></div>
                             <input id="edit-input-name" type="text" value="${contact.name}">
                             <input id="edit-input-mail"  type="email" value="${contact.email}">
                             <input id="edit-input-number"  type="text" value="${contact.phone}">
@@ -127,6 +128,7 @@ function renderContactsHTMLTemplate(i, backgroundColor, initials, contact){
                     </div>
                     <div id="edit-content-bottom-mobile">
                       <div id="edit-inputs-mobile">
+                      <div id="empty-fields-message"></div>
                       <input id="edit-contact-input-name-mobile" placeholder="Name" type="text" value="${contact.name}">
                       <input id="edit-contact-input-mail-mobile" placeholder="Email" type="email" value="${contact.email}" >
                       <input id="edit-contact-input-number-mobile" placeholder="Phone" type="text" value="${contact.phone}" >
@@ -159,6 +161,7 @@ function renderContactsHTMLTemplate(i, backgroundColor, initials, contact){
                   <div id="edit-cyrcle-new-contact">
                   </div>
                   <div id="edit-content-rightside">
+                  <div id="empty-fields-message"></div>
                     <div id="edit-inputs">
                     <input id="new-contact-input-name" placeholder="Name" type="text">
                     <input id="new-contact-input-mail" placeholder="Email" type="email" >
@@ -191,6 +194,7 @@ function renderContactsHTMLTemplate(i, backgroundColor, initials, contact){
                         </div>
                         <div id="edit-content-bottom-mobile">
                           <div id="edit-inputs-mobile">
+                          <div id="empty-fields-message"></div>
                           <input id="new-contact-input-name-mobile" placeholder="Name" type="text">
                           <input id="new-contact-input-mail-mobile" placeholder="Email" type="email" >
                           <input id="new-contact-input-number-mobile" placeholder="Phone" type="text" >

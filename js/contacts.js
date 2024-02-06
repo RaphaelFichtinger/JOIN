@@ -124,7 +124,8 @@ function saveContactChanges(i) {
       closeEdit();
       popupWindow();
   } else {
-      alert('Bitte fülle alle Felder aus, um die Änderungen zu speichern.');
+    let error = document.getElementById('empty-fields-message');
+      error.innerHTML = 'Bitte fülle alle Felder aus, um die Änderungen zu speichern.';
   }
 }
 
@@ -149,10 +150,12 @@ function saveContactChangesMobile(i) {
       showContactDetailsMobile(i);
       closeEditMobile();
       popupWindow();
-  } else {
-      alert('Bitte fülle alle Felder aus, um die Änderungen zu speichern.');
+    } else {
+      let error = document.getElementById('empty-fields-message');
+        error.innerHTML = 'Bitte fülle alle Felder aus, um die Änderungen zu speichern.';
+    }
   }
-}
+  
 
 function closeEdit(){
   let editoverlay = document.getElementById('editing-overlay');
@@ -201,9 +204,11 @@ function saveNewContact(){
   closeEdit();
   popupWindow();
 } else {
-  alert('Bitte fülle alle Felder aus, um einen Kontakt zu erstellen.');
+  let error = document.getElementById('empty-fields-message');
+    error.innerHTML = 'Bitte fülle alle Felder aus, um einen Kontakt zu erstellen.';
 }
 }
+
 
 function saveNewContactMobile() {
   if (validateNewMobileContactInput()) {
@@ -222,11 +227,11 @@ function saveNewContactMobile() {
       renderContactsMobile();
       closeEdit();
       popupWindow();
-  } else {
-      alert('Bitte fülle alle Felder aus, um einen Kontakt zu erstellen.');
-  }
-}
-
+    } else {
+      let error = document.getElementById('empty-fields-message');
+        error.innerHTML = 'Bitte fülle alle Felder aus, um einen Kontakt zu erstellen.';
+    }
+    }
 
 function deleteContact(i) {
   let overlay = document.getElementById('contact-overlay');

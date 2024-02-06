@@ -207,6 +207,12 @@ align-items: center;
     filter: brightness(0);
 }
 
+#empty-fields-message{
+    height: 20px;
+    color: red;
+    margin-bottom: 8px;
+}
+
 #close-edit:hover{
     cursor: pointer;
 }
