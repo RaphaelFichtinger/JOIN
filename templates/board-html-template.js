@@ -1,8 +1,11 @@
 function returnTask(status) {
 	return `
 	<div id="add-task" class="add_task flex-column">
-		<h1>Add Task</h1>
-		<form onsubmit="createNewTask('to-do'); return false;">
+        <div class="flex align-center">
+            <h1>Add Task</h1>
+            <img onclick="closeAddTaskPopup()" class="close" src="./img/close.png">
+        </div>
+		<form onsubmit="createNewTask('${status}'); return false;">
 			<div class="form-container flex">
 				<div class="leftside flex-column">
 					<div class="task-input task-title">

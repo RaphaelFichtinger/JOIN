@@ -21,6 +21,9 @@ body {
 /* main board */
 .main-board {
     /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 96px;
     margin-left: 232px;
 }
@@ -34,6 +37,7 @@ body {
     padding-top: 110px;
     margin-left: 64px;
     margin-right: 88px;
+    width: calc(100% - 152px);
 }
 .input-board-top {
     width: 312px;
@@ -46,7 +50,7 @@ body {
     background-repeat: no-repeat;
     background-color: white;
     background-position: 272px, 292px;
-    padding: 2px 9px;
+    padding: 0 9px;
 
 }
 .input-board-top::placeholder {
@@ -212,12 +216,12 @@ body {
 .add-task-popup {
     background-color: white;
     z-index: 999;
-    height: 750;
     display: flex;
     position: absolute;
-    margin-left: 5vw;
-    top: 152px;
+    top: 120px;
     border-radius: 24px;
+    /* overflow: scroll;
+    max-height: 75vh; */
 }
 
 .buttons-container-end {
