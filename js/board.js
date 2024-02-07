@@ -250,15 +250,27 @@ function generateAssignTo(id) {
     for (let j = 0; j < fullNames.length; j++) {
         let fullName = fullNames[j]['name'];
         let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
-        console.log(contactsArray[contactIndex].name);
-        console.log(contactsArray[contactIndex].email);
-        console.log(contactsArray[contactIndex].color);
+        initials = fullName.split(" ");
+        console.log(contactsArray[j].name);
+        console.log(contactsArray[j].email);
+        console.log(contactsArray[j].color);
         if (contactsArray[contactIndex].color) {
             let matchingColor = contactsArray[contactIndex].color;
             console.log(contactIndex);
+            generateHtml += `
+            <div id="overview-contact">
+                <p class="overview-in" style= 'border-radius : 50%;   height: 42px; display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                width: 42px; background-color : ${matchingColor}' ">${initials[0] ? initials[0].charAt(0) : ''}${initials[1] ? initials[1].charAt(0) : ''}</p>
+                <p id="overview-fullname">${fullName}</p>
+            </div>
+            `;
         } else {
             let matchingColor = 'black'
-            initials = fullName.split(" ");
+        
+            
             generateHtml += `
         <div id="overview-contact">
             <p class="overview-in" style= 'border-radius : 50%;   height: 42px; display: flex;
