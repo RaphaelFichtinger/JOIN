@@ -51,7 +51,7 @@ function generateTodoHTML(element, index) {
     let initials = '';
 
     for (let f = 0; f < fullNames.length; f++) {
-        let fullName = fullNames[f];
+        let fullName = fullNames[f]['name'];
         let nameInitials = getInitials(fullName);
         let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
         let matchingColor = contactsArray[contactIndex].color;
