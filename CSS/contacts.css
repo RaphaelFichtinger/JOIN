@@ -5,9 +5,10 @@ body {
 }
 
 .contact-card-container.active {
-  background-color: #afafaf; 
+  background-color: rgba(42, 54, 71, 1); 
   border-radius: 10px;
   margin-left: 2px;
+  color: white;
 }
 
 #popup-window-overlay{
@@ -361,11 +362,15 @@ align-items: center;
     position: fixed;
     top: 120px;
 }
-
-#container-left{
-    height: 100vh;
+#container-left {
+    max-height: calc(100vh - 80px);
     width: 456px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    background-color: white;
+    overflow-x: scroll;
 }
+
 
 #container-right{
     height: 100%;
@@ -620,15 +625,15 @@ align-items: center;
     gap: 15px;
 }
 
-#contactlist{
+#contactlist {
     align-items: start;
-    overflow-y:scroll;  
+    overflow-y: scroll;
     position: fixed;
-    height: 920px;
-    width: 408px;
+    max-height: calc(100vh - 80px);
     padding-top: 32px;
     padding-bottom: 32px;
     background-color: white;
+    overflow-x: scroll;
 }
 
 #contactlist-mobile{
@@ -650,12 +655,12 @@ align-items: center;
     padding-bottom: 15px;
     margin-top: 8px;
     padding-left: 24px;
+    max-width: 200px;
 }
 
 #contactcard-container:hover{
     border-radius: 8px;
     cursor: pointer;
-    color: rgb(0, 0, 0);
 }
 
 
