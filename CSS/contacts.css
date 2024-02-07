@@ -627,13 +627,14 @@ align-items: center;
 
 #contactlist {
     align-items: start;
-    overflow-y: scroll;
     position: fixed;
     max-height: calc(100vh - 80px);
     padding-top: 32px;
     padding-bottom: 32px;
     background-color: white;
     overflow-x: scroll;
+    width: 348px;
+    padding-right: 18px;
 }
 
 #contactlist-mobile{
@@ -655,7 +656,6 @@ align-items: center;
     padding-bottom: 15px;
     margin-top: 8px;
     padding-left: 24px;
-    max-width: 200px;
 }
 
 #contactcard-container:hover{
@@ -1299,7 +1299,6 @@ margin-top: 80px;
         margin-top: 8px;
     }
     #popup-window-overlay{
-    position: fixed;
     background-color: #ffffff;
     z-index: 3333;
     animation-name: fadeAndSlideIn;
