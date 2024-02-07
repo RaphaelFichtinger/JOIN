@@ -43,7 +43,7 @@ function generateTodoHTML(element, index) {
     let finishedSubtasks = element['finishedSubtasks'];
     let contactsArray = loadedContacts;
     let additionalContactsDiv = document.getElementById('additionalContacts');
-    let plusContacts = Math.max(0, fullNames.length - 3); // Berechne die Anzahl der zusätzlichen Kontakte
+    let plusContacts = Math.max(0, fullNames.length - 3); 
     let progress = 0;
 
     if (finishedSubtasks && finishedSubtasks.length > 0) {
