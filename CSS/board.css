@@ -1,8 +1,11 @@
 body {
     height: calc(100vh - 96px);
 }
-button {
-    cursor: pointer;
+
+/* popup add task */
+.main-board #add-task-popup .add_task {
+    width: 100%;
+    padding: 64px 0 0;
 }
 
 .drag-area {
@@ -18,9 +21,6 @@ button {
 /* main board */
 .main-board {
     /* height: 100%; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     margin-top: 96px;
     margin-left: 232px;
 }
@@ -34,7 +34,6 @@ button {
     padding-top: 110px;
     margin-left: 64px;
     margin-right: 88px;
-    width: calc(100% - 152px);
 }
 .input-board-top {
     width: 312px;
@@ -47,7 +46,7 @@ button {
     background-repeat: no-repeat;
     background-color: white;
     background-position: 272px, 292px;
-    padding: 0 9px;
+    padding: 2px 9px;
 
 }
 .input-board-top::placeholder {
@@ -108,7 +107,6 @@ button {
 .board-column-title img {
     height: 24px;
     width: 24px;
-    cursor: pointer;
 }
 
 .task-card {
@@ -118,10 +116,6 @@ button {
     border-radius: 24px;
     padding: 16px;
     box-sizing: border-box;
-    cursor: pointer;
-}
-.task-card:hover {
-    box-shadow: 0px 0px 4px 0px #00000029;
 }
 
 .task-type {
@@ -199,7 +193,7 @@ button {
 
 .initials-circle {
     height: 32px;
-    min-width: 32px;
+    width: 32px;
     border-radius: 45px;
     background-color: blue;
     display: flex;
@@ -215,22 +209,15 @@ button {
     margin-top: 12px;
 }
 
-/* popup add task */
-.main-board #add-task-popup .add_task {
-    width: 100%;
-    padding: 64px 0 0;
-    overflow: scroll;
-    max-height: calc(100vh - 184px);
-}
-
 .add-task-popup {
     background-color: white;
-    z-index: 9;
+    z-index: 999;
+    height: 750;
     display: flex;
-    position: fixed;
-    top: 120px;
+    position: absolute;
+    margin-left: 5vw;
+    top: 152px;
     border-radius: 24px;
-    max-height: calc(100vh - 120px);
 }
 
 .buttons-container-end {
@@ -266,7 +253,7 @@ button {
 .task-big-view-overlay {
     width: calc(100% - 232px);
     justify-content: center;
-    position: fixed;
+    position: absolute;
     display: none;
     z-index: 3;
     top: 80px;
@@ -515,12 +502,6 @@ button {
     }
 }
 
-@media screen and (max-width: 1200px) {
-    .add-task-popup {
-        margin: 0 5%;
-    }
-}
-
 @media screen and (max-width: 1150px) {
     .board-top {
         flex-direction: column;
@@ -562,7 +543,6 @@ button {
     }
     .add-task-popup {
         display: block;
-        height: calc(100vh - 280px);
         width: calc(100% - 80px);
         margin-left: 40px;
         margin-right: 40px;
