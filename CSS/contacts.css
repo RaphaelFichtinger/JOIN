@@ -363,12 +363,9 @@ align-items: center;
     top: 120px;
 }
 #container-left {
-    max-height: calc(100vh - 80px);
+    height: calc(100vh - 480px);
     width: 456px;
-    padding-top: 32px;
-    padding-bottom: 32px;
     background-color: white;
-    overflow-x: scroll;
 }
 
 
@@ -628,22 +625,20 @@ align-items: center;
 #contactlist {
     align-items: start;
     position: fixed;
-    max-height: calc(100vh - 80px);
+   height: calc(100vh - 290px);
     padding-top: 32px;
     padding-bottom: 32px;
     background-color: white;
     overflow-x: scroll;
-    width: 348px;
     padding-right: 18px;
 }
 
 #contactlist-mobile{
-    width: 0px;
-    height: 0px;
     position: fixed;
     left: 0px;
-    top: 80px;
     display: none;
+    min-height: calc(100vh - 280px);
+    bottom: 100px;
 }
 
 #contactcard-container{
@@ -816,7 +811,7 @@ margin-top: 80px;
 
 @media (max-width: 1400px){
     #container-left{
-        height: 100vh;
+        height: calc(100vh - 280px);
         width: 300px;
     }
     #close-edit{
