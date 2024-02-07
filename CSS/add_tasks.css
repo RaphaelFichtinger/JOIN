@@ -337,7 +337,7 @@ label + .buttons {
 	}
 	.form-container {
 		flex-direction: column;
-		margin-bottom: 120px
+		margin-bottom: 170px
 	}
 	.leftside, .rightside {
 		width: 100%;

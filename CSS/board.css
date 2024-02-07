@@ -1,11 +1,8 @@
 body {
     height: calc(100vh - 96px);
 }
-
-/* popup add task */
-.main-board #add-task-popup .add_task {
-    width: 100%;
-    padding: 64px 0 0;
+button {
+    cursor: pointer;
 }
 
 .drag-area {
@@ -111,6 +108,7 @@ body {
 .board-column-title img {
     height: 24px;
     width: 24px;
+    cursor: pointer;
 }
 
 .task-card {
@@ -120,6 +118,10 @@ body {
     border-radius: 24px;
     padding: 16px;
     box-sizing: border-box;
+    cursor: pointer;
+}
+.task-card:hover {
+    box-shadow: 0px 0px 4px 0px #00000029;
 }
 
 .task-type {
@@ -213,15 +215,22 @@ body {
     margin-top: 12px;
 }
 
+/* popup add task */
+.main-board #add-task-popup .add_task {
+    width: 100%;
+    padding: 64px 0 0;
+    overflow: scroll;
+    max-height: calc(100vh - 184px);
+}
+
 .add-task-popup {
     background-color: white;
-    z-index: 999;
+    z-index: 9;
     display: flex;
-    position: absolute;
+    position: fixed;
     top: 120px;
     border-radius: 24px;
-    /* overflow: scroll;
-    max-height: 75vh; */
+    max-height: calc(100vh - 120px);
 }
 
 .buttons-container-end {
@@ -506,6 +515,12 @@ body {
     }
 }
 
+@media screen and (max-width: 1200px) {
+    .add-task-popup {
+        margin: 0 5%;
+    }
+}
+
 @media screen and (max-width: 1150px) {
     .board-top {
         flex-direction: column;
@@ -547,6 +562,7 @@ body {
     }
     .add-task-popup {
         display: block;
+        height: calc(100vh - 280px);
         width: calc(100% - 80px);
         margin-left: 40px;
         margin-right: 40px;
