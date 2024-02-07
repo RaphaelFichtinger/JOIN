@@ -219,18 +219,11 @@ body {
     z-index: 999;
     height: 750;
     display: flex;
-<<<<<<< HEAD
     position: fixed;
     top: 120px;
     border-radius: 24px;
     overflow: scroll;
     max-height: 75vh;
-=======
-    position: absolute;
-    margin-left: 5vw;
-    top: 152px;
-    border-radius: 24px;
->>>>>>> 69ac1150e3e5a723890ef0baedcd5003a98537ab
 }
 
 .buttons-container-end {
