@@ -253,7 +253,7 @@ body {
 .task-big-view-overlay {
     width: calc(100% - 232px);
     justify-content: center;
-    position: absolute;
+    position: fixed;
     display: none;
     z-index: 3;
     top: 80px;

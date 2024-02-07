@@ -197,6 +197,7 @@ function closeEditCard() {
 
 function getInitials(name) {
     if (name) {
+        console.log(name);
         let names = name.split(' ');
 
         if (names.length > 1) {
@@ -225,7 +226,6 @@ function createOverview(id) {
     let date = task['date'];
     let category = task['category'];
     let description = task['description'];
-    let subArrayLength = task['subtasks'].length;
     let priority = task['priority'];
     let overviewCard = document.getElementById('task-big-view-card');
     generateAssignTo(task.id);
