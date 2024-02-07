@@ -1,16 +1,13 @@
 function returnTask(status) {
 	return `
 	<div id="add-task" class="add_task flex-column">
-        <div class="flex align-center">
-            <h1>Add Task</h1>
-            <img onclick="closeAddTaskPopup()" class="close" src="./img/close.png">
-        </div>
-		<form onsubmit="createNewTask(${status}); return false">
+		<h1>Add Task</h1>
+		<form onsubmit="createNewTask('to-do'); return false;">
 			<div class="form-container flex">
 				<div class="leftside flex-column">
 					<div class="task-input task-title">
 						<label for="title">Title<span class="required-fields">*</span></label>
-						<input id="title" type="text" placeholder="Enter a title" required>
+						<input id="title" type="text" placeholder="Enter a Title" required>
 					</div>
 					<div class="task-input task-description">
 						<label for="description">Description</label>
@@ -26,12 +23,14 @@ function returnTask(status) {
 					</div>
 					<div class="task-input task-assigned-to">
 						<label for="assign-to">Assign to</label>
-						<input onclick="openOverlay(event, 'contacts-list')" id="assign-to" type="text" placeholder="Select contacts to assign" readonly>
-						<img onclick="openOverlay(event, 'contacts-list')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown" tabindex="0">
+						<div class="position-relative m-t-8">
+							<input onclick="openOverlay(event, 'contacts-list')" id="assign-to" type="text" placeholder="Select contacts to assign" readonly>
+							<img onclick="openOverlay(event, 'contacts-list')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown" tabindex="0">
+						</div>
 						<div id="contacts-list" class="contacts-list">
 							<div id="list-item" class="list-item"></div>
 						</div>
-						<div id="added-contacts" class="flex"></div>
+						<div id="added-contacts" class="flex flex-wrap"></div>
 					</div>
 				</div>
 				<div class="rightside flex-column">
@@ -49,16 +48,20 @@ function returnTask(status) {
 					</div>
 					<div id="task-category" class="task-input task-category">
 						<label for="category">Category<span class="required-fields">*</span></label>
-						<input onclick="openOverlay(event, 'categories-list')" id="category" type="text" placeholder="Select task category" required readonly>
-						<img onclick="openOverlay(event, 'categories-list')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown">
+						<div class="position-relative m-t-8">
+							<input onclick="openOverlay(event, 'categories-list')" id="category" type="text" placeholder="Select task category" required readonly>
+							<img onclick="openOverlay(event, 'categories-list')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown">
+						</div>
 						<div id="categories-list" class="categories-list">
 							<div id="list-item-category" class="list-item-category"></div>
 						</div>
 					</div>
 					<div class="task-input task-assigned-to">
 						<label for="assign-to-mobile">Assign to</label>
-						<input onclick="openOverlay(event, 'contacts-list-mobile')" id="assign-to-mobile" type="text" placeholder="Select contacts to assign" readonly>
-						<img onclick="openOverlay(event, 'contacts-list-mobile')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown" tabindex="0">
+						<div class="position-relative m-t-8">
+							<input onclick="openOverlay(event, 'contacts-list-mobile')" id="assign-to-mobile" type="text" placeholder="Select contacts to assign" readonly>
+							<img onclick="openOverlay(event, 'contacts-list-mobile')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown" tabindex="0">
+						</div>
 						<div id="contacts-list-mobile" class="contacts-list">
 							<div id="list-item-mobile" class="list-item"></div>
 						</div>
@@ -83,8 +86,8 @@ function returnTask(status) {
 					<p>This fields are required<span class="required-fields">*</span></p>
 				</div>
 				<div class="flex buttons">
-					<button class="button1" onclick="clearFields()" formnovalidate>Clear</button>
-					<button id="button-create-task" class="button2" disabled>Create task</button>
+					<button type="button" class="button1" onclick="clearFields()" formnovalidate>Clear</button>
+					<button type="submit" id="button-create-task" class="button2" disabled>Create task</button>
 				</div>
 			</div>
 		</form>

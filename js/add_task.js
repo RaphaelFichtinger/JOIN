@@ -61,6 +61,7 @@ async function createNewTask(status) {
     let description = document.getElementById('description');
     let dateDue = document.getElementById('due-date');
     let categoryValue = document.getElementById('category');
+    let buttonCreateTask = document.getElementById('button-create-task');
 
     tasks.push({
         'id': timestamp,
