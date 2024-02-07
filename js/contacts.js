@@ -1,6 +1,6 @@
 async function loadContacts(){
   try {
-      loadedContacts = JSON.parse(await getItem('contacts')) || [];
+      loadedContacts = JSON.parse(await getItem('loadedContacts')) || [];
   } catch(e){
       console.error('Loading error:', e);
   }
@@ -144,7 +144,7 @@ function saveContactChangesMobile(i) {
       overlay.innerHTML = '';
       loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
       setItem('loadedContacts', JSON.stringify(loadedContacts));
-      setItem('contacts', JSON.stringify(loadedContacts));
+      setItem('loadedContacts', JSON.stringify(loadedContacts));
       renderContacts();
       renderContactsMobile();
       showContactDetailsMobile(i);
@@ -188,17 +188,19 @@ function setNewContactMobile(i) {
 }
 
 function saveNewContact(){
+  let randomColor = getRandomColor();
   if (validateNewContactInput()) {
   let newContact = {
     'name': document.getElementById('new-contact-input-name').value,
     'email': document.getElementById('new-contact-input-mail').value,
-    'phone': document.getElementById('new-contact-input-number').value
+    'phone': document.getElementById('new-contact-input-number').value,
+    'color': randomColor
   };
   loadedContacts.push(newContact);
   loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
     
   setItem('loadedContacts', JSON.stringify(loadedContacts));
-  setItem('contacts', JSON.stringify(loadedContacts));
+  setItem('loadedContacts', JSON.stringify(loadedContacts));
   renderContacts();
   renderContactsMobile();
   closeEdit();
