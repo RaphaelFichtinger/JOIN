@@ -42,8 +42,8 @@ function generateTodoHTML(element, index) {
     let subtasks = element['subtasks'];
     let finishedSubtasks = element['finishedSubtasks'];
     let contactsArray = loadedContacts;
-    let additionalContacts = document.getElementById('additionalContacts');
-    let plusContacts = fullNames.length - 3;
+    let additionalContactsDiv = document.getElementById('additionalContacts');
+    let plusContacts = Math.max(0, fullNames.length - 3); // Berechne die Anzahl der zusätzlichen Kontakte
     let progress = 0;
 
     if (finishedSubtasks && finishedSubtasks.length > 0) {
@@ -58,10 +58,13 @@ function generateTodoHTML(element, index) {
         let matchingColor = contactsArray[contactIndex].color;
         console.log(matchingColor, fullName);
         initials += `<p id="initials-circle-${f}" class="initials-circle" style='background-color : ${matchingColor}'>${nameInitials}</p>`;
+
     }
 
-    if (fullNames.length > 3) {
-        additionalContacts.innerHTML = `<p>+${plusContacts} </p>`;
+
+    let additionalContacts = '';
+    if (plusContacts > 0) {
+        additionalContacts = `<p>+${plusContacts}</p>`;
     }
 
 
@@ -85,7 +88,8 @@ function generateTodoHTML(element, index) {
             <div id="initials">
                 ${initials}
             </div>
-            <div id="additionalContacts"></div>
+            <div id="additionalContacts">
+            ${additionalContacts}</div>
             <div>
                 <img id="priority-image-small${index}" src="">
             </div>
@@ -131,25 +135,25 @@ function openAddTaskPopup(status) {
     let title = document.getElementById('title');
     let dateDue = document.getElementById('due-date');
 
-    if(title) {
-        title.addEventListener('input', function() {
-            if(this.value !== '') {
+    if (title) {
+        title.addEventListener('input', function () {
+            if (this.value !== '') {
                 titleLock = false;
                 console.log(titleLock);
             }
-            if(!titleLock && !dateLock && !categoryLock) {
+            if (!titleLock && !dateLock && !categoryLock) {
                 enableAddTaskButton();
             }
         })
     }
 
-    if(dateDue) {
-        dateDue.addEventListener('input', function() {
-            if(this.value !== '') {
+    if (dateDue) {
+        dateDue.addEventListener('input', function () {
+            if (this.value !== '') {
                 dateLock = false;
                 console.log(dateLock);
             }
-            if(!titleLock && !dateLock && !categoryLock) {
+            if (!titleLock && !dateLock && !categoryLock) {
                 enableAddTaskButton();
             }
         })
@@ -191,11 +195,11 @@ function editTaskOverview(id) {
 }
 
 function closeEditCard() {
-    
+
     let overviewEdit = document.getElementById('task-big-view-edit-card');
     let overview = document.getElementById('overview-container');
     overview.style.display = 'none';
-    
+
 }
 
 
@@ -250,13 +254,13 @@ function generateAssignTo(id) {
         console.log(contactsArray[contactIndex].name);
         console.log(contactsArray[contactIndex].email);
         console.log(contactsArray[contactIndex].color);
-        if(contactsArray[contactIndex].color){
-        let matchingColor = contactsArray[contactIndex].color;
-        console.log(contactIndex);
+        if (contactsArray[contactIndex].color) {
+            let matchingColor = contactsArray[contactIndex].color;
+            console.log(contactIndex);
         } else {
             let matchingColor = 'black'
-        initials = fullName.split(" ");
-        generateHtml += `
+            initials = fullName.split(" ");
+            generateHtml += `
         <div id="overview-contact">
             <p class="overview-in" style= 'border-radius : 50%;   height: 42px; display: flex;
             justify-content: center;
@@ -266,8 +270,8 @@ function generateAssignTo(id) {
             <p id="overview-fullname">${fullName}</p>
         </div>
         `;
+        }
     }
-}
     return generateHtml;
 }
 
@@ -297,7 +301,7 @@ async function finishedSubtask(id, j) {
     let checkbox = document.getElementById(`subtask-checkbox-${j}`)
     if (checkbox.checked) {
         finishedSubtasksArray.push(subtask)
-    } else if(!checkbox.checked) {
+    } else if (!checkbox.checked) {
         let index = finishedSubtasksArray.indexOf(subtask);
         if (index !== -1) {
             finishedSubtasksArray.splice(index, 1);
@@ -327,7 +331,7 @@ function generateEditCard(task) {
     let subtasks = task['subtasks'];
     let assignToArray = task['assign-to'];
     let editCard = document.getElementById('task-big-view-edit-card');
-    editCard.innerHTML =generateEditTaskHTMLTemplate(task);
+    editCard.innerHTML = generateEditTaskHTMLTemplate(task);
     let titleInput = document.getElementById('overview-edit-title-input');
     let descriptionArea = document.getElementById('description-overview-edit');
     let dueDateInput = document.getElementById('due-date-edit');
@@ -356,7 +360,7 @@ function generateEditCard(task) {
     getContacts();
 
     for (let j = 0; j < assignToArray.length; j++) {
-        if(assignToArray.length > 0) {
+        if (assignToArray.length > 0) {
             document.querySelector('.task-subtasks').style.marginTop = '40px';
         }
         let assignTo = assignToArray[j];
