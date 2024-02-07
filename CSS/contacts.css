@@ -5,9 +5,10 @@ body {
 }
 
 .contact-card-container.active {
-  background-color: #afafaf; 
+  background-color: rgba(42, 54, 71, 1); 
   border-radius: 10px;
   margin-left: 2px;
+  color: white;
 }
 
 #popup-window-overlay{
@@ -361,11 +362,12 @@ align-items: center;
     position: fixed;
     top: 120px;
 }
-
-#container-left{
-    height: 100vh;
+#container-left {
+    height: calc(100vh - 480px);
     width: 456px;
+    background-color: white;
 }
+
 
 #container-right{
     height: 100%;
@@ -620,24 +622,23 @@ align-items: center;
     gap: 15px;
 }
 
-#contactlist{
+#contactlist {
     align-items: start;
-    overflow-y:scroll;  
     position: fixed;
-    height: 920px;
-    width: 408px;
+   height: calc(100vh - 290px);
     padding-top: 32px;
     padding-bottom: 32px;
     background-color: white;
+    overflow-x: scroll;
+    padding-right: 18px;
 }
 
 #contactlist-mobile{
-    width: 0px;
-    height: 0px;
     position: fixed;
     left: 0px;
-    top: 80px;
     display: none;
+    min-height: calc(100vh - 280px);
+    bottom: 100px;
 }
 
 #contactcard-container{
@@ -655,7 +656,6 @@ align-items: center;
 #contactcard-container:hover{
     border-radius: 8px;
     cursor: pointer;
-    color: rgb(0, 0, 0);
 }
 
 
@@ -811,7 +811,7 @@ margin-top: 80px;
 
 @media (max-width: 1400px){
     #container-left{
-        height: 100vh;
+        height: calc(100vh - 280px);
         width: 300px;
     }
     #close-edit{
@@ -1294,7 +1294,6 @@ margin-top: 80px;
         margin-top: 8px;
     }
     #popup-window-overlay{
-    position: fixed;
     background-color: #ffffff;
     z-index: 3333;
     animation-name: fadeAndSlideIn;
