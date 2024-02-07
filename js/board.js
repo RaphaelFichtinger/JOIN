@@ -42,7 +42,8 @@ function generateTodoHTML(element, index) {
     let subtasks = element['subtasks'];
     let finishedSubtasks = element['finishedSubtasks'];
     let contactsArray = loadedContacts;
-    let additionalContacs = document.getElementById('additionalContacts');
+    let additionalContacts = document.getElementById('additionalContacts');
+    let plusContacts = fullNames.length - 3;
     let progress = 0;
 
     if (finishedSubtasks && finishedSubtasks.length > 0) {
@@ -50,13 +51,17 @@ function generateTodoHTML(element, index) {
     }
     let initials = '';
 
-    for (let f = 0; f < fullNames.length; f++) {
+    for (let f = 0; f < Math.min(3, fullNames.length); f++) {
         let fullName = fullNames[f]['name'];
         let nameInitials = getInitials(fullName);
         let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
         let matchingColor = contactsArray[contactIndex].color;
         console.log(matchingColor, fullName);
         initials += `<p id="initials-circle-${f}" class="initials-circle" style='background-color : ${matchingColor}'>${nameInitials}</p>`;
+    }
+
+    if (fullNames.length > 3) {
+        additionalContacts.innerHTML = `<p>+${plusContacts} </p>`;
     }
 
 
@@ -80,7 +85,7 @@ function generateTodoHTML(element, index) {
             <div id="initials">
                 ${initials}
             </div>
-            <div id="additionalContacs"></div>
+            <div id="additionalContacts"></div>
             <div>
                 <img id="priority-image-small${index}" src="">
             </div>
@@ -242,13 +247,14 @@ function generateAssignTo(id) {
     for (let j = 0; j < fullNames.length; j++) {
         let fullName = fullNames[j]['name'];
         let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
-        console.log(contactsArray[j].name);
-        console.log(contactsArray[j].email);
-        console.log(contactsArray[j].color);
-        if(contactsArray[j].color){
+        console.log(contactsArray[contactIndex].name);
+        console.log(contactsArray[contactIndex].email);
+        console.log(contactsArray[contactIndex].color);
+        if(contactsArray[contactIndex].color){
         let matchingColor = contactsArray[contactIndex].color;
-        } else{
-            let matchingColor = 'black';
+        console.log(contactIndex);
+        } else {
+            let matchingColor = 'black'
         initials = fullName.split(" ");
         generateHtml += `
         <div id="overview-contact">
