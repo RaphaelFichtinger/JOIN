@@ -33,10 +33,10 @@ body {
 
 #editing-overlay{
     width: 100vw;
-    height: 100vh;
-    position: absolute;
+    height: 80vh;
     z-index: 1;
     border-radius: 20px;
+    overflow: scroll;
 }
 
 #editing-overlay-mobile{
@@ -44,7 +44,6 @@ body {
     position: absolute;
     top: 0px;
     left: 0px;
-    height: 100vh;
     width: 100vw;
     overflow: hidden;
     z-index: 3;
@@ -122,11 +121,10 @@ body {
 
 #edit-overlay-logo{
     background-image: url(/img/sidebar_logo.png);
-    height: 200px;
+    height: 184px;
     background-repeat: no-repeat;
     background-position: left;
     margin-left: 46px;
-    margin-top: 50px;
 }
 
 #edit-overlay-heading{
@@ -152,6 +150,7 @@ align-items: center;
 #static-heading-add{
     font-size: 61px ;
     margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 #static-heading-add-mobile{
@@ -675,10 +674,11 @@ align-items: center;
 #contact-btn-div{
     height: 100px;
     top: 200px;
+  margin-left: 34px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 456px;
+    width: 334px;
 }
 
 #contact-btn{
@@ -824,7 +824,7 @@ margin-top: 80px;
     }
     #edit{
         left: 25vw;
-        top: 1vh;
+        top: 94px;
     }
     #edit{
         min-width: 700px;
@@ -843,6 +843,7 @@ margin-top: 80px;
         flex-direction: column;
         border:1px solid grey;
         border-radius: 0px 0px 20px 20px;
+        width: 700px;
     }
     #cyrcle-and-inputs-div{
         width: 400px;
@@ -862,6 +863,7 @@ margin-top: 80px;
     #contactlist{
         padding: 0px;
         width: 300px;
+        padding: 8px;
     }
     #contact-btn-div{
         width: 250px;
@@ -876,7 +878,7 @@ margin-top: 80px;
         max-width: 200px;
     }
     #contactcard-container{
-        max-width: 200px;
+        max-width:234px;
         margin-left: 20px;
         overflow: hidden;
     }
@@ -988,6 +990,7 @@ margin-top: 80px;
         animation-name: fadeAndSlideInMobile;
         animation-duration: 0.5s;
         animation-timing-function: ease-in;  
+        overflow: scroll;
     }
     #editing-overlay{
         display: none;
@@ -1007,7 +1010,7 @@ margin-top: 80px;
         border: 2px solid white;
         font-size: 47px;
         position: absolute;
-        top: 42vh;
+        top: 30vh;
     }
     #popup-window-container{
         position: absolute;
@@ -1041,9 +1044,8 @@ margin-top: 80px;
         gap: 8px;
         }
     #save-delete-div-mobile{
-        margin-top: 34px;
+        margin-bottom: 34px;
         width: 249px;
-        height: 59px;
         display: flex;
         gap: 24px;
         justify-content: center;
@@ -1125,8 +1127,9 @@ margin-top: 80px;
         flex-direction: column;
         align-items: center;
         background-color: white;
-        height:50vh;
         width: 100vw;
+        overflow: scroll;
+        margin-bottom: 80px;
     }
     #edit-cyrcle-new-contact-mobile{
         height: 120px;
@@ -1138,7 +1141,7 @@ margin-top: 80px;
         font-weight: 500;
         background-image: url(/img/person.svg);
         background-size: contain;
-        margin-bottom: 55vh;
+        margin-bottom: 594px;
         position: absolute;
     }
     #close-edit-mobile-btn{
@@ -1224,7 +1227,7 @@ margin-top: 80px;
     }
     #contactlist-mobile{
         align-items: center;
-        height: 100vh;
+        height: calc(100vh - 200px);
         overflow-y: scroll;
         overflow-x: unset;
         position: fixed;
@@ -1290,9 +1293,7 @@ margin-top: 80px;
         width: 60vw;
         margin-bottom: 24px;
     }
-    #save-delete-div-mobile{
-        margin-top: 8px;
-    }
+   
     #popup-window-overlay{
     background-color: #ffffff;
     z-index: 3333;
@@ -1313,116 +1314,7 @@ margin-top: 80px;
         height: 54px;
         width: 200px;
     }
-    #edit-cyrcle-overlay-mobile {
-
-    }
     #header{
         z-index: 5555;
     }
 }
-@media (max-height: 867px) {
-    #new-contact-overlay-heading-mobile h1{
-        max-height: 20px;
-    }
-    #edit-contact-div-top-mobile{
-    max-height: 200px;
-    }
-    #edit-content-bottom-mobile {
-        max-height: 600px;
-        background-color: white;
-        position: absolute;
-        bottom: 80px;
-        background-color: white;
-    }
-    #edit-cyrcle-new-contact-mobile {
-        margin-bottom: 100px;
-        z-index: 2;
-    }
-    #edit-cyrcle-overlay-mobile{
-        z-index: 2;
-        height: 78px;
-        width: 78px;
-        top: 32vh;
-    }
-    #save-delete-div-mobile{
-        margin-bottom: 200px;
-    }
-}
-@media (max-height:795px)
-    {
-        #edit-cyrcle-new-contact-mobile {
-            max-height: 78px;
-           max-width: 78px;
-        }
-        #edit-cyrcle-overlay-mobile {
-        max-height: 78px;
-           max-width: 78px;
-           z-index: 2;
-           position: absolute;
-           top: 248px;
-        }
-        #save-delete-div-mobile{
-            margin-bottom: 0px;
-            max-height: fit-content;
-        }
-        #edit-content-bottom-mobile {
-            gap: 40px;
-        }
-        #edit-inputs-mobile{
-            margin-top: 42px;
-        }
-        #save-delete-div-mobile{
-            margin-top: 0px;
-        }
-        #new-contact-overlay-heading-mobile h1{
-            max-height: 0px;
-        }
-        #vector5-for-mibile{
-            padding: 0;
-        }
-    }
-    @media (max-height:743px){
-   #edit-inputs-mobile{
-        margin-top: 78px;
-   } 
-   #edit-content-bottom-mobile{
-    gap: 0px;
-   }
-}
-@media (max-height: 695px){
-    #edit-inputs-mobile{
-        height: 100px;
-        gap: 16px;
-    }
-    #edit-content-bottom-mobile {
-        height: 45vh;
-}
-}
-@media (max-height: 616px) {
-    #save-btn-div{
-        max-height: 24px;
-    }
-    #cancel-btn-div{
-        max-height: 24px;
-    }
-    #save-btn-edit{
-        max-height: 24px;
-    }
-    #cancel-btn-edit{
-        max-height: 24px;
-    }
-    #edit-cyrcle-overlay-mobile{
-        top: 200px;
-    }
-}
-@media (max-height: 533px) {
-    #edit-cyrcle-overlay-mobile{
-        top: 150px;
-    }
-    #edit-inputs-mobile{
-        margin-top:50px;
-    }
-}
-
-
-
