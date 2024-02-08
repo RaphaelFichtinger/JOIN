@@ -12,14 +12,11 @@ body {
 }
 
 #popup-window-overlay{
-    position: fixed;
-    background-color: #ffffff;
-    z-index: 3;
     animation-name: fadeAndSlideIn;
     animation-duration: 0.5s;
     animation-timing-function: ease-in;
     top:0px;
-    min-height: 90vh;
+    min-height: 100vh;
 }
 
 #success-overlay-inside{
@@ -40,7 +37,7 @@ body {
 }
 
 #editing-overlay-mobile{
-    background-color: #1d2b3f;
+    background-color: #ffffff;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -62,6 +59,21 @@ body {
       transform: translateX(0);
     }
   }
+  @keyframes fadeAndSlideInSuccess {
+    0% {
+      opacity: 0;
+      transform: translateX(30vw);
+    }
+    50% {
+      opacity: 0; 
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+
 
   @keyframes fadeAndSlideInMobile {
     0% {
@@ -362,14 +374,18 @@ align-items: center;
     top: 120px;
 }
 #container-left {
-    height: calc(100vh - 480px);
     width: 456px;
     background-color: white;
 }
 
 
 #container-right{
-    height: 100%;
+    height: 100vh;
+    background-color: rgb(219, 219, 219);
+    position:fixed;
+    top: 80px;
+    left: 640px;
+    padding-left: 34px;
 }
 
 #top-content-container-right{
@@ -1141,7 +1157,7 @@ margin-top: 80px;
         font-weight: 500;
         background-image: url(/img/person.svg);
         background-size: contain;
-        margin-bottom: 594px;
+        margin-bottom:560px;
         position: absolute;
     }
     #close-edit-mobile-btn{
@@ -1167,7 +1183,7 @@ margin-top: 80px;
         align-items: center;
         flex-direction: column;
         width: 100vw;
-        background-color: #1d2b3f;
+        background-color: #ffffff;
     }
     #vector5-for-new-mobile{
         padding-bottom: 48px;
@@ -1182,14 +1198,16 @@ margin-top: 80px;
         
         } 
     #new-contact-div-top-mobile{
-        min-height: 48vh;
+        min-height: 50vh;
+        background-color: #1d2b3f;
     }    
     #edit-contact-div-top-mobile{
         height: 50vh;
         border-radius: 20px 20px 0px 0px;
+        background-color: #1d2b3f;
     }                     
     #add-new-contact-mobile{
-        background-color: rgba(42, 54, 71, 1);
+        background-color: rgb(255, 255, 255);
         width: 100vw;
         position: fixed;
         z-index: 1;
@@ -1297,17 +1315,16 @@ margin-top: 80px;
     #popup-window-overlay{
     background-color: #ffffff;
     z-index: 3333;
-    animation-name: fadeAndSlideIn;
-    animation-duration: 0.5s;
+    animation-name: fadeAndSlideInSuccess;
+    animation-duration: 1s;
     animation-timing-function: ease-in;
     }
     #success-overlay-inside{
         font-size: 68px;
         font-weight: 400;
         color: #007CEE;
-        background-color: white;
-        position: absolute;
         top: 200px;
+        left: 25vw;
     }
     #save-btn-edit-mobile{
         margin-top: 0px;
