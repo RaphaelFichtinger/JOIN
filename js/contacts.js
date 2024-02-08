@@ -121,8 +121,10 @@ function saveContactChanges(i) {
       loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
       setItem('loadedContacts', JSON.stringify(loadedContacts));
       renderContacts();
+      renderContactsMobile();
       closeEdit();
-      popupWindow();
+      playAnimation();
+
   } else {
     let error = document.getElementById('empty-fields-message');
       error.innerHTML = 'Bitte fülle alle Felder aus, um die Änderungen zu speichern.';
@@ -147,15 +149,26 @@ function saveContactChangesMobile(i) {
       setItem('loadedContacts', JSON.stringify(loadedContacts));
       renderContacts();
       renderContactsMobile();
-      showContactDetailsMobile(i);
       closeEditMobile();
-      popupWindow();
+      closeMobileDetails();
+      playAnimation();
     } else {
       let error = document.getElementById('empty-fields-message');
         error.innerHTML = 'Bitte fülle alle Felder aus, um die Änderungen zu speichern.';
     }
   }
-  
+
+  function playAnimation() {
+    const animationBox = document.getElementById('animation-box');
+    animationBox.style.display = 'block';
+    animationBox.style.animation = 'fadeInOut 1s ease-in-out';
+    let animate = document.getElementById('animation-box');
+    animate.innerHTML = '<p id="success">Success</p>';
+    setTimeout(() => {
+        animationBox.style.display = 'none';
+        animationBox.style.animation = '';
+    }, 1000);
+}
 
 function closeEdit(){
   let editoverlay = document.getElementById('editing-overlay');
@@ -204,7 +217,7 @@ function saveNewContact(){
   renderContacts();
   renderContactsMobile();
   closeEdit();
-  popupWindow();
+  playAnimation();
 } else {
   let error = document.getElementById('empty-fields-message');
     error.innerHTML = 'Bitte fülle alle Felder aus, um einen Kontakt zu erstellen.';
@@ -228,7 +241,7 @@ function saveNewContactMobile() {
       renderContacts();
       renderContactsMobile();
       closeEdit();
-      popupWindow();
+      playAnimation();
     } else {
       let error = document.getElementById('empty-fields-message');
         error.innerHTML = 'Bitte fülle alle Felder aus, um einen Kontakt zu erstellen.';
@@ -243,7 +256,7 @@ function deleteContact(i) {
   overlay.innerHTML=``;
   renderContacts();
   closeEdit();
-  popupWindow();
+  playAnimation();
 
 }
 
@@ -256,7 +269,7 @@ function deleteContactMobile(i) {
   renderContactsMobile();
   closeEditMobile();
   closeMobileDetails();
-  popupWindow();
+  playAnimation();
 }
 
 function openPopup() {
@@ -279,26 +292,6 @@ function openOrClose() {
   } else {
     closePopup();
   }
-}
-
-
-function popupWindow() {
-  let overlay = document.getElementById('popup-window-overlay');
-  let rest = document.getElementById('edit');
-  // Entferne die Klasse 'd-none'
-  overlay.classList.remove('d-none');
-  
-  
-  // Setze die Höhe und Breite auf 100vw
-  overlay.style.height = '100vw';
-  overlay.style.width = '100vw';
-
-  // Füge die Klasse 'd-none' und entferne die Höhe/Breite nach 2 Sekunden wieder hinzu
-  setTimeout(function() {
-    overlay.classList.add('d-none');
-    overlay.style.height = '';
-    overlay.style.width = '';
-  }, 1000);
 }
 
 function validateContactInput(name, email, phone) {
