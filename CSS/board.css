@@ -9,18 +9,20 @@ body {
 }
 
 .drag-area {
-    height: 200px;
+    height: 70vh;
     min-height: 100px;
     background-color: rgba(0, 0, 0, 0.1);
     border: 1px dashed black;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 /* main board */
 .main-board {
-    /* height: 100%; */
+    /* height: 100%; */ 	                                                                                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     margin-top: 96px;
     margin-left: 232px;
 }
@@ -219,19 +221,16 @@ body {
     z-index: 999;
     height: 750;
     display: flex;
-<<<<<<< HEAD
     position: fixed;
     top: 120px;
     border-radius: 24px;
     overflow: scroll;
     max-height: 75vh;
-=======
-    position: absolute;
-    margin-left: 5vw;
-    top: 152px;
-    border-radius: 24px;
->>>>>>> 69ac1150e3e5a723890ef0baedcd5003a98537ab
+    margin-left: 115px;
+    margin-right: 100px;
+    width: 64%;
 }
+
 
 .buttons-container-end {
     display: flex;
