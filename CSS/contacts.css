@@ -1227,7 +1227,7 @@ margin-top: 80px;
     }
     #contactlist-mobile{
         align-items: center;
-        height: calc(100vh - 200px);
+        height: calc(100vh - 240px);
         overflow-y: scroll;
         overflow-x: unset;
         position: fixed;
