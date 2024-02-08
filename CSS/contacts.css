@@ -18,7 +18,7 @@ body {
 
 #animation-box {
     display: none;
-    height: 28px;
+    height: 20px;
     width: 200px;
     background-color: #1d2b3f;
     position: fixed;
@@ -27,7 +27,7 @@ body {
     transform: translate(-50%, -50%);
     z-index: 77777;
     text-align: center;
-    padding-bottom: 32px;
+    padding-bottom: 48px;
     border-radius: 10px;
 }
 

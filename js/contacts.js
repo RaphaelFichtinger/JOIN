@@ -163,7 +163,7 @@ function saveContactChangesMobile(i) {
     animationBox.style.display = 'block';
     animationBox.style.animation = 'fadeInOut 1s ease-in-out';
     let animate = document.getElementById('animation-box');
-    animate.innerHTML = '<p id="success">SUCCESS</p>';
+    animate.innerHTML = '<p id="success">Success</p>';
     setTimeout(() => {
         animationBox.style.display = 'none';
         animationBox.style.animation = '';
