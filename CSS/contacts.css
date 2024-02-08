@@ -118,8 +118,6 @@ body {
     z-index: 1;
     height: 592px;
     border-radius: 20px 0px 0px 20px;
-    background-color: #125cc5;
-    z-index: 0;
 }
 
 #editing-div-rightside{
@@ -137,6 +135,7 @@ body {
     background-repeat: no-repeat;
     background-position: left;
     margin-left: 46px;
+    margin-top: 20px;
 }
 
 #edit-overlay-heading{
@@ -953,9 +952,22 @@ margin-top: 80px;
         width: 89%;
     }
 }
-@media (max-width: 1300px){
+
+@media (max-width:1330px) {
+    #contact-name-overlay{
+        font-size: px
+    }
+    }
+    
+
+
+
+@media (max-width: 1350px){
     #text-div-static{
         width: 200px;
+    }
+    #container-right{
+        left: 530px;
     }
     #edit-inputs-mobile{
         margin-top: 80px;
