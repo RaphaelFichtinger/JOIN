@@ -4,6 +4,39 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+#animation-box {
+    display: none;
+    height: 28px;
+    width: 200px;
+    background-color: #1d2b3f;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    text-align: center;
+    padding-bottom: 32px;
+    border-radius: 10px;
+}
+
+#success{
+    color: white;
+    font-size: 22px;
+
+}
+
 .contact-card-container.active {
   background-color: rgba(42, 54, 71, 1); 
   border-radius: 10px;
@@ -190,7 +223,13 @@ align-items: center;
     margin-bottom: 8px;
 }
 
+#contact-name{
+    width: 200px;
+}
 
+#contact-email{
+    width: 200px;
+}
 #vector5{
     position: relative;
     right: 130px;
@@ -644,8 +683,9 @@ align-items: center;
     padding-top: 32px;
     padding-bottom: 32px;
     background-color: white;
-    overflow-x: scroll;
+    overflow-y: scroll;
     padding-right: 18px;
+    overflow-x: hidden;
 }
 
 #contactlist-mobile{
@@ -666,15 +706,13 @@ align-items: center;
     padding-bottom: 15px;
     margin-top: 8px;
     padding-left: 24px;
+    padding-right: 34px;
 }
 
 #contactcard-container:hover{
     border-radius: 8px;
     cursor: pointer;
 }
-
-
-
 
 #contact-overlay-mobile{
     width: 100vw;
@@ -866,7 +904,6 @@ margin-top: 80px;
     }
 
     #container-right{
-        margin-left: 38px;
     }
     #heading-div-static-mobile{
         font-size: 38px;
@@ -882,21 +919,14 @@ margin-top: 80px;
         padding: 8px;
     }
     #contact-btn-div{
-        width: 250px;
-        padding-left: 16px;
     }
     #contact-btn{
         width: 300px;
-        
     }
 
-    #alphabet-tab{
-        max-width: 200px;
-    }
     #contactcard-container{
-        max-width:234px;
-        margin-left: 20px;
-        overflow: hidden;
+        text-overflow: ellipsis;
+       width: 300px;
     }
     #contact-cyrcle-div-overlay-mobile{
         display: flex;
@@ -952,14 +982,6 @@ margin-top: 80px;
         width: 89%;
     }
 }
-
-@media (max-width:1330px) {
-    #contact-name-overlay{
-        font-size: px
-    }
-    }
-    
-
 
 
 @media (max-width: 1350px){

@@ -155,7 +155,18 @@ function saveContactChangesMobile(i) {
         error.innerHTML = 'Bitte fülle alle Felder aus, um die Änderungen zu speichern.';
     }
   }
-  
+
+  function playAnimation() {
+    const animationBox = document.getElementById('animation-box');
+    animationBox.style.display = 'block';
+    animationBox.style.animation = 'fadeInOut 1s ease-in-out';
+    let animate = document.getElementById('animation-box');
+    animate.innerHTML = '<p id="success">SUCCESS</p>';
+    setTimeout(() => {
+        animationBox.style.display = 'none';
+        animationBox.style.animation = '';
+    }, 1000);
+}
 
 function closeEdit(){
   let editoverlay = document.getElementById('editing-overlay');
