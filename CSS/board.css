@@ -1,6 +1,9 @@
 body {
     height: calc(100vh - 96px);
 }
+button {
+    cursor: pointer;
+}
 
 /* popup add task */
 .main-board #add-task-popup .add_task {
@@ -114,6 +117,7 @@ body {
 .board-column-title img {
     height: 24px;
     width: 24px;
+    cursor: pointer;
 }
 
 .task-card {
@@ -123,6 +127,11 @@ body {
     border-radius: 24px;
     padding: 16px;
     box-sizing: border-box;
+    cursor: pointer;
+}
+
+.task-card:hover {
+    box-shadow: 0px 0px 4px 0px #00000029;
 }
 
 .task-type {
