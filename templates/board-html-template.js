@@ -147,7 +147,7 @@ function generateEditTaskHTMLTemplate(task) {
     <form onsubmit="saveEditChanges(${task.id}); return false">
         <div class="main-edit-card">
             <div id="overview-edit-top">
-                <div class="close-edit" onclick="closeTaskOverview()"><img src="../img/close.png"> </div>
+                <div class="close-edit" onclick="closeTaskOverview()"><img src="./img/close.png"> </div>
                 <p id="overview-edit-title">Title</p>
                 <input id="overview-edit-title-input" required placeholder="Enter a title" type="text" value="Kochwelt Page & Recipe Recommender">
             </div>
