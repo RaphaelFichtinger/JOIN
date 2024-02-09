@@ -2,7 +2,6 @@ let loadedContacts = [];
 let tasks = [];
 let logedInPerson = '';
 let logedInGuest = 'Dear Guest';
-let nextTaskId = 0;
 let logedInAsGuest = false;
 let logedInWithName = false;
 
@@ -39,5 +38,4 @@ async function loadContacts(){
 
 async function loadTasks() {
   tasks = JSON.parse(await getItem('tasks'));
-  nextTaskId = JSON.parse(await getItem('nextTaskId'));
 }

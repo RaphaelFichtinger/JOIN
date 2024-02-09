@@ -14,7 +14,6 @@ function searchTasks(query) {
     updateHTML(filteredTasks);
 }
 
-
 function updateHTML(filteredTasks = tasks) {
     const taskStatusMap = {
         'to-do': 'to-do',
@@ -42,7 +41,6 @@ function generateTodoHTML(element, index) {
     let subtasks = element['subtasks'];
     let finishedSubtasks = element['finishedSubtasks'];
     let contactsArray = loadedContacts;
-    let plusContacts = Math.max(0, fullNames.length - 3); 
     let progress = 0;
 
     if (finishedSubtasks && finishedSubtasks.length > 0) {
@@ -55,8 +53,8 @@ function generateTodoHTML(element, index) {
         let nameInitials = getInitials(fullName);
         let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
         let matchingColor;
-        if(contactIndex == -1) {
-            matchingColor = 'black'
+        if (contactIndex == -1) {
+            matchingColor = 'black';
             initials += `<p id="initials-circle-${f}" class="initials-circle" style='background-color : ${matchingColor}'>${nameInitials}</p>`;
         } else {
             matchingColor = contactsArray[contactIndex].color;
@@ -64,14 +62,15 @@ function generateTodoHTML(element, index) {
         }
     }
 
+    return generateTaskCard(element, index, progress, finishedSubtasks, initials, fullNames);
+}
 
+function generateTaskCard(element, index, progress, finishedSubtasks, initials, fullNames) {
+    let plusContacts = Math.max(0, fullNames.length - 3);
     let additionalContacts = '';
     if (plusContacts > 0) {
         additionalContacts = `<p>+${plusContacts}</p>`;
     }
-
-
-
     return `
     <div id="task-card-${index}" class="task-card" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTaskOverview(${element['id']})">
         <button class="task-type">${element['category']}</button>
@@ -101,8 +100,6 @@ function generateTodoHTML(element, index) {
     `;
 }
 
-
-
 function startDragging(id) { //die Id markiert das Element das gerade verschoben wird
     currentDraggedElement = id;
 }
@@ -118,16 +115,6 @@ function moveTo(status) {
     updateHTML();
 }
 
-//highlight auf das Board geben
-function highlight(id) {
-    document.getElementById(id).classList.add('drag-area-highlight');
-}
-
-//highlight vom Board entfernen
-function removeHighlight(id) {
-    document.getElementById(id).classList.remove('drag-area-highlight');
-}
-
 function openAddTaskPopup(status) {
     let popup = document.getElementById('add-task-popup');
     popup.innerHTML = returnTask(status);
@@ -135,6 +122,10 @@ function openAddTaskPopup(status) {
     getCategories();
     getContacts();
 
+    checkRequired();
+}
+
+function checkRequired() {
     let title = document.getElementById('title');
     let dateDue = document.getElementById('due-date');
 
@@ -142,7 +133,6 @@ function openAddTaskPopup(status) {
         title.addEventListener('input', function () {
             if (this.value !== '') {
                 titleLock = false;
-                // console.log(titleLock);
             }
             if (!titleLock && !dateLock && !categoryLock) {
                 enableAddTaskButton();
@@ -154,7 +144,6 @@ function openAddTaskPopup(status) {
         dateDue.addEventListener('input', function () {
             if (this.value !== '') {
                 dateLock = false;
-                console.log(dateLock);
             }
             if (!titleLock && !dateLock && !categoryLock) {
                 enableAddTaskButton();
@@ -182,9 +171,7 @@ function openTaskOverview(id) {
 function closeTaskOverview() {
     let overview = document.getElementById('overview-container');
     overview.style.display = 'none';
-    // finishedSubtask(i, j);
 }
-
 
 function editTaskOverview(id) {
     let task = tasks.find(task => task.id === id);
@@ -198,41 +185,32 @@ function editTaskOverview(id) {
 }
 
 function closeEditCard() {
-    let overviewEdit = document.getElementById('task-big-view-edit-card');
     let overview = document.getElementById('overview-container');
     overview.style.display = 'none';
-
     updateHTML();
 }
 
-
-
 function getInitials(name) {
     if (name) {
-        console.log(name);
         let names = name.split(' ');
-
         if (names.length > 1) {
             return names[0].charAt(0).toUpperCase() + names[1].charAt(0).toUpperCase();
         } else if (names.length === 1) {
             return names[0].charAt(0).toUpperCase();
         }
     }
-
     return '';
 }
 
 async function clearTasks() {
     let tasks = [];
     await setItem('tasks', JSON.stringify(tasks));
-    await setItem('nextTaskId', JSON.stringify(nextTaskId));
     updateHTML();
 }
 
 function createOverview(id) {
     // Finde die Aufgabe mit der gegebenen ID
     let task = tasks.find(task => task.id === id);
-    console.log(task);
 
     let title = task['title'];
     let date = task['date'];
@@ -254,40 +232,25 @@ function generateAssignTo(id) {
     for (let j = 0; j < fullNames.length; j++) {
         let fullName = fullNames[j]['name'];
         let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
-        
-        console.log(fullNames);
         initials = fullName.split(" ");
-        // // console.log(contactsArray[j].name);
-        // console.log(contactsArray[j].email);
-        // console.log(contactsArray[j].color);
         if (contactsArray[contactIndex].color) {
             let matchingColor = contactsArray[contactIndex].color;
-            console.log(contactIndex);
-            generateHtml += `
-            <div id="overview-contact">
-                <p class="overview-in" style= 'border-radius : 50%;   height: 42px; display: flex;
-                justify-content: center;
-                align-items: center;
-                color: white;
-                width: 42px; background-color : ${matchingColor}' ">${initials[0] ? initials[0].charAt(0) : ''}${initials[1] ? initials[1].charAt(0) : ''}</p>
-                <p id="overview-fullname">${fullName}</p>
-            </div>
-            `;
+            generateHtml += overViewContact(matchingColor, fullName, initials);
         } else {
-            let matchingColor = 'black'
-            generateHtml += `
-        <div id="overview-contact">
-            <p class="overview-in" style= 'border-radius : 50%;   height: 42px; display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            width: 42px; background-color : ${matchingColor}' ">${initials[0] ? initials[0].charAt(0) : ''}${initials[1] ? initials[1].charAt(0) : ''}</p>
-            <p id="overview-fullname">${fullName}</p>
-        </div>
-        `;
+            let matchingColor = 'black';
+            generateHtml += overViewContact(matchingColor, fullName, initials);
         }
     }
     return generateHtml;
+}
+
+function overViewContact(matchingColor, fullName, initials) {
+    return `
+        <div id="overview-contact">
+            <p class="overview-in" style="border-radius: 50%; height: 42px; display: flex; justify-content: center; align-items: center; color: white; width: 42px; background-color: ${matchingColor}">${initials[0] ? initials[0].charAt(0) : ''}${initials[1] ? initials[1].charAt(0) : ''}</p>
+            <p id="overview-fullname">${fullName}</p>
+        </div>
+    `;
 }
 
 function generateSubtasks(id) {
@@ -343,22 +306,26 @@ function generateEditCard(task) {
     let date = task['date'];
     let description = task['description'];
     let priority = task['priority'].toLowerCase();
-    let subtasks = task['subtasks'];
-    let assignToArray = task['assign-to'];
     let editCard = document.getElementById('task-big-view-edit-card');
     editCard.innerHTML = generateEditTaskHTMLTemplate(task);
     let titleInput = document.getElementById('overview-edit-title-input');
     let descriptionArea = document.getElementById('description-overview-edit');
     let dueDateInput = document.getElementById('due-date-edit');
-    let contactsList = document.getElementById('list-item');
-    let addedContacts = document.getElementById('added-contacts');
-    let subtaskList = document.getElementById('list-item-subtasks');
     let priorityButton = document.getElementById(`priority-${priority}`);
     titleInput.value = title;
     descriptionArea.value = description;
     dueDateInput.value = date;
     removePriority();
     priorityButton.classList.add(`${priority}`);
+
+    addSubtasks(task);
+    getContacts();
+    addContacts(task);
+}
+
+function addSubtasks(task) {
+    let subtasks = task['subtasks'];
+    let subtaskList = document.getElementById('list-item-subtasks');
     for (let j = 0; j < subtasks.length; j++) {
         const subtask = subtasks[j];
         subtaskList.innerHTML += `
@@ -374,9 +341,11 @@ function generateEditCard(task) {
         `;
         subtasksArray.push(subtask);
     }
+}
 
-    getContacts();
-
+function addContacts(task) {
+    let assignToArray = task['assign-to'];
+    let addedContacts = document.getElementById('added-contacts');
     for (let j = 0; j < assignToArray.length; j++) {
         let assignTo = assignToArray[j]['name'];
         let assignToColor = assignToArray[j]['color'];
@@ -407,7 +376,6 @@ async function saveEditChanges(id) {
     task.date = dueDateInput;
     task['assign-to'] = checkedContacts;
     task['subtasks'] = subtasksArray;
-    console.table(tasks);
     await setItem('tasks', JSON.stringify(tasks));
     clearArrays();
     closeEditCard();

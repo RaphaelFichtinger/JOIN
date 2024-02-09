@@ -17,9 +17,7 @@ function login() {
 			return;
 		}
 	}
-
 	resetForm(email, password)
-
 	showError();
 }
 

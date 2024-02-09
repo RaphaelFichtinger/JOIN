@@ -14,8 +14,6 @@ let title = document.getElementById('title');
 let description = document.getElementById('description');
 let dateDue = document.getElementById('due-date');
 let categoryValue = document.getElementById('category');
-// let assignTo = document.getElementById('assign-to');
-// let assignToMobile = document.getElementById('assign-to-mobile');
 let contactsList = document.getElementById('contacts-list');
 let contactsListMobile = document.getElementById('contacts-list-mobile');
 let buttonCreateTask = document.getElementById('button-create-task');
@@ -77,23 +75,12 @@ async function createNewTask(status) {
     })
 
     await setItem('tasks', JSON.stringify(tasks));
-    await setItem('nextTaskId', JSON.stringify(nextTaskId));
     clearFields();
     successLightbox();
     buttonCreateTask.disabled = true;
     setTimeout(() => {
         window.location.href = './board.html';
     }, 3000)
-}
-
-// Funktion zum Generieren der nächsten verfügbaren ID
-function generateId() {
-    if(tasks.length == 0) {
-        return nextTaskId = 0;
-    } else {
-        nextTaskId += 1; // Erhöhe die Variable für die nächste ID
-        return nextTaskId;
-    }
 }
 
 function successLightbox() {
