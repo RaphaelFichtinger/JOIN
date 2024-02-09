@@ -9,7 +9,7 @@ function headerTemplate() {
 		<img id="logo-header-mobile" src="./img/start_logo.svg" alt="">
 	</div>
 	<div id="header-right">
-		<a href="../help.html"  id="help-icon"><img src="./img/help.svg" alt="Help"></a>
+		<a href="./help.html"  id="help-icon"><img src="./img/help.svg" alt="Help"></a>
 		<div id="cycle-name" onclick="overlayHeaderShow()">
 			${logedInPerson ?
 			`<p id="initial-of-current-person">

@@ -53,16 +53,14 @@ function generateTodoHTML(element, index) {
     for (let f = 0; f < Math.min(3, fullNames.length); f++) {
         let fullName = fullNames[f]['name'];
         let nameInitials = getInitials(fullName);
-        let matchingColor;
         let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
+        let matchingColor;
         if(contactIndex == -1) {
             matchingColor = 'black'
             initials += `<p id="initials-circle-${f}" class="initials-circle" style='background-color : ${matchingColor}'>${nameInitials}</p>`;
         } else {
-         matchingColor = contactsArray[contactIndex].color;
-        
-       
-        initials += `<p id="initials-circle-${f}" class="initials-circle" style='background-color : ${matchingColor}'>${nameInitials}</p>`;
+            matchingColor = contactsArray[contactIndex].color;
+            initials += `<p id="initials-circle-${f}" class="initials-circle" style='background-color : ${matchingColor}'>${nameInitials}</p>`;
         }
     }
 
@@ -156,7 +154,7 @@ function openAddTaskPopup(status) {
         dateDue.addEventListener('input', function () {
             if (this.value !== '') {
                 dateLock = false;
-                // console.log(dateLock);
+                console.log(dateLock);
             }
             if (!titleLock && !dateLock && !categoryLock) {
                 enableAddTaskButton();
@@ -200,18 +198,18 @@ function editTaskOverview(id) {
 }
 
 function closeEditCard() {
-
     let overviewEdit = document.getElementById('task-big-view-edit-card');
     let overview = document.getElementById('overview-container');
     overview.style.display = 'none';
 
+    updateHTML();
 }
 
 
 
 function getInitials(name) {
     if (name) {
-        // console.log(name);
+        console.log(name);
         let names = name.split(' ');
 
         if (names.length > 1) {
@@ -234,13 +232,13 @@ async function clearTasks() {
 function createOverview(id) {
     // Finde die Aufgabe mit der gegebenen ID
     let task = tasks.find(task => task.id === id);
-    // console.log(task);
+    console.log(task);
 
     let title = task['title'];
     let date = task['date'];
     let category = task['category'];
     let description = task['description'];
-    let priority = task['priority'];
+    let priority = task['priority'].toLowerCase();
     let overviewCard = document.getElementById('task-big-view-card');
     generateAssignTo(task.id);
     overviewCard.innerHTML = createOverviewHTMLTemplate(category, title, description, date, priority, task)
@@ -254,18 +252,17 @@ function generateAssignTo(id) {
     let contactsArray = loadedContacts;
 
     for (let j = 0; j < fullNames.length; j++) {
-        let fullName = fullNames[j];
+        let fullName = fullNames[j]['name'];
         let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
-        console.log(contactsArray[j].color);
-        // console.log(fullNames);
-        console.log(fullName);
+        
+        console.log(fullNames);
         initials = fullName.split(" ");
-        
-        
-        
+        // // console.log(contactsArray[j].name);
+        // console.log(contactsArray[j].email);
+        // console.log(contactsArray[j].color);
         if (contactsArray[contactIndex].color) {
             let matchingColor = contactsArray[contactIndex].color;
-            // console.log(contactIndex);
+            console.log(contactIndex);
             generateHtml += `
             <div id="overview-contact">
                 <p class="overview-in" style= 'border-radius : 50%;   height: 42px; display: flex;
@@ -278,8 +275,6 @@ function generateAssignTo(id) {
             `;
         } else {
             let matchingColor = 'black'
-        
-            
             generateHtml += `
         <div id="overview-contact">
             <p class="overview-in" style= 'border-radius : 50%;   height: 42px; display: flex;
@@ -347,7 +342,7 @@ function generateEditCard(task) {
     let title = task['title'];
     let date = task['date'];
     let description = task['description'];
-    let subArrayLength = task['subtasks'].length;
+    let priority = task['priority'].toLowerCase();
     let subtasks = task['subtasks'];
     let assignToArray = task['assign-to'];
     let editCard = document.getElementById('task-big-view-edit-card');
@@ -358,9 +353,12 @@ function generateEditCard(task) {
     let contactsList = document.getElementById('list-item');
     let addedContacts = document.getElementById('added-contacts');
     let subtaskList = document.getElementById('list-item-subtasks');
+    let priorityButton = document.getElementById(`priority-${priority}`);
     titleInput.value = title;
     descriptionArea.value = description;
     dueDateInput.value = date;
+    removePriority();
+    priorityButton.classList.add(`${priority}`);
     for (let j = 0; j < subtasks.length; j++) {
         const subtask = subtasks[j];
         subtaskList.innerHTML += `
@@ -380,15 +378,21 @@ function generateEditCard(task) {
     getContacts();
 
     for (let j = 0; j < assignToArray.length; j++) {
-        if (assignToArray.length > 0) {
-            document.querySelector('.task-subtasks').style.marginTop = '40px';
-        }
         let assignTo = assignToArray[j]['name'];
+        let assignToColor = assignToArray[j]['color'];
         let splittedLetters = assignTo.split(" ");
         addedContacts.innerHTML += `
-            <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
+            <div class="circle" style="background-color:${assignToColor};">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
         `;
-        checkedContacts.push(assignTo);
+        checkedContacts.push({
+            'name': assignTo,
+            'color': assignToColor
+        });
+
+        for (let k = 0; k < loadedContacts.length; k++) {
+            let contactIndex = loadedContacts.findIndex(contact => contact.name === checkedContacts[j].name);
+            document.getElementById(`checkbox_${contactIndex}`).checked = true;
+        }
     }
 }
 
@@ -403,10 +407,10 @@ async function saveEditChanges(id) {
     task.date = dueDateInput;
     task['assign-to'] = checkedContacts;
     task['subtasks'] = subtasksArray;
-    // console.table(tasks);
+    console.table(tasks);
     await setItem('tasks', JSON.stringify(tasks));
     clearArrays();
-    
+    closeEditCard();
 }
 
 function clearArrays() {
