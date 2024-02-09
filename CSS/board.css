@@ -1,6 +1,9 @@
 body {
     height: calc(100vh - 96px);
 }
+button {
+    cursor: pointer;
+}
 
 /* popup add task */
 .main-board #add-task-popup .add_task {
@@ -114,6 +117,7 @@ body {
 .board-column-title img {
     height: 24px;
     width: 24px;
+    cursor: pointer;
 }
 
 .task-card {
@@ -123,8 +127,11 @@ body {
     border-radius: 24px;
     padding: 16px;
     box-sizing: border-box;
-    box-shadow: 0px 0px 10px 3px #00000014;
-    
+    cursor: pointer;
+}
+
+.task-card:hover {
+    box-shadow: 0px 0px 4px 0px #00000029;
 }
 
 .task-type {
@@ -220,9 +227,9 @@ body {
 
 .add-task-popup {
     background-color: white;
-    z-index: 999;
+    z-index: 5;
     height: 750;
-    display: flex;
+    display: none;
     position: fixed;
     top: 120px;
     border-radius: 24px;
@@ -575,6 +582,7 @@ body {
         width: calc(100% - 80px);
         margin-left: 40px;
         margin-right: 40px;
+        max-height: 60vh;
     }
 }
 
