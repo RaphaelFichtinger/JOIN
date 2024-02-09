@@ -53,8 +53,8 @@ function generateTodoHTML(element, index) {
     for (let f = 0; f < Math.min(3, fullNames.length); f++) {
         let fullName = fullNames[f]['name'];
         let nameInitials = getInitials(fullName);
-        let matchingColor;
         let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
+        let matchingColor;
         if(contactIndex == -1) {
             matchingColor = 'black'
             initials += `<p id="initials-circle-${f}" class="initials-circle" style='background-color : ${matchingColor}'>${nameInitials}</p>`;
@@ -142,7 +142,6 @@ function openAddTaskPopup(status) {
         title.addEventListener('input', function () {
             if (this.value !== '') {
                 titleLock = false;
-                console.log(titleLock);
             }
             if (!titleLock && !dateLock && !categoryLock) {
                 enableAddTaskButton();
@@ -154,7 +153,6 @@ function openAddTaskPopup(status) {
         dateDue.addEventListener('input', function () {
             if (this.value !== '') {
                 dateLock = false;
-                console.log(dateLock);
             }
             if (!titleLock && !dateLock && !categoryLock) {
                 enableAddTaskButton();
@@ -209,7 +207,6 @@ function closeEditCard() {
 
 function getInitials(name) {
     if (name) {
-        console.log(name);
         let names = name.split(' ');
 
         if (names.length > 1) {
@@ -232,7 +229,6 @@ async function clearTasks() {
 function createOverview(id) {
     // Finde die Aufgabe mit der gegebenen ID
     let task = tasks.find(task => task.id === id);
-    console.log(task);
 
     let title = task['title'];
     let date = task['date'];
@@ -252,17 +248,11 @@ function generateAssignTo(id) {
     let contactsArray = loadedContacts;
 
     for (let j = 0; j < fullNames.length; j++) {
-        let fullName = fullNames[j];
+        let fullName = fullNames[j]['name'];
         let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
-        
-        console.log(fullNames);
         initials = fullName.split(" ");
-        // // console.log(contactsArray[j].name);
-        // console.log(contactsArray[j].email);
-        // console.log(contactsArray[j].color);
         if (contactsArray[contactIndex].color) {
             let matchingColor = contactsArray[contactIndex].color;
-            console.log(contactIndex);
             generateHtml += `
             <div id="overview-contact">
                 <p class="overview-in" style= 'border-radius : 50%;   height: 42px; display: flex;
@@ -275,8 +265,6 @@ function generateAssignTo(id) {
             `;
         } else {
             let matchingColor = 'black'
-        
-            
             generateHtml += `
         <div id="overview-contact">
             <p class="overview-in" style= 'border-radius : 50%;   height: 42px; display: flex;
@@ -407,10 +395,8 @@ async function saveEditChanges(id) {
     task.title = titleEdit;
     task.description = descriptionArea;
     task.date = dueDateInput;
-    task.date = dueDateInput;
     task['assign-to'] = checkedContacts;
     task['subtasks'] = subtasksArray;
-    console.table(tasks);
     await setItem('tasks', JSON.stringify(tasks));
     clearArrays();
     closeEditCard();
