@@ -20,7 +20,6 @@ button {
     flex-direction: column;
     align-items: center;
     overflow: scroll;
-    overflow-x: hidden;
 }
 
 /* main board */
@@ -531,7 +530,6 @@ button {
 
     .drag-area {
         flex-direction: row;
-        flex-wrap: wrap;
         gap: 24px;
     }
 }

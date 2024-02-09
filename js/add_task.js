@@ -124,8 +124,6 @@ function clearFields() {
     let subtasks = document.getElementById('list-item-subtasks');
     let priorityButtonMedium = document.getElementById(`priority-medium`);
 
-    assignTo.classList.add('d-none');
-    assignTo.classList.remove('block');
     assignToMobile.classList.add('d-none');
     assignToMobile.classList.remove('block');
     addedContacts.innerHTML = '';
