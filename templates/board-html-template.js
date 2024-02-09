@@ -19,9 +19,9 @@ function returnTask(status) {
 					<div class="task-input task-prio">
 						<label for="prio">Prio</label>
 						<div class="buttons flex">
-							<div id="priority-alta-mobile" class="priority-alta priority-button" onclick="selectPriority('alta-mobile')">Urgent</div>
+							<div id="priority-urgent-mobile" class="priority-urgent priority-button" onclick="selectPriority('urgent-mobile')">Urgent</div>
 							<div id="priority-medium-mobile" class="priority-medium priority-button medium" onclick="selectPriority('medium-mobile')">Medium</div>
-							<div id="priority-baia-mobile" class="priority-baia priority-button" onclick="selectPriority('baia-mobile')">Low</div>
+							<div id="priority-low-mobile" class="priority-low priority-button" onclick="selectPriority('low-mobile')">Low</div>
 						</div>
 					</div>
 					<div class="task-input task-assigned-to">
@@ -44,9 +44,9 @@ function returnTask(status) {
 					<div class="task-input task-prio">
 						<label for="prio">Prio</label>
 						<div class="buttons flex">
-							<div id="priority-alta" class="priority-alta priority-button" onclick="selectPriority('alta')">Urgent</div>
+							<div id="priority-urgent" class="priority-urgent priority-button" onclick="selectPriority('urgent')">Urgent</div>
 							<div id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</div>
-							<div id="priority-baia" class="priority-baia priority-button" onclick="selectPriority('baia')">Low</div>
+							<div id="priority-low" class="priority-low priority-button" onclick="selectPriority('low')">Low</div>
 						</div>
 					</div>
 					<div id="task-category" class="task-input task-category">
@@ -164,9 +164,9 @@ function generateEditTaskHTMLTemplate(task) {
                 <div class="priority-edit-buttons">
                     <div class="task-input task-prio-overview-edit">
                         <div class="buttons flex task-prio-overview-edit">
-                            <div id="priority-alta" class="priority-alta priority-button" onclick="selectPriority('alta')">Urgent</div>
+                            <div id="priority-urgent" class="priority-urgent priority-button" onclick="selectPriority('urgent')">Urgent</div>
                             <div id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</div>
-                            <div id="priority-baia" class="priority-baia priority-button" onclick="selectPriority('baia')">Low</div>
+                            <div id="priority-low" class="priority-low priority-button" onclick="selectPriority('low')">Low</div>
                         </div>
                     </div>
                 </div>

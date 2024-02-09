@@ -272,7 +272,7 @@ function removePriority() {
     let buttons = document.querySelectorAll('.priority-button');
     for (let i = 0; i < buttons.length; i++) {
         let button = buttons[i];
-        button.classList.remove('alta', 'medium', 'baia', 'alta-mobile', 'medium-mobile', 'baia-mobile');
+        button.classList.remove('urgent', 'medium', 'low', 'urgent-mobile', 'medium-mobile', 'low-mobile');
     }
 }
 

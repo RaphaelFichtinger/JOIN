@@ -81,14 +81,14 @@ label + .buttons {
     padding: 16px 0;
     cursor: pointer;
 }
-.priority-alta::after,
-.priority-baia::after {
+.priority-urgent::after,
+.priority-low::after {
 	content: '';
 	width: 20px;
 	height: 15px;
 	margin-left: 8px;
 }
-.priority-alta::after {
+.priority-urgent::after {
 	background-image: url(../img/prio-urgent.svg);
 }
 .priority-medium::after {
@@ -97,10 +97,10 @@ label + .buttons {
 	width: 20px;
 	height: 7px;
 }
-.priority-baia::after {
+.priority-low::after {
 	background-image: url(../img/prio-low.svg);
 }
-.priority-alta.alta::after {
+.priority-urgent.urgent::after {
 	background-image: url(../img/prio-urgent-white.svg);
 }
 .priority-medium.medium::after {
@@ -109,11 +109,11 @@ label + .buttons {
 	width: 20px;
 	height: 7px;
 }
-.priority-baia.baia::after {
+.priority-low.low::after {
 	background-image: url(../img/prio-low-white.svg);
 }
-.alta,
-.alta-mobile {
+.urgent,
+.urgent-mobile {
 	background-color: red;
 	color: #FFFFFF;
 }
@@ -122,8 +122,8 @@ label + .buttons {
 	background-color: #FFA800;
 	color: #FFFFFF;
 }
-.baia,
-.baia-mobile {
+.low,
+.low-mobile {
 	background-color: green;
 	color: #FFFFFF;
 }
