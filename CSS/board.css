@@ -14,8 +14,8 @@ button {
 .drag-area {
     height: 70vh;
     min-height: 100px;
-    background-color: rgba(0, 0, 0, 0.1);
-    border: 1px dashed black;
+    
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -445,6 +445,7 @@ button {
 .task-prio-overview-edit {
     margin-top: 8px;
     gap: 12px;
+    flex-wrap: wrap;
 }
 
 .half-w {
@@ -455,9 +456,7 @@ button {
     background-color: black;
 }
 
-.drag-area {
-    height: 100%;
-}
+
 
 .main-edit-card {
     overflow-x: hidden;
@@ -646,5 +645,9 @@ button {
     .board-container {
         padding-left: 16px;
         padding-right: 16px;
+    }
+
+    #task-big-view-card {
+        width: 224px;
     }
 }

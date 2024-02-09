@@ -53,6 +53,7 @@ function generateTodoHTML(element, index) {
     for (let f = 0; f < Math.min(3, fullNames.length); f++) {
         let fullName = fullNames[f]['name'];
         let nameInitials = getInitials(fullName);
+        let matchingColor;
         let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
         if(contactIndex == -1) {
             matchingColor = 'black'
@@ -251,12 +252,14 @@ function generateAssignTo(id) {
     let contactsArray = loadedContacts;
 
     for (let j = 0; j < fullNames.length; j++) {
-        let fullName = fullNames[j]['name'];
+        let fullName = fullNames[j];
         let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
+        
+        console.log(fullNames);
         initials = fullName.split(" ");
-        console.log(contactsArray[j].name);
-        console.log(contactsArray[j].email);
-        console.log(contactsArray[j].color);
+        // // console.log(contactsArray[j].name);
+        // console.log(contactsArray[j].email);
+        // console.log(contactsArray[j].color);
         if (contactsArray[contactIndex].color) {
             let matchingColor = contactsArray[contactIndex].color;
             console.log(contactIndex);
@@ -404,8 +407,10 @@ async function saveEditChanges(id) {
     task.title = titleEdit;
     task.description = descriptionArea;
     task.date = dueDateInput;
+    task.date = dueDateInput;
     task['assign-to'] = checkedContacts;
     task['subtasks'] = subtasksArray;
+    console.table(tasks);
     await setItem('tasks', JSON.stringify(tasks));
     clearArrays();
     closeEditCard();
