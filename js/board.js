@@ -234,7 +234,7 @@ function createOverview(id) {
     let date = task['date'];
     let category = task['category'];
     let description = task['description'];
-    let priority = task['priority'];
+    let priority = task['priority'].toLowerCase();
     let overviewCard = document.getElementById('task-big-view-card');
     generateAssignTo(task.id);
     overviewCard.innerHTML = createOverviewHTMLTemplate(category, title, description, date, priority, task)
