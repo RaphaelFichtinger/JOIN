@@ -154,44 +154,44 @@ function editMobileContactHTMLTemplate(backgroundColor, initials, contact, i){
 };
 
 function setNewContactHTMLTemplate(){
-  return `
-    <div id="edit">
-      <div id="editing-div-leftside">
-        <div id="edit-overlay-logo"></div>
-        <div id="new-contact-overlay-heading">
-          <h1 id="static-heading-add">Add contact<h1>
-          <p id="new-contact-text">Tasks are better with a team!</p>
-            <img id="vector5-for-new" src="../img/vector5vertical.png">
-        </div>
-      </div>
-      <div id="editing-div-rightside">
-        <div id="close-edit" onclick="closeEdit()"></div>
-        <div id="cyrcle-and-inputs-div">
-          <div id="edit-cyrcle-new-contact"></div>
-            <div id="edit-content-rightside">
-              <form onsubmit="saveNewContact()">
-                <div id="empty-fields-message"></div>
-                <div id="edit-inputs">
-                  <input id="new-contact-input-name" placeholder="Name" type="text">
-                  <input id="new-contact-input-mail" placeholder="Email" type="email" >
-                  <input id="new-contact-input-number" placeholder="Phone" type="number" >
+    return `
+        <div id="edit">
+            <div id="editing-div-leftside">
+                <div id="edit-overlay-logo"></div>
+                <div id="new-contact-overlay-heading">
+                <h1 id="static-heading-add">Add contact<h1>
+                <p id="new-contact-text">Tasks are better with a team!</p>
+                    <img id="vector5-for-new" src="../img/vector5vertical.png">
                 </div>
-                <div id="save-delete-div">
-                    <div id="cancel-btn-div" onclick="closeEdit()">
-                        <button type="button" id="cancel-btn-edit" formnovalidate>Cancel</button>
-                        <img id="cancel-icon" src="../img/cancel.png">
+            </div>
+            <div id="editing-div-rightside">
+                <div id="close-edit" onclick="closeEdit()"></div>
+                <div id="cyrcle-and-inputs-div">
+                    <div id="edit-cyrcle-new-contact"></div>
+                    <div id="edit-content-rightside">
+                        <form onsubmit="saveNewContact()">
+                            <div id="empty-fields-message"></div>
+                            <div id="edit-inputs">
+                                <input id="new-contact-input-name" placeholder="Name" type="text">
+                                <input id="new-contact-input-mail" placeholder="Email" type="email" >
+                                <input id="new-contact-input-number" placeholder="Phone" type="number" >
+                            </div>
+                            <div id="save-delete-div">
+                                <div id="cancel-btn-div" onclick="closeEdit()">
+                                    <button type="button" id="cancel-btn-edit" formnovalidate>Cancel</button>
+                                    <img id="cancel-icon" src="../img/cancel.png">
+                                </div>
+                                <div id="save-btn-div">
+                                    <button type="submit" id="save-btn-edit">Save</button>
+                                    <img id="check-icon" src="../img/check.png">
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div id="save-btn-div">
-                        <button type="submit" id="save-btn-edit">Save</button>
-                        <img id="check-icon" src="../img/check.png">
-                    </div>
-                  </div>
-                <div>
-              </form>
-          </div>
+                </div>
+            </div>
         </div>
-    </div>
-  `
+    `
 };
 
 function setNewContactMobileHTMLTemplate(){
