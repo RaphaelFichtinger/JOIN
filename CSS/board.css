@@ -390,6 +390,7 @@ button {
 
 .type-close img {
     object-fit: contain;
+    cursor: pointer;
 }
 
 #task-big-view-edit-card {
