@@ -144,7 +144,7 @@ function openAddTaskPopup(status) {
         title.addEventListener('input', function () {
             if (this.value !== '') {
                 titleLock = false;
-                console.log(titleLock);
+                // console.log(titleLock);
             }
             if (!titleLock && !dateLock && !categoryLock) {
                 enableAddTaskButton();
@@ -156,7 +156,7 @@ function openAddTaskPopup(status) {
         dateDue.addEventListener('input', function () {
             if (this.value !== '') {
                 dateLock = false;
-                console.log(dateLock);
+                // console.log(dateLock);
             }
             if (!titleLock && !dateLock && !categoryLock) {
                 enableAddTaskButton();
@@ -211,7 +211,7 @@ function closeEditCard() {
 
 function getInitials(name) {
     if (name) {
-        console.log(name);
+        // console.log(name);
         let names = name.split(' ');
 
         if (names.length > 1) {
@@ -234,7 +234,7 @@ async function clearTasks() {
 function createOverview(id) {
     // Finde die Aufgabe mit der gegebenen ID
     let task = tasks.find(task => task.id === id);
-    console.log(task);
+    // console.log(task);
 
     let title = task['title'];
     let date = task['date'];
@@ -256,15 +256,16 @@ function generateAssignTo(id) {
     for (let j = 0; j < fullNames.length; j++) {
         let fullName = fullNames[j];
         let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
-        
-        console.log(fullNames);
+        console.log(contactsArray[j].color);
+        // console.log(fullNames);
+        console.log(fullName);
         initials = fullName.split(" ");
-        // // console.log(contactsArray[j].name);
-        // console.log(contactsArray[j].email);
-        // console.log(contactsArray[j].color);
+        
+        
+        
         if (contactsArray[contactIndex].color) {
             let matchingColor = contactsArray[contactIndex].color;
-            console.log(contactIndex);
+            // console.log(contactIndex);
             generateHtml += `
             <div id="overview-contact">
                 <p class="overview-in" style= 'border-radius : 50%;   height: 42px; display: flex;
@@ -402,7 +403,7 @@ async function saveEditChanges(id) {
     task.date = dueDateInput;
     task['assign-to'] = checkedContacts;
     task['subtasks'] = subtasksArray;
-    console.table(tasks);
+    // console.table(tasks);
     await setItem('tasks', JSON.stringify(tasks));
     clearArrays();
     
