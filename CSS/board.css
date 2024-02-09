@@ -288,6 +288,8 @@ button {
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px #00000029;
     position: fixed;
+    max-height: calc(100vh - 177px);
+    overflow: scroll;
 }
 
 .task-type-overview {
@@ -578,7 +580,6 @@ button {
     }
 
     .add-task-popup {
-        display: block;
         width: calc(100% - 80px);
         margin-left: 40px;
         margin-right: 40px;

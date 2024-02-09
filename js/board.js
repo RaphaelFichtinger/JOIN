@@ -53,11 +53,17 @@ function generateTodoHTML(element, index) {
     for (let f = 0; f < Math.min(3, fullNames.length); f++) {
         let fullName = fullNames[f]['name'];
         let nameInitials = getInitials(fullName);
+        let matchingColor;
         let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
-        let matchingColor = contactsArray[contactIndex].color;
-        console.log(matchingColor, fullName);
+        if(contactIndex == -1) {
+            matchingColor = 'black'
+            initials += `<p id="initials-circle-${f}" class="initials-circle" style='background-color : ${matchingColor}'>${nameInitials}</p>`;
+        } else {
+         matchingColor = contactsArray[contactIndex].color;
+        
+       
         initials += `<p id="initials-circle-${f}" class="initials-circle" style='background-color : ${matchingColor}'>${nameInitials}</p>`;
-
+        }
     }
 
 
@@ -248,12 +254,14 @@ function generateAssignTo(id) {
     let contactsArray = loadedContacts;
 
     for (let j = 0; j < fullNames.length; j++) {
-        let fullName = fullNames[j]['name'];
+        let fullName = fullNames[j];
         let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
+        
+        console.log(fullNames);
         initials = fullName.split(" ");
-        console.log(contactsArray[j].name);
-        console.log(contactsArray[j].email);
-        console.log(contactsArray[j].color);
+        // // console.log(contactsArray[j].name);
+        // console.log(contactsArray[j].email);
+        // console.log(contactsArray[j].color);
         if (contactsArray[contactIndex].color) {
             let matchingColor = contactsArray[contactIndex].color;
             console.log(contactIndex);
@@ -374,7 +382,7 @@ function generateEditCard(task) {
         if (assignToArray.length > 0) {
             document.querySelector('.task-subtasks').style.marginTop = '40px';
         }
-        let assignTo = assignToArray[j];
+        let assignTo = assignToArray[j]['name'];
         let splittedLetters = assignTo.split(" ");
         addedContacts.innerHTML += `
             <div class="circle">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
@@ -391,11 +399,13 @@ async function saveEditChanges(id) {
     let dueDateInput = document.getElementById('due-date-edit').value;
     task.title = titleEdit;
     task.description = descriptionArea;
-    task.duDate = dueDateInput;
+    task.date = dueDateInput;
     task['assign-to'] = checkedContacts;
     task['subtasks'] = subtasksArray;
+    console.table(tasks);
     await setItem('tasks', JSON.stringify(tasks));
     clearArrays();
+    
 }
 
 function clearArrays() {
