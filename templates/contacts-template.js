@@ -1,79 +1,78 @@
 function renderContactsHTMLTemplate(i, backgroundColor, initials, contact){
     return `
-    <div id="contactcard-container" class="contact" onclick="showContactDetails(${i})">
-        <div id="contact-cyrcle-div"> 
-            <div style="background-color: ${backgroundColor};" id="contact-cyrcle">${initials}</div>
+        <div id="contactcard-container" class="contact" onclick="showContactDetails(${i})">
+            <div id="contact-cyrcle-div">
+                <div style="background-color: ${backgroundColor};" id="contact-cyrcle">${initials}</div>
+            </div>
+            <div id="contact-details">
+                <div id="contact-name">${contact.name}</div>
+                <div id="contact-email">${contact.email}</div>
+            </div>
         </div>
-        <div id="contact-details">
-            <div id="contact-name">${contact.name}</div>
-            <div id="contact-email">${contact.email}</div>
-        </div>
-    </div>`;
-  }
+    `;
+}
 
-  function renderContactsMobileHTMLTemplate(i, backgroundColor, initials, contact){
+function renderContactsMobileHTMLTemplate(i, backgroundColor, initials, contact){
     return`
-    <div id="contactcard-container-mobile" class="contact" onclick="showContactDetailsMobile(${i})" >
-    <div id="contact-cyrcle-div"> 
-        <div style="background-color: ${backgroundColor};" id="contact-cyrcle">${initials}</div>
-    </div>
-    <div id="contact-details">
-        <div id="contact-name">${contact.name}</div>
-        <div id="contact-email">${contact.email}</div>
-    </div>
-</div>`;
-  }
-
-  function showContactDetailsHTMLTemplate(backgroundColor, initials, contact, i){
-    return `
-    <div id="contact-overlay">
-      <div id="overlay-top-container">
-          <div id="contact-cyrcle-div-overlay">
-              <div id="contact-cyrcle-overlay" style="background-color: ${backgroundColor};">${initials}
-              </div> 
+        <div id="contactcard-container-mobile" class="contact" onclick="showContactDetailsMobile(${i})" >
+            <div id="contact-cyrcle-div">
+                <div style="background-color: ${backgroundColor};" id="contact-cyrcle">${initials}</div>
+            </div>
+            <div id="contact-details">
+                <div id="contact-name">${contact.name}</div>
+                <div id="contact-email">${contact.email}</div>
+            </div>
         </div>
-        <div id="contact-mid-overlay">
-            <div id="contact-name-overlay"> ${contact.name}</div>
+    `;
+}
+
+function showContactDetailsHTMLTemplate(backgroundColor, initials, contact, i){
+    return `
+        <div id="contact-overlay">
+        <div id="overlay-top-container">
+            <div id="contact-cyrcle-div-overlay">
+                <div id="contact-cyrcle-overlay" style="background-color: ${backgroundColor};">${initials}</div>
+            </div>
+            <div id="contact-mid-overlay">
+                <div id="contact-name-overlay"> ${contact.name}</div>
                     <div id="edit-delete-div">
                         <div onclick="editContact(${i})" id="edit-div">Edit</div>
                         <div onclick="deleteContact(${i})" id="delete-div">Delete</div>
                     </div>
+                </div>
             </div>
-        </div>
-        <div id="heading-contact-information">Contact Information</div>
-        <div id="overlay-bottom-container">
+            <div id="heading-contact-information">Contact Information</div>
+            <div id="overlay-bottom-container">
                 <div id="contact-email-overlay"><div><b>Email</b></div><div id="email-div">${contact.email}</div></div>
                 <div id="contact-telefon-overlay"><div><b>Phone</b></div><div id="telefon-div">${contact.phone}</div></div>
-          </div>
-      </div>
-  `
-  }
+            </div>
+        </div>
+    `;
+}
 
-  function showContactDetailsMobileHTMLTemplate (backgroundColor, initials, contact, i){
+function showContactDetailsMobileHTMLTemplate (backgroundColor, initials, contact, i){
     return `
-    <div id="popup-window-container"class="d-none">
-      <div id="popup-btn-edit" onclick="editMobileContact(${i})"><img id="popup-img-edit" src="../img/edit.png"><p>Edit</p></div>
-      <div id="popup-btn-delete" onclick="deleteContactMobile(${i})"><img id="popup-img-delete" src="../img/delete-subtask.svg"><p>Delete</p></div>
+    <div id="popup-window-container" class="d-none">
+        <div id="popup-btn-edit" onclick="editMobileContact(${i})"><img id="popup-img-edit" src="../img/edit.png"><p>Edit</p></div>
+        <div id="popup-btn-delete" onclick="deleteContactMobile(${i})"><img id="popup-img-delete" src="../img/delete-subtask.svg"><p>Delete</p></div>
     </div>
-        <div id="overlay-top-container-mobile">
-        <button id="mobile-more-btn" onclick="openOrClose()" ></button>
-          <button id="close-mobile-details-btn" onclick="closeMobileDetails()"></button>
-            <div id="heading-div-static-mobile">Contacts</div>
-              <div id="text-div-static-mobile">Better with a team</div>
-              <div id="contact-cyrcle-div-overlay-mobile">
-                    <div id="contact-cyrcle-overlay-mobile" style="background-color: ${backgroundColor};">${initials}
-                </div> 
-                      <div id="contact-name-overlay-mobile""> ${contact.name}</div>
-      </div>
-              <div id="heading-contact-information-mobile"">Contact Information</div>
-                  
-          <div id="overlay-bottom-container-mobile"">
-                  <div id="contact-email-overlay-mobile""><b>Email</b><div id="email-div">${contact.email}</div></div>
-                  <div id="contact-telefon-overlay-mobile""><b>Phone</b><div id="telefon-div">${contact.phone}</div></div>
-          </div>
-      
-  `
-  }
+    <div id="overlay-top-container-mobile">
+        <button id="mobile-more-btn" onclick="openOrClose()"></button>
+        <button id="close-mobile-details-btn" onclick="closeMobileDetails()"></button>
+        <div id="heading-div-static-mobile">Contacts</div>
+        <div id="text-div-static-mobile">Better with a team</div>
+        <div id="contact-cyrcle-div-overlay-mobile">
+            <div id="contact-cyrcle-overlay-mobile" style="background-color: ${backgroundColor};">${initials}</div>
+            <div id="contact-name-overlay-mobile">${contact.name}</div>
+        </div>
+        <div id="heading-contact-information-mobile">Contact Information</div>
+        <div id="overlay-bottom-container-mobile">
+            <div id="contact-email-overlay-mobile"><b>Email</b><div id="email-div">${contact.email}</div></div>
+            <div id="contact-telefon-overlay-mobile"><b>Phone</b><div id="telefon-div">${contact.phone}</div></div>
+        </div>
+    </div>
+  `;
+}
 
 function editContactHTMLTemplate(backgroundColor, initials, contact, i){
     return `

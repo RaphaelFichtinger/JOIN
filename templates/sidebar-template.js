@@ -23,9 +23,7 @@ function sidebarTemplate() {
 	<a href="./Privacy.html" class="info-text">Privacy Policy</a>
 		<a href="./legal_notice.html" class="info-text">Legal Notice</a>
 	</div>
-	
 	`;
-	
 }
 
 function sidebarTemplateMobile() {
@@ -50,31 +48,3 @@ function sidebarTemplateMobile() {
 	</div>
 	`;
 }
-
-// function selectSidebar() {
-// 	const currentPage = window.location.pathname;
-	
-// 	// Mapping von Seitenpfaden zu zugehörigen IDs
-// 	const idMappings = {
-// 	  './summary.html': ['summary'],
-// 	  './board.html': ['board'],
-// 	  './add_task.html': ['add-task'],
-// 	  './contacts.html': ['contacts'],
-// 	};
-
-// 	const ids = idMappings[currentPage];
-
-// 	if (ids) {
-// 	  ids.forEach(id => {
-// 		const sidebarItem = document.getElementById(id);
-
-// 		if (sidebarItem) {
-// 		  sidebarItem.classList.add('active');
-// 		  const firstChild = sidebarItem.children[0];
-// 		  if (firstChild) {
-// 			firstChild.classList.add('active');
-// 		  }
-// 		}
-// 	  });
-// 	}
-//   }

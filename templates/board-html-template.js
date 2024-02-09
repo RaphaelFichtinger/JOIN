@@ -6,84 +6,84 @@ function returnTask(status) {
             <img onclick="closeAddTaskPopup()" class="close" src="./img/close.png">
         </div>
 		<form onsubmit="createNewTask('${status}'); return false;">
-			<div class="form-container flex">
-				<div class="leftside flex-column">
-					<div class="task-input task-title">
-						<label for="title">Title<span class="required-fields">*</span></label>
-						<input id="title" type="text" placeholder="Enter a Title" required>
-					</div>
-					<div class="task-input task-description">
-						<label for="description">Description</label>
-						<textarea name="description" id="description" cols="30" rows="7" placeholder="Enter a Description"></textarea>
-					</div>
-					<div class="task-input task-prio">
-						<label for="prio">Prio</label>
-						<div class="buttons flex">
-							<div id="priority-urgent-mobile" class="priority-urgent priority-button" onclick="selectPriority('urgent-mobile')">Urgent</div>
-							<div id="priority-medium-mobile" class="priority-medium priority-button medium" onclick="selectPriority('medium-mobile')">Medium</div>
-							<div id="priority-low-mobile" class="priority-low priority-button" onclick="selectPriority('low-mobile')">Low</div>
-						</div>
-					</div>
-					<div class="task-input task-assigned-to">
-						<label for="assign-to">Assign to</label>
-						<div class="position-relative flex-column m-t-8">
-							<input onclick="openOverlay(event, 'contacts-list')" id="assign-to" type="text" placeholder="Select contacts to assign" readonly>
-							<img onclick="openOverlay(event, 'contacts-list')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown" tabindex="0">
-						</div>
-						<div id="contacts-list" class="contacts-list">
-							<div id="list-item" class="list-item"></div>
-						</div>
-						<div id="added-contacts" class="flex flex-wrap"></div>
-					</div>
-				</div>
-				<div class="rightside flex-column">
-					<div class="task-input task-date">
-						<label for="due-date">Due Date<span class="required-fields">*</span></label>
-						<input type="date" id="due-date" value="dd/mm/yyyy" required>
-					</div>
-					<div class="task-input task-prio">
-						<label for="prio">Prio</label>
-						<div class="buttons flex">
-							<div id="priority-urgent" class="priority-urgent priority-button" onclick="selectPriority('urgent')">Urgent</div>
-							<div id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</div>
-							<div id="priority-low" class="priority-low priority-button" onclick="selectPriority('low')">Low</div>
-						</div>
-					</div>
-					<div id="task-category" class="task-input task-category">
-						<label for="category">Category<span class="required-fields">*</span></label>
-						<div class="position-relative flex-column m-t-8">
-							<input onclick="openOverlay(event, 'categories-list')" id="category" type="text" placeholder="Select task category" required readonly>
-							<img onclick="openOverlay(event, 'categories-list')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown">
-						</div>
-						<div id="categories-list" class="categories-list">
-							<div id="list-item-category" class="list-item-category"></div>
-						</div>
-					</div>
-					<div class="task-input task-assigned-to">
-						<label for="assign-to-mobile">Assign to</label>
-						<div class="position-relative flex-column m-t-8">
-							<input onclick="openOverlay(event, 'contacts-list-mobile')" id="assign-to-mobile" type="text" placeholder="Select contacts to assign" readonly>
-							<img onclick="openOverlay(event, 'contacts-list-mobile')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown" tabindex="0">
-						</div>
-						<div id="contacts-list-mobile" class="contacts-list">
-							<div id="list-item-mobile" class="list-item"></div>
-						</div>
-						<div id="added-contacts-mobile" class="flex"></div>
-					</div>
-					<div class="task-input task-subtasks">
-						<label for="subtasks">Subtasks</label>
-						<input onclick="changeIcons()" id="subtasks" type="text" placeholder="Add new Subtask">
-						<div id="subtasks-list" class="subtasks-list">
-							<ul id="list-item-subtasks" class="list-item-subtasks"></ul>
-						</div>
-						<img id="subtasks-plus" class="subtasks-plus" src="./img/plus.svg" alt="">
-						<div id="image-click" class="image-click d-none">
-							<img onclick="clearSubtaskInput()" class="subtasks-clear" src="./img/clear.svg" alt="">
-							<img onclick="addSubtask()" class="subtasks-check" src="./img/check-blue.svg" alt="">
-						</div>
-					</div>
-				</div>
-			</div>
+            <div class="form-container flex">
+                <div class="leftside flex-column">
+                    <div class="task-input task-title">
+                        <label for="title">Title<span class="required-fields">*</span></label>
+                        <input id="title" type="text" placeholder="Enter a Title" required>
+                    </div>
+                    <div class="task-input task-description">
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" cols="30" rows="7" placeholder="Enter a Description"></textarea>
+                    </div>
+                    <div class="task-input task-prio">
+                        <label for="prio">Prio</label>
+                        <div class="buttons flex">
+                            <div id="priority-urgent-mobile" class="priority-urgent priority-button" onclick="selectPriority('urgent-mobile')">Urgent</div>
+                            <div id="priority-medium-mobile" class="priority-medium priority-button medium" onclick="selectPriority('medium-mobile')">Medium</div>
+                            <div id="priority-low-mobile" class="priority-low priority-button" onclick="selectPriority('low-mobile')">Low</div>
+                        </div>
+                    </div>
+                    <div class="task-input task-assigned-to">
+                        <label for="assign-to">Assign to</label>
+                        <div class="position-relative flex-column m-t-8">
+                            <input onclick="openOverlay(event, 'contacts-list')" id="assign-to" type="text" placeholder="Select contacts to assign" readonly>
+                            <img onclick="openOverlay(event, 'contacts-list')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown" tabindex="0">
+                        </div>
+                        <div id="contacts-list" class="contacts-list">
+                            <div id="list-item" class="list-item"></div>
+                        </div>
+                        <div id="added-contacts" class="flex flex-wrap"></div>
+                    </div>
+                </div>
+                <div class="rightside flex-column">
+                    <div class="task-input task-date">
+                        <label for="due-date">Due Date<span class="required-fields">*</span></label>
+                        <input type="date" id="due-date" value="dd/mm/yyyy" required>
+                    </div>
+                    <div class="task-input task-prio">
+                        <label for="prio">Prio</label>
+                        <div class="buttons flex">
+                            <div id="priority-urgent" class="priority-urgent priority-button" onclick="selectPriority('urgent')">Urgent</div>
+                            <div id="priority-medium" class="priority-medium priority-button medium" onclick="selectPriority('medium')">Medium</div>
+                            <div id="priority-low" class="priority-low priority-button" onclick="selectPriority('low')">Low</div>
+                        </div>
+                    </div>
+                    <div id="task-category" class="task-input task-category">
+                        <label for="category">Category<span class="required-fields">*</span></label>
+                        <div class="position-relative flex-column m-t-8">
+                            <input onclick="openOverlay(event, 'categories-list')" id="category" type="text" placeholder="Select task category" required readonly>
+                            <img onclick="openOverlay(event, 'categories-list')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown">
+                        </div>
+                        <div id="categories-list" class="categories-list">
+                            <div id="list-item-category" class="list-item-category"></div>
+                        </div>
+                    </div>
+                    <div class="task-input task-assigned-to">
+                        <label for="assign-to-mobile">Assign to</label>
+                        <div class="position-relative flex-column m-t-8">
+                            <input onclick="openOverlay(event, 'contacts-list-mobile')" id="assign-to-mobile" type="text" placeholder="Select contacts to assign" readonly>
+                            <img onclick="openOverlay(event, 'contacts-list-mobile')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown" tabindex="0">
+                        </div>
+                        <div id="contacts-list-mobile" class="contacts-list">
+                            <div id="list-item-mobile" class="list-item"></div>
+                        </div>
+                        <div id="added-contacts-mobile" class="flex flex-wrap"></div>
+                    </div>
+                    <div class="task-input task-subtasks">
+                        <label for="subtasks">Subtasks</label>
+                        <input onclick="changeIcons()" id="subtasks" type="text" placeholder="Add new Subtask">
+                        <div id="subtasks-list" class="subtasks-list">
+                            <ul id="list-item-subtasks" class="list-item-subtasks"></ul>
+                        </div>
+                        <img id="subtasks-plus" class="subtasks-plus" src="./img/plus.svg" alt="">
+                        <div id="image-click" class="image-click d-none">
+                            <img onclick="clearSubtaskInput()" class="subtasks-clear" src="./img/clear.svg" alt="">
+                            <img onclick="addSubtask()" class="subtasks-check" src="./img/check-blue.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
 			<div class="buttons-bottom flex align-center space-between">
 				<div class="required-text">
 					<p>This fields are required<span class="required-fields">*</span></p>
