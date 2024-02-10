@@ -130,14 +130,26 @@ function createOverviewHTMLTemplate(category, title, description, date, priority
         ${generateSubtasks(task.id)}
     </div>
     <div class="overview-bottom-buttons">
-    <button class="delete-overview" onclick="deleteTask(${task.id})">
-        <img src="./img/delete-subtask.svg">
-        <p>Delete</p>
-    </button>
-    <button class="edit-overview" onclick="editTaskOverview(${task.id})">
-        <img src="./img/edit-subtask.svg">
-        <p>Edit</p>
-    </button>
+        <div onclick="openMoveTaskMenu(event)" class="clickbox-open-menu flex align-center position-relative">
+            <div class="move-task flex align-center">
+                <img src="./img/arrow-down.svg">
+                <p>Move task to</p>
+            </div>
+            <div id="open-move-task">
+                <p onclick="moveTaskMobile(${task.id}, 'to-do')">To do</p>
+                <p onclick="moveTaskMobile(${task.id}, 'in-progress')">In progress</p>
+                <p onclick="moveTaskMobile(${task.id}, 'await-feedback')">Await feedback</p>
+                <p onclick="moveTaskMobile(${task.id}, 'done-tasks')">Done</p>
+            </div>
+        </div>
+        <button class="delete-overview" onclick="deleteTask(${task.id})">
+            <img src="./img/delete-subtask.svg">
+            <p>Delete</p>
+        </button>
+        <button class="edit-overview" onclick="editTaskOverview(${task.id})">
+            <img src="./img/edit-subtask.svg">
+            <p>Edit</p>
+        </button>
     </div>
     `;
 }

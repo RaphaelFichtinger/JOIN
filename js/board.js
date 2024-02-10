@@ -124,6 +124,26 @@ function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
+function openMoveTaskMenu(event) {
+    event.stopPropagation();
+    let openMoveTask = document.getElementById('open-move-task');
+    openMoveTask.classList.toggle('active');
+}
+
+function closeMoveTaskTo() {
+    let openMoveTask = document.getElementById('open-move-task');
+    openMoveTask.classList.remove('active');
+}
+
+function moveTaskMobile(currentId, status) {
+    let currentTaskIndex = tasks.findIndex(task => task.id === currentId);
+    let newStatus = status;
+    tasks[currentTaskIndex]['status'] = newStatus;
+    setItem('tasks', JSON.stringify(tasks));   //saves status of our board
+    updateHTML();
+    closeTaskOverview()
+}
+
 function openAddTaskPopup(status) {
     let popup = document.getElementById('add-task-popup');
     popup.innerHTML = returnTask(status);

@@ -23,6 +23,36 @@ button {
     overflow-y: scroll;
 }
 
+.clickbox-open-menu {
+    cursor: pointer;
+}
+
+.move-task {
+    gap: 8px;
+    margin-right: 16px;
+    padding: 6px;
+    font-size: 16px;
+}
+
+#open-move-task {
+    display: none;
+}
+
+#open-move-task.active {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    background-color: white;
+    box-shadow: 0px 0px 4px 0px #00000029;
+    padding: 8px;
+    border-radius: 12px;
+    width: 125px;
+    gap: 4px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
 .drag-area-highlight {
     background-color: rgba(128, 128, 128, 0.4);
 }
