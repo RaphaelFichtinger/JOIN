@@ -208,20 +208,20 @@ function saveNewContact(){
   renderContactsMobile();
   closeEdit();
   playAnimation();
-} else {
-  let error = document.getElementById('empty-fields-message');
-    error.innerHTML = 'Bitte fülle alle Felder aus, um einen Kontakt zu erstellen.';
+
 }
 }
 
 
 function saveNewContactMobile() {
+  let randomColor = getRandomColor();
   if (validateNewMobileContactInput()) {
       let newContact = {
           'name': document.getElementById('new-contact-input-name-mobile').value,
           'email': document.getElementById('new-contact-input-mail-mobile').value,
-          'phone': document.getElementById('new-contact-input-number-mobile').value
-      };
+          'phone': document.getElementById('new-contact-input-number-mobile').value,
+          'color': randomColor
+        };
 
       loadedContacts.push(newContact);
       loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
@@ -232,11 +232,10 @@ function saveNewContactMobile() {
       renderContactsMobile();
       closeEdit();
       playAnimation();
-    } else {
-      let error = document.getElementById('empty-fields-message');
-        error.innerHTML = 'Bitte fülle alle Felder aus, um einen Kontakt zu erstellen.';
+ 
     }
-    }
+  }
+
 
 function deleteContact(i) {
   let overlay = document.getElementById('contact-overlay');
