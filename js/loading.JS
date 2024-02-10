@@ -30,7 +30,7 @@ async function getItem(key) {
 
 async function loadContacts(){
   try {
-  loadedContacts = JSON.parse(await getItem('contacts'));
+  loadedContacts = JSON.parse(await getItem('loadedContacts'));
   } catch(e){
   console.error('Loading error:', e);
   }

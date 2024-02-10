@@ -112,11 +112,9 @@ function saveContactChanges(i) {
       let editedEmail = document.getElementById('edit-input-mail').value;
       let editedPhone = document.getElementById('edit-input-number').value;
       let overlay = document.getElementById('contact-overlay');
-      let backgroundColor = getRandomColor();
       loadedContacts[i].name = editedName;
       loadedContacts[i].email = editedEmail;
       loadedContacts[i].phone = editedPhone;
-      loadedContacts[i].color = backgroundColor;
       overlay.innerHTML = '';
       loadedContacts.sort((a, b) => a.name.localeCompare(b.name));
       setItem('loadedContacts', JSON.stringify(loadedContacts));
@@ -133,11 +131,9 @@ function saveContactChangesMobile(i) {
       let editedEmail = document.getElementById('edit-contact-input-mail-mobile').value;
       let editedPhone = document.getElementById('edit-contact-input-number-mobile').value;
       let overlay = document.getElementById('editing-overlay-mobile');
-      let backgroundColor = getRandomColor();
       loadedContacts[i].name = editedName;
       loadedContacts[i].email = editedEmail;
       loadedContacts[i].phone = editedPhone;
-      loadedContacts[i].color = backgroundColor;
       setItem('contacts', JSON.stringify(loadedContacts));
       overlay.innerHTML = '';
       loadedContacts.sort((a, b) => a.name.localeCompare(b.name));

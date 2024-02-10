@@ -99,13 +99,14 @@ function editContactHTMLTemplate(backgroundColor, initials, contact, i){
                         <input id="edit-input-number" type="number" value="${contact.phone}" required>
                     </div>
                     <div id="save-delete-div">
-                        <button onclick="deleteContact(${i})" id="delete-btn-edit">Delete</button>
-                        <div id="save-btn-div" onclick="saveContactChanges(${i})">
+                       
+                        <div id="save-btn-div" >
                             <button type="submit" id="save-btn-edit">Save</button>
                             <img id="check-icon" src="../img/check.png">
                         </div>
                     </div>
                 </form>
+                <button onclick="deleteContact(${i})" id="delete-btn-edit">Delete</button>
             </div>
         </div>
     </div>
@@ -139,14 +140,15 @@ function editMobileContactHTMLTemplate(backgroundColor, initials, contact, i){
                     <input id="edit-contact-input-number-mobile" placeholder="Phone" type="text" value="${contact.phone}" required>
                 </div>
                 <div id="save-delete-div-mobile">
-                    <div id="cancel-btn-div" onclick="deleteContactMobile(${i})"><button id="cancel-btn-edit">Delete</button></div>
-                    <div id="save-btn-div" onclick="saveContactChangesMobile(${i})">
+                 
+                    <div id="save-btn-div">
                         <button type="submit" id="save-btn-edit">Save</button>
                         <img id="check-icon" src="../img/check.png">
                     </div>
                 </div>
             </div>
         </form>
+        <div id="cancel-btn-div" onclick="deleteContactMobile(${i})"><button id="cancel-btn-edit">Delete</button></div>
     </div>
 </div>
 
