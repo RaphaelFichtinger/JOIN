@@ -139,16 +139,15 @@ function editMobileContactHTMLTemplate(backgroundColor, initials, contact, i){
                     <input id="edit-contact-input-mail-mobile" placeholder="Email" type="email" value="${contact.email}" required>
                     <input id="edit-contact-input-number-mobile" placeholder="Phone" type="text" value="${contact.phone}" required>
                 </div>
-                <div id="save-delete-div-mobile">
                  
-                    <div id="save-btn-div">
-                        <button type="submit" id="save-btn-edit">Save</button>
+                   
+                        <button type="submit" id="save-btn-edit-mobile">Save</button>
                         <img id="check-icon" src="../img/check.png">
-                    </div>
+                  
                 </div>
             </div>
         </form>
-        <div id="cancel-btn-div" onclick="deleteContactMobile(${i})"><button id="cancel-btn-edit">Delete</button></div>
+      <button id="cancel-btn-edit-mobile" onclick="deleteContactMobile(${i})">Delete</button>
     </div>
 </div>
 

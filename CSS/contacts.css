@@ -290,11 +290,9 @@ align-items: center;
 
 #save-delete-div{
     margin-top: 32px;
-    width: 100%;
     height: 59px;
-    display: flex;
-    gap: 24px;
-    justify-content: center;
+    width: 120px;
+    margin-left: 200px;
 }
 
 #delete-btn-edit{
@@ -302,6 +300,8 @@ align-items: center;
     height: 57px;
     font-size: 21px;
     font-weight: 400;
+    position: absolute;
+    top: 428px;
 }
 
 #cancel-btn-edit{
@@ -842,6 +842,14 @@ width: 0px;
 opacity: 0;
 margin-top: 80px;
 }
+
+#drop-to-next-card{
+    width: 100px;
+    height: 40px;
+    background-color: grey;
+}
+
+
 @media (max-width: 1650px){
     #edit{
         left: 242px;
@@ -861,6 +869,9 @@ margin-top: 80px;
         min-width: 1100px;
         left:20vw;
     }
+    #delete-btn-edit{
+        top: 502px;
+    }
 
 }
 
@@ -869,8 +880,10 @@ margin-top: 80px;
         height: calc(100vh - 280px);
         width: 300px;
     }
+    #delete-btn-edit{
+        top: 791px;
+    }
     #close-edit{
-
         filter: brightness(100);
     }
     #cyrcle-and-inputs-div{
@@ -989,7 +1002,6 @@ margin-top: 80px;
         left: 600px;
     }
     #edit-inputs-mobile{
-        margin-top: 80px;
         display: flex;
         flex-direction: column;
         gap: 32px;
@@ -1118,11 +1130,15 @@ margin-top: 80px;
         }
     #save-delete-div-mobile{
         margin-bottom: 34px;
-        width: 249px;
+        width: 100px;
         display: flex;
         gap: 24px;
         justify-content: center;
+        margin-left: 122px;
     }
+
+
+
     #new-contact-input-name-mobile{
         height: 50px;
         border: 1px solid grey;
@@ -1184,15 +1200,27 @@ margin-top: 80px;
         background-position: 95%;
     }
     #save-btn-edit-mobile{
-        height: 72px;
-        width: 270px;
+        height: 64px;
+        width: 120px;
         background-color: #1d2b3f;
         border: none;
         border-radius: 20px;
         color: white;
         font-size: 21px;
         font-weight: 600;
-        margin-top: 8px;
+        position: absolute;
+        bottom: 9vh;
+        right: 33vw;
+    }
+    #cancel-btn-edit-mobile{
+        width: 100px;
+        height: 64px;
+        background-color: rgb(255, 255, 255);
+        position: absolute;
+        bottom: 9vh;
+        left: 33vw;
+        font-size: large;
+        border-radius: 10px;
     }
     #edit-content-bottom-mobile{
         display: flex;
@@ -1203,6 +1231,7 @@ margin-top: 80px;
         width: 100vw;
         overflow: scroll;
         margin-bottom: 80px;
+        height: 42vh;
     }
     #edit-cyrcle-new-contact-mobile{
         height: 120px;
@@ -1244,6 +1273,7 @@ margin-top: 80px;
     }
     #vector5-for-new-mobile{
         padding-bottom: 48px;
+        width: 100px;
     }
     #new-contact-overlay-heading-mobile{
         display: flex;
@@ -1383,12 +1413,25 @@ margin-top: 80px;
         top: 200px;
         left: 25vw;
     }
-    #save-btn-edit-mobile{
-        margin-top: 0px;
-        height: 54px;
-        width: 200px;
+    #cancel-btn-edit-mobile{
+        left: 20vw;
     }
+    #save-btn-edit-mobile{
+        right: 20vw;
+    }
+
     #header{
         z-index: 5555;
     }
+}
+@media (max-width: 380px){
+    #cancel-btn-edit-mobile{
+        left: 10vw;
+    }
+    #save-btn-edit-mobile{
+        right: 10vw;
+    }
+
+
+
 }
