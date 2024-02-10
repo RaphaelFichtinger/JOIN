@@ -564,6 +564,18 @@ button {
     overflow: scroll;
 }
 
+.no-tasks {
+    max-width: 265px;
+    background-color: #E7E7E7;
+    height: 48px;
+    border: 1px dotted #A8A8A8;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+}
+
 @media screen and (max-width: 1325px) {
     .board-container {
         flex-direction: column;
@@ -638,6 +650,7 @@ button {
         margin-right: 40px;
         max-height: 60vh;
     }
+
     #task-big-view-card,
     #task-big-view-edit-card {
         max-height: calc(100vh - 256px);
@@ -695,6 +708,7 @@ button {
         padding-left: 16px;
         padding-right: 16px;
     }
+
     #task-big-view-card {
         width: 224px;
     }
@@ -704,6 +718,7 @@ button {
     .board-top-right {
         width: 100%;
     }
+
     .input-board-top {
         background-position: 273px, 293px;
         width: auto;

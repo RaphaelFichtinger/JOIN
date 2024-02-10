@@ -24,15 +24,24 @@ function updateHTML(filteredTasks = tasks) {
 
     for (const status in taskStatusMap) {
         const filteredStatusTasks = filteredTasks.filter(t => t['status'] == taskStatusMap[status]);
+        const columnElement = document.getElementById(status);
 
-        document.getElementById(status).innerHTML = '';
+        let message = 'No tasks To do';
 
-        for (let index = 0; index < filteredStatusTasks.length; index++) {
-            const element = filteredStatusTasks[index];
-            document.getElementById(status).innerHTML += generateTodoHTML(element, index);
+        if (filteredStatusTasks.length > 0) {
+            columnElement.innerHTML = '';
+            for (let index = 0; index < filteredStatusTasks.length; index++) {
+                const element = filteredStatusTasks[index];
+                columnElement.innerHTML += generateTodoHTML(element, index);
+            }
+        } else {
+            columnElement.innerHTML = `<div class="no-tasks">${message}</div>`;
         }
     }
 }
+
+
+
 
 let currentDraggedElement;
 
