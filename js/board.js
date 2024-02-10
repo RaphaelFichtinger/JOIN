@@ -34,27 +34,6 @@ function updateHTML(filteredTasks = tasks) {
     }
 }
 
-function updateHTML(filteredTasks = tasks) {
-    const taskStatusMap = {
-        'to-do': 'to-do',
-        'in-progress': 'in-progress',
-        'await-feedback': 'await-feedback',
-        'done-tasks': 'done-tasks',
-    };
-
-    for (const status in taskStatusMap) {
-        const filteredStatusTasks = filteredTasks.filter(t => t['status'] == taskStatusMap[status]);
-
-        document.getElementById(status).innerHTML = '';
-
-        for (let index = 0; index < filteredStatusTasks.length; index++) {
-            const element = filteredStatusTasks[index];
-            document.getElementById(status).innerHTML += generateTodoHTML(element, index);
-        }
-    }
-}
-
-
 let currentDraggedElement;
 
 function generateTodoHTML(element, index) {
@@ -114,7 +93,7 @@ function generateTaskCard(element, index, progress, finishedSubtasks, initials, 
             <div id="additionalContacts">
             ${additionalContacts}</div>
             <div>
-                <img id="priority-image-small${index}" src="">
+                <img id="priority-image-small${index}" src="./img/prio-${element.priority.toLowerCase()}.svg">
             </div>
         </div>
     </div>
