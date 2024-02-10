@@ -27,6 +27,13 @@ async function renderTask() {
     setActivePage2();
 }
 
+async function renderBoard() {
+    await loadTasks();
+    await loadContacts();
+    updateHTML();
+    setActivePage3();
+}
+
 if(title) {
     title.addEventListener('input', function() {
         if(this.value !== '') {
@@ -81,6 +88,8 @@ async function createNewTask(status) {
     setTimeout(() => {
         window.location.href = './board.html';
     }, 2050)
+    renderBoard();
+    
 }
 
 function successLightbox() {
