@@ -80,7 +80,7 @@ async function createNewTask(status) {
     buttonCreateTask.disabled = true;
     setTimeout(() => {
         window.location.href = './board.html';
-    }, 3000)
+    }, 2050)
 }
 
 function successLightbox() {

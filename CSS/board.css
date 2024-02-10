@@ -14,12 +14,17 @@ button {
 .drag-area {
     height: 70vh;
     min-height: 100px;
-    background-color: rgba(0, 0, 0, 0.1);
-    border: 1px dashed black;
+    /* background-color: rgba(0, 0, 0, 0.1);
+    border: 1px dashed black; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: scroll;
+    height: 700px;
+    overflow-y: scroll;
+}
+
+.drag-area-highlight {
+    background-color: rgba(128, 128, 128, 0.4);
 }
 
 /* main board */
@@ -452,14 +457,6 @@ button {
     width: 50% !important;
 }
 
-.drag-area-highlight {
-    background-color: black;
-}
-
-.drag-area {
-    height: 100%;
-}
-
 .main-edit-card {
     overflow-x: hidden;
     display: flex;
@@ -532,6 +529,7 @@ button {
     .drag-area {
         flex-direction: row;
         gap: 24px;
+        overflow: scroll;
     }
 }
 
@@ -592,7 +590,7 @@ button {
     }
     #task-big-view-card,
     #task-big-view-edit-card {
-        height: calc(100vh - 256px);
+        max-height: calc(100vh - 256px);
     }
 }
 

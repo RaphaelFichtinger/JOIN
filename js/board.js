@@ -113,6 +113,15 @@ function moveTo(status) {
     tasks[currentTaskIndex]['status'] = status;
     setItem('tasks', JSON.stringify(tasks));   //saves status of our board
     updateHTML();
+    removeHighlight(status);
+}
+
+function highlight(id) {
+    document.getElementById(id).classList.add('drag-area-highlight');
+}
+
+function removeHighlight(id) {
+    document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
 function openAddTaskPopup(status) {
