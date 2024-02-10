@@ -76,72 +76,31 @@ function showContactDetailsMobileHTMLTemplate (backgroundColor, initials, contac
 
 function editContactHTMLTemplate(backgroundColor, initials, contact, i){
     return `
-        <div id="edit">
-            <div id="editing-div-leftside">
-                <div id="edit-overlay-logo"></div>
-                <div id="edit-overlay-heading">
-                    Edit Contact
-                    <img id="vector5" src="../img/vector5vertical.png">
-                </div>
-            </div>
-            <div id="editing-div-rightside">
-                <div id="close-edit" onclick="closeEdit()"></div>
-                <div id="cyrcle-and-inputs-div">
-                    <div id="edit-cyrcle-overlay" style="background-color: ${backgroundColor};">
-                        ${initials}
-                    </div>
-                    <div id="edit-content-rightside">
-                        <form onsubmit="saveContactChanges(${i})">
-                            <div id="edit-inputs">
-                                <div id="empty-fields-message"></div>
-                                <input id="edit-input-name" type="text" value="${contact.name}">
-                                <input id="edit-input-mail" type="email" value="${contact.email}">
-                                <input id="edit-input-number" type="number" value="${contact.phone}">
-                            </div>
-                            <div id="save-delete-div">
-                                <button type="button" onclick="deleteContact(${i})"id="delete-btn-edit" formnovalidate>Delete</button>
-                                <div id="save-btn-div">
-                                    <button type="submit" id="save-btn-edit">Save</button>
-                                    <img id="check-icon" src="../img/check.png">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+    <div id="edit">
+    <div id="editing-div-leftside">
+        <div id="edit-overlay-logo">
         </div>
-    `
-};
-
-function editMobileContactHTMLTemplate(backgroundColor, initials, contact, i){
-    return `
-        <div id="edit-mobile">
-            <div id="edit-contact-div-top-mobile">
-                <div id="new-contact-overlay-heading-mobile">
-                    <h1 id="static-heading-edit-mobile">Edit contact<h1>
-                    <p id="new-contact-text">Tasks are better with a team!</p>
-                    <img id="vector5-for-new-mobile" src="../img/vector5vertical.png">
-                </div>
+        <div id="edit-overlay-heading">Edit Contact
+            <img id="vector5" src="../img/vector5vertical.png">
+        </div>
+    </div>
+    <div id="editing-div-rightside">
+        <div id="close-edit" onclick="closeEdit()">
+        </div>
+        <div id="cyrcle-and-inputs-div">
+            <div id="edit-cyrcle-overlay" style="background-color: ${backgroundColor};">${initials}
             </div>
-            <div id="editing-div-bottom-mobile">
-                <div id="close-edit-mobile-btn" onclick="closeEditMobile()"></div>
-                <div id="cyrcle-and-inputs-div-mobile">
-                    <div id="edit-cyrcle-overlay-mobile" style="background-color: ${backgroundColor};">${initials}</div>
-                </div>
-            </div>
-            <div id="edit-content-bottom-mobile">
-                <form onsubmit="saveContactChangesMobile(${i})">
-                    <div id="edit-inputs-mobile">
+            <div id="edit-content-rightside">
+                <form onsubmit="saveContactChanges(${i}); return false;">
+                    <div id="edit-inputs">
                         <div id="empty-fields-message"></div>
-                        <input id="edit-contact-input-name-mobile" placeholder="Name" type="text" value="${contact.name}">
-                        <input id="edit-contact-input-mail-mobile" placeholder="Email" type="email" value="${contact.email}" >
-                        <input id="edit-contact-input-number-mobile" placeholder="Phone" type="number" value="${contact.phone}" >
+                        <input id="edit-input-name" type="text" value="${contact.name}" required>
+                        <input id="edit-input-mail" type="email" value="${contact.email}" required>
+                        <input id="edit-input-number" type="number" value="${contact.phone}" required>
                     </div>
-                    <div id="save-delete-div-mobile">
-                        <div id="cancel-btn-div" onclick="deleteContactMobile(${i})">
-                            <button type="button" id="cancel-btn-edit" formnovalidate>Delete</button>
-                        </div>
-                        <div id="save-btn-div">
+                    <div id="save-delete-div">
+                        <button onclick="deleteContact(${i})" id="delete-btn-edit">Delete</button>
+                        <div id="save-btn-div" onclick="saveContactChanges(${i})">
                             <button type="submit" id="save-btn-edit">Save</button>
                             <img id="check-icon" src="../img/check.png">
                         </div>
@@ -149,6 +108,48 @@ function editMobileContactHTMLTemplate(backgroundColor, initials, contact, i){
                 </form>
             </div>
         </div>
+    </div>
+</div>
+
+    `
+};
+
+function editMobileContactHTMLTemplate(backgroundColor, initials, contact, i){
+    return `
+      <div id="edit-mobile">
+    <div id="edit-contact-div-top-mobile">
+        <div id="new-contact-overlay-heading-mobile">
+            <h1 id="static-heading-edit-mobile">Edit contact</h1>
+            <p id="new-contact-text">Tasks are better with a team!</p>
+            <img id="vector5-for-new-mobile" src="../img/vector5vertical.png">
+        </div>
+    </div>   
+    <div id="editing-div-bottom-mobile">
+        <div id="close-edit-mobile-btn" onclick="closeEditMobile()">
+        </div>
+        <form onsubmit="saveContactChangesMobile(${i}); return false;">
+            <div id="cyrcle-and-inputs-div-mobile">
+                <div id="edit-cyrcle-overlay-mobile" style="background-color: ${backgroundColor};">${initials}</div>
+            </div>
+            <div id="edit-content-bottom-mobile">
+                <div id="edit-inputs-mobile">
+                    <div id="empty-fields-message"></div>
+                    <input id="edit-contact-input-name-mobile" placeholder="Name" type="text" value="${contact.name}" required>
+                    <input id="edit-contact-input-mail-mobile" placeholder="Email" type="email" value="${contact.email}" required>
+                    <input id="edit-contact-input-number-mobile" placeholder="Phone" type="text" value="${contact.phone}" required>
+                </div>
+                <div id="save-delete-div-mobile">
+                    <div id="cancel-btn-div" onclick="deleteContactMobile(${i})"><button id="cancel-btn-edit">Delete</button></div>
+                    <div id="save-btn-div" onclick="saveContactChangesMobile(${i})">
+                        <button type="submit" id="save-btn-edit">Save</button>
+                        <img id="check-icon" src="../img/check.png">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
     `
 };
 

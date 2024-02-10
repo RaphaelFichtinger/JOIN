@@ -124,11 +124,7 @@ function saveContactChanges(i) {
       renderContactsMobile();
       closeEdit();
       playAnimation();
-
-  } else {
-    let error = document.getElementById('empty-fields-message');
-      error.innerHTML = 'Bitte fülle alle Felder aus, um die Änderungen zu speichern.';
-  }
+}
 }
 
 function saveContactChangesMobile(i) {
@@ -152,11 +148,9 @@ function saveContactChangesMobile(i) {
       closeEditMobile();
       closeMobileDetails();
       playAnimation();
-    } else {
-      let error = document.getElementById('empty-fields-message');
-        error.innerHTML = 'Bitte fülle alle Felder aus, um die Änderungen zu speichern.';
-    }
   }
+}
+
 
   function playAnimation() {
     const animationBox = document.getElementById('animation-box');
