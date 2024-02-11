@@ -5,11 +5,9 @@ let priorityVariable = 'Medium';
 let toDo = 'to-do';
 let currentSubtask;
 let finishedSubtasks = [];
-
 let titleLock = true;
 let dateLock = true;
 let categoryLock = true;
-
 let title = document.getElementById('title');
 let description = document.getElementById('description');
 let dateDue = document.getElementById('due-date');
@@ -19,6 +17,9 @@ let contactsListMobile = document.getElementById('contacts-list-mobile');
 let buttonCreateTask = document.getElementById('button-create-task');
 let timestamp = getTimestampId();
 
+/**
+ * Renders the task by loading tasks, contacts, and categories, getting contacts, and setting the active page.
+ */
 async function renderTask() {
     await loadTasks();
     await loadContacts();
@@ -26,7 +27,6 @@ async function renderTask() {
 	getContacts();
     setActivePage2();
 }
-
 if(title) {
     title.addEventListener('input', function() {
         if(this.value !== '') {
@@ -37,7 +37,6 @@ if(title) {
         }
     })
 }
-
 if(dateDue) {
     dateDue.addEventListener('input', function() {
         if(this.value !== '') {
@@ -49,11 +48,21 @@ if(dateDue) {
     })
 }
 
+/**
+ * Enables the add task button on the page.
+ *
+ */
 function enableAddTaskButton() {
     let buttonCreateTask = document.getElementById('button-create-task');
     buttonCreateTask.disabled = false;
 }
 
+/**
+ * Creates a new task with the given status and stores it in the tasks array. 
+ *
+ * @param {string} status - The status of the new task
+ * @return {Promise<void>} A promise that resolves when the task is created and stored
+ */
 async function createNewTask(status) {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
@@ -83,6 +92,9 @@ async function createNewTask(status) {
     }, 2050)
 }
 
+/**
+ * Function to display a success lightbox and animate a success button
+ */
 function successLightbox() {
     let successLightbox = document.getElementById('success-lightbox');
 	let successButton = document.getElementById('success');
@@ -100,6 +112,9 @@ function successLightbox() {
 	}, 150)
 }
 
+/**
+ * Clears all the input fields and removes any selected options or values.
+ */
 function clearFields() {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
@@ -132,12 +147,21 @@ function clearFields() {
 	category.value = '';
 }
 
+/**
+ * Opens an overlay for a given list ID when triggered by an event. 
+ *
+ * @param {Event} event - The event that triggers the overlay opening
+ * @param {string} listId - The ID of the list to open the overlay for
+ */
 function openOverlay(event, listId) {
     event.stopPropagation();
     let overlayList = document.getElementById(`${listId}`);
     overlayList.classList.toggle('active');
 }
 
+/**
+ * Closes the overlay by removing the 'active' class from the specified elements.
+ */
 function closeOverlay() {
     let overlayList = document.getElementById('contacts-list');
     let overlayListMobile = document.getElementById('contacts-list-mobile');
@@ -147,6 +171,10 @@ function closeOverlay() {
     categoriesList.classList.remove('active');
 }
 
+/**
+ * Retrieves the contacts and generates the corresponding HTML for display.
+ *
+ */
 function getContacts() {
     for (let i = 0; i < loadedContacts.length; i++) {
         let contactName = loadedContacts[i]['name'];
@@ -160,6 +188,15 @@ function getContacts() {
     }
 }
 
+/**
+ * Generates HTML for a contact with the specified details.
+ *
+ * @param {array} splittedLetters - Array of letters from the contact name
+ * @param {string} contactName - The name of the contact
+ * @param {number} i - The index of the contact
+ * @param {string} contactColor - The color associated with the contact
+ * @return {string} The generated HTML for the contact
+ */
 function generateContactsHtml(splittedLetters, contactName, i, contactColor) {
     return `
         <div class="item flex align-center" onclick="contactChecked(event, ${i})">
@@ -170,6 +207,12 @@ function generateContactsHtml(splittedLetters, contactName, i, contactColor) {
     `
 }
 
+/**
+ * Handles the checkbox event for a contact.
+ *
+ * @param {Event} event - the event object
+ * @param {number} index - the index of the contact
+ */
 function contactChecked(event, index) {
     event.stopPropagation();
     let checkbox = event.target;
@@ -177,7 +220,6 @@ function contactChecked(event, index) {
     let contactColor = loadedContacts[index]['color'];
     let addedContacts = document.getElementById('added-contacts');
     let addedContactsMobile = document.getElementById('added-contacts-mobile');
-
     if (checkbox.checked) {
         // Checkbox wurde ausgewählt
         let includedName = checkedContacts.find(c => c.name == contactName)
@@ -194,13 +236,10 @@ function contactChecked(event, index) {
             checkedContacts.splice(indexToRemove, 1);
         }
     }
-
     addedContacts.innerHTML = '';
-
     if(addedContactsMobile) {
         addedContactsMobile.innerHTML = '';
     }
-
     if(checkedContacts.length > 0) {
         for (let j = 0; j < checkedContacts.length; j++) {
             let checkedContact = checkedContacts[j];
@@ -219,7 +258,9 @@ function contactChecked(event, index) {
     }
 }
 
-
+/**
+ * Retrieves the categories and dynamically generates HTML elements for each category.
+ */
 function getCategories() {
     for (let i = 0; i < categories.length; i++) {
         let category = categories[i];
@@ -231,28 +272,40 @@ function getCategories() {
     }
 }
 
+/**
+ * A function that adds a category based on the index provided.
+ *
+ * @param {number} i - The index of the category to be added.
+ * @return {undefined} This function does not return anything.
+ */
 function addCategory(i) {
     let category = categories[i]
     document.getElementById('category').value = `${category}`;
-
     let overlayList = document.getElementById('categories-list');
     overlayList.classList.remove('active');
-
     categoryLock = false;
-
     if(!titleLock && !dateLock && !categoryLock) {
         enableAddTaskButton();
     }
 }
 
+/**
+ * Selects the priority button and updates the priority variable.
+ *
+ * @param {string} priority - The priority value to be selected
+ */
 function selectPriority(priority) {
     let priorityButton = document.getElementById(`priority-${priority}`);
-
     removePriority()
     priorityButton.classList.add(`${priority}`);
     priorityVariable = priorityButton.textContent;
 }
 
+/**
+ * Remove priority classes from all elements with the class 'priority-button'.
+ * No parameters
+ * No return value
+ */
 function removePriority() {
     let buttons = document.querySelectorAll('.priority-button');
     for (let i = 0; i < buttons.length; i++) {
@@ -261,6 +314,9 @@ function removePriority() {
     }
 }
 
+/**
+ * Changes the icons on the webpage.
+ */
 function changeIcons() {
     let subtaskPlus = document.getElementById('subtasks-plus');
     let subtaskIcons = document.getElementById('image-click');
@@ -270,6 +326,12 @@ function changeIcons() {
     subtaskIcons.classList.add('flex');
 }
 
+/**
+ * Adds a subtask to the list of subtasks.
+ *
+ * @param {type} inputSubtask - the input element for the subtask
+ * @param {type} listItemSubtasks - the list item container for subtasks
+ */
 function addSubtask() {
     let inputSubtask = document.getElementById('subtasks');
     let listItemSubtasks = document.getElementById('list-item-subtasks');
@@ -283,17 +345,23 @@ function addSubtask() {
             </div>
         </div>
     </li>`;
-
     subtasksArray.push(`${inputSubtask.value}`);
-
     inputSubtask.value = '';
 }
 
+/**
+ * Clears the input field for subtasks.
+ */
 function clearSubtaskInput() {
     let inputSubtask = document.getElementById('subtasks');
     inputSubtask.value = '';
 }
 
+/**
+ * Edit a subtask by making it editable and allowing the user to save the changes.
+ *
+ * @param {Event} event - the event triggering the subtask edit
+ */
 function editSubtask(event) {
     let textElement = event.target.closest('#editableText');
     textElement.contentEditable = true;
@@ -309,6 +377,12 @@ function editSubtask(event) {
     `;
 }
 
+/**
+ * Removes the specified subtask element from the DOM and the subtasksArray.
+ *
+ * @param {Event} event - The event object
+ * @return {void} 
+ */
 function clearSubtask(event) {
     let deleteSubtask = event.target.closest('.subtaskItem');
     deleteSubtask.remove();
@@ -319,6 +393,12 @@ function clearSubtask(event) {
     }
 }
 
+/**
+ * Asynchronously saves the edited subtask and updates the UI accordingly.
+ *
+ * @param {Object} event - The event object triggered by the user action
+ * @return {Promise} A promise that resolves after the subtask is saved
+ */
 async function saveEditSubtask(event) {
     let textElement = event.target.closest('#editableText');
     textElement.contentEditable = false;
@@ -336,6 +416,11 @@ async function saveEditSubtask(event) {
     currentSubtask = '';
 }
 
+/**
+ * Generates and returns a timestamp ID.
+ *
+ * @return {number} timestamp ID generated by the function
+ */
 function getTimestampId() {
     let timestamp = new Date().getTime();
     return timestamp;

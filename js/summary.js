@@ -8,7 +8,6 @@ let done = document.getElementById('done');
 let tasksInBoard = document.getElementById('tasks-in-board');
 let tasksInProgress = document.getElementById('tasks-in-progress');
 let awaitingFeedback = document.getElementById('awaiting-feedback');
-
 let datesUrgent = [];
 let urgentDate = document.getElementById('urgent-date');
 let greeting = document.getElementById('greeting');
@@ -84,28 +83,28 @@ function getDateFromInput() {
 	if(datesUrgent.length > 0) {
 		let currentDate = new Date();
 
-		// Funktion, um den Unterschied zwischen zwei Daten zu berechnen
+		
 		function dateDifferenceInDays(date1, date2) {
-			const oneDay = 24 * 60 * 60 * 1000; // Stunden * Minuten * Sekunden * Millisekunden
+			const oneDay = 24 * 60 * 60 * 1000; 
 			const diffInMilliseconds = Math.abs(date1 - date2);
 			return Math.round(diffInMilliseconds / oneDay);
 		}
 
-		// Wandelt die Datums-Strings in Date-Objekte um
+		
 		let dateObjects = datesUrgent.map(function(dateString) {
-			// Zerlege das Datum und erstelle ein Date-Objekt
+		
 			let dateParts = dateString.split("-");
-			return new Date(dateParts[0], dateParts[1] - 1, dateParts[2]); // Monate in JavaScript sind 0-basiert, daher -1
+			return new Date(dateParts[0], dateParts[1] - 1, dateParts[2]); 
 		});
 
-		// Finde das Datum im Array, das am nächsten zum aktuellen Datum ist
+		
 		let closestDate = dateObjects.reduce(function (prev, curr) {
 			let prevDiff = dateDifferenceInDays(currentDate, prev);
 			let currDiff = dateDifferenceInDays(currentDate, curr);
 			return currDiff < prevDiff ? curr : prev;
 		});
 
-		// Formatieren und ausgeben
+		
 		let formattedDate = closestDate.toLocaleDateString("en-US", {
 			month: "long",
 			day: "numeric",
