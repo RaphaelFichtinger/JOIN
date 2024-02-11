@@ -182,8 +182,8 @@ function getContacts() {
         let contactColor = loadedContacts[i]['color'];
         document.getElementById('list-item').innerHTML += generateContactsHtml(splittedLetters, contactName, i, contactColor);
 
-        if(document.getElementById('list-item-mobile')) {
-            document.getElementById('list-item-mobile').innerHTML += generateContactsHtml(splittedLetters, contactName, i, contactColor);
+        if (document.getElementById('list-item-mobile')) {
+            document.getElementById('list-item-mobile').innerHTML += generateContactsHtmlMobile(splittedLetters, contactName, i, contactColor, i); // Hier wird die Funktion für die mobile Ansicht aufgerufen
         }
     }
 }
@@ -202,9 +202,42 @@ function generateContactsHtml(splittedLetters, contactName, i, contactColor) {
         <div class="item flex align-center" onclick="contactChecked(event, ${i})">
             <div class="circle" style="background-color : ${contactColor}">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
             <label for="checkbox_${i}" class="name" data-value="${contactName.toLowerCase()}">${contactName}</label>
-            <input id="checkbox_${i}" type="checkbox" class="checkbox">
+            <input id="checkbox_${i}" type="checkbox" class="checkbox" onchange="syncCheckbox(this, ${i})"> <!-- Hinzufügen der onchange-Funktion, um die Checkbox in der mobilen Ansicht zu synchronisieren -->
         </div>
-    `
+    `;
+}
+
+/**
+ * Generates HTML for a contact with the specified details in mobile.
+ *
+ * @param {array} splittedLetters - Array of letters from the contact name
+ * @param {string} contactName - The name of the contact
+ * @param {number} i - The index of the contact
+ * @param {string} contactColor - The color associated with the contact
+ * @param {number} mobileIndex - The index of the contact in mobile view
+ * @return {string} The generated HTML for the contact
+ */
+function generateContactsHtmlMobile(splittedLetters, contactName, i, contactColor, mobileIndex) {
+    return `
+        <div class="item flex align-center" onclick="contactChecked(event, ${mobileIndex})">
+            <div class="circle" style="background-color : ${contactColor}">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
+            <label for="checkbox-mobile_${mobileIndex}" class="name" data-value="${contactName.toLowerCase()}">${contactName}</label>
+            <input id="checkbox-mobile_${mobileIndex}" type="checkbox" class="checkbox" onchange="syncCheckbox(this, ${mobileIndex})"> <!-- Hinzufügen der onchange-Funktion, um die Checkbox in der Desktop-Ansicht zu synchronisieren -->
+        </div>
+    `;
+}
+
+/**
+ * Synchronizes the state of a checkbox between desktop and mobile views.
+ *
+ * @param {HTMLInputElement} checkbox - The checkbox element triggering the synchronization.
+ * @param {number} index - The index of the checkbox element in the contact list.
+ */
+function syncCheckbox(checkbox, index) {
+    const desktopCheckbox = document.getElementById(`checkbox_${index}`);
+    const mobileCheckbox = document.getElementById(`checkbox-mobile_${index}`);
+    desktopCheckbox.checked = checkbox.checked;
+    mobileCheckbox.checked = checkbox.checked;
 }
 
 /**

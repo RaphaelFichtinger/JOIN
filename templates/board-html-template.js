@@ -209,7 +209,10 @@ function generateEditTaskHTMLTemplate(task) {
             <div class="assigned-to-overview-edit">
                 <div id="task-assigned-to" class="task-input task-assigned-to">
                     <label for="assign-to">Assign to</label>
-                    <input onclick="openOverlay(event, 'contacts-list')" id="assign-to-edit" type="text" placeholder="Select contacts to assign">
+                    <div class="position-relative flex-column m-t-8">
+						<input onclick="openOverlay(event, 'contacts-list')" id="assign-to" type="text" placeholder="Select contacts to assign" readonly>
+						<img onclick="openOverlay(event, 'contacts-list')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown" tabindex="0">
+					</div>
                     <div id="contacts-list" class="contacts-list">
                         <div id="list-item" class="list-item"></div>
                     </div>
