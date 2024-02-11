@@ -171,7 +171,6 @@ label + .buttons {
 #added-contacts,
 #added-contacts-mobile {
 	margin-top: 8px;
-	overflow: scroll;
 }
 .item,
 .item-category {
