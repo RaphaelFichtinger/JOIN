@@ -1,3 +1,9 @@
+/**
+ * Returns a string representing an HTML form for adding a new task.
+ *
+ * @param {string} status - The status of the task
+ * @return {string} The HTML form for adding a new task
+ */
 function returnTask(status) {
 	return `
 	<div id="add-task" class="add_task flex-column">
@@ -103,6 +109,17 @@ function returnTask(status) {
 	`;
 }
 
+/**
+ * Generate an HTML template for an overview card.
+ *
+ * @param {string} category - The category of the task
+ * @param {string} title - The title of the task
+ * @param {string} description - The description of the task
+ * @param {string} date - The due date of the task
+ * @param {string} priority - The priority of the task
+ * @param {object} task - The task object
+ * @return {string} The HTML template for the overview card
+ */
 function createOverviewHTMLTemplate(category, title, description, date, priority, task){
 	return `
     <div class="type-close">
@@ -154,6 +171,12 @@ function createOverviewHTMLTemplate(category, title, description, date, priority
     `;
 }
 
+/**
+ * Generates an HTML template for editing a task.
+ *
+ * @param {object} task - the task to be edited
+ * @return {string} the HTML template for editing the task
+ */
 function generateEditTaskHTMLTemplate(task) {
 	return `
     <form onsubmit="saveEditChanges(${task.id}); return false">
@@ -212,6 +235,16 @@ function generateEditTaskHTMLTemplate(task) {
     </form>
     `};
 
+    /**
+     * A function that generates the HTML template for a task card.
+     * @param {any} element - the task element
+     * @param {number} index - the index of the task
+     * @param {number} progress - the progress of the task
+     * @param {array} finishedSubtasks - the array of finished subtasks
+     * @param {string} initials - the initials for the task
+     * @param {string} additionalContacts - additional contacts for the task
+     * @return {string} the HTML template for the task card
+     */
     function taskCardHtmlTemplate(element, index, progress, finishedSubtasks, initials, additionalContacts) {
         return `
         <div id="task-card-${index}" class="task-card" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTaskOverview(${element['id']})">
@@ -242,6 +275,12 @@ function generateEditTaskHTMLTemplate(task) {
         `;
     }
 
+    /**
+     * Generates an HTML template for a subtask.
+     * @param {type} subtask - description of subtask parameter
+     * @param {type} j - description of j parameter
+     * @return {type} the generated HTML template for a subtask
+     */
     function addSubtaskHtmlTemplate(subtask, j) {
         return `
         <li class="subtaskItem">

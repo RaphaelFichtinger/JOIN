@@ -1,8 +1,18 @@
 let signedUpUsers = [];
+/**
+ * Initialize the function asynchronously.
+ *
+ */
 async function init() {
     loadUsers();
 }
 
+/**
+ * Asynchronously loads the users and handles any potential loading errors.
+ *
+ * @param {none} - no parameters
+ * @return {none} - no return value
+ */
 async function loadUsers(){
     try {
 		if(signedUpUsers) {
@@ -12,7 +22,12 @@ async function loadUsers(){
         console.error('Loading error:', e);
     }
 }
-
+/**
+ * Asynchronous function for user sign up. 
+ *
+ * @param {void} none
+ * @return {void} none
+ */
 async function signUp() {
 	let name = document.getElementById('input-name');
 	let password = document.getElementById('input-password');
@@ -49,6 +64,15 @@ async function signUp() {
 	}
 }
 
+/**
+ * Resets the form fields and checkbox to their default values.
+ *
+ * @param {String} email - the email input field
+ * @param {String} password - the password input field
+ * @param {String} confirm - the confirm password input field
+ * @param {String} name - the name input field
+ * @param {Checkbox} checkbox - the checkbox input field
+ */
 async function resetForm(email, password, confirm, name, checkbox) {
 	name.value = '';
 	email.value = '';
@@ -57,6 +81,12 @@ async function resetForm(email, password, confirm, name, checkbox) {
 	checkbox.checked = false;
 }
 
+/**
+ * Displays the success lightbox and animates the success button.
+ *
+ * @param {type} None
+ * @return {type} None
+ */
 function showSuccessButton() {
 	let successLightbox = document.getElementById('success-lightbox');
 	let successButton = document.getElementById('success');

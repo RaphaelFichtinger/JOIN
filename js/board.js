@@ -1,7 +1,5 @@
 /**
  * Asynchronously renders the board by loading tasks and contacts, updating the HTML, and setting the active page to 3.
- *
- *
  */
 async function renderBoard() {
     await loadTasks();
@@ -9,16 +7,13 @@ async function renderBoard() {
     updateHTML();
     setActivePage3();
 }
-
 document.querySelector('.input-board-top').addEventListener('input', function () {
     searchTasks(this.value);
 });
 
 /**
  * Searches for tasks based on the given query and updates the HTML with the filtered tasks.
- *
  * @param {string} query - The search query to filter the tasks.
- * 
  */
 function searchTasks(query) {
     const filteredTasks = tasks.filter(task => task.title.toLowerCase().includes(query.toLowerCase()));
@@ -27,9 +22,7 @@ function searchTasks(query) {
 
 /**
  * Updates the HTML based on the filtered tasks or all tasks if no filter is specified.
- *
  * @param {Array} filteredTasks - An array of tasks to be displayed, defaults to all tasks if not specified.
- * 
  */
 function updateHTML(filteredTasks = tasks) {
     const taskStatusMap = {
