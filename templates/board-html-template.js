@@ -212,5 +212,49 @@ function generateEditTaskHTMLTemplate(task) {
     </form>
     `};
 
+    function taskCardHtmlTemplate(element, index, progress, finishedSubtasks, initials, additionalContacts) {
+        return `
+        <div id="task-card-${index}" class="task-card" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTaskOverview(${element['id']})">
+            <button class="task-type">${element['category']}</button>
+            <div class="task-text">
+                <p id="task-title">${element['title']}</p>
+                <p id="task-details">${element['description']}</p>
+            </div>
+            <div class="subtasks">
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: ${progress}%;"></div>
+                </div>
+                <div>
+                    <p>${finishedSubtasks.length}/${element['subtasks'].length} Subtasks</p>
+                </div>
+            </div>
+            <div class="task-card-bottom">
+                <div id="initials">
+                    ${initials}
+                </div>
+                <div id="additionalContacts">
+                ${additionalContacts}</div>
+                <div>
+                    <img id="priority-image-small${index}" src="./img/prio-${element.priority.toLowerCase()}.svg">
+                </div>
+            </div>
+        </div>
+        `;
+    }
+
+    function addSubtaskHtmlTemplate(subtask, j) {
+        return `
+        <li class="subtaskItem">
+            <div id="editableText" class="li-element flex space-between align-center">
+                <p>${subtask}</p>
+                <div id="edit-delete-icons" class="edit-delete-icons flex">
+                    <img onclick="editSubtask(event, ${j})" id="subtasks-edit" class="subtasks-edit" src="./img/edit-subtask.svg" alt="Edit">
+                    <img onclick="clearSubtask(event)" id="subtasks-delete" class="subtasks-delete" src="./img/delete-subtask.svg" alt="Delete">
+                </div>
+            </div>
+        </li>
+        `;
+    }
+     
 
 

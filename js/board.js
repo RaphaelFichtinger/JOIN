@@ -1,3 +1,8 @@
+/**
+ * Asynchronously renders the board by loading tasks and contacts, updating the HTML, and setting the active page to 3.
+ *
+ *
+ */
 async function renderBoard() {
     await loadTasks();
     await loadContacts();
@@ -9,11 +14,23 @@ document.querySelector('.input-board-top').addEventListener('input', function ()
     searchTasks(this.value);
 });
 
+/**
+ * Searches for tasks based on the given query and updates the HTML with the filtered tasks.
+ *
+ * @param {string} query - The search query to filter the tasks.
+ * 
+ */
 function searchTasks(query) {
     const filteredTasks = tasks.filter(task => task.title.toLowerCase().includes(query.toLowerCase()));
     updateHTML(filteredTasks);
 }
 
+/**
+ * Updates the HTML based on the filtered tasks or all tasks if no filter is specified.
+ *
+ * @param {Array} filteredTasks - An array of tasks to be displayed, defaults to all tasks if not specified.
+ * 
+ */
 function updateHTML(filteredTasks = tasks) {
     const taskStatusMap = {
         'to-do': 'to-do',
@@ -21,13 +38,10 @@ function updateHTML(filteredTasks = tasks) {
         'await-feedback': 'await-feedback',
         'done-tasks': 'done-tasks',
     };
-
     for (const status in taskStatusMap) {
         const filteredStatusTasks = filteredTasks.filter(t => t['status'] == taskStatusMap[status]);
         const columnElement = document.getElementById(status);
-
         let message = 'No tasks To do';
-
         if (filteredStatusTasks.length > 0) {
             columnElement.innerHTML = '';
             for (let index = 0; index < filteredStatusTasks.length; index++) {
@@ -40,23 +54,25 @@ function updateHTML(filteredTasks = tasks) {
     }
 }
 
-
-
-
 let currentDraggedElement;
 
+/**
+ * Generates HTML for a todo element.
+ *
+ * @param {Object} element - the todo element
+ * @param {number} index - the index of the element
+ * @return {string} the HTML for the todo element
+ */
 function generateTodoHTML(element, index) {
     let fullNames = element['assign-to'];
     let subtasks = element['subtasks'];
     let finishedSubtasks = element['finishedSubtasks'];
     let contactsArray = loadedContacts;
     let progress = 0;
-
     if (finishedSubtasks && finishedSubtasks.length > 0) {
         progress = (finishedSubtasks.length / subtasks.length) * 100;
     }
     let initials = '';
-
     for (let f = 0; f < Math.min(3, fullNames.length); f++) {
         let fullName = fullNames[f]['name'];
         let nameInitials = getInitials(fullName);
@@ -70,53 +86,55 @@ function generateTodoHTML(element, index) {
             initials += `<p id="initials-circle-${f}" class="initials-circle" style='background-color : ${matchingColor}'>${nameInitials}</p>`;
         }
     }
-
     return generateTaskCard(element, index, progress, finishedSubtasks, initials, fullNames);
 }
 
+/**
+ * Generates a task card HTML with the provided element, index, progress, finishedSubtasks, initials, and fullNames.
+ *
+ * @param {any} element - the element to be included in the task card
+ * @param {number} index - the index of the task card
+ * @param {number} progress - the progress of the task
+ * @param {number} finishedSubtasks - the number of finished subtasks
+ * @param {string} initials - the initials of the task owner
+ * @param {string} fullNames - the full names of the task owner
+ * @return {string} the HTML template for the task card
+ */
 function generateTaskCard(element, index, progress, finishedSubtasks, initials, fullNames) {
     let plusContacts = Math.max(0, fullNames.length - 3);
     let additionalContacts = '';
     if (plusContacts > 0) {
         additionalContacts = `<p>+${plusContacts}</p>`;
     }
-    return `
-    <div id="task-card-${index}" class="task-card" draggable="true" ondragstart="startDragging(${element['id']})" onclick="openTaskOverview(${element['id']})">
-        <button class="task-type">${element['category']}</button>
-        <div class="task-text">
-            <p id="task-title">${element['title']}</p>
-            <p id="task-details">${element['description']}</p>
-        </div>
-        <div class="subtasks">
-            <div class="progress-container">
-                <div class="progress-bar" style="width: ${progress}%;"></div>
-            </div>
-            <div>
-                <p>${finishedSubtasks.length}/${element['subtasks'].length} Subtasks</p>
-            </div>
-        </div>
-        <div class="task-card-bottom">
-            <div id="initials">
-                ${initials}
-            </div>
-            <div id="additionalContacts">
-            ${additionalContacts}</div>
-            <div>
-                <img id="priority-image-small${index}" src="./img/prio-${element.priority.toLowerCase()}.svg">
-            </div>
-        </div>
-    </div>
-    `;
+    return taskCardHtmlTemplate(element, index, progress, finishedSubtasks, initials, additionalContacts);
 }
 
+/**
+ * A function to start dragging an element.
+ *
+ * @param {type} id - the id of the element being dragged
+ * @return {type} 
+ */
 function startDragging(id) { //die Id markiert das Element das gerade verschoben wird
     currentDraggedElement = id;
 }
 
+/**
+ * Prevents the default behavior of the given event.
+ *
+ * @param {Event} ev - the event object
+ * @return {void} 
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
+/**
+ * Moves the current dragged element to the specified status.
+ *
+ * @param {string} status - the status to move the current dragged element to
+ * @return {void} 
+ */
 function moveTo(status) {
     let currentTaskIndex = tasks.findIndex(task => task.id === currentDraggedElement);
     tasks[currentTaskIndex]['status'] = status;
@@ -125,25 +143,53 @@ function moveTo(status) {
     removeHighlight(status);
 }
 
+/**
+ * Function to highlight the specified element by adding a CSS class.
+ *
+ * @param {string} id - The ID of the element to be highlighted
+ * @return {void} 
+ */
 function highlight(id) {
     document.getElementById(id).classList.add('drag-area-highlight');
 }
 
+/**
+ * Removes the 'drag-area-highlight' class from the element with the specified id.
+ *
+ * @param {string} id - The id of the element to remove the class from
+ * @return {void}
+ */
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
+/**
+ * Opens the move task menu and toggles its active state.
+ *
+ * @param {event} event - the event triggering the function
+ * @return {undefined} 
+ */
 function openMoveTaskMenu(event) {
     event.stopPropagation();
     let openMoveTask = document.getElementById('open-move-task');
     openMoveTask.classList.toggle('active');
 }
 
+/**
+ * Closes the move task.
+ */
 function closeMoveTaskTo() {
     let openMoveTask = document.getElementById('open-move-task');
     openMoveTask.classList.remove('active');
 }
 
+/**
+ * Updates the status of a task on mobile.
+ *
+ * @param {string} currentId - The ID of the current task
+ * @param {string} status - The new status of the task
+ * @return {void} 
+ */
 function moveTaskMobile(currentId, status) {
     let currentTaskIndex = tasks.findIndex(task => task.id === currentId);
     let newStatus = status;
@@ -153,6 +199,12 @@ function moveTaskMobile(currentId, status) {
     closeTaskOverview()
 }
 
+/**
+ * Opens an 'add task' popup and populates it with a task based on the given status.
+ *
+ * @param {type} status - the status of the task
+ * @return {type} undefined
+ */
 function openAddTaskPopup(status) {
     let popup = document.getElementById('add-task-popup');
     popup.innerHTML = returnTask(status);
@@ -163,6 +215,10 @@ function openAddTaskPopup(status) {
     checkRequired();
 }
 
+/**
+ * Function to check required fields and enable the add task button accordingly.
+ *
+ */
 function checkRequired() {
     let title = document.getElementById('title');
     let dateDue = document.getElementById('due-date');
@@ -177,7 +233,6 @@ function checkRequired() {
             }
         })
     }
-
     if (dateDue) {
         dateDue.addEventListener('input', function () {
             if (this.value !== '') {
@@ -190,11 +245,21 @@ function checkRequired() {
     }
 }
 
+/**
+ * Closes the add task popup.
+ *
+ */
 function closeAddTaskPopup() {
     let popup = document.getElementById('add-task-popup');
     popup.style.display = 'none';
 }
 
+/**
+ * Opens the task overview by displaying the overview container and related elements, and creates the overview for the given id.
+ *
+ * @param {type} id - The id of the task
+ * 
+ */
 function openTaskOverview(id) {
     let overviewEdit = document.getElementById('task-big-view-edit-card');
     let overview = document.getElementById('overview-container');
@@ -206,11 +271,21 @@ function openTaskOverview(id) {
     createOverview(id);
 }
 
+/**
+ * Closes the task overview by hiding the overview container.
+ *
+ */
 function closeTaskOverview() {
     let overview = document.getElementById('overview-container');
     overview.style.display = 'none';
 }
 
+/**
+ * Edit the task overview based on the provided ID.
+ *
+ * @param {number} id - The ID of the task to be edited
+ * @return {void} 
+ */
 function editTaskOverview(id) {
     let task = tasks.find(task => task.id === id);
     let overviewCard = document.getElementById('task-big-view-card');
@@ -222,12 +297,21 @@ function editTaskOverview(id) {
     }
 }
 
+/**
+ * Closes the edit card by hiding the overview container and updating the HTML.
+ */
 function closeEditCard() {
     let overview = document.getElementById('overview-container');
     overview.style.display = 'none';
     updateHTML();
 }
 
+/**
+ * Retrieves the initials from the given name.
+ *
+ * @param {string} name - The full name from which to extract the initials
+ * @return {string} The initials extracted from the name
+ */
 function getInitials(name) {
     if (name) {
         let names = name.split(' ');
@@ -240,12 +324,23 @@ function getInitials(name) {
     return '';
 }
 
+/**
+ * Asynchronously clears the tasks by setting an empty array in the 'tasks' item, then updates the HTML.
+ *
+ * @return {Promise<void>} 
+ */
 async function clearTasks() {
     let tasks = [];
     await setItem('tasks', JSON.stringify(tasks));
     updateHTML();
 }
 
+/**
+ * Create an overview for a task with the given ID.
+ *
+ * @param {string} id - The ID of the task
+ *
+ */
 function createOverview(id) {
     // Finde die Aufgabe mit der gegebenen ID
     let task = tasks.find(task => task.id === id);
@@ -260,6 +355,12 @@ function createOverview(id) {
     overviewCard.innerHTML = createOverviewHTMLTemplate(category, title, description, date, priority, task)
 }
 
+/**
+ * Generates HTML for the assigned tasks based on the provided task ID.
+ *
+ * @param {number} id - The ID of the task to generate HTML for
+ * @return {string} The HTML generated for the assigned tasks
+ */
 function generateAssignTo(id) {
     let task = tasks.find(task => task.id === id);
     let fullNames = task['assign-to'];
@@ -282,6 +383,14 @@ function generateAssignTo(id) {
     return generateHtml;
 }
 
+/**
+ * Generates an overview contact element.
+ *
+ * @param {string} matchingColor - the matching color for the contact
+ * @param {string} fullName - the full name of the contact
+ * @param {string} initials - the initials of the contact
+ * @return {string} the overview contact element
+ */
 function overViewContact(matchingColor, fullName, initials) {
     return `
         <div id="overview-contact">
@@ -291,6 +400,12 @@ function overViewContact(matchingColor, fullName, initials) {
     `;
 }
 
+/**
+ * Generates HTML for the subtasks of a given task based on the task ID.
+ *
+ * @param {number} id - The ID of the task to generate subtasks for
+ * @return {string} The generated HTML for the subtasks
+ */
 function generateSubtasks(id) {
     let task = tasks.find(task => task.id === id);
     let subArray = task['subtasks'];
@@ -309,6 +424,13 @@ function generateSubtasks(id) {
     return generateHtml;
 }
 
+/**
+ * Asynchronously handles the finishing of a subtask within a task. 
+ *
+ * @param {type} id - description of parameter
+ * @param {type} j - description of parameter
+ * @return {type} description of return value
+ */
 async function finishedSubtask(id, j) {
     let task = tasks.find(task => task.id === id);
     let subArray = task['subtasks'];
@@ -327,6 +449,12 @@ async function finishedSubtask(id, j) {
     updateHTML();
 }
 
+/**
+ * Deletes a task from the tasks array by its id, updates the storage, and refreshes the HTML.
+ *
+ * @param {number} id - The id of the task to be deleted
+ * 
+ */
 async function deleteTask(id) {
     let taskIndex = tasks.findIndex(task => task.id === id);
     if (taskIndex !== -1) {
@@ -339,6 +467,12 @@ async function deleteTask(id) {
 }
 
 
+/**
+ * Generates an edit card for the given task, populating it with the task details and setting up event listeners for editing.
+ *
+ * @param {object} task - The task object containing title, date, description, and priority
+ * 
+ */
 function generateEditCard(task) {
     let title = task['title'];
     let date = task['date'];
@@ -355,28 +489,23 @@ function generateEditCard(task) {
     dueDateInput.value = date;
     removePriority();
     priorityButton.classList.add(`${priority}`);
-
     addSubtasks(task);
     getContacts();
     addContacts(task);
 }
 
+/**
+ * Adds subtasks to the task and updates the subtask list in the HTML.
+ *
+ * @param {object} task - The task object containing subtasks
+ * 
+ */
 function addSubtasks(task) {
     let subtasks = task['subtasks'];
     let subtaskList = document.getElementById('list-item-subtasks');
     for (let j = 0; j < subtasks.length; j++) {
         const subtask = subtasks[j];
-        subtaskList.innerHTML += `
-        <li class="subtaskItem">
-            <div id="editableText" class="li-element flex space-between align-center">
-                <p>${subtask}</p>
-                <div id="edit-delete-icons" class="edit-delete-icons flex">
-                    <img onclick="editSubtask(event, ${j})" id="subtasks-edit" class="subtasks-edit" src="./img/edit-subtask.svg" alt="Edit">
-                    <img onclick="clearSubtask(event)" id="subtasks-delete" class="subtasks-delete" src="./img/delete-subtask.svg" alt="Delete">
-                </div>
-            </div>
-        </li>
-        `;
+        subtaskList.innerHTML += addSubtaskHtmlTemplate(subtask, j);
         subtasksArray.push(subtask);
     }
 }
@@ -395,7 +524,6 @@ function addContacts(task) {
             'name': assignTo,
             'color': assignToColor
         });
-
         for (let k = 0; k < loadedContacts.length; k++) {
             let contactIndex = loadedContacts.findIndex(contact => contact.name === checkedContacts[j].name);
             document.getElementById(`checkbox_${contactIndex}`).checked = true;
@@ -403,6 +531,12 @@ function addContacts(task) {
     }
 }
 
+/**
+ * Saves the edited changes for a task.
+ *
+ * @param {number} id - The ID of the task to be edited
+ * 
+ */
 async function saveEditChanges(id) {
     let task = tasks.find(task => task.id === id);
 
@@ -419,6 +553,10 @@ async function saveEditChanges(id) {
     closeEditCard();
 }
 
+/**
+ * Clear the checkedContacts and subtasksArray arrays.
+ *
+ */
 function clearArrays() {
     checkedContacts = [];
     subtasksArray = [];
