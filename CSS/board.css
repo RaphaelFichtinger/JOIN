@@ -576,9 +576,20 @@ button {
     margin-top: 8px;
 }
 
+@media (max-width: 1410px) {
+    .no-tasks {
+        max-width: 150px;
+    }
+}
+
+
+
 @media screen and (max-width: 1325px) {
     .board-container {
         flex-direction: column;
+    }
+    .no-tasks{
+        max-width: 250px;
     }
 
     .board-column {
