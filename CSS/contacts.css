@@ -76,8 +76,12 @@ body {
     top: 0px;
     left: 0px;
     width: 100vw;
-    overflow: hidden;
+    height: 100vh;
+    overflow: scroll;
     z-index: 3;
+}
+#edit-cyrcle-overlay-mobile{
+    margin-top: 15vh;
 }
 
 @keyframes fadeAndSlideIn {
@@ -299,6 +303,7 @@ align-items: center;
     justify-content: center;
 }
 
+
 #delete-btn-edit{
     width: 113px;
     height: 57px;
@@ -310,6 +315,10 @@ align-items: center;
     font-size: 21px;
     background-color: white;
     border: 1px solid white !important;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
 }
 
 #cancel-btn-div{
@@ -348,6 +357,7 @@ align-items: center;
     background-color: rgba(42, 54, 71, 1);
     color: white;
     border: none;
+    border-radius:10px ;
 }
 
 /* here begins the add contact overlay*/ 
@@ -1044,7 +1054,27 @@ margin-top: 80px;
     padding-bottom: 17px;
     font-size: 20px;
     font-weight: 400;
-}                                
+}        
+
+#delete-btn-edit-mobile{
+    width: 110px;
+    border-radius: 10px;
+    font-size: larger;
+}
+
+#save-btn-edit-mobile{
+    background-color: #1d2b3f;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 21px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+}
 
 .menu-mobile{
     display: flex;
@@ -1119,7 +1149,7 @@ margin-top: 80px;
         }
     #save-delete-div-mobile{
         margin-bottom: 34px;
-        width: 249px;
+        width: 100%;        
         display: flex;
         gap: 24px;
         justify-content: center;
@@ -1185,15 +1215,17 @@ margin-top: 80px;
         background-position: 95%;
     }
     #save-btn-edit-mobile{
-        height: 72px;
-        width: 270px;
+        height: 59px;
+        width: 110px;
         background-color: #1d2b3f;
         border: none;
-        border-radius: 20px;
+        border-radius: 10px;
         color: white;
         font-size: 21px;
         font-weight: 600;
-        margin-top: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     #edit-content-bottom-mobile{
         display: flex;
@@ -1366,9 +1398,11 @@ margin-top: 80px;
         margin-top: 80px;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         gap: 8px;
-        width: 60vw;
         margin-bottom: 24px;
+        width: 100%;
     }
    
     #popup-window-overlay{
@@ -1385,11 +1419,10 @@ margin-top: 80px;
         top: 200px;
         left: 25vw;
     }
-    #save-btn-edit-mobile{
-        margin-top: 0px;
-        height: 54px;
-        width: 200px;
+    #save-delete-div-mobile{
+        gap: 8px;
     }
+
     #header{
         z-index: 5555;
     }

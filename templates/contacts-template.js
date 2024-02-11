@@ -146,7 +146,6 @@ function editMobileContactHTMLTemplate(backgroundColor, initials, contact, i){
                     </div>
             </div>
         </form>
-      <button id="cancel-btn-edit-mobile" onclick="deleteContact(${i})">Delete</button>
     </div>
 </div>
 
@@ -213,12 +212,17 @@ function setNewContactMobileHTMLTemplate(){
                         <form onsubmit="saveNewContactMobile()">
                             <div id="edit-inputs-mobile">
                                 <div id="empty-fields-message"></div>
-                                <input id="new-contact-input-name-mobile" placeholder="Name" type="text">
-                                <input id="new-contact-input-mail-mobile" placeholder="Email" type="email" >
-                                <input id="new-contact-input-number-mobile" placeholder="Phone" type="number" >
+                                <input id="new-contact-input-name-mobile" placeholder="Name" type="text" required>
+                                <input id="new-contact-input-mail-mobile" placeholder="Email" type="email" required>
+                                <input id="new-contact-input-number-mobile" placeholder="Phone" type="number" required>
                             </div>
                             <div id="save-delete-div-mobile">
-                                <div id="create-btn-div-mobile">
+                          
+                            <div id="cancel-btn-div">
+                                <button   onclick="closeEditMobile()"type="button" id="cancel-btn-edit" formnovalidate>Cancel
+                                <img id="cancel-icon" src="../img/cancel.png">
+                                </button>
+                            </div>
                                     <button type="submit" id="save-btn-edit-mobile">Create Contact</button>
                                     <img id="check-icon" src="../img/check.png">
                                 </div>
