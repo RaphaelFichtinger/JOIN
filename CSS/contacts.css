@@ -63,7 +63,6 @@ body {
 }
 
 #editing-overlay{
-    width: 100vw;
     height: 80vh;
     z-index: 1;
     border-radius: 20px;

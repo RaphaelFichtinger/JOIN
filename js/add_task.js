@@ -164,7 +164,7 @@ function generateContactsHtml(splittedLetters, contactName, i, contactColor) {
     return `
         <div class="item flex align-center" onclick="contactChecked(event, ${i})">
             <div class="circle" style="background-color : ${contactColor}">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
-            <div class="name" data-value="${contactName.toLowerCase()}">${contactName}</div>
+            <label for="checkbox_${i}" class="name" data-value="${contactName.toLowerCase()}">${contactName}</label>
             <input id="checkbox_${i}" type="checkbox" class="checkbox">
         </div>
     `

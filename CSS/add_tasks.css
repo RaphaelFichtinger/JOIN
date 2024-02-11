@@ -177,6 +177,10 @@ label + .buttons {
 	margin: 16px;
 	cursor: pointer;
 }
+label,
+.checkbox {
+	cursor: pointer;
+}
 .circle {
 	display: flex;
 	justify-content: center;
