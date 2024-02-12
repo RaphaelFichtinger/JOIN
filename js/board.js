@@ -9,8 +9,7 @@ document.querySelector('.input-board-top').addEventListener('input', function ()
     searchTasks(this.value);
 });
 
-/*** Searches for tasks based on the given query and updates the HTML with the filtered tasks.
- * @param {string} query - The search query to filter the tasks. */
+/*** Searches for tasks based on the given query and updates the HTML with the filtered tasks.* @param {string} query - The search query to filter the tasks. */
 function searchTasks(query) {
     const filteredTasks = tasks.filter(task => task.title.toLowerCase().includes(query.toLowerCase()));
     updateHTML(filteredTasks);
@@ -34,15 +33,11 @@ function updateHTML(filteredTasks = tasks) {
             }
         } else {
             columnElement.innerHTML = `<div class="no-tasks">${message}</div>`;
-        }
-    }
-}
+        }}}
+
 let currentDraggedElement;
 
-/* * Generates HTML for a todo element.
- * @param {Object} element - the todo element
- * @param {number} index - the index of the element
- * @return {string} the HTML for the todo element*/
+/* * Generates HTML for a todo element.* @param {Object} element - the todo element* @param {number} index - the index of the element* @return {string} the HTML for the todo element*/
 function generateTodoHTML(element, index) {
     let fullNames = element['assign-to'];
     let subtasks = element['subtasks'];
@@ -87,21 +82,17 @@ function generateTaskCard(element, index, progress, finishedSubtasks, initials, 
     return taskCardHtmlTemplate(element, index, progress, finishedSubtasks, initials, additionalContacts);
 }
 
-/*** A function to start dragging an element.
- * @param {type} id - the id of the element being dragged
- * @return {type} */
+/*** A function to start dragging an element.* @param {type} id - the id of the element being dragged* @return {type} */
 function startDragging(id) { //die Id markiert das Element das gerade verschoben wird
     currentDraggedElement = id;
 }
 
-/*** Prevents the default behavior of the given event.
- * @param {Event} ev - the event object */
+/*** Prevents the default behavior of the given event.* @param {Event} ev - the event object */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
-/*** Moves the current dragged element to the specified status.
-* @param {string} status - the status to move the current dragged element  */
+/*** Moves the current dragged element to the specified status.* @param {string} status - the status to move the current dragged element  */
 function moveTo(status) {
     let currentTaskIndex = tasks.findIndex(task => task.id === currentDraggedElement);
     tasks[currentTaskIndex]['status'] = status;
@@ -110,8 +101,7 @@ function moveTo(status) {
     removeHighlight(status);
 }
 
-/*** Function to highlight the specified element by adding a CSS class.
- * @param {string} id - The ID of the element to be highlighted*/
+/*** Function to highlight the specified element by adding a CSS class.* @param {string} id - The ID of the element to be highlighted*/
 function highlight(id) {
     document.getElementById(id).classList.add('drag-area-highlight');
 }
@@ -120,8 +110,7 @@ function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
-/*** Opens the move task menu and toggles its active state.
-* @param {event} event - the event triggering the function */
+/*** Opens the move task menu and toggles its active state.* @param {event} event - the event triggering the function */
 function openMoveTaskMenu(event) {
     event.stopPropagation();
     let openMoveTask = document.getElementById('open-move-task');
@@ -134,9 +123,7 @@ function closeMoveTaskTo() {
     openMoveTask.classList.remove('active');
 }
 
-/*** Updates the status of a task on mobile.
-* @param {string} currentId - The ID of the current task
- * @param {string} status - The new status of the task */
+/*** Updates the status of a task on mobile.* @param {string} currentId - The ID of the current task* @param {string} status - The new status of the task */
 function moveTaskMobile(currentId, status) {
     let currentTaskIndex = tasks.findIndex(task => task.id === currentId);
     let newStatus = status;
@@ -146,16 +133,13 @@ function moveTaskMobile(currentId, status) {
     closeTaskOverview()
 }
 
-/*** Opens an 'add task' popup and populates it with a task based on the given status.
- * @param {type} status - the status of the task
- * @return {type} undefined*/
+/*** Opens an 'add task' popup and populates it with a task based on the given status.* @param {type} status - the status of the task* @return {type} undefined*/
 function openAddTaskPopup(status) {
     let popup = document.getElementById('add-task-popup');
     popup.innerHTML = returnTask(status);
     popup.style.display = 'block';
     getCategories();
     getContacts();
-
     checkRequired();
 }
 
@@ -166,24 +150,19 @@ function checkRequired() {
     if (title) {
         title.addEventListener('input', function () {
             if (this.value !== '') {
-                titleLock = false;
-            }
+                titleLock = false;}
             if (!titleLock && !dateLock && !categoryLock) {
-                enableAddTaskButton();
-            }
+                enableAddTaskButton();}
         })
     }
     if (dateDue) {
         dateDue.addEventListener('input', function () {
             if (this.value !== '') {
-                dateLock = false;
-            }
+                dateLock = false;}
             if (!titleLock && !dateLock && !categoryLock) {
-                enableAddTaskButton();
-            }
+                enableAddTaskButton();}
         })
-    }
-}
+}}
 
 /* Closes the add task popup.*/
 function closeAddTaskPopup() {
@@ -191,8 +170,7 @@ function closeAddTaskPopup() {
     popup.style.display = 'none';
 }
 
-/*** Opens the task overview by displaying the overview container and related elements, and creates the overview for the given id.
-* @param {type} id - The id of the task*/
+/*** Opens the task overview by displaying the overview container and related elements, and creates the overview for the given id.* @param {type} id - The id of the task*/
 function openTaskOverview(id) {
     let overviewEdit = document.getElementById('task-big-view-edit-card');
     let overview = document.getElementById('overview-container');
@@ -210,9 +188,7 @@ function closeTaskOverview() {
     overview.style.display = 'none';
 }
 
-/* Edit the task overview based on the provided ID.
- * @param {number} id - The ID of the task to be edited
- * @return {void} */
+/* Edit the task overview based on the provided ID.* @param {number} id - The ID of the task to be edited* @return {void} */
 function editTaskOverview(id) {
     let task = tasks.find(task => task.id === id);
     let overviewCard = document.getElementById('task-big-view-card');
@@ -220,8 +196,7 @@ function editTaskOverview(id) {
     overviewCard.style.display = 'none';
     overviewEdit.style.display = 'block';
     if (task) {
-        generateEditCard(task);
-    }
+        generateEditCard(task);}
 }
 
 /** Closes the edit card by hiding the overview container and updating the HTML.*/
@@ -231,9 +206,7 @@ function closeEditCard() {
     updateHTML();
 }
 
-/** Retrieves the initials from the given name.
- * @param {string} name - The full name from which to extract the initials
- * @return {string} The initials extracted from the name */
+/** Retrieves the initials from the given name.* @param {string} name - The full name from which to extract the initials* @return {string} The initials extracted from the name */
 function getInitials(name) {
     if (name) {
         let names = name.split(' ');
@@ -242,13 +215,11 @@ function getInitials(name) {
         } else if (names.length === 1) {
             return names[0].charAt(0).toUpperCase();
         }
-    }
-    return '';
+    }return '';
 }
 
 /**
- * Asynchronously clears the tasks by setting an empty array in the 'tasks' item, then updates the HTML.
-* @return {Promise<void>} */
+ * Asynchronously clears the tasks by setting an empty array in the 'tasks' item, then updates the HTML.* @return {Promise<void>} */
 async function clearTasks() {
     let tasks = [];
     await setItem('tasks', JSON.stringify(tasks));
@@ -267,8 +238,7 @@ function createOverview(id) {
     generateAssignTo(task.id);
     overviewCard.innerHTML = createOverviewHTMLTemplate(category, title, description, date, priority, task)
 }
-/**
- * Generates HTML for the assigned tasks based on the provided task ID.* @param {number} id - The ID of the task to generate HTML for
+/*** Generates HTML for the assigned tasks based on the provided task ID.* @param {number} id - The ID of the task to generate HTML for
  * @return {string} The HTML generated for the assigned tasks*/
 function generateAssignTo(id) {
     let task = tasks.find(task => task.id === id);
@@ -287,21 +257,17 @@ function generateAssignTo(id) {
             let matchingColor = 'black';
             generateHtml += overViewContact(matchingColor, fullName, initials);
         }
-    }
-    return generateHtml;
+    }return generateHtml;
 }
 
-/** Generates an overview contact element
- * @param {string} matchingColor - the matching color for the contact
- * @param {string} fullName - the full name of the contact
+/** Generates an overview contact element* @param {string} matchingColor - the matching color for the contact* @param {string} fullName - the full name of the contact
  * @param {string} initials - the initials of the contact
  * @return {string} the overview contact element*/
 function overViewContact(matchingColor, fullName, initials) {
     OverviewHTML( matchingColor, fullName, initials);
 }
 
-/*** Generates HTML for the subtasks of a given task based on the task ID.
- * @param {number} id - The ID of the task to generate subtasks for
+/*** Generates HTML for the subtasks of a given task based on the task ID.* @param {number} id - The ID of the task to generate subtasks for
  * @return {string} The generated HTML for the subtasks*/
 function generateSubtasks(id) {
     let task = tasks.find(task => task.id === id);
@@ -313,15 +279,11 @@ function generateSubtasks(id) {
         generateHtml += `
         <div class="subtask">
             <input id="subtask-checkbox-${j}" type="checkbox" ${finishedSubtasksArray.includes(subtask) ? `checked` : ''} onclick="finishedSubtask(${task.id}, ${j})">
-            <p id="subtask-text">${subtask}</p>
-        </div>
-        `;
-    }
-    return generateHtml;
+            <p id="subtask-text">${subtask}</p></div>`;
+    }return generateHtml;
 }
 
-/*** Asynchronously handles the finishing of a subtask within a task. * @param {type} id - description of parameter
- * @param {type} j - description of parameter
+/*** Asynchronously handles the finishing of a subtask within a task. * @param {type} id - description of parameter* @param {type} j - description of parameter
  * @return {type} description of return value*/
 async function finishedSubtask(id, j) {
     let task = tasks.find(task => task.id === id);
@@ -335,8 +297,7 @@ async function finishedSubtask(id, j) {
         let index = finishedSubtasksArray.indexOf(subtask);
         if (index !== -1) {
             finishedSubtasksArray.splice(index, 1);
-        }
-    }
+        }}
     await setItem('tasks', JSON.stringify(tasks));
     updateHTML();
 }
@@ -376,9 +337,7 @@ function generateEditCard(task) {
     addContacts(task);
 }
 
-/**
- * Adds subtasks to the task and updates the subtask list in the HTML.
-* @param {object} task - The task object containing subtasks*/
+/*** Adds subtasks to the task and updates the subtask list in the HTML.* @param {object} task - The task object containing subtasks*/
 function addSubtasks(task) {
     let subtasks = task['subtasks'];
     let subtaskList = document.getElementById('list-item-subtasks');
@@ -410,8 +369,7 @@ function addContacts(task) {
     }
 }
 
-/*** Saves the edited changes for a task.
-* @param {number} id - The ID of the task to be edited*/
+/*** Saves the edited changes for a task.* @param {number} id - The ID of the task to be edited*/
 async function saveEditChanges(id) {
     let task = tasks.find(task => task.id === id);
     let titleEdit = document.getElementById('overview-edit-title-input').value;
