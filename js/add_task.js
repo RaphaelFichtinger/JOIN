@@ -105,7 +105,6 @@ function clearFields() {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
     let dateDue = document.getElementById('due-date');
-    let assignTo = document.getElementById('contacts-list');
     let assignToMobile = document.getElementById('contacts-list-mobile');
     let addedContacts = document.getElementById('added-contacts');
     let addedContactsMobile = document.getElementById('added-contacts-mobile');
@@ -225,42 +224,55 @@ function contactChecked(event, index) {
     let addedContacts = document.getElementById('added-contacts');
     let addedContactsMobile = document.getElementById('added-contacts-mobile');
     if (checkbox.checked) {
-        // Checkbox wurde ausgewählt
-        let includedName = checkedContacts.find(c => c.name == contactName)
-        if (!checkedContacts.includes(includedName)) {
-            checkedContacts.push({
-                'name': contactName,
-                'color': contactColor
-            });
-        }
+        checkboxChecked(contactName, contactColor);
     } else {
-        // Checkbox wurde abgewählt
-        let indexToRemove = checkedContacts.findIndex(c => c.name == contactName);
-        if (indexToRemove !== -1) {
-            checkedContacts.splice(indexToRemove, 1);
-        }
+        checkboxUnchecked(contactName);
     }
     addedContacts.innerHTML = '';
     if(addedContactsMobile) {
         addedContactsMobile.innerHTML = '';
     }
     if(checkedContacts.length > 0) {
-        for (let j = 0; j < checkedContacts.length; j++) {
-            let checkedContact = checkedContacts[j];
-            let splittedLetters = checkedContact['name'].split(" ");
-            let contactColor = checkedContact['color'];
+        generateAddedContacts(addedContacts, addedContactsMobile);
+    }
+}
 
-            addedContacts.innerHTML += `
+function checkboxChecked(contactName, contactColor) {
+    // Checkbox wurde ausgewählt
+    let includedName = checkedContacts.find(c => c.name == contactName)
+    if (!checkedContacts.includes(includedName)) {
+        checkedContacts.push({
+            'name': contactName,
+            'color': contactColor
+        });
+    }
+}
+
+function checkboxUnchecked(contactName) {
+    // Checkbox wurde abgewählt
+    let indexToRemove = checkedContacts.findIndex(c => c.name == contactName);
+    if (indexToRemove !== -1) {
+        checkedContacts.splice(indexToRemove, 1);
+    }
+}
+
+function generateAddedContacts(addedContacts, addedContactsMobile) {
+    for (let j = 0; j < checkedContacts.length; j++) {
+        let checkedContact = checkedContacts[j];
+        let splittedLetters = checkedContact['name'].split(" ");
+        let contactColor = checkedContact['color'];
+
+        addedContacts.innerHTML += `
+            <div class="circle" style="background-color:${contactColor}">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
+        `;
+        if(addedContactsMobile) {
+            addedContactsMobile.innerHTML += `
                 <div class="circle" style="background-color:${contactColor}">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
             `;
-            if(addedContactsMobile) {
-                addedContactsMobile.innerHTML += `
-                    <div class="circle" style="background-color:${contactColor}">${splittedLetters[0] ? splittedLetters[0].charAt(0) : ''}${splittedLetters[1] ? splittedLetters[1].charAt(0) : ''}</div>
-                `;
-            }
         }
     }
 }
+
 /*** Retrieves the categories and dynamically generates HTML elements for each category.*/
 function getCategories() {
     for (let i = 0; i < categories.length; i++) {
@@ -319,7 +331,14 @@ function changeIcons() {
 function addSubtask() {
     let inputSubtask = document.getElementById('subtasks');
     let listItemSubtasks = document.getElementById('list-item-subtasks');
-    listItemSubtasks.innerHTML += (`<li class="subtaskItem">
+    listItemSubtasks.innerHTML += generateAddSubtask(inputSubtask);
+    subtasksArray.push(`${inputSubtask.value}`);
+    inputSubtask.value = '';
+}
+
+function generateAddSubtask(inputSubtask) {
+    return `
+    <li class="subtaskItem">
         <div id="editableText" class="li-element flex space-between align-center">
             <p>${inputSubtask.value}</p>
             <div id="edit-delete-icons" class="edit-delete-icons flex">
@@ -327,9 +346,7 @@ function addSubtask() {
                 <img onclick="clearSubtask(event)" id="subtasks-delete" class="subtasks-delete" src="./img/delete-subtask.svg" alt="Delete">
             </div>
         </div>
-    </li>`);
-    subtasksArray.push(`${inputSubtask.value}`);
-    inputSubtask.value = '';
+    </li>`;
 }
 
 /*** Clears the input field for subtasks.*/

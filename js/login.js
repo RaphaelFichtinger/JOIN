@@ -9,14 +9,10 @@ function login() {
 	let password = document.getElementById('input-password');
 	for (let i = 0; i < signedUpUsers.length; i++) {
 		let signedUpUser = signedUpUsers[i];
-		console.log(signedUpUser);
 		if(email.value == signedUpUser.email && password.value == signedUpUser.password) {
 			logedInPerson = signedUpUser['name'];
 			logedInWithName = true;
-			if(logedInWithName) {
-				localStorage.setItem('logedIn Person', JSON.stringify(logedInPerson));
-				localStorage.setItem('logedIn with Name', JSON.stringify(logedInWithName));
-			}
+			checkEmail(logedInPerson, logedInWithName);
 			window.location.href = './summary.html';
 			return;
 		}
@@ -24,6 +20,14 @@ function login() {
 	resetForm(email, password)
 	showError();
 }
+
+function checkEmail(logedInPerson, logedInWithName) {
+	if(logedInWithName) {
+		localStorage.setItem('logedIn Person', JSON.stringify(logedInPerson));
+		localStorage.setItem('logedIn with Name', JSON.stringify(logedInWithName));
+	}
+}
+
 /**
  * Resets the values of the email and password fields.
  * @param {object} email - The email input field

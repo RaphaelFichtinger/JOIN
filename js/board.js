@@ -26,14 +26,20 @@ function updateHTML(filteredTasks = tasks) {
         const columnElement = document.getElementById(status);
         let message = 'No tasks To do';
         if (filteredStatusTasks.length > 0) {
-            columnElement.innerHTML = '';
-            for (let index = 0; index < filteredStatusTasks.length; index++) {
-                const element = filteredStatusTasks[index];
-                columnElement.innerHTML += generateTodoHTML(element, index);
-            }
+            filteredStatusTasksFunction(columnElement, filteredStatusTasks);
         } else {
             columnElement.innerHTML = `<div class="no-tasks">${message}</div>`;
-        }}}
+        }
+    }
+}
+
+function filteredStatusTasksFunction(columnElement, filteredStatusTasks) {
+    columnElement.innerHTML = '';
+    for (let index = 0; index < filteredStatusTasks.length; index++) {
+        const element = filteredStatusTasks[index];
+        columnElement.innerHTML += generateTodoHTML(element, index);
+    }
+}
 
 let currentDraggedElement;
 
@@ -148,21 +154,29 @@ function checkRequired() {
     let title = document.getElementById('title');
     let dateDue = document.getElementById('due-date');
     if (title) {
-        title.addEventListener('input', function () {
-            if (this.value !== '') {
-                titleLock = false;}
-            if (!titleLock && !dateLock && !categoryLock) {
-                enableAddTaskButton();}
-        })
+        checkTitle(title);
     }
     if (dateDue) {
-        dateDue.addEventListener('input', function () {
-            if (this.value !== '') {
-                dateLock = false;}
-            if (!titleLock && !dateLock && !categoryLock) {
-                enableAddTaskButton();}
-        })
+        checkDate(dateDue);
 }}
+
+function checkTitle(title) {
+    title.addEventListener('input', function () {
+        if (this.value !== '') {
+            titleLock = false;}
+        if (!titleLock && !dateLock && !categoryLock) {
+            enableAddTaskButton();}
+    })
+}
+
+function checkDate(dateDue) {
+    dateDue.addEventListener('input', function () {
+        if (this.value !== '') {
+            dateLock = false;}
+        if (!titleLock && !dateLock && !categoryLock) {
+            enableAddTaskButton();}
+    })
+}
 
 /* Closes the add task popup.*/
 function closeAddTaskPopup() {
@@ -264,7 +278,7 @@ function generateAssignTo(id) {
  * @param {string} initials - the initials of the contact
  * @return {string} the overview contact element*/
 function overViewContact(matchingColor, fullName, initials) {
-    OverviewHTML( matchingColor, fullName, initials);
+    return OverviewHTML( matchingColor, fullName, initials);
 }
 
 /*** Generates HTML for the subtasks of a given task based on the task ID.* @param {number} id - The ID of the task to generate subtasks for
@@ -315,7 +329,7 @@ async function deleteTask(id) {
 }
 
 /* Generates an edit card for the given task, populating it with the task details and setting up event listeners for editing.
-* @param {object} task - The task object containing title, date, description, and priority*/
+/* @param {object} task - The task object containing title, date, description, and priority*/
 function generateEditCard(task) {
     let title = task['title'];
     let date = task['date'];
@@ -362,10 +376,14 @@ function addContacts(task) {
             'name': assignTo,
             'color': assignToColor
         });
-        for (let k = 0; k < loadedContacts.length; k++) {
-            let contactIndex = loadedContacts.findIndex(contact => contact.name === checkedContacts[j].name);
-            document.getElementById(`checkbox_${contactIndex}`).checked = true;
-        }
+        assignToArrayFunction(j);
+    }
+}
+
+function assignToArrayFunction(j) {
+    for (let k = 0; k < loadedContacts.length; k++) {
+        let contactIndex = loadedContacts.findIndex(contact => contact.name === checkedContacts[j].name);
+        document.getElementById(`checkbox_${contactIndex}`).checked = true;
     }
 }
 

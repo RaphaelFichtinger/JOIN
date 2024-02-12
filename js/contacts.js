@@ -16,17 +16,12 @@ async function loadContacts(){
 function renderContacts() {
   overlay = document.getElementById('contactlist');
   overlay.innerHTML = '';
-  let currentLetter = null; 
-  
+  let currentLetter = null;
   for (let i = 0; i < loadedContacts.length; i++) {
     let contact = loadedContacts[i];
     let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
-    let backgroundColor = contact.color; 
-
-    if (initials.charAt(0) !== currentLetter) {
-      currentLetter = initials.charAt(0);
-      overlay.innerHTML += `<div id="alphabet-tab">${currentLetter}</div>`;
-    }
+    let backgroundColor = contact.color;
+    initialsAlphabet(initials, currentLetter, overlay);
     overlay.innerHTML += `<div id="contact-card-container-${i}" class="contact-card-container" onclick="handleContactClick(${i})">${renderContactsHTMLTemplate(i, backgroundColor, initials, contact)}</div>`;
   }
 }
@@ -43,6 +38,13 @@ function handleContactClick(index) {
   });
 }
 
+function initialsAlphabet(initials, currentLetter, overlay) {
+  if (initials.charAt(0) !== currentLetter) {
+    currentLetter = initials.charAt(0);
+    overlay.innerHTML += `<div id="alphabet-tab">${currentLetter}</div>`;
+  }
+}
+
 /* Renders the contacts for the mobile view.*/
 function renderContactsMobile() {
   overlay = document.getElementById('contactlist-mobile');
@@ -53,11 +55,15 @@ function renderContactsMobile() {
     let contact = loadedContacts[i];
     let initials = contact.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
     let backgroundColor = contact.color; 
-    if (initials.charAt(0) !== currentLetter) {
-      currentLetter = initials.charAt(0);
-      overlay.innerHTML += `<div id="alphabet-tab-mobile">${currentLetter}</div>`;
-    }
+    initialsAlphabetMobile(initials, currentLetter, overlay);
     overlay.innerHTML += renderContactsMobileHTMLTemplate(i, backgroundColor, initials, contact);
+  }
+}
+
+function initialsAlphabetMobile(initials, currentLetter, overlay) {
+  if (initials.charAt(0) !== currentLetter) {
+    currentLetter = initials.charAt(0);
+    overlay.innerHTML += `<div id="alphabet-tab-mobile">${currentLetter}</div>`;
   }
 }
 

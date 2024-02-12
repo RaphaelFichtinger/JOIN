@@ -35,30 +35,34 @@ async function signUp() {
 	let checkbox = document.getElementById('input-checkbox');
 
 	if(password.value === confirm.value) {
-		if(checkbox.checked) {
-			let signedUpUser = {
-				'name' : name.value,
-				'password': password.value,
-				'email': email.value
-			};
-			signedUpUsers.push(signedUpUser);
-
-			await setItem('signedUpUsers', JSON.stringify(signedUpUsers));
-			resetForm(email, password, confirm, name, checkbox);
-			showSuccessButton();
-			window.location.href = './index.html';
-		} else {
-			let privacyUnchecked = document.getElementById('error-privacy');
-			privacyUnchecked.innerHTML = 'Bitte bestätige unsere Privacy Policy';
-			setTimeout(() => {
-				privacyUnchecked.innerHTML = '';
-			}, 2000)
-		}
+		privacyUnchecked(checkbox, name, password, email, confirm);
 	} else {
 		let passwordIncorrect = document.getElementById('error-password');
 		passwordIncorrect.innerHTML = 'Das Passwort stimmt nicht überein';
 		setTimeout(() => {
 			passwordIncorrect.innerHTML = '';
+		}, 2000)
+	}
+}
+
+async function privacyUnchecked(checkbox, name, password, email, confirm) {
+	if(checkbox.checked) {
+		let signedUpUser = {
+			'name' : name.value,
+			'password': password.value,
+			'email': email.value
+		};
+		signedUpUsers.push(signedUpUser);
+
+		await setItem('signedUpUsers', JSON.stringify(signedUpUsers));
+		resetForm(email, password, confirm, name, checkbox);
+		showSuccessButton();
+		window.location.href = './index.html';
+	} else {
+		let privacyUnchecked = document.getElementById('error-privacy');
+		privacyUnchecked.innerHTML = 'Bitte bestätige unsere Privacy Policy';
+		setTimeout(() => {
+			privacyUnchecked.innerHTML = '';
 		}, 2000)
 	}
 }

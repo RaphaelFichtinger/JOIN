@@ -99,8 +99,6 @@ function editContactHTMLTemplate(backgroundColor, initials, contact, i){
                         <input id="edit-input-number" type="number" value="${contact.phone}" required>
                     </div>
                     <div id="save-delete-div">
-                       
-                   
                             <button type="submit" id="save-btn-edit">Save</button>
                             <img id="check-icon" src="../img/check.png">
                             <button onclick="deleteContact(${i})" id="delete-btn-edit">Delete</button>
