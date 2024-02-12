@@ -6,7 +6,6 @@ let signedUpUsers = [];
 async function init() {
     loadUsers();
 }
-
 /**
  * Asynchronously loads the users and handles any potential loading errors.
  *
