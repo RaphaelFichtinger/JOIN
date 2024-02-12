@@ -510,6 +510,21 @@ button {
     gap: 32px;
 }
 
+::-webkit-scrollbar {
+    width: 14px;
+}
+
+.main-edit-card #added-contacts{
+    overflow-x: scroll;
+}
+
+::-webkit-scrollbar-thumb {
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 9999px;
+    background-color: #AAAAAA;
+}
+
 .edit-ok-button {
     margin-top: 16%;
     display: flex;

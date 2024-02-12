@@ -214,7 +214,7 @@ function generateEditTaskHTMLTemplate(task) {
 						<img onclick="openOverlay(event, 'contacts-list')" class="dropdown" src="./img/arrow_dropdown.svg" alt="arrow dropdown" tabindex="0">
 					</div>
                     <div id="contacts-list" class="contacts-list">
-                        <div id="list-item" class="list-item"></div>
+                    <div id="list-item" class="list-item"></div>
                     </div>
                     <div id="added-contacts" class="flex"></div>
                 </div>
