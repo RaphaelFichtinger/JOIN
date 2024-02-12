@@ -22,20 +22,15 @@ async function renderSummary() {
 	await loadTasks();
 	getGreeting();
 	getLoginName();
-
 	tasksInBoard.innerHTML = tasks.length;
-
 	loopTasks();
 	getDateFromInput();
 	setActivePage1();
-
 	if(window.innerWidth < 1170) {
 		overlayGreetingMobile();
 	}
 }
-/**
- * Function to overlay greeting on mobile view.
- */
+/*** Function to overlay greeting on mobile view.*/
 function overlayGreetingMobile() {
 	let overlayGreetingMobile = document.getElementById('overlay-greeting-mobile');
 	setTimeout(() => {
@@ -43,7 +38,6 @@ function overlayGreetingMobile() {
 		overlayGreetingMobile.style.transition = 'all 1s ease-in-out';
 		overlayGreetingMobile.style.opacity = '1';
 	}, 500)
-
 	setTimeout(() => {
 		overlayGreetingMobile.style.zIndex = '-1';
 		overlayGreetingMobile.style.transition = 'all 1s ease-in-out';
@@ -51,9 +45,7 @@ function overlayGreetingMobile() {
 	}, 3000)
 }
 
-/**
- * Loop through tasks and perform certain actions based on priority.
- */
+/*** Loop through tasks and perform certain actions based on priority.*/
 function loopTasks() {
 	for (let i = 0; i < tasks.length; i++) {
 		let task = tasks[i];
@@ -62,7 +54,6 @@ function loopTasks() {
 			let urgentHeading = document.getElementById('urgent-heading');
 			prioritySummaryVariable++
 			urgentHeading.innerHTML = prioritySummaryVariable;
-
 			datesUrgent.push(task['date'])
 		}
 		checkStatus(i);
@@ -78,7 +69,6 @@ function loopTasks() {
 function checkStatus(i) {
 	let task = tasks[i];
 	let status = task['status'];
-
 	if(status === 'to-do') {
 		toDoVariable++;
 		toDo.innerHTML = toDoVariable;
@@ -96,9 +86,7 @@ function checkStatus(i) {
 
 /**
  * Retrieves the closest date from the 'datesUrgent' array and displays it in the 'urgentDate' element. If 'datesUrgent' is empty, it displays 'No urgent task!'.
- *
- * @param {type} None
- */
+ * @param {type} None*/
 function getDateFromInput() {
 	if(datesUrgent.length > 0) {
 		let currentDate = new Date();
@@ -107,18 +95,15 @@ function getDateFromInput() {
 			const diffInMilliseconds = Math.abs(date1 - date2);
 			return Math.round(diffInMilliseconds / oneDay);
 		}
-		
 		let dateObjects = datesUrgent.map(function(dateString) {
 			let dateParts = dateString.split("-");
 			return new Date(dateParts[0], dateParts[1] - 1, dateParts[2]); 
 		});
-		
 		let closestDate = dateObjects.reduce(function (prev, curr) {
 			let prevDiff = dateDifferenceInDays(currentDate, prev);
 			let currDiff = dateDifferenceInDays(currentDate, curr);
 			return currDiff < prevDiff ? curr : prev;
 		});
-		
 		let formattedDate = closestDate.toLocaleDateString("en-US", {
 			month: "long",
 			day: "numeric",
@@ -129,19 +114,13 @@ function getDateFromInput() {
 		urgentDate.innerHTML = 'No urgent task!';
 	}
 }
-
-/**
- * This function gets the current time and sets a greeting text based on the time of day.
- *
+/*** This function gets the current time and sets a greeting text based on the time of day.
  * @param {} 
- * @return {}
- */
+ * @return {}*/
 function getGreeting() {
 	let currentDate = new Date();
 	let currentTime = currentDate.getHours();
-
 	let greetingText;
-
 	switch (true) {
 		case currentTime >= 4 && currentTime < 12:
 			greetingText = 'Good morning,';
@@ -158,11 +137,8 @@ function getGreeting() {
 	greeting.textContent = greetingText;
 	greetingMobile.textContent = greetingText;
 }
-
-/**
- * Retrieves the login name and updates the logged-in person's name in the DOM if logged in as a guest or with a name.
- * @return {undefined} No return value
- */
+/** Retrieves the login name and updates the logged-in person's name in the DOM if logged in as a guest or with a name.
+ * @return {undefined} No return value*/
 function getLoginName() {
 	if(logedInAsGuest) {
 		document.getElementById('loged-in-person').textContent = logedInGuest;
