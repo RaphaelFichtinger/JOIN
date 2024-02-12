@@ -365,7 +365,7 @@ function generateAssignTo(id) {
         let fullName = fullNames[j]['name'];
         let contactIndex = contactsArray.findIndex(contact => contact.name === fullName);
         initials = fullName.split(" ");
-        if (contactsArray[contactIndex].color) {
+        if (contactIndex !== -1) {
             let matchingColor = contactsArray[contactIndex].color;
             generateHtml += overViewContact(matchingColor, fullName, initials);
         } else {
@@ -541,6 +541,7 @@ async function saveEditChanges(id) {
     task.date = dueDateInput;
     task['assign-to'] = checkedContacts;
     task['subtasks'] = subtasksArray;
+    task.priority = priorityVariable;
     await setItem('tasks', JSON.stringify(tasks));
     clearArrays();
     closeEditCard();
