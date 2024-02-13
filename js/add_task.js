@@ -132,8 +132,7 @@ function clearFields() {
 /**
  * Opens an overlay for a given list ID when triggered by an event. 
  * @param {Event} event - The event that triggers the overlay opening
- * @param {string} listId - The ID of the list to open the overlay for
- */
+ * @param {string} listId - The ID of the list to open the overlay for*/
 function openOverlay(event, listId) {
     event.stopPropagation();
     let overlayList = document.getElementById(`${listId}`);
@@ -170,8 +169,7 @@ function getContacts() {
  * @param {string} contactName - The name of the contact
  * @param {number} i - The index of the contact
  * @param {string} contactColor - The color associated with the contact
- * @return {string} The generated HTML for the contact
- */
+ * @return {string} The generated HTML for the contact*/
 function generateContactsHtml(splittedLetters, contactName, i, contactColor) {
     return `
         <div class="item flex align-center" onclick="contactChecked(event, ${i})">
@@ -212,10 +210,8 @@ function syncCheckbox(checkbox, index) {
 
 /**
  * Handles the checkbox event for a contact.
- *
  * @param {Event} event - the event object
- * @param {number} index - the index of the contact
- */
+ * @param {number} index - the index of the contact*/
 function contactChecked(event, index) {
     event.stopPropagation();
     let checkbox = event.target;
@@ -369,8 +365,7 @@ function editSubtask(event) {
     `;
 }
 
-/*** Removes the specified subtask element from the DOM and the subtasksArray.* @param {Event} event - The event object
- * @return {void} */
+/*** Removes the specified subtask element from the DOM and the subtasksArray.* @param {Event} event - The event object */
 function clearSubtask(event) {
     let deleteSubtask = event.target.closest('.subtaskItem');
     deleteSubtask.remove();
@@ -379,8 +374,7 @@ function clearSubtask(event) {
         subtasksArray.splice(index, 1);
     }
 }
-/** Asynchronously saves the edited subtask and updates the UI accordingly.
- *@param {Object} event - The event object triggered by the user action
+/** Asynchronously saves the edited subtask and updates the UI accordingly.*@param {Object} event - The event object triggered by the user action
  * @return {Promise} A promise that resolves after the subtask is saved*/
 async function saveEditSubtask(event) {
     let textElement = event.target.closest('#editableText');

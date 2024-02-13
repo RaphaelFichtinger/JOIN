@@ -38,6 +38,12 @@ function handleContactClick(index) {
   });
 }
 
+/**
+ * Function to update alphabet tab based on initials.
+ *
+ * @param {string} initials - The initials to check
+ * @param {string} currentLetter - The current letter being checked
+ * @param {HTMLElement} overlay - The HTML element to append the alphabet tab to*/
 function initialsAlphabet(initials, currentLetter, overlay) {
   if (initials.charAt(0) !== currentLetter) {
     currentLetter = initials.charAt(0);
@@ -60,6 +66,14 @@ function renderContactsMobile() {
   }
 }
 
+/**
+ * Generates alphabet tabs for mobile based on the initials and current letter.
+ *
+ * @param {string} initials - The initials to compare with the current letter.
+ * @param {string} currentLetter - The current letter to compare with the initials.
+ * @param {HTMLElement} overlay - The overlay element to append the alphabet tab to.
+ * @return {void} 
+ */
 function initialsAlphabetMobile(initials, currentLetter, overlay) {
   if (initials.charAt(0) !== currentLetter) {
     currentLetter = initials.charAt(0);
@@ -152,10 +166,11 @@ function saveContactChanges(i) {
 }
 }
 
+/*** Save changes for a contact in the mobile view.
+ * @param {number} i - index of the contact to be edited
+ * @return {void} */
 function saveContactChangesMobile(i) {
   if (validateEditMobileContactInput()) {
-/*** Save changes made to a contact on a mobile device.
-  * @param {number} i - The index of the contact to be edite*/
       let editedName = document.getElementById('edit-contact-input-name-mobile').value;
       let editedEmail = document.getElementById('edit-contact-input-mail-mobile').value;
       let editedPhone = document.getElementById('edit-contact-input-number-mobile').value;
